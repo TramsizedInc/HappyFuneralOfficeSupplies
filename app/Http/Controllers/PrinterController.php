@@ -13,7 +13,8 @@ class PrinterController extends Controller
      */
     public function index()
     {
-        //
+        $printers = Printer::all();
+        return view('printers.index',['printers' => $printers]);
     }
 
     /**
@@ -21,7 +22,8 @@ class PrinterController extends Controller
      */
     public function create()
     {
-        //
+
+        return view('printers.create');
     }
 
     /**
@@ -29,7 +31,8 @@ class PrinterController extends Controller
      */
     public function store(StorePrinterRequest $request)
     {
-        //
+        $item = Printer::create($request->all());
+        return redirect()->route("printers.index")->with("success", "Printer created successfully.");
     }
 
     /**
