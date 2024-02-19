@@ -38,7 +38,6 @@
                                 <div class="md:col-span-5">
                                     <label for="docs">Documentation</label>
                                     <textarea type="text" id="docs" class="transition-all flex items-center h-10 border mt-1 rounded px-4 w-full bg-gray-50" placeholder=""></textarea>
-
                                 </div>
                                 <div class="text-gray-600 md:col-span-5">
                                     <div class="relative mb-6">
