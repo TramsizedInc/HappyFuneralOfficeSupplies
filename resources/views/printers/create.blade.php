@@ -26,13 +26,25 @@
                                 </div>
 
                                 <div class="md:col-span-3">
-                                    <label for="doner">Type of doner</label>
-                                    <input type="text" name="city" id="doner" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="" />
+                                    <select class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" data-te-select-init>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                        <option value="4">Four</option>
+                                        <option value="5">Five</option>
+                                    </select>
+                                    <label data-te-select-label-ref>Type of doner</label>
                                 </div>
 
                                 <div class="md:col-span-2">
-                                    <label for="drummunit">Type of drumm unit</label>
-                                    <input type="text" name="city" id="drummunit" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="" />
+                                    <select data-te-select-init>
+                                        <option value="1">One</option>
+                                        <option value="2">Two</option>
+                                        <option value="3">Three</option>
+                                        <option value="4">Four</option>
+                                        <option value="5">Five</option>
+                                    </select>
+                                    <label data-te-select-label-ref>Type of drumm unit</label>
                                 </div>
 
                                 <div class="md:col-span-5">
