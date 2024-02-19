@@ -14,12 +14,12 @@
                         </div>
 
                         <div class="lg:col-span-2">
+
                             <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
                                 <div class="md:col-span-5">
                                     <label for="brand">Brand</label>
                                     <input type="text" name="full_name" id="brand" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" />
                                 </div>
-
                                 <div class="md:col-span-5">
                                     <label for="type">Type</label>
                                     <input type="text" name="type" id="type" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" value="" placeholder="" />
@@ -40,7 +40,24 @@
                                     <textarea type="text" id="docs" class="transition-all flex items-center h-10 border mt-1 rounded px-4 w-full bg-gray-50" placeholder=""></textarea>
 
                                 </div>
-
+                                <div class="text-gray-600 md:col-span-5">
+                                    <div class="relative mb-6">
+                                        <label for="labels-range-input" >Drumm Unit <span id="drummchange"></span></label>
+                                        <input id="labels-range-input" onchange="drummchange(this)" oninput="drummchange(this)" type="range" value="0" min="0" max="100" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700">
+                                        <span class="text-sm text-gray-500 dark:text-gray-400 absolute start-0 -bottom-6">0%</span>
+                                        <span class="text-sm text-gray-500 dark:text-gray-400 absolute start-1/2 -translate-x-1/2 rtl:translate-x-1/2 -bottom-6">50%</span>
+                                        <span class="text-sm text-gray-500 dark:text-gray-400 absolute end-0 -bottom-6">100%</span>
+                                    </div>
+                                </div>
+                                <div class="text-gray-600 md:col-span-5">
+                                    <div class="relative mb-6">
+                                        <label for="labels-range-input" >Doner <span id="donerchange"></span></label>
+                                        <input id="labels-range-input" onchange="donerchange(this)" oninput="donerchange(this)" type="range" value="0" min="0" max="100" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700">
+                                        <span class="text-sm text-gray-500 dark:text-gray-400 absolute start-0 -bottom-6">0%</span>
+                                        <span class="text-sm text-gray-500 dark:text-gray-400 absolute start-1/2 -translate-x-1/2 rtl:translate-x-1/2 -bottom-6">50%</span>
+                                        <span class="text-sm text-gray-500 dark:text-gray-400 absolute end-0 -bottom-6">100%</span>
+                                    </div>
+                                </div>
                                 <div class="md:col-span-5">
                                     <label for="cover-photo" class="block text-sm font-medium leading-6 text-gray-900">Cover photo</label>
                                     <div class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
@@ -77,5 +94,14 @@
 
         </div>
     </div>
-
+<script>
+     function donerchange(element){
+        var val = element.value;
+        document.getElementById('donerchange').innerHTML = val+"%";
+    }
+     function drummchange(element){
+         var val = element.value;
+         document.getElementById('drummchange').innerHTML = val+"%";
+     }
+</script>
 </x-app-layout>
