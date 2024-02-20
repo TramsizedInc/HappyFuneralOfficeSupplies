@@ -14,23 +14,23 @@ class RoleSeeder extends Seeder
     public function run(): void
     {
         //
-        Role::create([
-            "role" => "Developer",
+        Role::factory()->create([
+            "name" => "Developer",
             "slug" => "dev"
         ]);
-        Role::create([
-            "role" => "Administrator",
+        Role::factory()->create([
+            "name" => "Administrator",
             "slug" => "admin"
         ]);
-        Role::create([
-            "role" => "General Manager",
+        Role::factory()->create([
+            "name" => "General Manager",
             "slug" => "manager"
         ]);
-        Role::create([
-            "role" => "Office Manager",
+        Role::factory()->create([
+            "name" => "Office Manager",
             "slug" => "office_manager"
-        ]); Role::create([
-            "role" => "Shift Manager",
+        ]); Role::factory()->create([
+            "name" => "Shift Manager",
             "slug" => "Shit_manager"
         ]);
     }
