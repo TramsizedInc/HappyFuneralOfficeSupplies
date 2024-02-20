@@ -34,31 +34,28 @@
                             </thead>
                             <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
                             @foreach(\App\Models\Printer::all() as $printer)
-                                @if($printer->office()->id == \Illuminate\Support\Facades\Auth::user()->office_id)
-                                    <tr>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">{{$printer->brand}}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{$printer->type}}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
-                                            <img class="h-10 max-w-10" src="{{asset('storage/picture/'.$printer->picture)}}" alt="image description">
-                                        </td>
-                                        <td class="px-6 py-4 text-justify text-sm text-gray-800 dark:text-gray-200">{{$printer->documentation}}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{$printer->toner_percent}}%</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{$printer->drumm_percent}}%</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
-                                            <button type="button" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">View</button>
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
-                                            <button type="button" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">Edit</button>
-                                        </td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
-                                            <button type="button" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">Delete</button>
-                                        </td>
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">{{$printer->brand}}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{$printer->type}}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
+                                        <img class="h-10 max-w-10" src="{{asset('storage/picture/'.$printer->picture)}}" alt="image description">
+                                    </td>
+                                    <td class="px-6 py-4 text-justify text-sm text-gray-800 dark:text-gray-200">{{$printer->documentation}}</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{$printer->toner_percent}}%</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{$printer->drumm_percent}}%</td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
+                                        <button type="button" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">View</button>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
+                                        <button type="button" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">Edit</button>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
+                                        <button type="button" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">Delete</button>
+                                    </td>
 
-                                    </tr>
-                                @else
-
-                                @endif
+                                </tr>
                             @endforeach
+
 
                             </tbody>
                         </table>

@@ -11,30 +11,7 @@
 
                 <div class="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6">
                     <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
-                        @if ($errors->any())
-                            <div class="mb-3 mt-3">
-                                <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert"
-                                            aria-label="Close"></button>
-                                    <strong>Holy guacamole!</strong>
 
-                                    <ul>
-                                        @foreach ($errors->all() as $error)
-                                            <li>{{ $error }}</li>
-                                        @endforeach
-                                    </ul>
-                                </div>
-                            </div>
-                        @endif
-
-                        @if (Session::has('success'))
-                            <div class="alert alert-success alert-dismissible fade show" role="alert">
-                                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-
-                                <strong>Holy guacamole!</strong>
-                                <p>{{Session::get('success')}}</p>
-                            </div>
-                        @endif
                         <div class="text-gray-600">
                             <p class="font-medium text-lg">Printer Details</p>
                             <p>Please fill out all the fields.</p>

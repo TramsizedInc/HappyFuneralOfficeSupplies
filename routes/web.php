@@ -32,7 +32,7 @@ Route::middleware('auth')->group(function () {
 });
 Route::middleware(\App\Http\Middleware\OfficeMiddleware::class)->group(
     function(){
-        Route::patch('/printers/updateUtilities/{printer}',[ProfileController::class,'updateUtilities'])->name('printers.updateUtilities');
+        Route::get('/printers/updateUtilities/{printer}',[\App\Http\Controllers\PrinterController::class,'updateUtilities'])->name('printers.updateUtilities');
     }
 );
 require __DIR__.'/auth.php';
