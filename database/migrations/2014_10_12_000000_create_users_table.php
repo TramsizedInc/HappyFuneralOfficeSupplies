@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->foreignId('office_id');
             $table->rememberToken();
             $table->softDeletes();
             $table->integer('created_by')->default(1);

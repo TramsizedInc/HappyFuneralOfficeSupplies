@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 
@@ -30,5 +30,9 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
     Route::resource('/printers', App\Http\Controllers\PrinterController::class);
 });
-
+Route::middleware(\App\Http\Middleware\OfficeMiddleware::class)->group(
+    function(){
+        Route::patch('/printers/updateUtilities/{printer}',[ProfileController::class,'updateUtilities'])->name('printers.updateUtilities');
+    }
+);
 require __DIR__.'/auth.php';

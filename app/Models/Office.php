@@ -10,4 +10,11 @@ class Office extends Model
 {
     use HasFactory;
     use SoftDeletes;
+    protected $fillable = [
+        'zip_code',
+        'city',
+        'street',
+        'house_number',
+        'number_of_workers'
+    ];
 }
