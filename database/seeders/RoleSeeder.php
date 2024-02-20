@@ -15,22 +15,22 @@ class RoleSeeder extends Seeder
     {
         //
         Role::create([
-            "name" => "Developer",
+            "role" => "Developer",
             "slug" => "dev"
         ]);
         Role::create([
-            "name" => "Administrator",
+            "role" => "Administrator",
             "slug" => "admin"
         ]);
         Role::create([
-            "name" => "General Manager",
+            "role" => "General Manager",
             "slug" => "manager"
         ]);
         Role::create([
-            "name" => "Office Manager",
+            "role" => "Office Manager",
             "slug" => "office_manager"
         ]); Role::create([
-            "name" => "Shift Manager",
+            "role" => "Shift Manager",
             "slug" => "Shit_manager"
         ]);
     }

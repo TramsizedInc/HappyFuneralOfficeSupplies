@@ -6,16 +6,15 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Printer extends Model
+class OfficeSupply extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
     protected $fillable = [
-        'brand',
-        'type',
-        'picture',    
-        'documentation',   
-        'type_of_toner',              
-        'type_of_drumm_unit',
+        'amount_of_toners',
+        'amount_of_drumms',
+        'level_of_toners',
+        'level_of_drumms',
     ];
 }

@@ -11,9 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::table('users', function (Blueprint $table) {
-            //
-            $table->foreignId('role_id')->default(1)->after('id')->references('id')->on('roles')->constrained();
+        Schema::table('office_supplies', function (Blueprint $table) {
+            $table->foreignId('office_id')->default(1)->after('id')->references('id')->on('offices')->constrained();
         });
     }
 
@@ -22,7 +21,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::table('users', function (Blueprint $table) {
+        Schema::table('office_supplies', function (Blueprint $table) {
             //
         });
     }
