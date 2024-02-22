@@ -29,5 +29,12 @@ class DatabaseSeeder extends Seeder
           'role_id' => 4,
           'office_id'=> 1
         ]);
+        \App\Models\User::factory()->create([
+            'name' => 'dev',
+            'email' => 'dev@temetkezes.hu',
+            'password' => Hash::make('dev122937'),
+            'role_id' => 1,
+            'office_id'=> 1
+        ]);
     }
 }

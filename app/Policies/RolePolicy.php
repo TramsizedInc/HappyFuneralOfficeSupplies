@@ -13,7 +13,13 @@ class RolePolicy
      */
     public function viewAny(User $user): bool
     {
-        //
+        switch (auth()->user()->role->slug) {
+            case 'dev':
+            case 'admin':
+                return true;
+            default:
+                return false;
+        }
     }
 
     /**
@@ -21,7 +27,13 @@ class RolePolicy
      */
     public function view(User $user, Role $role): bool
     {
-        //
+        switch (auth()->user()->role->slug) {
+            case 'dev':
+            case 'admin':
+                return true;
+            default:
+                return false;
+        }
     }
 
     /**
@@ -29,7 +41,13 @@ class RolePolicy
      */
     public function create(User $user): bool
     {
-        //
+        switch (auth()->user()->role->slug) {
+            case 'dev':
+            case 'admin':
+                return true;
+            default:
+                return false;
+        }
     }
 
     /**
@@ -37,7 +55,13 @@ class RolePolicy
      */
     public function update(User $user, Role $role): bool
     {
-        //
+        switch (auth()->user()->role->slug) {
+            case 'dev':
+            case 'admin':
+                return true;
+            default:
+                return false;
+        }
     }
 
     /**
@@ -45,7 +69,13 @@ class RolePolicy
      */
     public function delete(User $user, Role $role): bool
     {
-        //
+        switch (auth()->user()->role->slug) {
+            case 'dev':
+            case 'admin':
+                return true;
+            default:
+                return false;
+        }
     }
 
     /**
@@ -53,7 +83,13 @@ class RolePolicy
      */
     public function restore(User $user, Role $role): bool
     {
-        //
+        switch (auth()->user()->role->slug) {
+            case 'dev':
+            case 'admin':
+                return true;
+            default:
+                return false;
+        }
     }
 
     /**
@@ -61,6 +97,12 @@ class RolePolicy
      */
     public function forceDelete(User $user, Role $role): bool
     {
-        //
+        switch (auth()->user()->role->slug) {
+            case 'dev':
+            case 'admin':
+                return true;
+            default:
+                return false;
+        }
     }
 }

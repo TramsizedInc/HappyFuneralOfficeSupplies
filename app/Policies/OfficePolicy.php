@@ -13,7 +13,16 @@ class OfficePolicy
      */
     public function viewAny(User $user): bool
     {
-        //
+        switch (auth()->user()->role->slug) {
+
+            case 'manager':
+            case 'dev':
+            case 'admin':
+                return true;
+            default:
+                return false;
+        }
+
     }
 
     /**
@@ -21,7 +30,15 @@ class OfficePolicy
      */
     public function view(User $user, Office $office): bool
     {
-        //
+        switch (auth()->user()->role->slug) {
+
+            case 'dev':
+            case 'manager':
+            case 'admin':
+                return true;
+            default:
+                return false;
+        }
     }
 
     /**
@@ -29,7 +46,14 @@ class OfficePolicy
      */
     public function create(User $user): bool
     {
-        //
+        switch (auth()->user()->role->slug) {
+
+            case 'dev':
+            case 'admin':
+                return true;
+            default:
+                return false;
+        }
     }
 
     /**
@@ -37,7 +61,14 @@ class OfficePolicy
      */
     public function update(User $user, Office $office): bool
     {
-        //
+        switch (auth()->user()->role->slug) {
+
+            case 'dev':
+            case 'admin':
+                return true;
+            default:
+                return false;
+        }
     }
 
     /**
@@ -45,7 +76,14 @@ class OfficePolicy
      */
     public function delete(User $user, Office $office): bool
     {
-        //
+        switch (auth()->user()->role->slug) {
+
+            case 'dev':
+            case 'admin':
+                return true;
+            default:
+                return false;
+        }
     }
 
     /**
@@ -53,7 +91,14 @@ class OfficePolicy
      */
     public function restore(User $user, Office $office): bool
     {
-        //
+        switch (auth()->user()->role->slug) {
+
+            case 'dev':
+            case 'admin':
+                return true;
+            default:
+                return false;
+        }
     }
 
     /**
@@ -61,6 +106,18 @@ class OfficePolicy
      */
     public function forceDelete(User $user, Office $office): bool
     {
-        //
+        switch (auth()->user()->role->slug) {
+
+            case 'dev':
+            case 'admin':
+                return true;
+            default:
+                return false;
+        }
+    }
+
+
+    public function checkOffice(User $user, Office $office){
+
     }
 }
