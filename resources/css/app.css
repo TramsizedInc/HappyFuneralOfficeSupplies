@@ -13,6 +13,14 @@
     }
 }
 
+.bg-bamboo{
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center center;
+    
+}
+
 td:not(:last-child) {
     border-bottom: 0;
 }

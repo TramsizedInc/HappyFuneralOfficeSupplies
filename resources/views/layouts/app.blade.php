@@ -15,19 +15,19 @@
     </head>
     <body class="font-sans antialiased">
 
-        <div class="min-h-screen bg-gray-100 dark:bg-gradient-to-r from-gray-800 to-gray-800">
+        <div style="background-image: url('{{asset('storage/bg.png')}}')" class="bg-bamboo min-h-screen bg-gray-100 dark:bg-gradient-to-r from-gray-800 to-gray-800">
 
 
             <!-- Page Content -->
-            <main>
-
-                    @include('layouts.sidebar')
-                    <div class="p-4 sm:ml-64">
+            <main >
+                     @include('layouts.sidebar')
+                    <div class="p-4 sm:ml-64" >
                         {{ $slot }}
                     </div>
-
-
+                <!-- Jumbotron -->
             </main>
+            <!-- TW Elements is free under AGPL, with commercial license required for specific uses. See more details: https://tw-elements.com/license/ and contact us for queries at tailwind@mdbootstrap.com -->
+            <!--Footer container-->
 
         </div>
 
