@@ -17,8 +17,7 @@ class OfficeFactory extends Factory
     public function definition(): array
     {
         return [
-            //
-            
+            'office_name' => 'Iroda'
         ];
     }
 }

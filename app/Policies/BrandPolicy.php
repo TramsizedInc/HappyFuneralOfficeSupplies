@@ -13,7 +13,15 @@ class BrandPolicy
      */
     public function viewAny(User $user): bool
     {
-        //
+        switch (auth()->user()->role->slug) {
+
+            case 'dev':
+            case 'admin':
+                return true;
+            default:
+                return false;
+        }
+
     }
 
     /**
@@ -21,7 +29,15 @@ class BrandPolicy
      */
     public function view(User $user, Brand $brand): bool
     {
-        //
+        switch (auth()->user()->role->slug) {
+
+            case 'dev':
+            case 'admin':
+                return true;
+            default:
+                return false;
+        }
+
     }
 
     /**
@@ -29,7 +45,15 @@ class BrandPolicy
      */
     public function create(User $user): bool
     {
-        //
+        switch (auth()->user()->role->slug) {
+
+            case 'dev':
+            case 'admin':
+                return true;
+            default:
+                return false;
+        }
+
     }
 
     /**
@@ -37,7 +61,15 @@ class BrandPolicy
      */
     public function update(User $user, Brand $brand): bool
     {
-        //
+        switch (auth()->user()->role->slug) {
+
+            case 'dev':
+            case 'admin':
+                return true;
+            default:
+                return false;
+        }
+
     }
 
     /**
@@ -45,7 +77,15 @@ class BrandPolicy
      */
     public function delete(User $user, Brand $brand): bool
     {
-        //
+        switch (auth()->user()->role->slug) {
+
+            case 'dev':
+            case 'admin':
+                return true;
+            default:
+                return false;
+        }
+
     }
 
     /**
@@ -53,7 +93,15 @@ class BrandPolicy
      */
     public function restore(User $user, Brand $brand): bool
     {
-        //
+        switch (auth()->user()->role->slug) {
+
+            case 'dev':
+            case 'admin':
+                return true;
+            default:
+                return false;
+        }
+
     }
 
     /**
@@ -61,6 +109,14 @@ class BrandPolicy
      */
     public function forceDelete(User $user, Brand $brand): bool
     {
-        //
+        switch (auth()->user()->role->slug) {
+
+            case 'dev':
+            case 'admin':
+                return true;
+            default:
+                return false;
+        }
+
     }
 }
