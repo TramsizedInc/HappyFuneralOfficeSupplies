@@ -3,7 +3,7 @@
     <div class="min-h-screen p-6 flex items-center justify-center">
         <form action="{{ route('printers.update',$printer) }}" method="GET" enctype="multipart/form-data" class="container max-w-screen-lg mx-auto">
             @csrf
-            @method('PATCH')
+            @method('POST')
             <div>
                 <h2 class="font-semibold text-xl text-gray-600">Edit Printer</h2>
                 <p class="text-gray-500 mb-6">Form is mobile responsive. Give it a try.</p>

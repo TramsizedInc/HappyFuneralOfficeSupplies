@@ -31,8 +31,5 @@ Route::middleware('auth')->group(function () {
     Route::resource('/printers', App\Http\Controllers\PrinterController::class);
     Route::get('/printers/updateUtilities/{printer}',[\App\Http\Controllers\PrinterController::class,'updateUtilities'])->name('printers.updateUtilities');
 });
-Route::middleware(\App\Http\Middleware\OfficeMiddleware::class)->group(
-    function(){
-    }
-);
+
 require __DIR__.'/auth.php';

@@ -15,7 +15,7 @@ class PrinterController extends Controller
     public function index()
     {
         if (Auth::user()->cannot('view', Printer::class)) {
-            abort(403);
+            return redirect('dashboard');
         }
         $printers = Printer::all();
         return view('printers.index',['printers' => $printers]);
@@ -59,14 +59,14 @@ class PrinterController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Printer $printer)
+    /*public function show(Printer $printer)
     {
         if (Auth::user()->cannot('viewAny', Printer::class)) {
             abort(403);
         }
         return view('printers.show', ['printer' => $printer]);
     }
-
+*/
     /**
      * Show the form for editing the specified resource.
      */
@@ -83,7 +83,12 @@ class PrinterController extends Controller
      */
     public function update(UpdatePrinterRequest $request, Printer $printer)
     {
-        if (Auth::user()->cannot('update', Printer::class)) {
+        if (!(Auth::user()->cannot('updateUtilities', Printer::class))) {
+            $printer->drumm_percent = $request->drumm_percent;
+            $printer->toner_percent = $request->toner_percent;
+            $printer->update();
+            return redirect()->route("printers.index")->with("success", "Printer updated successfully.");
+        } else if(Auth::user()->cannot('update',Printer::class)){
             abort(403);
         }
         $printer->update($request->all());

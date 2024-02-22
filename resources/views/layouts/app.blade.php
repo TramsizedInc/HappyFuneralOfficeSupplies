@@ -15,15 +15,16 @@
     </head>
     <body class="font-sans antialiased">
 
-        <div style="background-image: url('{{asset('storage/bg.png')}}')" class="bg-bamboo min-h-screen bg-gray-100 dark:bg-gradient-to-r from-gray-800 to-gray-800">
-
+        <div  class="min-h-screen bg-gray-100 dark:bg-gradient-to-r from-gray-800 to-gray-800">
 
             <!-- Page Content -->
             <main >
-                     @include('layouts.sidebar')
-                    <div class="p-4 sm:ml-64" >
+                <div style="background-image: url('{{asset('storage/bg.png')}}')" class=" min-h-screen min-w-full bg-bamboo"> <div style="opacity: 1.0" class="p-4 sm:ml-64" >
                         {{ $slot }}
-                    </div>
+                    </div></div>
+
+                @include('layouts.sidebar')
+
                 <!-- Jumbotron -->
             </main>
             <!-- TW Elements is free under AGPL, with commercial license required for specific uses. See more details: https://tw-elements.com/license/ and contact us for queries at tailwind@mdbootstrap.com -->

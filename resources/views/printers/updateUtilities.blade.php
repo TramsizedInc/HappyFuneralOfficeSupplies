@@ -41,10 +41,9 @@
                     <div class="aspect-h-2 aspect-w-3 overflow-hidden rounded-lg">
                         <img src="{{asset('storage/picture/'.$printer->picture)}}" alt="Model wearing plain gray basic tee." class="h-full w-full object-cover object-center">
                     </div>
-
-                    <form action="{{route('printers.update',$printer)}}" method="GET" enctype="multipart/form-data" class="mt-10">
+                    <form action="{{route('printers.update',$printer)}}" method="POST" enctype="multipart/form-data" class="mt-10">
                         @csrf
-                        @method('GET')
+                        @method('PUT')
                         <div>
                             <div class="text-gray-600 md:col-span-5">
                                 <div class="relative mb-6">
@@ -66,7 +65,7 @@
                             </div>
                         </div>
 
-                        <button type="submit" class="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Add to bag</button>
+                        <button type="submit" class="mt-10 flex w-full items-center justify-center rounded-md border border-transparent bg-indigo-600 px-8 py-3 text-base font-medium text-white hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2">Update</button>
                     </form>
                 </div>
 
@@ -95,5 +94,14 @@
             </div>
         </div>
     </div>
-
+    <script>
+        function donerchange(element){
+            var val = element.value;
+            document.getElementById('donerchange').innerHTML = val+"%";
+        }
+        function drummchange(element){
+            var val = element.value;
+            document.getElementById('drummchange').innerHTML = val+"%";
+        }
+    </script>
 </x-app-layout>
