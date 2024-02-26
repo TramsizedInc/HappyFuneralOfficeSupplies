@@ -15,7 +15,7 @@ class PrinterController extends Controller
     public function index()
     {
         if (Auth::user()->cannot('view', Printer::class)) {
-            return redirect('dashboard');
+            return redirect('printers.printers');
         }
         $printers = Printer::all();
         return view('printers.index',['printers' => $printers]);
@@ -86,6 +86,7 @@ class PrinterController extends Controller
         if (!(Auth::user()->cannot('updateUtilities', Printer::class))) {
             $printer->drumm_percent = $request->drumm_percent;
             $printer->toner_percent = $request->toner_percent;
+            $printer->updated_at = now();
             $printer->update();
             return redirect()->route("printers.index")->with("success", "Printer updated successfully.");
         } else if(Auth::user()->cannot('update',Printer::class)){
