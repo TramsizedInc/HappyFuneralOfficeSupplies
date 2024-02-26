@@ -34,5 +34,10 @@ class RoleSeeder extends Seeder
             "name" => "Shift Manager",
             "slug" => "Shit_manager"
         ]);
+        Role::factory()->create([
+            "name" => "Check Controller",
+            "slug" => "Check_Controller"
+        ]);
+
     }
 }
