@@ -19,7 +19,8 @@ class DatabaseSeeder extends Seeder
               RoleSeeder::class,
               OfficeSeeder::class,
               PrinterTypeSeeder::class,
-              BrandSeeder::class
+              BrandSeeder::class,
+              CheckTypeSeeder::class
           ]
         );
       \App\Models\User::factory()->create([

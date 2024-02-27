@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use App\Models\Office;
 use App\Http\Requests\StoreOfficeRequest;
 use App\Http\Requests\UpdateOfficeRequest;
+use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class OfficeController extends Controller
 {
@@ -13,7 +17,11 @@ class OfficeController extends Controller
      */
     public function index()
     {
-        //
+        if (Auth::user()->cannot('view', Office::class)) {
+            abort(403);
+        }
+        $offices = Office::all();
+        return view('offices.index',['offices' => $offices]);
     }
 
     /**
@@ -21,7 +29,10 @@ class OfficeController extends Controller
      */
     public function create()
     {
-        //
+        if (Auth::user()->cannot('create', Office::class)) {
+            abort(403);
+        }
+        return view('offices.create');
     }
 
     /**
@@ -29,13 +40,22 @@ class OfficeController extends Controller
      */
     public function store(StoreOfficeRequest $request)
     {
-        //
+        if (Auth::user()->cannot('create', Office::class)) {
+            abort(403);
+        }
+
+        $office = Office::create($request->all());
+        $office->updated_at = now();
+        $office->created_at = now();
+        $office->update();
+
+        return redirect()->route("offices.index")->with("success", "Office created successfully.");
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(Office $office)
+    public function show(string $id)
     {
         //
     }
@@ -45,7 +65,11 @@ class OfficeController extends Controller
      */
     public function edit(Office $office)
     {
-        //
+        if (Auth::user()->cannot('update', Office::class)) {
+            abort(403);
+        }
+        return view('offices.edit', ['office' => $office]);
+
     }
 
     /**
@@ -53,7 +77,13 @@ class OfficeController extends Controller
      */
     public function update(UpdateOfficeRequest $request, Office $office)
     {
-        //
+        if(Auth::user()->cannot('update',Office::class)){
+            abort(403);
+        }
+        $office->update($request->all());
+        $office->updated_at = now();
+        $office->update();
+        return redirect()->route("offices.index")->with("success", "Office updated successfully.");
     }
 
     /**
@@ -61,6 +91,10 @@ class OfficeController extends Controller
      */
     public function destroy(Office $office)
     {
-        //
+        if (Auth::user()->cannot('delete', Office::class)) {
+            abort(403);
+        }
+        $office->delete();
+        return back()->with('message','');
     }
 }

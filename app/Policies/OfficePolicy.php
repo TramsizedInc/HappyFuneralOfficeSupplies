@@ -3,17 +3,16 @@
 namespace App\Policies;
 
 use App\Models\Office;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
 class OfficePolicy
 {
-    /**
-     * Determine whether the user can view any models.
-     */
     public function viewAny(User $user): bool
     {
-        switch (auth()->user()->role->slug) {
+        $role = Role::all()->find(auth()->user()->role_id);
+        switch ($role->slug) {
 
             case 'manager':
             case 'dev':
@@ -28,12 +27,13 @@ class OfficePolicy
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, Office $office): bool
+    public function view(User $user): bool
     {
-        switch (auth()->user()->role->slug) {
+        $role = Role::all()->find(auth()->user()->role_id);
+        switch ($role->slug) {
 
-            case 'dev':
             case 'manager':
+            case 'dev':
             case 'admin':
                 return true;
             default:
@@ -46,7 +46,8 @@ class OfficePolicy
      */
     public function create(User $user): bool
     {
-        switch (auth()->user()->role->slug) {
+        $role = Role::all()->find(auth()->user()->role_id);
+        switch ($role->slug) {
 
             case 'dev':
             case 'admin':
@@ -59,9 +60,10 @@ class OfficePolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, Office $office): bool
+    public function update(User $user): bool
     {
-        switch (auth()->user()->role->slug) {
+        $role = Role::all()->find(auth()->user()->role_id);
+        switch ($role->slug) {
 
             case 'dev':
             case 'admin':
@@ -74,9 +76,10 @@ class OfficePolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, Office $office): bool
+    public function delete(User $user): bool
     {
-        switch (auth()->user()->role->slug) {
+        $role = Role::all()->find(auth()->user()->role_id);
+        switch ($role->slug) {
 
             case 'dev':
             case 'admin':
@@ -89,9 +92,10 @@ class OfficePolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, Office $office): bool
+    public function restore(User $user): bool
     {
-        switch (auth()->user()->role->slug) {
+        $role = Role::all()->find(auth()->user()->role_id);
+        switch ($role->slug) {
 
             case 'dev':
             case 'admin':
@@ -104,9 +108,10 @@ class OfficePolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, Office $office): bool
+    public function forceDelete(User $user): bool
     {
-        switch (auth()->user()->role->slug) {
+        $role = Role::all()->find(auth()->user()->role_id);
+        switch ($role->slug) {
 
             case 'dev':
             case 'admin':
@@ -114,10 +119,5 @@ class OfficePolicy
             default:
                 return false;
         }
-    }
-
-
-    public function checkOffice(User $user, Office $office){
-
     }
 }

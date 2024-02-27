@@ -12,6 +12,7 @@ class Office extends Model
     use SoftDeletes;
     protected $fillable = [
         'office_name',
+        'office_manager',
         'zip_code',
         'city',
         'street',

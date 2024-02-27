@@ -5,9 +5,9 @@ namespace Database\Factories;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
- * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Office>
+ * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\CheckType>
  */
-class OfficeFactory extends Factory
+class CheckTypeFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -17,8 +17,7 @@ class OfficeFactory extends Factory
     public function definition(): array
     {
         return [
-            'office_name' => 'Iroda',
-            'office_manager' => 'Iroda vezető személy'
+            //
         ];
     }
 }

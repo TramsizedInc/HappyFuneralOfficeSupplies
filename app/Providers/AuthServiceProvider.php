@@ -5,6 +5,7 @@ namespace App\Providers;
 // use Illuminate\Support\Facades\Gate;
 use App\Models\PrinterType;
 use App\Policies\BrandPolicy;
+use App\Policies\CheckTypePolicy;
 use App\Policies\OfficePolicy;
 use App\Policies\PrinterPolicy;
 use App\Policies\PrinterTypePolicy;
@@ -23,6 +24,7 @@ class AuthServiceProvider extends ServiceProvider
         OfficePolicy::class,
         PrinterPolicy::class,
         BrandPolicy::class,
+        CheckTypePolicy::class,
         PrinterTypePolicy::class,
         RolePolicy::class
     ];

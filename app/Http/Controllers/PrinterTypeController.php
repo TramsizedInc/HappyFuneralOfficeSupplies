@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\PrinterType;
 use App\Http\Requests\StorePrinterTypeRequest;
 use App\Http\Requests\UpdatePrinterTypeRequest;
+use Illuminate\Support\Facades\Auth;
 
 class PrinterTypeController extends Controller
 {
@@ -13,7 +15,11 @@ class PrinterTypeController extends Controller
      */
     public function index()
     {
-        //
+        if (Auth::user()->cannot('view', PrinterType::class)) {
+            abort(403);
+        }
+        $printerTypes = PrinterType::all();
+        return view('printerTypes.index',['printerTypes' => $printerTypes]);
     }
 
     /**
@@ -21,7 +27,10 @@ class PrinterTypeController extends Controller
      */
     public function create()
     {
-        //
+        if (Auth::user()->cannot('create', PrinterType::class)) {
+            abort(403);
+        }
+        return view('printerTypes.create');
     }
 
     /**
@@ -29,13 +38,22 @@ class PrinterTypeController extends Controller
      */
     public function store(StorePrinterTypeRequest $request)
     {
-        //
+        if (Auth::user()->cannot('create', PrinterType::class)) {
+            abort(403);
+        }
+
+        $printerType = PrinterType::create($request->all());
+        $printerType->updated_at = now();
+        $printerType->created_at = now();
+        $printerType->update();
+
+        return redirect()->route("printerTypes.index")->with("success", "PrinterType created successfully.");
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(PrinterType $printerType)
+    public function show(string $id)
     {
         //
     }
@@ -45,7 +63,11 @@ class PrinterTypeController extends Controller
      */
     public function edit(PrinterType $printerType)
     {
-        //
+        if (Auth::user()->cannot('update', PrinterType::class)) {
+            abort(403);
+        }
+        return view('printerTypes.edit', ['printerType' => $printerType]);
+
     }
 
     /**
@@ -53,7 +75,13 @@ class PrinterTypeController extends Controller
      */
     public function update(UpdatePrinterTypeRequest $request, PrinterType $printerType)
     {
-        //
+        if(Auth::user()->cannot('update',PrinterType::class)){
+            abort(403);
+        }
+        $printerType->update($request->all());
+        $printerType->updated_at = now();
+        $printerType->update();
+        return redirect()->route("printerTypes.index")->with("success", "Office updated successfully.");
     }
 
     /**
@@ -61,6 +89,10 @@ class PrinterTypeController extends Controller
      */
     public function destroy(PrinterType $printerType)
     {
-        //
+        if (Auth::user()->cannot('delete', PrinterType::class)) {
+            abort(403);
+        }
+        $printerType->delete();
+        return back()->with('message','');
     }
 }

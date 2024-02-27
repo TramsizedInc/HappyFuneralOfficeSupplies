@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\CheckModel;
 use App\Http\Requests\StoreCheckModelRequest;
 use App\Http\Requests\UpdateCheckModelRequest;
+use http\Client;
+use Illuminate\Support\Facades\Auth;
 
 class CheckModelController extends Controller
 {
@@ -13,7 +15,11 @@ class CheckModelController extends Controller
      */
     public function index()
     {
-        //
+        if (Auth::user()->cannot('view', CheckModel::class)) {
+            abort(403);
+        }
+        $checkModels = CheckModel::all();
+        return view('checkModels.index',['checkModels' => $checkModels]);
     }
 
     /**
@@ -21,7 +27,10 @@ class CheckModelController extends Controller
      */
     public function create()
     {
-        //
+        if (Auth::user()->cannot('create', CheckModel::class)) {
+            abort(403);
+        }
+        return view('checkModels.create');
     }
 
     /**
@@ -29,13 +38,22 @@ class CheckModelController extends Controller
      */
     public function store(StoreCheckModelRequest $request)
     {
-        //
+        if (Auth::user()->cannot('create', CheckModel::class)) {
+            abort(403);
+        }
+
+        $checkModel = CheckModel::create($request->all());
+        $checkModel->updated_at = now();
+        $checkModel->created_at = now();
+        $checkModel->update();
+
+        return redirect()->route("checkModels.index")->with("success", "CheckModel created successfully.");
     }
 
     /**
      * Display the specified resource.
      */
-    public function show(CheckModel $checkModel)
+    public function show(string $id)
     {
         //
     }
@@ -45,22 +63,36 @@ class CheckModelController extends Controller
      */
     public function edit(CheckModel $checkModel)
     {
-        //
+        if (Auth::user()->cannot('update', CheckModel::class)) {
+            abort(403);
+        }
+        return view('checkModels.edit', ['checkModel' => $checkModel]);
+
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCheckModelRequest $request, CheckModel $checkModel)
+    public function update(UpdateCheckModelRequest $request, CheckModel $office)
     {
-        //
+        if(Auth::user()->cannot('update',CheckModel::class)){
+            abort(403);
+        }
+        $office->update($request->all());
+        $office->updated_at = now();
+        $office->update();
+        return redirect()->route("checkModels.index")->with("success", "CheckModel updated successfully.");
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(CheckModel $checkModel)
+    public function destroy(CheckModel $office)
     {
-        //
+        if (Auth::user()->cannot('delete', CheckModel::class)) {
+            abort(403);
+        }
+        $office->delete();
+        return back()->with('message','');
     }
 }

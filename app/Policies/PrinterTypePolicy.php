@@ -3,6 +3,7 @@
 namespace App\Policies;
 
 use App\Models\PrinterType;
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
@@ -13,21 +14,28 @@ class PrinterTypePolicy
      */
     public function viewAny(User $user): bool
     {
-        switch (auth()->user()->role->slug) {
+        $role = Role::all()->find(auth()->user()->role_id);
+        switch ($role->slug) {
+
+            case 'manager':
             case 'dev':
             case 'admin':
                 return true;
             default:
                 return false;
         }
+
     }
 
     /**
      * Determine whether the user can view the model.
      */
-    public function view(User $user, PrinterType $printerType): bool
+    public function view(User $user): bool
     {
-        switch (auth()->user()->role->slug) {
+        $role = Role::all()->find(auth()->user()->role_id);
+        switch ($role->slug) {
+
+            case 'manager':
             case 'dev':
             case 'admin':
                 return true;
@@ -41,7 +49,9 @@ class PrinterTypePolicy
      */
     public function create(User $user): bool
     {
-        switch (auth()->user()->role->slug) {
+        $role = Role::all()->find(auth()->user()->role_id);
+        switch ($role->slug) {
+
             case 'dev':
             case 'admin':
                 return true;
@@ -53,9 +63,11 @@ class PrinterTypePolicy
     /**
      * Determine whether the user can update the model.
      */
-    public function update(User $user, PrinterType $printerType): bool
+    public function update(User $user): bool
     {
-        switch (auth()->user()->role->slug) {
+        $role = Role::all()->find(auth()->user()->role_id);
+        switch ($role->slug) {
+
             case 'dev':
             case 'admin':
                 return true;
@@ -67,9 +79,11 @@ class PrinterTypePolicy
     /**
      * Determine whether the user can delete the model.
      */
-    public function delete(User $user, PrinterType $printerType): bool
+    public function delete(User $user): bool
     {
-        switch (auth()->user()->role->slug) {
+        $role = Role::all()->find(auth()->user()->role_id);
+        switch ($role->slug) {
+
             case 'dev':
             case 'admin':
                 return true;
@@ -81,9 +95,11 @@ class PrinterTypePolicy
     /**
      * Determine whether the user can restore the model.
      */
-    public function restore(User $user, PrinterType $printerType): bool
+    public function restore(User $user): bool
     {
-        switch (auth()->user()->role->slug) {
+        $role = Role::all()->find(auth()->user()->role_id);
+        switch ($role->slug) {
+
             case 'dev':
             case 'admin':
                 return true;
@@ -95,9 +111,11 @@ class PrinterTypePolicy
     /**
      * Determine whether the user can permanently delete the model.
      */
-    public function forceDelete(User $user, PrinterType $printerType): bool
+    public function forceDelete(User $user): bool
     {
-        switch (auth()->user()->role->slug) {
+        $role = Role::all()->find(auth()->user()->role_id);
+        switch ($role->slug) {
+
             case 'dev':
             case 'admin':
                 return true;

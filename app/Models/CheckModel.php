@@ -4,10 +4,12 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
-class Check extends Model
+class CheckModel extends Model
 {
     use HasFactory;
+    use SoftDeletes;
     protected $fillable = [
         'type',
         'exhibition_date',
@@ -17,6 +19,9 @@ class Check extends Model
         'street_name',
         'zip_code',
         'amount_used',
-        'yearly_check_date'
+        'yearly_check_date',
+        'office_id'
     ];
+
+
 }

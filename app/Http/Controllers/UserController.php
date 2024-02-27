@@ -2,7 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Printer;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
 {
@@ -11,7 +15,11 @@ class UserController extends Controller
      */
     public function index()
     {
-        //
+        if (Auth::user()->cannot('view', User::class)) {
+            abort(403);
+        }
+        $users = User::all();
+        return view('users.index',['users' => $users]);
     }
 
     /**
@@ -19,7 +27,10 @@ class UserController extends Controller
      */
     public function create()
     {
-
+        if (Auth::user()->cannot('create', User::class)) {
+            abort(403);
+        }
+        return view('users.create');
     }
 
     /**
@@ -27,7 +38,17 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if (Auth::user()->cannot('create', User::class)) {
+            abort(403);
+        }
+
+        $user = User::create($request->all());
+        $user->updated_at = now();
+        $user->created_at = now();
+        $user->password = Hash::make($request->password);
+        $user->update();
+
+        return redirect()->route("users.index")->with("success", "Users created successfully.");
     }
 
     /**
@@ -41,17 +62,27 @@ class UserController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(User $user)
     {
-        //
+        if (Auth::user()->cannot('update', User::class)) {
+            abort(403);
+        }
+        return view('users.edit', ['user' => $user]);
+
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, User $user)
     {
-        //
+        if(Auth::user()->cannot('update',User::class)){
+            abort(403);
+        }
+        $user->update($request->all());
+        $user->updated_at = now();
+        $user->update();
+        return redirect()->route("users.index")->with("success", "Users created successfully.");
     }
 
     /**
@@ -59,6 +90,6 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+
     }
 }

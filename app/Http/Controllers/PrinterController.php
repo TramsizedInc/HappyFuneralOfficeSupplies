@@ -83,7 +83,10 @@ class PrinterController extends Controller
      */
     public function update(UpdatePrinterRequest $request, Printer $printer)
     {
-        if (!(Auth::user()->cannot('updateUtilities', Printer::class))) {
+        if (
+            !(Auth::user()->cannot('updateUtilities', Printer::class)) &&
+            Auth::user()->cannot('update',Printer::class)
+        ) {
             $printer->drumm_percent = $request->drumm_percent;
             $printer->toner_percent = $request->toner_percent;
             $printer->updated_at = now();

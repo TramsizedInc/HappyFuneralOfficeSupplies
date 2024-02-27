@@ -2,28 +2,27 @@
 
 namespace App\Policies;
 
-use App\Models\Brand;
+use App\Models\CheckType;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
 
-class BrandPolicy
+class CheckTypePolicy
 {
     /**
      * Determine whether the user can view any models.
-     */
     public function viewAny(User $user): bool
     {
-        $role = Role::all()->find(auth()->user()->role_id);
-        switch ($role->slug) {
+    $role = Role::all()->find(auth()->user()->role_id);
+    switch ($role->slug) {
 
-            case 'manager':
-            case 'dev':
-            case 'admin':
-                return true;
-            default:
-                return false;
-        }
+    case 'manager':
+    case 'dev':
+    case 'admin':
+    return true;
+    default:
+    return false;
+    }
 
     }
 
@@ -123,5 +122,4 @@ class BrandPolicy
                 return false;
         }
     }
-
 }

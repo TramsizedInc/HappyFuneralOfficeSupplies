@@ -1,9 +1,5 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+
     <div class="grid grid-cols-4 py-3 px-4">
         <div class="mr-3 relative max-w-xs">
             <label class="sr-only">Search</label>
@@ -14,47 +10,45 @@
         </div>
 
     </div>
+    <div class=" text-start px-6 py-4 whitespace-nowrap text-sm font-medium">
 
+        <a  href="{{route('printerTypes.create')}}" type="button" class="items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">Create</a>
+    </div>
     <div class="flex flex-col">
-        <div class="-m-1.5 overflow-x-auto">
+        <div class="m-1.5 overflow-x-auto">
             <div class="p-1.5 min-w-full inline-block align-middle">
-                <div class=" border rounded-sm bg-white divide-y divide-gray-200 dark:border-gray-700 dark:divide-gray-700">
+                <div class="bg-white border rounded-sm divide-y divide-gray-200 dark:border-gray-700 dark:divide-gray-700">
 
                     <div class="overflow-hidden">
                         <table class="table-auto min-w-full divide-y divide-gray-200 dark:divide-gray-700">
                             <thead class="bg-gray-50 dark:bg-gray-700">
                             <tr>
-                                <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Brand</th>
-                                <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Type</th>
-                                <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Picture</th>
-                                <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Last Update</th>
-                                <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Toner percent</th>
-                                <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Drumm Unit Percent</th>
+                                <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Nyomtató típus</th>
                                 <th scope="col" colspan="3" class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase">Actions</th>
                             </tr>
                             </thead>
                             <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-                            @foreach(\App\Models\Printer::all() as $printer)
-                                @if($printer->office()->value('id') == \Illuminate\Support\Facades\Auth::user()->office_id)
+                            @foreach(\App\Models\PrinterType::all() as $printerType)
+                                <tr>
+                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">{{$printerType->name}}</td>
 
-                                    <tr>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">{{$printer->brand}}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{$printer->type}}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
-                                            <img class="h-10 max-w-10" src="{{asset('storage/picture/'.$printer->picture)}}" alt="image description">
-                                        </td>
-                                        <td class="px-6 py-4 text-justify text-sm text-gray-800 dark:text-gray-200">{{$printer->updated_at}}</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{$printer->toner_percent}}%</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">{{$printer->drumm_percent}}%</td>
-                                        <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
-                                            <form action="{{route('printers.updateUtilities',$printer)}}" method="GET">
-                                                @csrf
-                                                <button type="submit" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">Edit</button>
-                                            </form>
-                                        </td>
-                                    </tr>
-                                @endif
+                                    <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
+                                        <form action="{{route('printerTypes.edit',$printerType)}}">
+                                            <button type="submit" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">Edit</button>
+                                        </form>
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
+                                        <form method="POST" action="{{route('printerTypes.destroy',$printerType)}}">
+                                            @csrf
+                                            @method('DELETE')
+                                            <button type="submit" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">Delete</button>
+                                        </form>
+                                    </td>
+
+                                </tr>
                             @endforeach
+
+
                             </tbody>
                         </table>
                     </div>
@@ -82,5 +76,4 @@
             </div>
         </div>
     </div>
-
 </x-app-layout>
