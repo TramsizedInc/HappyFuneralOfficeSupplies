@@ -5,6 +5,7 @@ namespace App\Providers;
 // use Illuminate\Support\Facades\Gate;
 use App\Models\PrinterType;
 use App\Policies\BrandPolicy;
+use App\Policies\CheckModelPolicy;
 use App\Policies\CheckTypePolicy;
 use App\Policies\OfficePolicy;
 use App\Policies\PrinterPolicy;
@@ -34,5 +35,8 @@ class AuthServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        Gate::define('updateUtilities', [PrinterPolicy::class, 'updateUtilites']);    }
+        Gate::define('updateUtilities', [PrinterPolicy::class, 'updateUtilites']);
+        Gate::define('pay', [CheckModelPolicy::class, 'pay']);
+
+    }
 }

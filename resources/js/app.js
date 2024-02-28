@@ -1,10 +1,12 @@
-import './bootstrap';
+
 
 import Alpine from 'alpinejs';
-import { Select, initTE } from "tw-elements";
+import { Select, Datetimepicker, Input, initTE,  } from "tw-elements";
+import flatpickr from "flatpickr";
 window.Alpine = Alpine;
 
 Alpine.start();
 
+flatpickr(".date-flatpickr");
 
-initTE({ Select });
+initTE({Datetimepicker, Input, Select });

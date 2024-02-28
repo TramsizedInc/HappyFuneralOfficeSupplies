@@ -12,21 +12,20 @@
         <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+        <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+
     </head>
-    <body class="font-sans antialiased">
+    <body style="background-image: url('{{asset('storage/bg.png')}}')" class="font-sans bg-bamboo antialiased">
 
-        <div  class="min-h-screen bg-gray-100 dark:bg-gradient-to-r from-gray-800 to-gray-800">
+            @include('layouts.sidebar')
 
-            <!-- Page Content -->
-            <main >
-                <div style="background-image: url('{{asset('storage/bg.png')}}')" class=" min-h-screen min-w-full bg-bamboo"> <div style="opacity: 1.0" class="p-4 sm:ml-64" >
+                <div  class=" min-h-screen min-w-full "> <div style="opacity: 1.0" class="p-4 sm:ml-64" >
                         {{ $slot }}
-                    </div></div>
+                    </div>
 
-                @include('layouts.sidebar')
 
                 <!-- Jumbotron -->
-            </main>
             <!-- TW Elements is free under AGPL, with commercial license required for specific uses. See more details: https://tw-elements.com/license/ and contact us for queries at tailwind@mdbootstrap.com -->
             <!--Footer container-->
 

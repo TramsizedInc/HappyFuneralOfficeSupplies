@@ -20,8 +20,7 @@ class CheckModel extends Model
         'zip_code',
         'amount_used',
         'yearly_check_date',
+        'paid',
         'office_id'
     ];
-
-
 }

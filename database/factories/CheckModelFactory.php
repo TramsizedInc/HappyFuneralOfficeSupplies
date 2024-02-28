@@ -17,7 +17,7 @@ class CheckModelFactory extends Factory
     public function definition(): array
     {
         return [
-            //
+            'paid' => false
         ];
     }
 }

@@ -31,6 +31,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('/checkTypes', App\Http\Controllers\CheckTypeController::class);
     Route::resource('/printerTypes', App\Http\Controllers\PrinterTypeController::class);
     Route::resource('/offices',App\Http\Controllers\OfficeController::class);
+    Route::resource('/checkModels', \App\Http\Controllers\CheckModelController::class);
+    Route::put('/checkModels/pay/{checkModel}',[\App\Http\Controllers\CheckModelController::class,'pay'])->name('checkModels.pay');
+
 });
 
 require __DIR__.'/auth.php';

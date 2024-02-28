@@ -19,7 +19,7 @@ class CheckModelController extends Controller
             abort(403);
         }
         $checkModels = CheckModel::all();
-        return view('checkModels.index',['checkModels' => $checkModels]);
+        return view('checkModels.index', ['checkModels' => $checkModels]);
     }
 
     /**
@@ -42,7 +42,9 @@ class CheckModelController extends Controller
             abort(403);
         }
 
+
         $checkModel = CheckModel::create($request->all());
+
         $checkModel->updated_at = now();
         $checkModel->created_at = now();
         $checkModel->update();
@@ -53,9 +55,14 @@ class CheckModelController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
+    public function pay(StoreCheckModelRequest $request, CheckModel $checkModel)
     {
-        //
+        if (Auth::user()->cannot('pay', CheckModel::class)) {
+            abort(403);
+        }
+        $checkModel->paid =  $request->paid == 'on' ? 1 : 0;
+        $checkModel->update();
+        return redirect()->route("checkModels.index")->with("success", "CheckModel updated successfully.");
     }
 
     /**
@@ -73,14 +80,14 @@ class CheckModelController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCheckModelRequest $request, CheckModel $office)
+    public function update(UpdateCheckModelRequest $request, CheckModel $checkModel)
     {
         if(Auth::user()->cannot('update',CheckModel::class)){
             abort(403);
         }
-        $office->update($request->all());
-        $office->updated_at = now();
-        $office->update();
+        $checkModel->update($request->all());
+        $checkModel->updated_at = now();
+        $checkModel->update();
         return redirect()->route("checkModels.index")->with("success", "CheckModel updated successfully.");
     }
 

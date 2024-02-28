@@ -75,6 +75,19 @@ class CheckModelPolicy
                 return false;
         }
     }
+    public function pay(User $user): bool
+    {
+        $role = Role::all()->find(auth()->user()->role_id);
+        switch ($role->slug) {
+            case 'check_manager':
+            case 'dev':
+            case 'admin':
+                return true;
+            default:
+                return false;
+        }
+    }
+
 
     /**
      * Determine whether the user can delete the model.
