@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('degree'); //Végzettség
             $table->string('job');
-            $table->int('child_count'); //Gyerekek száma
+            $table->integer('child_count'); //Gyerekek száma
             $table->string('degree_of_relative'); //Rokonsági fok
             $table->string('death_place'); //Város,kerület
             $table->string('ash_storage_place'); //Hamvak tárolási helye
@@ -23,7 +23,7 @@ return new class extends Migration
             $table->string('wedding_birth_certificate_number');
             $table->string('wedding_date_and_place')->nullable(); //A fennálló vagy a megszűnt házasságkötés megkötésének helye és ideje:
             $table->boolean('divorced_or_not');
-            $table->int('dead_husbands_count'); //Elh házastárs Hak száma:
+            $table->integer('dead_husbands_count'); //Elh házastárs Hak száma:
             $table->string('legally_binding_autopsy_number');   //Jogerős bont ítélet száma:
             $table->string('selfemployee_tax_number')->nullable();  //Vállalkozói adószám:
             /* Softdeletes */

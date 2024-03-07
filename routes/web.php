@@ -29,9 +29,10 @@ Route::middleware('auth')->group(function () {
     Route::get('/printers/updateUtilities/{printer}',[\App\Http\Controllers\PrinterController::class,'updateUtilities'])->name('printers.updateUtilities');
     Route::resource('/brands', App\Http\Controllers\BrandController::class);
     Route::resource('/checkTypes', App\Http\Controllers\CheckTypeController::class);
+    Route::resource('/checkModels', App\Http\Controllers\CheckModelController::class);
     Route::resource('/printerTypes', App\Http\Controllers\PrinterTypeController::class);
     Route::resource('/offices',App\Http\Controllers\OfficeController::class);
-    Route::resource('/DeceasedData',App\Http\Controllers\DeceasedDataController::class);
+    Route::resource('/deceaseds',App\Http\Controllers\DeceasedDataController::class);
     Route::resource('/UrnKIAData',App\Http\Controllers\UrnKIADataController::class);
 });
 

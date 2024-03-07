@@ -11,14 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('order_data', function (Blueprint $table) {
+        Schema::create('customer_data', function (Blueprint $table) {
             $table->id();
             $table->string('customer');
             $table->string('born_name');
             $table->string('address');
             $table->string('mother_name');
             $table->string('birth_place_with_birth_day')->nullable();;
-            $table->int('mobile_number');
+            $table->integer('mobile_number');
             $table->string('email');
             $table->string('id_card_number'); //example:456456LL
             $table->timestamp('id_card_expire_date');
@@ -41,6 +41,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('order_data');
+        Schema::dropIfExists('customer_data');
     }
 };

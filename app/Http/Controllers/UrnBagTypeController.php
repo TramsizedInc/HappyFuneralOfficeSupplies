@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Deceased_data;
-use App\Http\Requests\StoreDeceased_dataRequest;
-use App\Http\Requests\UpdateDeceased_dataRequest;
+use App\Models\urn_bag__type;
+use App\Http\Requests\Storeurn_bag__typeRequest;
+use App\Http\Requests\Updateurn_bag__typeRequest;
 
-class DeceasedDataController extends Controller
+class UrnBagTypeController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -21,13 +21,13 @@ class DeceasedDataController extends Controller
      */
     public function create()
     {
-        return view('deceaseds.create');
+        //
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(StoreDeceased_dataRequest $request)
+    public function store(Storeurn_bag__typeRequest $request)
     {
         //
     }
@@ -35,7 +35,7 @@ class DeceasedDataController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Deceased_data $deceased_data)
+    public function show(urn_bag__type $urn_bag__type)
     {
         //
     }
@@ -43,7 +43,7 @@ class DeceasedDataController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(Deceased_data $deceased_data)
+    public function edit(urn_bag__type $urn_bag__type)
     {
         //
     }
@@ -51,7 +51,7 @@ class DeceasedDataController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateDeceased_dataRequest $request, Deceased_data $deceased_data)
+    public function update(Updateurn_bag__typeRequest $request, urn_bag__type $urn_bag__type)
     {
         //
     }
@@ -59,7 +59,7 @@ class DeceasedDataController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(Deceased_data $deceased_data)
+    public function destroy(urn_bag__type $urn_bag__type)
     {
         //
     }

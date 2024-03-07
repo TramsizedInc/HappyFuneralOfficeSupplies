@@ -13,6 +13,9 @@ return new class extends Migration
     {
         Schema::create('order_statistics', function (Blueprint $table) {
             $table->id();
+            $table->string('name');
+            $table->foreignId('order_id')->after('id')->references('id')->on('order_data')->constrained();
+            $table->integer('profit');
             $table->timestamps();
         });
     }

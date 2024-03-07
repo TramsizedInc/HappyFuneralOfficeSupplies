@@ -19,7 +19,9 @@
         "vite": "^5.0.0"
     },
     "dependencies": {
+        "flatpickr": "^4.6.13",
         "flowbite": "^2.3.0",
+        "parsleyjs": "^2.9.2",
         "tw-elements": "^1.1.0"
     }
 }

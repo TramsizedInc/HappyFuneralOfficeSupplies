@@ -17,9 +17,9 @@ return new class extends Migration
             $table->DateTime('hv_done_status_date');
             $table->DateTime('hv_have_status_date');
             $table->DateTime('hv_exhibition_date');
-            $table->string('choosen_krematori'); //Választott krematorium
+            $table->string('choosen_chrematory'); //Választott krematorium
             $table->string('urn_inside_form'); //Urnabetét formája
-            $table->string('choosen_cremetory'); //Választott temető
+            $table->string('choosen_cemetary'); //Választott temető
             $table->string('location'); //elhelyezés:sírba,falba,szorva
             $table->string('new_or_old');
             $table->string('tombstone_number'); //sírhely száma
