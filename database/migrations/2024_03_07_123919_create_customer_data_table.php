@@ -11,11 +11,8 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('order_statistics', function (Blueprint $table) {
+        Schema::create('customer_data', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            // $table->foreignId('order_id')->after('id')->references('id')->on('order_data')->constrained()->nullable();
-            $table->integer('profit')->nullable();
             $table->timestamps();
         });
     }
@@ -25,6 +22,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('order_statistics');
+        Schema::dropIfExists('customer_data');
     }
 };
