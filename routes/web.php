@@ -31,6 +31,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('/checkTypes', App\Http\Controllers\CheckTypeController::class);
     Route::resource('/printerTypes', App\Http\Controllers\PrinterTypeController::class);
     Route::resource('/offices',App\Http\Controllers\OfficeController::class);
+    Route::resource('/DeceasedData',App\Http\Controllers\DeceasedDataController::class);
+    Route::resource('/UrnKIAData',App\Http\Controllers\UrnKIADataController::class);
 });
 
 require __DIR__.'/auth.php';
