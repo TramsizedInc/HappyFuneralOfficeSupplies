@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('order_data', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('customer_id')->after('id')->references('id')->on('customer_data')->constrained();
-            $table->foreignId('deceased_id')->after('id')->references('id')->on('deceased_data')->constrained();
-            $table->foreignId('urn_id')->default(1)->after('id')->references('id')->on('unrs')->constrained();
-            $table->foreignId('urnkiad_id')->after('id')->references('id')->on('_urn_k_i_a_datas')->constrained();
+            // $table->foreignId('customer_id')->after('id')->references('id')->on('customer_data')->constrained();
+            // $table->foreignId('deceased_id')->after('id')->references('id')->on('deceased_data')->constrained();
+            // $table->foreignId('urn_id')->default(1)->after('id')->references('id')->on('unrs')->constrained();
+            // $table->foreignId('urnkiad_id')->after('id')->references('id')->on('_urn_k_i_a_datas')->constrained();
             /** soft deletes trait */
             $table->softDeletes();
             $table->integer('created_by')->default(1);
