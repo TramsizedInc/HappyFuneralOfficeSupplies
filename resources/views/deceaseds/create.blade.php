@@ -37,7 +37,6 @@
 
   <!--Section container-->
   <section class="w-full lg:w-4/5">
-
     <!--Title-->
     <h1 class="flex items-center font-sans font-bold break-normal text-gray-700 px-2 text-xl mt-12 lg:mt-0 md:text-2xl">
         Elhunyt felvétele
@@ -54,35 +53,16 @@
     <form>
 
 <div class="md:flex mb-6">
-  <div class="md:w-1/3">
-    <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
-      Megrendelő
-    </label>
-  </div>
-  <div class="md:w-2/3">
-    <input class="form-input block w-full focus:bg-white" id="my-textfield" type="text" value="">
+  <div class="md:w-1/4 me-2">
+    <input class="form-input block w-full focus:bg-white" id="my-textfield" type="text" placeholder="Megrendelő" required>
     <p class="py-2 text-sm text-gray-600"></p>
   </div>
-</div>
-<div class="md:flex mb-6">
-  <div class="md:w-1/3">
-    <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
-      Születési név
-    </label>
-  </div>
-  <div class="md:w-2/3">
-    <input class="form-input block w-full focus:bg-white" id="my-textfield" type="text" value="">
+  <div class="md:w-1/4 me-2">
+    <input class="form-input block w-full focus:bg-white" id="my-textfield" type="text" value="" placeholder="Megrendelő születési neve">
     <p class="py-2 text-sm text-gray-600"></p>
   </div>
-</div>
-<div class="md:flex mb-6">
-  <div class="md:w-1/3">
-    <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
-      Anyja neve
-    </label>
-  </div>
-  <div class="md:w-2/3">
-    <input class="form-input block w-full focus:bg-white" id="my-textfield" type="text" value="">
+  <div class="md:w-1/4 me-2">
+    <input class="form-input block w-full focus:bg-white" id="my-textfield" type="text" value="" placeholder="Megrendelő Anyja neve">
     <p class="py-2 text-sm text-gray-600"></p>
   </div>
 </div>
@@ -239,10 +219,12 @@
 <div class="md:flex md:items-center">
   <div class="md:w-1/3"></div>
   <div class="md:w-2/3">
-    <button class="shadow bg-yellow-700 hover:bg-yellow-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
+    <button  class="shadow bg-yellow-700 hover:bg-yellow-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
       Kész
     </button>
+    <a class="shadow bg-yellow-700 hover:bg-yellow-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" href="#section2" >Következő</a>
   </div>
+
 </div>
 </form>
 
@@ -261,12 +243,12 @@
       <form>
 
       <div class="md:flex mb-6">
-  <div class="md:w-1/3">
+  <div class="md:w-1/4">
     <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
       Elhunyt neve
     </label>
   </div>
-  <div class="md:w-2/3">
+  <div class="md:w-1/4">
     <input class="form-input block w-full focus:bg-white" id="my-textfield" type="text" value="">
     <p class="py-2 text-sm text-gray-600"></p>
   </div>
@@ -448,321 +430,321 @@
     <p class="py-2 text-sm text-gray-600"></p>
   </div>
 </div>
-        <div class="md:flex md:items-center">
-          <div class="md:w-1/3"></div>
-          <div class="md:w-2/3">
-            <button class="shadow bg-yellow-700 hover:bg-yellow-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
-              Kész
-            </button>
-          </div>
-        </div>
-      </form>
-
+  <div class="md:flex md:items-center">
+    <div class="md:w-1/3"></div>
+    <div class="md:w-2/3">
+      <button class="shadow bg-yellow-700 hover:bg-yellow-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
+        Kész
+      </button>
     </div>
-    <!--/Card-->
-
-    <!--divider-->
-    <hr class="bg-gray-300 my-12">
-
-    <!--Title-->
-    <h2 class="font-sans font-bold break-normal text-gray-700 px-2 pb-8 text-xl">Anyakönyvi adatok</h2>
-
-    <!--Card-->
-    <div id='section3' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
-
-      <form>
-
-      <div class="md:flex mb-6">
-        <div class="md:w-1/3">
-            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
-            Iskolai végzettsége
-            </label>
-        </div>
-        <div class="md:w-2/3">
-            <input class="form-input block w-full focus:bg-white" id="my-textfield" type="text" value="">
-            <p class="py-2 text-sm text-gray-600"></p>
-        </div>
-      </div>
-      <div class="md:flex mb-6">
-        <div class="md:w-1/3">
-            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
-            Foglalkozása
-            </label>
-        </div>
-        <div class="md:w-2/3">
-            <input class="form-input block w-full focus:bg-white" id="my-textfield" type="text" value="">
-            <p class="py-2 text-sm text-gray-600"></p>
-        </div>
-      </div>
-      <div class="md:flex mb-6">
-        <div class="md:w-1/3">
-            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
-            Gyerekeinek száma
-            </label>
-        </div>
-        <div class="md:w-2/3">
-            <input class="form-input block w-full focus:bg-white" id="my-textfield" type="number" min=0 max=10 value="">
-            <p class="py-2 text-sm text-gray-600"></p>
-        </div>
-      </div>
-      <div class="md:flex mb-6">
-        <div class="md:w-1/3">
-            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
-                Rokonsági fok
-            </label>
-        </div>
-        <div class="md:w-2/3">
-            <input class="form-input block w-full focus:bg-white" id="my-textfield" type="text" value="">
-            <p class="py-2 text-sm text-gray-600"></p>
-        </div>
-      </div>
-      <div class="md:flex mb-6">
-        <div class="md:w-1/3">
-            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
-            Elhalálozás helysége
-            </label>
-        </div>
-        <div class="md:w-2/3">
-            <input class="form-input block w-full focus:bg-white" id="my-textfield" type="text" value="">
-            <p class="py-2 text-sm text-gray-600"></p>
-        </div>
-      </div>
-      <div class="md:flex mb-6">
-        <div class="md:w-1/3">
-            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
-            Hamvak tárolási helysége
-            </label>
-        </div>
-        <div class="md:w-2/3">
-            <input class="form-input block w-full focus:bg-white" id="my-textfield" type="text" value="">
-            <p class="py-2 text-sm text-gray-600"></p>
-        </div>
-      </div>
-      <div class="md:flex mb-6">
-        <div class="md:w-1/3">
-            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
-            Elh. Szül. AK. száma
-            </label>
-        </div>
-        <div class="md:w-2/3">
-            <input class="form-input block w-full focus:bg-white" id="my-textfield" type="text" value="">
-            <p class="py-2 text-sm text-gray-600"></p>
-        </div>
-      </div>
-      <div class="md:flex mb-6">
-        <div class="md:w-1/3">
-            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
-            Házassági AK. száma:
-            </label>
-        </div>
-        <div class="md:w-2/3">
-            <input class="form-input block w-full focus:bg-white" id="my-textfield" type="text" value="">
-            <p class="py-2 text-sm text-gray-600"></p>
-        </div>
-      </div>
-      <div class="md:flex mb-6">
-        <div class="md:w-1/3">
-            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
-            A fennálló vagy a megszűnt házasságkötés megkötésének helye - 
-            </label>
-        </div>
-        <div class="md:w-2/3">
-            <input class="form-input block w-full focus:bg-white" id="my-textfield" type="text" value="">
-            <p class="py-2 text-sm text-gray-600"></p>
-        </div>
-      </div>
-      <div class="md:flex mb-6">
-        <div class="md:w-1/3">
-            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
-            és ideje
-            </label>
-        </div>
-        <div class="md:w-2/3">
-            <input datetimepicker id="yearly_check_date" name="yearly_check_date" class="form-input block w-full focus:bg-white date-flatpickr" type="text" placeholder="Válassz időpontot" />
-            <p class="py-2 text-sm text-gray-600"></p>
-        </div>
-        </div>
-        <div class="md:flex mb-6">
-        <div class="md:w-1/3">
-            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
-            Elh házastárs Hak száma
-            </label>
-        </div>
-        <div class="md:w-2/3">
-            <input class="form-input block w-full focus:bg-white" id="my-textfield" type="text" value="">
-            <p class="py-2 text-sm text-gray-600"></p>
-        </div>
-      </div>
-      <div class="md:flex mb-6">
-        <div class="md:w-1/3">
-            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
-            Jogerős bont ítélet száma
-            </label>
-        </div>
-        <div class="md:w-2/3">
-            <input class="form-input block w-full focus:bg-white" id="my-textfield" type="text" value="">
-            <p class="py-2 text-sm text-gray-600"></p>
-        </div>
-      </div>
-      <div class="md:flex mb-6">
-        <div class="md:w-1/3">
-            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
-            Vállalkozói adószám
-            </label>
-        </div>
-        <div class="md:w-2/3">
-            <input class="form-input block w-full focus:bg-white" id="my-textfield" type="text" value="">
-            <p class="py-2 text-sm text-gray-600"></p>
-        </div>
-      </div>
-        <div class="md:flex md:items-center">
-          <div class="md:w-1/3"></div>
-          <div class="md:w-2/3">
-            <button class="shadow bg-yellow-700 hover:bg-yellow-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
-              Kész
-            </button>
-          </div>
-        </div>
-      </form>
-
-    </div>
-    <!--/Card-->
-
-    <!--divider-->
-    <hr class="bg-gray-300 my-12">
-
-    <!--Title-->
-    <h2 class="font-sans font-bold break-normal text-gray-700 px-2 pb-8 text-xl">Hűtés és UrnKIA adatok</h2>
-
-    <!--Card-->
-    <div id='section4' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
-
-      <form>
-        <div class="md:flex mb-6">
-            <div class="md:w-1/3">
-                <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
-                    Boncolás történt-e
-                </label>
-            </div>
-            <div class="md:w-2/3">
-                <input class="form-input block w-full focus:bg-white" id="my-textfield" type="text" value="">
-                <p class="py-2 text-sm text-gray-600"></p>
-            </div>
-        </div>
-        
-        <div class="md:flex mb-6">
-        <div class="md:w-1/3">
-            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
-                Választott Krematorium
-            </label>
-        </div>
-        <div class="md:w-2/3">
-            <input class="form-input block w-full focus:bg-white" id="my-textfield" type="text" value="">
-            <p class="py-2 text-sm text-gray-600"></p>
-        </div>
-      </div>
-      <div class="md:flex mb-6">
-        <div class="md:w-1/3">
-            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
-            Vállalkozói adószám
-            </label>
-        </div>
-        <div class="md:w-2/3">
-            <input class="form-input block w-full focus:bg-white" id="my-textfield" type="text" value="">
-            <p class="py-2 text-sm text-gray-600"></p>
-        </div>
-      </div>
-      <div class="md:flex mb-6">
-        <div class="md:w-1/3">
-            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
-            Ügyfelvétel napja
-            </label>
-        </div>
-        <div class="md:w-2/3">
-            <input datetimepicker id="yearly_check_date" name="yearly_check_date" class="form-input block w-full focus:bg-white date-flatpickr" type="text" placeholder="Válassz időpontot" />
-            <p class="py-2 text-sm text-gray-600"></p>
-        </div>
-        </div>
-        <div class="md:flex mb-6">
-        <div class="md:w-1/3">
-            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
-            HvKÉSZ állapot dátuma
-            </label>
-        </div>
-        <div class="md:w-2/3">
-            <input datetimepicker id="yearly_check_date" name="yearly_check_date" class="form-input block w-full focus:bg-white date-flatpickr" type="text" placeholder="Válassz időpontot" />
-            <p class="py-2 text-sm text-gray-600"></p>
-        </div>
-        </div>
-        <div class="md:flex mb-6">
-        <div class="md:w-1/3">
-            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
-            HvVAN állapod dátuma
-            </label>
-        </div>
-        <div class="md:w-2/3">
-            <input datetimepicker id="yearly_check_date" name="yearly_check_date" class="form-input block w-full focus:bg-white date-flatpickr" type="text" placeholder="Válassz időpontot" />
-            <p class="py-2 text-sm text-gray-600"></p>
-        </div>
-        </div>
-        <div class="md:flex mb-6">
-        <div class="md:w-1/3">
-            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
-            Hv Kiállítás dátuma
-            </label>
-        </div>
-        <div class="md:w-2/3">
-            <input datetimepicker id="yearly_check_date" name="yearly_check_date" class="form-input block w-full focus:bg-white date-flatpickr" type="text" placeholder="Válassz időpontot" />
-            <p class="py-2 text-sm text-gray-600"></p>
-        </div>
-        </div>
-        <div class="md:flex mb-6">
-                        <div class="md:w-1/3">
-                            <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-select">
-                                Urnabetét formája
-                            </label>
-                        </div>
-                        <div class="md:w-2/3">
-                            <select name="" class="form-select block w-full focus:bg-white" id="my-select">
-                                <option value="Default">Default</option>
-                                <option value="A">A</option>
-                                <option value="B">B</option>
-                                <option value="C">C</option>
-                            </select>
-
-                            <p class="py-2 text-sm text-gray-600">add notes about populating the field</p>
-                        </div>
-</div>
-        <div class="md:flex md:items-center">
-          <div class="md:w-1/3"></div>
-          <div class="md:w-2/3">
-            <button class="shadow bg-yellow-700 hover:bg-yellow-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
-              Save
-            </button>
-          </div>
-        </div>
-      </form>
-
-    </div>
-    <!--/Card-->
-
-    <!--divider-->
-    <hr class="bg-gray-300 my-12">
-
-    <!--Title-->
-    <h2 class="font-sans font-bold break-normal text-gray-700 px-2 pb-8 text-xl">Section 5</h2>
-
-    <!--Card-->
-
-    <!--/Card-->
-
-  </section>
-  <!--/Section container-->
-
-  <!--Back link -->
-  <div class="w-full lg:w-4/5 lg:ml-auto text-base md:text-sm text-gray-600 px-4 py-24 mb-12">
-    <span class="text-base text-yellow-600 font-bold">&lt;</span> <a href="#" class="text-base md:text-sm text-yellow-600 font-bold no-underline hover:underline">Back link</a>
   </div>
+</form>
+
+  </div>
+  <!--/Card-->
+
+  <!--divider-->
+  <hr class="bg-gray-300 my-12">
+
+  <!--Title-->
+  <h2 class="font-sans font-bold break-normal text-gray-700 px-2 pb-8 text-xl">Anyakönyvi adatok</h2>
+
+  <!--Card-->
+  <div id='section3' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
+
+    <form>
+
+    <div class="md:flex mb-6">
+      <div class="md:w-1/3">
+          <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
+          Iskolai végzettsége
+          </label>
+      </div>
+      <div class="md:w-2/3">
+          <input class="form-input block w-full focus:bg-white" id="my-textfield" type="text" value="">
+          <p class="py-2 text-sm text-gray-600"></p>
+      </div>
+    </div>
+    <div class="md:flex mb-6">
+      <div class="md:w-1/3">
+          <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
+          Foglalkozása
+          </label>
+      </div>
+      <div class="md:w-2/3">
+          <input class="form-input block w-full focus:bg-white" id="my-textfield" type="text" value="">
+          <p class="py-2 text-sm text-gray-600"></p>
+      </div>
+    </div>
+    <div class="md:flex mb-6">
+      <div class="md:w-1/3">
+          <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
+          Gyerekeinek száma
+          </label>
+      </div>
+      <div class="md:w-2/3">
+          <input class="form-input block w-full focus:bg-white" id="my-textfield" type="number" min=0 max=10 value="">
+          <p class="py-2 text-sm text-gray-600"></p>
+      </div>
+    </div>
+    <div class="md:flex mb-6">
+      <div class="md:w-1/3">
+          <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
+              Rokonsági fok
+          </label>
+      </div>
+      <div class="md:w-2/3">
+          <input class="form-input block w-full focus:bg-white" id="my-textfield" type="text" value="">
+          <p class="py-2 text-sm text-gray-600"></p>
+      </div>
+    </div>
+    <div class="md:flex mb-6">
+      <div class="md:w-1/3">
+          <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
+          Elhalálozás helysége
+          </label>
+      </div>
+      <div class="md:w-2/3">
+          <input class="form-input block w-full focus:bg-white" id="my-textfield" type="text" value="">
+          <p class="py-2 text-sm text-gray-600"></p>
+      </div>
+    </div>
+    <div class="md:flex mb-6">
+      <div class="md:w-1/3">
+          <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
+          Hamvak tárolási helysége
+          </label>
+      </div>
+      <div class="md:w-2/3">
+          <input class="form-input block w-full focus:bg-white" id="my-textfield" type="text" value="">
+          <p class="py-2 text-sm text-gray-600"></p>
+      </div>
+    </div>
+    <div class="md:flex mb-6">
+      <div class="md:w-1/3">
+          <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
+          Elh. Szül. AK. száma
+          </label>
+      </div>
+      <div class="md:w-2/3">
+          <input class="form-input block w-full focus:bg-white" id="my-textfield" type="text" value="">
+          <p class="py-2 text-sm text-gray-600"></p>
+      </div>
+    </div>
+    <div class="md:flex mb-6">
+      <div class="md:w-1/3">
+          <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
+          Házassági AK. száma:
+          </label>
+      </div>
+      <div class="md:w-2/3">
+          <input class="form-input block w-full focus:bg-white" id="my-textfield" type="text" value="">
+          <p class="py-2 text-sm text-gray-600"></p>
+      </div>
+    </div>
+    <div class="md:flex mb-6">
+      <div class="md:w-1/3">
+          <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
+          A fennálló vagy a megszűnt házasságkötés megkötésének helye - 
+          </label>
+      </div>
+      <div class="md:w-2/3">
+          <input class="form-input block w-full focus:bg-white" id="my-textfield" type="text" value="">
+          <p class="py-2 text-sm text-gray-600"></p>
+      </div>
+    </div>
+    <div class="md:flex mb-6">
+      <div class="md:w-1/3">
+          <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
+          és ideje
+          </label>
+      </div>
+      <div class="md:w-2/3">
+          <input datetimepicker id="yearly_check_date" name="yearly_check_date" class="form-input block w-full focus:bg-white date-flatpickr" type="text" placeholder="Válassz időpontot" />
+          <p class="py-2 text-sm text-gray-600"></p>
+      </div>
+      </div>
+      <div class="md:flex mb-6">
+      <div class="md:w-1/3">
+          <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
+          Elh házastárs Hak száma
+          </label>
+      </div>
+      <div class="md:w-2/3">
+          <input class="form-input block w-full focus:bg-white" id="my-textfield" type="text" value="">
+          <p class="py-2 text-sm text-gray-600"></p>
+      </div>
+    </div>
+    <div class="md:flex mb-6">
+      <div class="md:w-1/3">
+          <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
+          Jogerős bont ítélet száma
+          </label>
+      </div>
+      <div class="md:w-2/3">
+          <input class="form-input block w-full focus:bg-white" id="my-textfield" type="text" value="">
+          <p class="py-2 text-sm text-gray-600"></p>
+      </div>
+    </div>
+    <div class="md:flex mb-6">
+      <div class="md:w-1/3">
+          <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
+          Vállalkozói adószám
+          </label>
+      </div>
+      <div class="md:w-2/3">
+          <input class="form-input block w-full focus:bg-white" id="my-textfield" type="text" value="">
+          <p class="py-2 text-sm text-gray-600"></p>
+      </div>
+    </div>
+      <div class="md:flex md:items-center">
+        <div class="md:w-1/3"></div>
+        <div class="md:w-2/3">
+          <button class="shadow bg-yellow-700 hover:bg-yellow-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
+            Kész
+          </button>
+        </div>
+      </div>
+    </form>
+
+  </div>
+  <!--/Card-->
+
+  <!--divider-->
+  <hr class="bg-gray-300 my-12">
+
+  <!--Title-->
+  <h2 class="font-sans font-bold break-normal text-gray-700 px-2 pb-8 text-xl">Hűtés és UrnKIA adatok</h2>
+
+  <!--Card-->
+  <div id='section4' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
+
+    <form>
+      <div class="md:flex mb-6">
+          <div class="md:w-1/3">
+              <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
+                  Boncolás történt-e
+              </label>
+          </div>
+          <div class="md:w-2/3">
+              <input class="form-input block w-full focus:bg-white" id="my-textfield" type="text" value="">
+              <p class="py-2 text-sm text-gray-600"></p>
+          </div>
+      </div>
+      
+      <div class="md:flex mb-6">
+      <div class="md:w-1/3">
+          <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
+              Választott Krematorium
+          </label>
+      </div>
+      <div class="md:w-2/3">
+          <input class="form-input block w-full focus:bg-white" id="my-textfield" type="text" value="">
+          <p class="py-2 text-sm text-gray-600"></p>
+      </div>
+    </div>
+    <div class="md:flex mb-6">
+      <div class="md:w-1/3">
+          <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
+          Vállalkozói adószám
+          </label>
+      </div>
+      <div class="md:w-2/3">
+          <input class="form-input block w-full focus:bg-white" id="my-textfield" type="text" value="">
+          <p class="py-2 text-sm text-gray-600"></p>
+      </div>
+    </div>
+    <div class="md:flex mb-6">
+      <div class="md:w-1/3">
+          <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
+          Ügyfelvétel napja
+          </label>
+      </div>
+      <div class="md:w-2/3">
+          <input datetimepicker id="yearly_check_date" name="yearly_check_date" class="form-input block w-full focus:bg-white date-flatpickr" type="text" placeholder="Válassz időpontot" />
+          <p class="py-2 text-sm text-gray-600"></p>
+      </div>
+      </div>
+      <div class="md:flex mb-6">
+      <div class="md:w-1/3">
+          <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
+          HvKÉSZ állapot dátuma
+          </label>
+      </div>
+      <div class="md:w-2/3">
+          <input datetimepicker id="yearly_check_date" name="yearly_check_date" class="form-input block w-full focus:bg-white date-flatpickr" type="text" placeholder="Válassz időpontot" />
+          <p class="py-2 text-sm text-gray-600"></p>
+      </div>
+      </div>
+      <div class="md:flex mb-6">
+      <div class="md:w-1/3">
+          <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
+          HvVAN állapod dátuma
+          </label>
+      </div>
+      <div class="md:w-2/3">
+          <input datetimepicker id="yearly_check_date" name="yearly_check_date" class="form-input block w-full focus:bg-white date-flatpickr" type="text" placeholder="Válassz időpontot" />
+          <p class="py-2 text-sm text-gray-600"></p>
+      </div>
+      </div>
+      <div class="md:flex mb-6">
+      <div class="md:w-1/3">
+          <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-textfield">
+          Hv Kiállítás dátuma
+          </label>
+      </div>
+      <div class="md:w-2/3">
+          <input datetimepicker id="yearly_check_date" name="yearly_check_date" class="form-input block w-full focus:bg-white date-flatpickr" type="text" placeholder="Válassz időpontot" />
+          <p class="py-2 text-sm text-gray-600"></p>
+      </div>
+      </div>
+      <div class="md:flex mb-6">
+                      <div class="md:w-1/3">
+                          <label class="block text-gray-600 font-bold md:text-left mb-3 md:mb-0 pr-4" for="my-select">
+                              Urnabetét formája
+                          </label>
+                      </div>
+                      <div class="md:w-2/3">
+                          <select name="" class="form-select block w-full focus:bg-white" id="my-select">
+                              <option value="Default">Default</option>
+                              <option value="A">A</option>
+                              <option value="B">B</option>
+                              <option value="C">C</option>
+                          </select>
+
+                          <p class="py-2 text-sm text-gray-600">add notes about populating the field</p>
+                      </div>
+</div>
+      <div class="md:flex md:items-center">
+        <div class="md:w-1/3"></div>
+        <div class="md:w-2/3">
+          <button class="shadow bg-yellow-700 hover:bg-yellow-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
+            Save
+          </button>
+        </div>
+      </div>
+    </form>
+
+  </div>
+  <!--/Card-->
+
+  <!--divider-->
+  <hr class="bg-gray-300 my-12">
+
+  <!--Title-->
+  <h2 class="font-sans font-bold break-normal text-gray-700 px-2 pb-8 text-xl">Section 5</h2>
+
+  <!--Card-->
+
+  <!--/Card-->
+
+</section>
+<!--/Section container-->
+
+<!--Back link -->
+<div class="w-full lg:w-4/5 lg:ml-auto text-base md:text-sm text-gray-600 px-4 py-24 mb-12">
+  <span class="text-base text-yellow-600 font-bold">&lt;</span> <a href="#" class="text-base md:text-sm text-yellow-600 font-bold no-underline hover:underline">Back link</a>
+</div>
 
 </div>
 
