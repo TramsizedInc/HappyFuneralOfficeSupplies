@@ -17,7 +17,7 @@
         <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
     </head>
-    <body style="background-image: url('{{asset('storage/bg.png')}}')" class="font-sans bg-bamboo antialiased">
+    <body style="background-image: url('{{asset('storage/candle.jpg')}}')" class="font-sans bg-bamboo antialiased">
 
             @include('layouts.sidebar')
 

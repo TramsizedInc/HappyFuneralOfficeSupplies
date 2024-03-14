@@ -1,7 +1,7 @@
 <x-app-layout>
 <div class="container-fluid w-full  mx-auto px-2 pt-8 lg:pt-16 mt-10">
   <!--Section container-->
-  <h1 class="flex items-center font-sans font-bold break-normal text-gray-700 px-2 text-xl mt-12 lg:mt-0 md:text-2xl mb-2">
+  <h1 class="flex items-center font-sans font-bold break-normal text-gray-200 px-2 text-xl mt-12 lg:mt-0 md:text-2xl mb-2">
     Elhunyt felvétele
 </h1>
   <section class="w-full lg:w-5/5 grid grid-cols-2 gap-4">

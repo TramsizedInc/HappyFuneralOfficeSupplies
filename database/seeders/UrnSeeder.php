@@ -426,5 +426,108 @@ class UrnSeeder extends Seeder
             "selling_price" =>"55000",
             "supplier" =>"Jáger"
         ]);
-        }
+        Role::factory()->create([
+            "name" => "Fa DN53 mahagóni",
+            "normal_price" =>"16500",
+            "selling_price" =>"55000",
+            "supplier" =>"Jáger"
+        ]);
+        Role::factory()->create([
+            "name" => "Fa DN54 dió",
+            "normal_price" =>"16500",
+            "selling_price" =>"55000",
+            "supplier" =>"Jáger"
+        ]);
+        Role::factory()->create([
+            "name" => "Fa DN304 mahagóni",
+            "normal_price" =>"16500",
+            "selling_price" =>"55000",
+            "supplier" =>"Jáger"
+        ]);
+        Role::factory()->create([
+            "name" => "Fa DN303 árnyalt",
+            "normal_price" =>"16500",
+            "selling_price" =>"55000",
+            "supplier" =>"Jáger"
+        ]);
+        Role::factory()->create([
+            "name" => "Fa DN305 dió",
+            "normal_price" =>"16500",
+            "selling_price" =>"55000",
+            "supplier" =>"Jáger"
+        ]);
+        Role::factory()->create([
+            "name" => "PG UK 125 A vanília",
+            "normal_price" =>"16500",
+            "selling_price" =>"55000",
+            "supplier" =>"Jáger"
+        ]);
+        Role::factory()->create([
+            "name" => "PG UK 142 A",
+            "normal_price" =>"16500",
+            "selling_price" =>"55000",
+            "supplier" =>"Jáger"
+        ]);
+        Role::factory()->create([
+            "name" => "PG UK 144 A",
+            "normal_price" =>"16500",
+            "selling_price" =>"55000",
+            "supplier" =>"Jáger"
+        ]);
+        Role::factory()->create([
+            "name" => "PG UK 42",
+            "normal_price" =>"16500",
+            "selling_price" =>"55000",
+            "supplier" =>"Jáger"
+        ]);
+        Role::factory()->create([
+            "name" => "PG UK 120 A szürke",
+            "normal_price" =>"16500",
+            "selling_price" =>"55000",
+            "supplier" =>"Jáger"
+        ]);
+        Role::factory()->create([
+            "name" => "PG UK 143 A",
+            "normal_price" =>"16500",
+            "selling_price" =>"55000",
+            "supplier" =>"Jáger"
+        ]);
+        Role::factory()->create([
+            "name" => "PG UK 41",
+            "normal_price" =>"16500",
+            "selling_price" =>"55000",
+            "supplier" =>"Jáger"
+        ]);
+        Role::factory()->create([
+            "name" => "Könyv nagy",
+            "normal_price" =>"16500",
+            "selling_price" =>"55000",
+            "supplier" =>"Jáger"
+        ]);
+        Role::factory()->create([
+            "name" => "Könyv kicsi",
+            "normal_price" =>"16500",
+            "selling_price" =>"55000",
+            "supplier" =>"Jáger"
+        ]);
+        Role::factory()->create([
+            "name" => "Bios urna",
+            "normal_price" =>"16500",
+            "selling_price" =>"55000",
+            "supplier" =>"Jáger"
+        ]);
+        Role::factory()->create([
+            "name" => "Porcelán szürke liliom",
+            "normal_price" =>"16500",
+            "selling_price" =>"55000",
+            "supplier" =>"Jáger"
+        ]);
+        Role::factory()->create([
+            "name" => "301 Matt",
+            "normal_price" =>"16500",
+            "selling_price" =>"55000",
+            "supplier" =>"Jáger"
+        ]);
+
+    }
 }
