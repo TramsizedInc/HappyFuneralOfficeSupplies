@@ -5,16 +5,15 @@
             @csrf
             @method('PUT')
             <div>
-                <h2 class="font-semibold text-xl text-gray-600">Edit Printer</h2>
-                <p class="text-gray-500 mb-6">Form is mobile responsive. Give it a try.</p>
+                <h2 class="font-semibold text-xl text-gray-600">Nyomtató modosítása</h2>
 
 
                 <div class="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6">
                     <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
 
                         <div class="text-gray-600">
-                            <p class="font-medium text-lg">Printer Details</p>
-                            <p>Please fill out all the fields.</p>
+                            <p class="font-medium text-lg">Nyomtató adatok</p>
+                            <p>Kérlek töltsd ki az összes mezőt!</p>
                             <img src="{{asset('storage/panda.png')}}">
                         </div>
 
@@ -70,7 +69,7 @@
                                 <div class="text-gray-600 md:col-span-5">
 
                                     <div class="relative mb-6">
-                                        <label for="labels-range-input" >Drumm Unit <span id="drummchange">{{$printer->drumm_percent}}%</span></label>
+                                        <label for="labels-range-input" >Dobegység <span id="drummchange">{{$printer->drumm_percent}}%</span></label>
                                         <input name="drumm_percent" id="labels-range-input" onchange="drummchange(this)" oninput="drummchange(this)" type="range" value="{{$printer->drumm_percent}}" min="0" max="100" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700">
                                         <span class="text-sm text-gray-500 dark:text-gray-400 absolute start-0 -bottom-6">0%</span>
                                         <span class="text-sm text-gray-500 dark:text-gray-400 absolute start-1/2 -translate-x-1/2 rtl:translate-x-1/2 -bottom-6">50%</span>

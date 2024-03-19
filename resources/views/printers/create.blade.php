@@ -1,72 +1,58 @@
 <x-app-layout>
     <!-- component -->
-    <div class="min-h-screen p-6 bg-gray-100 flex items-center justify-center">
-        <div class="container max-w-screen-lg mx-auto">
+    <div class="min-h-screen p-6 flex items-center justify-center">
+        <form action="{{ route('printers.store') }}" method="POST" enctype="multipart/form-data" class="container max-w-screen-lg mx-auto">
+            @csrf
+            @method('POST')
             <div>
                 <h2 class="font-semibold text-xl text-gray-600">Create Printer</h2>
                 <p class="text-gray-500 mb-6">Form is mobile responsive. Give it a try.</p>
-
                 <div class="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6">
                     <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
+
                         <div class="text-gray-600">
                             <p class="font-medium text-lg">Printer Details</p>
                             <p>Please fill out all the fields.</p>
+                            <img src="{{asset('storage/panda.png')}}">
                         </div>
 
                         <div class="lg:col-span-2 mb-3">
 
                             <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
                                 <div class="md:col-span-5 mb-3">
-
-                                    <select class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" data-te-select-init>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
-                                        <option value="4">Four</option>
-                                        <option value="5">Five</option>
+                                    <select name="office_id" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" data-te-select-init>
+                                        @foreach(\App\Models\Office::all() as $office)
+                                            <option value="{{$office->id}}">{{$office->zip_code}} {{$office->city}}, {{$office->street}} {{$office->house_number}}.</option>
+                                        @endforeach
+                                    </select>
+                                    <label data-te-select-label-ref for="brand">Brand</label>
+                                </div>
+                                <div class="md:col-span-5 mb-3">
+                                    <select name="brand" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" data-te-select-init>
+                                        @foreach(\App\Models\Brand::all() as $brand)
+                                            <option value="{{$brand->name}}">{{$brand->name}}</option>
+                                        @endforeach
                                     </select>
                                     <label data-te-select-label-ref for="brand">Brand</label>
                                 </div>
                                 <div class="md:col-span-5 mb-3">
 
-                                    <select class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" data-te-select-init>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
-                                        <option value="4">Four</option>
-                                        <option value="5">Five</option>
+                                    <select name="type" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" data-te-select-init>
+                                        @foreach(\App\Models\PrinterType::all() as $printer)
+                                            <option value="{{$printer->name}}">{{$printer->name}}</option>
+                                        @endforeach
                                     </select>
                                     <label data-te-select-label-ref for="type">Type</label>
                                 </div>
 
-                                <div class="md:col-span-3 mb-3">
-                                    <select class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" data-te-select-init>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
-                                        <option value="4">Four</option>
-                                        <option value="5">Five</option>
-                                    </select>
-                                    <label data-te-select-label-ref>Type of doner</label>
-                                </div>
 
-                                <div class="md:col-span-2 mb-3">
-                                    <select class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" data-te-select-init>
-                                        <option value="1">One</option>
-                                        <option value="2">Two</option>
-                                        <option value="3">Three</option>
-                                        <option value="4">Four</option>
-                                        <option value="5">Five</option>
-                                    </select>
-                                    <label data-te-select-label-ref>Type of drumm unit</label>
-                                </div>
 
 
                                 <div class="text-gray-600 md:col-span-5">
 
                                 <div class="relative mb-6">
                                     <label for="labels-range-input" >Drumm Unit <span id="drummchange"></span></label>
-                                    <input id="labels-range-input" onchange="drummchange(this)" oninput="drummchange(this)" type="range" value="0" min="0" max="100" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700">
+                                    <input name="drumm_percent" id="labels-range-input" onchange="drummchange(this)" oninput="drummchange(this)" type="range" value="0" min="0" max="100" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700">
                                     <span class="text-sm text-gray-500 dark:text-gray-400 absolute start-0 -bottom-6">0%</span>
                                     <span class="text-sm text-gray-500 dark:text-gray-400 absolute start-1/2 -translate-x-1/2 rtl:translate-x-1/2 -bottom-6">50%</span>
                                     <span class="text-sm text-gray-500 dark:text-gray-400 absolute end-0 -bottom-6">100%</span>
@@ -74,13 +60,13 @@
                             </div>
                             <div class="text-gray-600 md:col-span-5">
                                 <div class="relative mb-6">
-                                    <label for="labels-range-input" >Doner <span id="donerchange"></span></label>
-                                    <input id="labels-range-input" onchange="donerchange(this)" oninput="donerchange(this)" type="range" value="0" min="0" max="100" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700">
+                                    <label for="labels-range-input" >Toner <span id="donerchange"></span></label>
+                                    <input name="toner_percent" id="labels-range-input" onchange="donerchange(this)" oninput="donerchange(this)" type="range" value="0" min="0" max="100" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700">
                                     <span class="text-sm text-gray-500 dark:text-gray-400 absolute start-0 -bottom-6">0%</span>
                                     <span class="text-sm text-gray-500 dark:text-gray-400 absolute start-1/2 -translate-x-1/2 rtl:translate-x-1/2 -bottom-6">50%</span>
-                                    <span class="text-sm text-gray-500 dark:text-gray-400 absolute end-0 -bottom-6">100%</span>
+
+                                </div><span class="text-sm text-gray-500 dark:text-gray-400 absolute end-0 -bottom-6">100%</span>
                                 </div>
-                            </div>
                             <div class="md:col-span-5">
                                 <label for="cover-photo" class="block text-sm font-medium leading-6 text-gray-900">Cover photo</label>
                                 <div class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
@@ -91,7 +77,7 @@
                                         <div class="mt-4 flex text-sm leading-6 text-gray-600">
                                             <label for="file-upload" class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
                                                 <span>Upload a file</span>
-                                                <input id="file-upload" name="file-upload" type="file" class="sr-only">
+                                                <input id="file-upload" name="picture" type="file" class="sr-only">
                                             </label>
                                             <p class="pl-1">or drag and drop</p>
                                         </div>
@@ -101,12 +87,12 @@
                             </div>
                             <div class="md:col-span-5">
                                 <label for="docs">Documentation</label>
-                                <textarea type="text" id="docs" class="transition-all flex items-center h-10 border mt-1 rounded px-4 w-full bg-gray-50" placeholder=""></textarea>
+                                <textarea name="documentation" type="text" id="docs" class="transition-all flex items-center h-10 border mt-1 rounded px-4 w-full bg-gray-50" placeholder=""></textarea>
                             </div>
 
                             <div class="md:col-span-5 text-right">
                                     <div class="inline-flex items-end">
-                                        <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
+                                        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
                                     </div>
                                 </div>
 
@@ -114,11 +100,12 @@
                         </div>
                     </div>
                 </div>
+
             </div>
 
-
+</form>
         </div>
-    </div>
+
 <script>
      function donerchange(element){
         var val = element.value;
