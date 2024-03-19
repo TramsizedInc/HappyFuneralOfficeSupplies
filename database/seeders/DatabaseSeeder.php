@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
                 CheckTypeSeeder::class
             ]
           );
-        \App\Models\User::factory()->create([
+            \App\Models\User::factory()->create([
             'name' => 'tem.izabella',
             'email' => 'test@example.com',
             'password' => Hash::make('Aevum324454'),
@@ -48,6 +48,21 @@ class DatabaseSeeder extends Seeder
               'office_id'=> 1
           ]);
 
+        \App\Models\User::factory()->create([
+            'name' => 'Edmond',
+            'email' => 'edmond@temetkezes.hu',
+            'password' => Hash::make('Aevum213897'),
+            'role_id' => 1,
+            'office_id'=> 1
+        ]);
+
+        \App\Models\User::factory()->create([
+            'name' => 'Karesz',
+            'email' => 'karesz@temetkezes.hu',
+            'password' => Hash::make('Aevum798342'),
+            'role_id' => 1,
+            'office_id'=> 1
+        ]);
 
 
         $this->call([OfficeSupplySeeder::class]);

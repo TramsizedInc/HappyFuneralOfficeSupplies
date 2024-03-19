@@ -1,3 +1,4 @@
+
 <x-app-layout>
 <div class="container-fluid w-full  mx-auto px-2 pt-8 lg:pt-16 mt-10">
   <!--Section container-->
@@ -193,7 +194,7 @@
           <input class="form-input block w-full focus:bg-white" type="text" value="" placeholder="Elhunyt testsúlya">
         </div>
         <div class="md:w-1/3 me-2">
-          <input class="form-input block w-full focus:bg-white" type="text" placeholder="Lakcím igazolvány száma" />
+          <input class="form-input block w-full focus:bg-white" name="address_id_number" type="text" placeholder="Lakcím igazolvány száma" />
         </div>
       </div>
     <div class="md:flex md:items-center">
