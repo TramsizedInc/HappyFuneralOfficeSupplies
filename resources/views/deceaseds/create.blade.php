@@ -231,15 +231,15 @@
           <input class="form-input block w-full focus:bg-white" name="child_count" type="number" value="" placeholder="Gyerekeinek száma">
         </div>
         <div class="md:w-1/4 me-2">
-          <input class="form-input block w-full focus:bg-white" type="text" value="" placeholder="Rokonsági fok">
+          <input class="form-input block w-full focus:bg-white" name="degree_of_relative" type="text" value="" placeholder="Rokonsági fok">
         </div>
       </div>
       <div class="md:flex mb-2">
         <div class="md:w-1/4 me-2">
-          <input class="form-input block w-full focus:bg-white" type="text" placeholder="Elhalálozás helysége" required>
+          <input class="form-input block w-full focus:bg-white" name="death_place" type="text" placeholder="Elhalálozás helysége" required>
         </div>
         <div class="md:w-1/4 me-2">
-          <input class="form-input block w-full focus:bg-white" type="text" value="" placeholder="Hamvak tárolási helysége">
+          <input class="form-input block w-full focus:bg-white" name="ash_storage_place" type="text" value="" placeholder="Hamvak tárolási helysége">
         </div>
         <div class="md:w-1/4 me-2">
           <input class="form-input block w-full focus:bg-white" type="text" value="" placeholder="Elh. Szül. AK. száma">
