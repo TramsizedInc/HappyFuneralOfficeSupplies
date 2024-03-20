@@ -8,10 +8,10 @@
   <section class="w-full lg:w-5/5 grid grid-cols-2 gap-4">
     <div>
       <!--Title-->
-    
+
       <!--divider-->
       <!--Title-->
-    
+
       <!--Card-->
       <div class="p-8 mt-6 lg:mt-0 leading-normal rounded shadow bg-white">
         <h2 id='section1' class="font-sans font-bold break-normal text-gray-700 px-2 pb-8 text-xl">Megrendelő adatai</h2>
@@ -57,7 +57,7 @@
           <input class="form-input block w-full focus:bg-white"  type="text" value="" placeholder="Házszám">
         </div>
       </div>
-    
+
       <div class="md:flex mb-2">
         <div class="relative md:w-1/2 me-2">
           <div class="absolute inset-y-0 start-0 top-0 flex items-center ps-3.5 pointer-events-none">
@@ -69,10 +69,10 @@
         </div>
 
         <div class="md:w-1/2 me-2">
-          <input type="email" id="email" class="form-input block w-full focus:bg-white" placeholder="Email" required />   
-        </div>  
+          <input type="email" id="email" class="form-input block w-full focus:bg-white" placeholder="Email" required />
+        </div>
       </div>
-    
+
       <div class="md:flex mb-2">
         <div class="md:w-1/4 me-2">
           <input class="form-input block w-full focus:bg-white" type="text" placeholder="Személyi igazolvány száma" required>
@@ -120,22 +120,22 @@
         <form>
           <div class="md:flex mb-2">
             <div class="md:w-1/5 me-2">
-              <input class="form-input block w-full focus:bg-white" type="text" placeholder="Neve" required>
+              <input class="form-input block w-full focus:bg-white" id="name_of_deceased" name="name_of_deceased" type="text" placeholder="Neve" required>
             </div>
             <div class="md:w-1/5 me-2">
-              <input class="form-input block w-full focus:bg-white" type="text" value="" placeholder="Születési neve">
+              <input class="form-input block w-full focus:bg-white" id="maiden_name" name="maiden_name"type="text" value="" placeholder="Születési neve">
             </div>
             <div class="md:w-1/5 me-2">
-              <input class="form-input block w-full focus:bg-white" type="text" value="" placeholder="Anyja neve">
+              <input class="form-input block w-full focus:bg-white" id="mums_name" name="mums_name" type="text" value="" placeholder="Anyja neve">
             </div>
             <div class="md:w-1/5 me-2">
-              <input class="form-input block w-full focus:bg-white" type="text" value="" placeholder="Születési helye">
+              <input class="form-input block w-full focus:bg-white" id="deceaseds_birth_place" name="deceaseds_birth_place" type="text" value="" placeholder="Születési helye">
             </div>
             <div class="md:w-1/5 me-2">
               <input datetimepicker  name="yearly_check_date" class="form-input block w-full focus:bg-white date-flatpickr" type="text" placeholder="Születési ideje" />
             </div>
           </div>
-          
+
           <div class="md:flex mb-2">
             <div class="md:w-1/6 me-2 ">
               <label class="block text-gray-600 font-bold md:text-left md:mb-0 py-2 px-auto" for="my-textfield">
@@ -143,19 +143,19 @@
               </label>
             </div>
             <div class="md:w-1/6 me-2">
-              <input class="form-input block w-full focus:bg-white" type="text" value="" placeholder="Ország">
+              <input class="form-input block w-full focus:bg-white" id="country" name="country" type="text" value="" placeholder="Ország">
             </div>
             <div class="md:w-1/6 me-2">
-              <input class="form-input block w-full focus:bg-white"  type="text" value="" placeholder="Irányítószám">
+              <input class="form-input block w-full focus:bg-white"  id="zip_code" name="zip_code" type="text" value="" placeholder="Irányítószám">
             </div>
             <div class="md:w-1/6 me-2">
-              <input class="form-input block w-full focus:bg-white" type="text" value="" placeholder="Város">
+              <input class="form-input block w-full focus:bg-white" id="city" name="city" type="text" value="" placeholder="Város">
             </div>
             <div class="md:w-1/6 me-2">
-              <input class="form-input block w-full focus:bg-white"  type="text" value="" placeholder="Utca">
+              <input class="form-input block w-full focus:bg-white" id="street" name="street" type="text" value="" placeholder="Utca">
             </div>
             <div class="md:w-1/6 me-2">
-              <input class="form-input block w-full focus:bg-white"  type="text" value="" placeholder="Házszám">
+              <input class="form-input block w-full focus:bg-white" id="house_number" name="house_number" type="text" value="" placeholder="Házszám">
             </div>
           </div>
           <div class="md:flex mb-2">
@@ -180,18 +180,18 @@
             <input class="form-input block w-full focus:bg-white" type="text" value="" placeholder="Személyi igazolvány száma">
           </div>
           <div class="md:w-1/4 me-2">
-            <input class="form-input block w-full focus:bg-white" type="text" placeholder="Lakcím igazolvány száma" />
+            <input class="form-input block w-full focus:bg-white" name="address_id_number" type="text"  placeholder="Lakcím igazolvány száma" />
         </div>
           <div class="md:w-1/4 me-2">
-            <input class="form-input block w-full focus:bg-white" type="text" placeholder="Útlevél száma" />
+            <input class="form-input block w-full focus:bg-white" name="deceaseds_passport_number"type="text" placeholder="Útlevél száma" />
         </div>
       </div>
       <div class="md:flex mb-2">
         <div class="md:w-1/3 me-2">
-          <input class="form-input block w-full focus:bg-white" type="text" placeholder="Jogosítvány száma" required>
+          <input class="form-input block w-full focus:bg-white" name="deceaseds_driving_licence_number" type="text" placeholder="Jogosítvány száma" required>
         </div>
         <div class="md:w-1/3 me-2">
-          <input class="form-input block w-full focus:bg-white" type="text" value="" placeholder="Elhunyt testsúlya">
+          <input class="form-input block w-full focus:bg-white" name="deceaseds_weight" type="text" value="" placeholder="Elhunyt testsúlya">
         </div>
         <div class="md:w-1/3 me-2">
           <input class="form-input block w-full focus:bg-white" name="address_id_number" type="text" placeholder="Lakcím igazolvány száma" />
@@ -209,7 +209,7 @@
 
     </div>
   </div>
-  <div>  
+  <div>
     <!--/Card-->
 
   <!--divider-->
@@ -300,7 +300,7 @@
             <input class="form-input block w-full focus:bg-white" name="choosen_chrematory" type="text" value="" placeholder="Választott Krematoriuma">
           </div>
           <div class="md:w-1/3">
-            
+
               <select name="" class="form-select block w-full focus:bg-white" id="my-select">
                   <option value="" class="text-gray-200">Urnabetét formája</option>
                   <option value="A">A</option>
@@ -309,9 +309,9 @@
               </select>
 
         </div>
-       
+
       </div>
-     
+
       <div class="md:flex mb-2">
         <div class="md:w-1/4 me-2">
           <input datetimepicker class="form-input block w-full focus:bg-white date-flatpickr" name="exhibition_date" type="text" placeholder="Ügyfelvétel napja" />
@@ -326,10 +326,10 @@
           <input datetimepicker class="form-input block w-full focus:bg-white date-flatpickr" name="hv_exhibition_date" type="text" placeholder="Hv Kiállítás dátuma" />
         </div>
       </div>
-      
-    
-    
-     
+
+
+
+
       <div class="md:flex md:items-center">
         <div class="md:w-1/3"></div>
         <div class="md:w-2/3">

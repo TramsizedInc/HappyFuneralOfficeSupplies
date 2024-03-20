@@ -14,6 +14,10 @@ class DeceasedDataController extends Controller
     public function index()
     {
         //
+        if (Auth::user()->cannot('create', Deceased_data::class)) {
+            abort(403);
+        }
+        return view('deceaseds.index');
     }
 
     /**
@@ -21,6 +25,9 @@ class DeceasedDataController extends Controller
      */
     public function create()
     {
+        if (Auth::user()->cannot('create', Deceased_data::class)) {
+            abort(403);
+        }
         return view('deceaseds.create');
     }
 
@@ -38,6 +45,10 @@ class DeceasedDataController extends Controller
     public function show(Deceased_data $deceased_data)
     {
         //
+        if (Auth::user()->cannot('create', Deceased_data::class)) {
+            abort(403);
+        }
+        return view('deceaseds.show', ["deceased" => $deceased_data]);
     }
 
     /**
@@ -46,6 +57,10 @@ class DeceasedDataController extends Controller
     public function edit(Deceased_data $deceased_data)
     {
         //
+        if (Auth::user()->cannot('create', Deceased_data::class)) {
+            abort(403);
+        }
+        return view('deceaseds.edit');
     }
 
     /**
@@ -62,5 +77,9 @@ class DeceasedDataController extends Controller
     public function destroy(Deceased_data $deceased_data)
     {
         //
+        if (Auth::user()->cannot('create', Deceased_data::class)) {
+            abort(403);
+        }
+        return view('deceaseds.index');
     }
 }
