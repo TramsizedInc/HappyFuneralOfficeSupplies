@@ -31,7 +31,6 @@ return new class extends Migration
             $table->string('zip_code');
             $table->string('street');
             $table->string('house_number');
-
             /* Softdeletes */
             $table->softDeletes();
             $table->integer('created_by')->default(1);
