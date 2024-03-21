@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('born_name');
             $table->string('address');
             $table->string('mother_name');
-            $table->string('birth_place_with_birth_day')->nullable();;
+            $table->string('birth_place_with_birth_day')->nullable();
             $table->integer('mobile_number');
             $table->string('email');
             $table->string('id_card_number'); //example:456456LL
@@ -27,6 +27,11 @@ return new class extends Migration
             $table->string('address_id_number'); 
             $table->DateTime('customer_birth_day');
             $table->string('birth_place');
+            // livin' location
+            $table->string('zip_code');
+            $table->string('street');
+            $table->string('house_number');
+
             /* Softdeletes */
             $table->softDeletes();
             $table->integer('created_by')->default(1);

@@ -4,15 +4,19 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class CustomerData extends Model
 {
     use HasFactory;
+    use SoftDeletes;
 
     protected $fillable = [
         'customer',
         'born_name',
-        'address',
+        'zip_code',
+        'street',
+        'house_number',
         'mother_name',
         'birth_place_with_birth_day',
         'mobile_number',

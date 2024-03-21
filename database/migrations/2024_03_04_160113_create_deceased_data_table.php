@@ -17,7 +17,11 @@ return new class extends Migration
             $table->string('deceased_name');
             $table->string('birth_name')->nullable();
             $table->string('mother_name');
-            $table->string('address');
+            // livin' location
+            $table->string('zip_code');
+            $table->string('street');
+            $table->string('house_number');           
+
             $table->string('hospital_code');
             $table->DateTime('deceased_birth_day');
             $table->string('deceased_birth_place');

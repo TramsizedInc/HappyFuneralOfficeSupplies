@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\CustomerData;
 use App\Models\Deceased_data;
 use App\Http\Requests\StoreDeceased_dataRequest;
 use App\Http\Requests\UpdateDeceased_dataRequest;
@@ -37,6 +38,38 @@ class DeceasedDataController extends Controller
     public function store(StoreDeceased_dataRequest $request)
     {
         //
+        $validatedData = $request->validate([
+            'exhibiting_office' => 'string',
+            'deceased_name' => 'required',
+            'birth_name' => 'required',
+            'mother_name' => 'string',
+            'zip_code' => 'string',
+            'street' => 'string',
+            'house_number' => 'string',
+            'hospital_code' => 'string',
+            'deceased_birth_day' => 'date',
+            'deceased_birth_place' => 'string',
+            'death_place' => 'string',
+            'death_time' => 'date',
+            'exhibition_time' => 'date',
+            'pensioner_id' => 'string',
+            'id_card_number' => 'string',
+            'address_id_number' => 'string',
+            'passport_number' => 'string',
+            'driver_licence_number' => 'string',
+            'deceased_weight' => 'string',
+            'weight' => 'string',
+        ]);
+    
+        $model = new Deceased_data();
+        $model->fill($validatedData);
+        $model->save();
+
+        $model->updated_at = now();
+        $model->created_at = now();
+        $model->update();
+
+        return redirect()->route("customer.index")->with("success", "CheckType created successfully.");
     }
 
     /**

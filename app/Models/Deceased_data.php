@@ -4,16 +4,20 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Deceased_data extends Model
 {
     use HasFactory;
+    use SoftDeletes;
     protected $fillable = [
         'exhibiting_office',
         'deceased_name',
         'birth_name',
         'mother_name',
-        'address',
+        'zip_code',
+        'street',
+        'house_number',
         'hospital_code',
         'deceased_birth_day',
         'deceased_birth_place',
