@@ -45,7 +45,7 @@
           <input class="form-input block w-full focus:bg-white" type="text" value="" placeholder="Ország">
         </div>
         <div class="md:w-1/6 me-2">
-          <input class="form-input block w-full focus:bg-white"  type="text" value="" placeholder="Irányítószám">
+          <input class="form-input block w-full focus:bg-white" name="zip_code" type="text" value="" placeholder="Irányítószám">
         </div>
         <div class="md:w-1/6 me-2">
           <input class="form-input block w-full focus:bg-white" type="text" value="" placeholder="Város">
