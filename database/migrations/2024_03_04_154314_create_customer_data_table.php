@@ -28,6 +28,8 @@ return new class extends Migration
             $table->DateTime('customer_birth_day');
             $table->string('birth_place');
             // livin' location
+            $table->string('city');
+            $table->string('nation');
             $table->string('zip_code');
             $table->string('street');
             $table->string('house_number');

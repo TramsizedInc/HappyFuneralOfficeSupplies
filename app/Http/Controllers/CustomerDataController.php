@@ -13,7 +13,10 @@ class CustomerDataController extends Controller
      */
     public function index()
     {
-        //
+        if (Auth::user()->cannot('create', CustomerData::class)) {
+            abort(403);
+        }
+        return view('customer.index');
     }
 
     /**
@@ -21,7 +24,10 @@ class CustomerDataController extends Controller
      */
     public function create()
     {
-        //
+        if (Auth::user()->cannot('create', CustomerData::class)) {
+            abort(403);
+        }
+        return view('customer.create');
 
     }
 
@@ -66,7 +72,10 @@ class CustomerDataController extends Controller
      */
     public function show(CustomerData $customerData)
     {
-        //
+        if (Auth::user()->cannot('create', CustomerData::class)) {
+            abort(403);
+        }
+        return view('customer.show', ["customer" => $customerData]);
     }
 
     /**
@@ -74,7 +83,10 @@ class CustomerDataController extends Controller
      */
     public function edit(CustomerData $customerData)
     {
-        //
+        if (Auth::user()->cannot('create', CustomerData::class)) {
+            abort(403);
+        }
+        return view('customer.edit');
     }
 
     /**
@@ -90,6 +102,9 @@ class CustomerDataController extends Controller
      */
     public function destroy(CustomerData $customerData)
     {
-        //
+        if (Auth::user()->cannot('create', CustomerData::class)) {
+            abort(403);
+        }
+        return view('customer.index');
     }
 }

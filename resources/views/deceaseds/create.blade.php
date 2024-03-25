@@ -42,19 +42,19 @@
           </label>
         </div>
         <div class="md:w-1/6 me-2">
-          <input class="form-input block w-full focus:bg-white" type="text" value="" placeholder="Ország">
+          <input class="form-input block w-full focus:bg-white" id="nation" name="nation" type="text" value="" placeholder="Ország">
         </div>
         <div class="md:w-1/6 me-2">
-          <input class="form-input block w-full focus:bg-white" name="zip_code" type="text" value="" placeholder="Irányítószám">
+          <input class="form-input block w-full focus:bg-white" id="zip_code" name="zip_code" type="text" value="" placeholder="Irányítószám">
         </div>
         <div class="md:w-1/6 me-2">
-          <input class="form-input block w-full focus:bg-white" type="text" value="" placeholder="Város">
+          <input class="form-input block w-full focus:bg-white" id="city" name="city"type="text" value="" placeholder="Város">
         </div>
         <div class="md:w-1/6 me-2">
-          <input class="form-input block w-full focus:bg-white"  type="text" value="" placeholder="Utca">
+          <input class="form-input block w-full focus:bg-white" id="street" name="street" type="text" value="" placeholder="Utca">
         </div>
         <div class="md:w-1/6 me-2">
-          <input class="form-input block w-full focus:bg-white"  type="text" value="" placeholder="Házszám">
+          <input class="form-input block w-full focus:bg-white" id="house_number" name="house_number" type="text" value="" placeholder="Házszám">
         </div>
       </div>
 
@@ -177,7 +177,7 @@
             <input class="form-input block w-full focus:bg-white" type="text" placeholder="Nyugdíjas törzsszám" required>
           </div>
           <div class="md:w-1/4 me-2">
-            <input class="form-input block w-full focus:bg-white" type="text" value="" placeholder="Személyi igazolvány száma">
+            <input class="form-input block w-full focus:bg-white" id="id_card_number" name="id_card_number" type="text" value="" placeholder="Személyi igazolvány száma">
           </div>
           <div class="md:w-1/4 me-2">
             <input class="form-input block w-full focus:bg-white" id="address_id_number" name="address_id_number" type="text"  placeholder="Lakcím igazolvány száma" />
@@ -220,7 +220,7 @@
   <div id='section3' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
     <h2 class="font-sans font-bold break-normal text-gray-700 px-2 pb-8 text-xl">Anyakönyvi adatok</h2>
 
-    <form>
+    <form action="{{ route('deceaseds.store') }}" method="POST" enctype="multipart/form-data">
       <div class="md:flex mb-2">
         <div class="md:w-1/4 me-2">
           <input class="form-input block w-full focus:bg-white" id="degree" name="degree" type="text" placeholder="Iskolai végzettsége" required>
@@ -303,9 +303,11 @@
 
               <select name="" class="form-select block w-full focus:bg-white" id="my-select">
                   <option value="" class="text-gray-200">Urnabetét formája</option>
-                  <option value="A">A</option>
-                  <option value="B">B</option>
-                  <option value="C">C</option>
+                  @php
+                    $urns = App\Models\Urn::all();
+                  @endphp
+                  @foreach ($urns as $urn)
+                    <option value="{{ $urn->name }}">{{ $urn->name }}</option>
               </select>
 
         </div>

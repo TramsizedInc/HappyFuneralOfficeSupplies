@@ -13,9 +13,6 @@ class OfficeSeeder extends Seeder
      */
     public function run(): void
     {
-<<<<<<< HEAD
-
-=======
         // this file is used to declare the sql db records for the offices,
         //  until we are able to use ERP1's db
         Office::create([
@@ -146,6 +143,5 @@ class OfficeSeeder extends Seeder
             "house_number" => "9",
             "number_of_workers" => "2"
         ]);
->>>>>>> a05aec857f9d07e62a3696bf1fd55f4b2103aa81
     }
 }
