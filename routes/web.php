@@ -33,7 +33,9 @@ Route::middleware('auth')->group(function () {
     Route::resource('/printerTypes', App\Http\Controllers\PrinterTypeController::class);
     Route::resource('/offices',App\Http\Controllers\OfficeController::class);
     Route::resource('/deceaseds',App\Http\Controllers\DeceasedDataController::class);
-    Route::resource('/UrnKIAData',App\Http\Controllers\UrnKIADataController::class);
+    Route::resource('/customer',App\Http\Controllers\CustomerDataController::class);
+    Route::resource('/birth_certificate',App\Http\Controllers\BirthCertificateController::class);
+    Route::resource('/urn_k_i_a_data',App\Http\Controllers\UrnKIADataController::class);
 });
 
 require __DIR__.'/auth.php';

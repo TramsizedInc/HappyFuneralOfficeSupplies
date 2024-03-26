@@ -9,6 +9,10 @@ use App\Http\Controllers\Auth\PasswordController;
 use App\Http\Controllers\Auth\PasswordResetLinkController;
 use App\Http\Controllers\Auth\RegisteredUserController;
 use App\Http\Controllers\Auth\VerifyEmailController;
+use App\Http\Controllers\CustomerDataController;
+use App\Http\Controllers\BirthCertificateController;
+use App\Http\Controllers\DeceasedDataController;
+use App\Http\Controllers\UrnKIADataController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('guest')->group(function () {

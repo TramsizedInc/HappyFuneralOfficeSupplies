@@ -12,18 +12,10 @@ class OrderData extends Model
     use SoftDeletes;
     
     protected $fillable = [
-        'customer',
-        'born_name',
-        'address',
-        'mother_name',
-        'birth_place_with_birth_day',
-        'mobile_number',
-        'email',
-        'id_card_number',
-        'id_card_exhibition_name',
-        'exhibiting_office',
-        'address_id_number',
-        'customer_birth_day',
-        'birth_place',
+        'customer_id',
+        'deceased_id',
+        'urn_id',
+        'urn_insert_id',
+        'urn_kiad_id',
     ];
 }

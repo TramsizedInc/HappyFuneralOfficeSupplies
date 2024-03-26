@@ -7,17 +7,12 @@
 </h1>
   <section class="w-full lg:w-5/5 grid grid-cols-2 gap-4">
     <div>
-      <!--Title-->
 
-      <!--divider-->
-      <!--Title-->
-
-      <!--Card-->
       <div class="p-8 mt-6 lg:mt-0 leading-normal rounded shadow bg-white">
         <h2 id='section1' class="font-sans font-bold break-normal text-gray-700 px-2 pb-8 text-xl">Megrendelő adatai</h2>
 
-      <form>
-
+      <form action="{{ route('customer.store') }}" method="POST" enctype="multipart/form-data">
+          @csfr
       <div class="md:flex mb-2">
         <div class="md:w-1/5 me-2">
           <input class="form-input block w-full focus:bg-white" id="customer" name="customer" type="text" placeholder="Neve" required>
@@ -108,16 +103,12 @@
       </div>
     </div>
     <div>
-      <!--/Card-->
 
-      <!--divider-->
-      <!--Title-->
-
-      <!--Card-->
       <div id='section2' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
         <h2 class="font-sans font-bold break-normal text-gray-700 px-2 pb-8 text-xl">Elhunyt adatai</h2>
 
-        <form>
+        <form action="{{ route('deceaseds.store') }}" method="POST" enctype="multipart/form-data">
+          @csfr
           <div class="md:flex mb-2">
             <div class="md:w-1/5 me-2">
               <input class="form-input block w-full focus:bg-white" id="name_of_deceased" name="name_of_deceased" type="text" placeholder="Neve" required>
@@ -210,17 +201,12 @@
     </div>
   </div>
   <div>
-    <!--/Card-->
 
-  <!--divider-->
-
-  <!--Title-->
-
-  <!--Card-->
   <div id='section3' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
     <h2 class="font-sans font-bold break-normal text-gray-700 px-2 pb-8 text-xl">Anyakönyvi adatok</h2>
 
-    <form action="{{ route('deceaseds.store') }}" method="POST" enctype="multipart/form-data">
+    <form action="{{ route('birth_certificates.store') }}" method="POST" enctype="multipart/form-data">
+      @csfr
       <div class="md:flex mb-2">
         <div class="md:w-1/4 me-2">
           <input class="form-input block w-full focus:bg-white" id="degree" name="degree" type="text" placeholder="Iskolai végzettsége" required>
@@ -281,17 +267,12 @@
   </div>
   </div>
   <div>
-  <!--/Card-->
 
-  <!--divider-->
-
-  <!--Title-->
-
-  <!--Card-->
   <div id='section4' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
     <h2 class="font-sans font-bold break-normal text-gray-700 px-2 pb-8 text-xl">Hűtés és UrnKIA adatok</h2>
 
-    <form>
+    <form action="{{ route('urn_k_i_a_data.store') }}" method="POST" enctype="multipart/form-data">
+      @csfr
         <div class="md:flex mb-2">
           <div class="md:w-1/3 me-2">
             <input class="form-input block w-full focus:bg-white" id="hv_is_done" name="hv_is_done" type="text" placeholder="Boncolás történt-e" required>
