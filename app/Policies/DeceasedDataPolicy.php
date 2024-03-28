@@ -5,6 +5,7 @@ namespace App\Policies;
 use App\Models\Deceased_data;
 use App\Models\User;
 use Illuminate\Auth\Access\Response;
+use App\Models\Role;
 
 class DeceasedDataPolicy
 {

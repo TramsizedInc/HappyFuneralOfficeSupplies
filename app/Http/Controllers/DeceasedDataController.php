@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\Auth;
 use App\Models\CustomerData;
 use App\Models\Deceased_data;
 use App\Http\Requests\StoreDeceased_dataRequest;
@@ -15,7 +16,9 @@ class DeceasedDataController extends Controller
     public function index()
     {
         //
-        if (Auth::user()->cannot('create', Deceased_data::class)) {
+        
+        if (Auth::user()->cannot('view', Deceased_data::class)) {
+            
             abort(403);
         }
         return view('deceaseds.index');
