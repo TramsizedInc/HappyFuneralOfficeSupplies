@@ -31,7 +31,9 @@ class DatabaseSeeder extends Seeder
                 OfficeSeeder::class,
                 PrinterTypeSeeder::class,
                 BrandSeeder::class,
-                CheckTypeSeeder::class
+                CheckTypeSeeder::class,
+                UrnInsertSeeder::class,
+                // UrnInsertTypeSeeder::class,
             ]
         );
         User::factory()->create([

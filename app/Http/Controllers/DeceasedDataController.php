@@ -29,9 +29,9 @@ class DeceasedDataController extends Controller
      */
     public function create()
     {
-        if (Auth::user()->cannot('create', Deceased_data::class)) {
-            abort(403);
-        }
+        // if (Auth::user()->cannot('create', Deceased_data::class)) {
+        //     abort(403);
+        // }
         return view('deceaseds.create');
     }
 

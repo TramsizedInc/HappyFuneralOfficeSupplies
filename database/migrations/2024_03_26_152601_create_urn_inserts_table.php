@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('urn_insert_type', function (Blueprint $table) {
+        Schema::create('urn_inserts', function (Blueprint $table) {
             $table->id();
             $table->string('name');
             $table->integer('normal_price');

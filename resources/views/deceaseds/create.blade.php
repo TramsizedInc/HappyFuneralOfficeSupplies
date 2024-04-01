@@ -12,7 +12,7 @@
         <h2 id='section1' class="font-sans font-bold break-normal text-gray-700 px-2 pb-8 text-xl">Megrendelő adatai</h2>
 
       <form action="{{ route('customer.store') }}" method="POST" enctype="multipart/form-data">
-          @csfr
+          @csrf
       <div class="md:flex mb-2">
         <div class="md:w-1/5 me-2">
           <input class="form-input block w-full focus:bg-white" id="customer" name="customer" type="text" placeholder="Neve" required>
@@ -108,7 +108,7 @@
         <h2 class="font-sans font-bold break-normal text-gray-700 px-2 pb-8 text-xl">Elhunyt adatai</h2>
 
         <form action="{{ route('deceaseds.store') }}" method="POST" enctype="multipart/form-data">
-          @csfr
+          @csrf
           <div class="md:flex mb-2">
             <div class="md:w-1/5 me-2">
               <input class="form-input block w-full focus:bg-white" id="name_of_deceased" name="name_of_deceased" type="text" placeholder="Neve" required>
@@ -205,8 +205,8 @@
   <div id='section3' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
     <h2 class="font-sans font-bold break-normal text-gray-700 px-2 pb-8 text-xl">Anyakönyvi adatok</h2>
 
-    <form action="{{ route('birth_certificates.store') }}" method="POST" enctype="multipart/form-data">
-      @csfr
+    <form action="{{ route('birth_certificate.store') }}" method="POST" enctype="multipart/form-data">
+      @csrf
       <div class="md:flex mb-2">
         <div class="md:w-1/4 me-2">
           <input class="form-input block w-full focus:bg-white" id="degree" name="degree" type="text" placeholder="Iskolai végzettsége" required>
@@ -272,7 +272,7 @@
     <h2 class="font-sans font-bold break-normal text-gray-700 px-2 pb-8 text-xl">Hűtés és UrnKIA adatok</h2>
 
     <form action="{{ route('urn_k_i_a_data.store') }}" method="POST" enctype="multipart/form-data">
-      @csfr
+      @csrf
         <div class="md:flex mb-2">
           <div class="md:w-1/3 me-2">
             <input class="form-input block w-full focus:bg-white" id="hv_is_done" name="hv_is_done" type="text" placeholder="Boncolás történt-e" required>
@@ -285,10 +285,12 @@
               <select name="" class="form-select block w-full focus:bg-white" id="my-select">
                   <option value="" class="text-gray-200">Urnabetét formája</option>
                   @php
-                    $urns = App\Models\Urn::all();
+                    $urns = App\Models\UrnInsert::all();
+                    //$urns = \DB::table('')
                   @endphp
                   @foreach ($urns as $urn)
                     <option value="{{ $urn->name }}">{{ $urn->name }}</option>
+                  @endforeach
               </select>
 
         </div>
