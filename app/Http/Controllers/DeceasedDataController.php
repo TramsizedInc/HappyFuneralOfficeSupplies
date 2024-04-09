@@ -7,6 +7,8 @@ use App\Models\CustomerData;
 use App\Models\Deceased_data;
 use App\Http\Requests\StoreDeceased_dataRequest;
 use App\Http\Requests\UpdateDeceased_dataRequest;
+use Spatie\LaravelPdf\Facades\Pdf;
+use Spatie\LaravelPdf\Enums\Format;
 
 class DeceasedDataController extends Controller
 {
@@ -63,7 +65,7 @@ class DeceasedDataController extends Controller
             'deceased_weight' => 'string',
             'weight' => 'string',
         ]);
-    
+        
         $model = new Deceased_data();
         $model->fill($validatedData);
         $model->save();
@@ -72,7 +74,14 @@ class DeceasedDataController extends Controller
         $model->created_at = now();
         $model->update();
 
+
         return redirect()->route("customer.index")->with("success", "CheckType created successfully.");
+    
+        $name = 'deceased_name';
+
+        Pdf::view('create')
+        ->save('pdf/{0}.pdf',$name);
+        
     }
 
     /**

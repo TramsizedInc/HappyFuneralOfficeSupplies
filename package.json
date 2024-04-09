@@ -22,6 +22,7 @@
         "flatpickr": "^4.6.13",
         "flowbite": "^2.3.0",
         "parsleyjs": "^2.9.2",
+        "puppeteer": "^22.6.3",
         "tw-elements": "^1.1.0"
     }
 }
