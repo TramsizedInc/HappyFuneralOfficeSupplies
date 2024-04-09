@@ -33,6 +33,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('/printerTypes', App\Http\Controllers\PrinterTypeController::class);
     Route::resource('/offices',App\Http\Controllers\OfficeController::class);
     Route::resource('/deceaseds',App\Http\Controllers\DeceasedDataController::class);
+    Route::get('/deceaseds/print', [DeceasedDataController::class, 'print'])->name('deceaseds.print'); // is needed for easier printing
     Route::resource('/customer',App\Http\Controllers\CustomerDataController::class);
     Route::resource('/birth_certificate',App\Http\Controllers\BirthCertificateController::class);
     Route::resource('/urn_k_i_a_data',App\Http\Controllers\UrnKIADataController::class);

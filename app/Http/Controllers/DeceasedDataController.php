@@ -127,4 +127,14 @@ class DeceasedDataController extends Controller
         }
         return view('deceaseds.index');
     }
+
+    public function print($id)
+    {
+        $order = OrderData::findOrFail($id);
+        $deceased = Deceased_data::findOrFail($order->deceased_id);
+        // $customer = CustomerData::findOrFail($order->customer_id);
+        // $urn_insert = urn_insert_type::findOrFail($order->urn_insert_id);
+        // $insert = Urn::findOrFail($order->urn_id);
+        return view('deceaseds.print', ['deceased' => $deceased]);
+    }
 }

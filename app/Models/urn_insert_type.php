@@ -9,4 +9,10 @@ use Illuminate\Database\Eloquent\SoftDeletes;
 class urn_insert_type extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'name',
+        'normal_price',
+        'selling_price'
+    ];
 }
