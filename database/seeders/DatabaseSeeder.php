@@ -33,7 +33,7 @@ class DatabaseSeeder extends Seeder
                 BrandSeeder::class,
                 CheckTypeSeeder::class,
                 UrnInsertSeeder::class,
-                // UrnInsertTypeSeeder::class,
+                UrnInsertTypeSeeder::class,
             ]
         );
         User::factory()->create([

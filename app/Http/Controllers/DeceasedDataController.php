@@ -74,14 +74,14 @@ class DeceasedDataController extends Controller
         $model->created_at = now();
         $model->update();
 
-
-        return redirect()->route("customer.index")->with("success", "CheckType created successfully.");
     
-        $name = 'deceased_name';
+        $name = $model->deceased_name;
 
-        Pdf::view('create')
-        ->save('pdf/{0}.pdf',$name);
+        // Pdf::view('create')
+        // ->format('A4')
+        // ->save('pdf/{0}.pdf',$name);
         
+        return redirect()->route("customer.index")->with("success", "CheckType created successfully.");
     }
 
     /**
