@@ -17,18 +17,10 @@
         <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 
     </head>
-    <body style="background-image: url('{{asset('storage/candle.jpg')}}')" class="font-sans bg-bamboo antialiased">
-
-            @include('layouts.sidebar')
-
-                <div  class=" min-h-screen min-w-full "> <div style="opacity: 1.0" class="p-4 sm:ml-64" >
-                        {{ $slot }}
-                    </div>
+    <body class="font-sans text-gray-900 antialiased">
 
 
-                <!-- Jumbotron -->
-            <!-- TW Elements is free under AGPL, with commercial license required for specific uses. See more details: https://tw-elements.com/license/ and contact us for queries at tailwind@mdbootstrap.com -->
-            <!--Footer container-->
+                {{ $slot }}
 
     </body>
 </html>
