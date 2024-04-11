@@ -20,7 +20,7 @@
         </div>
 
         <div class="flex flex-col">
-            <div class="-m-1.5 overflow-x-auto">
+             <div class="-m-1.5 overflow-x-auto">
                 <div class="p-1.5 min-w-full inline-block align-middle">
                     <div class=" border rounded-sm bg-white divide-y divide-gray-200 dark:border-gray-700 dark:divide-gray-700">
 

@@ -73,26 +73,26 @@ class CheckModelController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCheckModelRequest $request, CheckModel $office)
+    public function update(UpdateCheckModelRequest $request, CheckModel $checkModel)
     {
         if(Auth::user()->cannot('update',CheckModel::class)){
             abort(403);
         }
-        $office->update($request->all());
-        $office->updated_at = now();
-        $office->update();
+        $checkModel->update($request->all());
+        $checkModel->updated_at = now();
+        $checkModel->update();
         return redirect()->route("checkModels.index")->with("success", "CheckModel updated successfully.");
     }
 
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(CheckModel $office)
+    public function destroy(CheckModel $checkModel)
     {
         if (Auth::user()->cannot('delete', CheckModel::class)) {
             abort(403);
         }
-        $office->delete();
-        return back()->with('message','');
+        $checkModel->delete();
+        return back()->with('delete','Csekk törölve');
     }
 }
