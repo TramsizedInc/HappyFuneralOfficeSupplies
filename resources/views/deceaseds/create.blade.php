@@ -24,7 +24,7 @@
               <input type="text" id="phone-input" aria-describedby="helper-text-explanation" class="ps-10  form-input block w-full focus:bg-white" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="Telenfonszám" required />
             </div>
             <div class="md:w-1/6">
-              <input class="form-input block w-full focus:bg-white" id="id_card_number" name="id_card_number" type="text" placeholder="Személyi igazolvány száma" required/>
+              <input class="form-input block w-full focus:bg-white" id="id_card_number" onchange="onIdcardChange(this)" name="id_card_number" type="text" placeholder="Személyi igazolvány száma" required/>
             </div>
             <div class="md:w-1/6">
               <input class="form-input block w-full focus:bg-white" id="address_id_number" name="address_id_number" type="text" placeholder="Lakcím igazolvány száma" required>
@@ -83,7 +83,7 @@
         <div class="md:flex">
           
           <div class="md:w-1/6">
-            <input datetimepicker  name="yearly_check_date" class="form-input block w-full focus:bg-white date-flatpickr" type="text" placeholder="Születési ideje" />
+            <input datetimepicker class="form-input block w-full focus:bg-white date-flatpickr" type="text" placeholder="Születési ideje" />
           </div>
           <div class="md:w-1/6">
             <input class="form-input block w-full focus:bg-white" id="house_number" name="house_number" type="text" value="" placeholder="Házszám">
@@ -112,7 +112,7 @@
             @csrf
             <div class="md:flex">
               <div class="md:w-1/6">
-                <input class="form-input block w-full focus:bg-white" id="customer" name="decasead_name" type="text" placeholder="Elhunyt neve" required>
+                <input class="form-input block w-full focus:bg-white" id="customer" onchange="onDeceasedChange(this)" name="decasead_name" type="text" placeholder="Elhunyt neve" required>
               </div>
               <div class="md:w-1/6">
                   <input class="form-input block w-full focus:bg-white" id="nation" name="nation" type="text" value="" placeholder="Ország"/>
@@ -148,7 +148,7 @@
                 <input class="form-input block w-full focus:bg-white" id="city" name="city"type="text" value="" placeholder="Város">
               </div>
               <div class="md:w-1/6">
-                <input datetimepicker id="yearly_check_date" name="yearly_check_date" class="form-input block w-full focus:bg-white date-flatpickr" id="death_time" name="death_time" type="text" placeholder="Halálozás napja" />
+                <input datetimepicker class="form-input block w-full focus:bg-white date-flatpickr" id="death_time" name="death_time" type="text" placeholder="Halálozás napja" />
             </div>
             <div class="md:w-1/6">
               <input class="form-input block w-full focus:bg-white" id="address_id_number" name="address_id_number" type="text"  placeholder="Lakcím igazolvány száma" />
@@ -162,7 +162,7 @@
               <input class="form-input block w-full focus:bg-white" id="street" name="street" type="text" value="" placeholder="Utca"/>
             </div>
                <div class="md:w-1/6">
-                <input datetimepicker id="yearly_check_date" name="yearly_check_date" class="form-input block w-full focus:bg-white date-flatpickr" id="exhibition_time" name="exhibition_time" type="text" placeholder="Átadás ideje" />
+                <input datetimepicker class="form-input block w-full focus:bg-white date-flatpickr" id="exhibition_time" name="exhibition_time" type="text" placeholder="Átadás ideje" />
             </div>
 
             <div class="md:w-1/6">
@@ -172,7 +172,7 @@
         <div class="md:flex">
           
           <div class="md:w-1/6">
-            <input datetimepicker  name="yearly_check_date" class="form-input block w-full focus:bg-white date-flatpickr" type="text" placeholder="Születési ideje" />
+            <input datetimepicker  class="form-input block w-full focus:bg-white date-flatpickr" type="text" placeholder="Születési ideje" />
           </div>
           <div class="md:w-1/6">
             <input class="form-input block w-full focus:bg-white" id="house_number" name="house_number" type="text" value="" placeholder="Házszám">
@@ -233,7 +233,7 @@
             <input class="form-input block w-full focus:bg-white" id="selfemployee_tax_number" name="selfemployee_tax_number" type="text" placeholder="Vállalkozói adószám" />
           </div>
           <div class="md:w-1/4">
-            <input datetimepicker id="yearly_check_date" name="yearly_check_date" class="form-input block w-full focus:bg-white date-flatpickr" type="text" placeholder="és ideje" />
+            <input class="form-input block w-full focus:bg-white date-flatpickr" type="text" placeholder="és ideje" />
           </div>
         </div>
         <div class="md:flex">
@@ -344,13 +344,26 @@
   </section>
   <!--/Section container-->
   <div class="w-full lg:w-5/5 items-center text-center py-5">
-      <button class="shadow bg-gray-700 hover:bg-gray-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
+    <form method="POST" action="{{route('orderdata.store')}}">
+      @csrf
+      @method('POST')
+      <input type="hidden" id="deceased_hidden" name="deceased_name" />
+      <input type="hidden" id="id_card_hidden" name="id_card_number"/>
+      <button class="shadow bg-gray-700 hover:bg-gray-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
         Mentés
       </button>
+    </form>
+    </div>
   </div>
   
-  </div>
-  
-  
+  <script>
+    function onDecasedChange(e){
+      document.getElementById('deceased_hidden').value = e.value;
+    }
+
+    function onIdcardChange(e){
+      document.getElementById('id_card_hidden').value = e.value;
+    }
+  </script>
   </x-app-layout>
   
