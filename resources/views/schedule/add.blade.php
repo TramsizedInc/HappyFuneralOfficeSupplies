@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('head')
+@section('content')
     <style>
         form {
             width: 100%;
@@ -28,8 +28,6 @@
             color: white;
         }
     </style>
-@endsection
-@section('content')
     <form action="{{ URL('/create-schedule') }}" method="POST">
         @csrf
         <label for='title'>{{ __('title') }}</label>

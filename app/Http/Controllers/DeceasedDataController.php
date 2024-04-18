@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Support\Facades\Auth;
 use App\Models\CustomerData;
 use App\Models\Deceased_data;
+use App\Models\OrderData;
 use App\Http\Requests\StoreDeceased_dataRequest;
 use App\Http\Requests\UpdateDeceased_dataRequest;
 use Spatie\LaravelPdf\Facades\Pdf;
@@ -19,10 +20,6 @@ class DeceasedDataController extends Controller
     {
         //
         
-        if (Auth::user()->cannot('view', Deceased_data::class)) {
-            
-            abort(403);
-        }
         return view('deceaseds.index');
     }
 
@@ -64,6 +61,7 @@ class DeceasedDataController extends Controller
             'driver_licence_number' => 'string',
             'deceased_weight' => 'string',
             'weight' => 'string',
+            'name_of_deceased' => 'string',
         ]);
         
         $model = new Deceased_data();
@@ -90,9 +88,6 @@ class DeceasedDataController extends Controller
     public function show(Deceased_data $deceased_data)
     {
         //
-        if (Auth::user()->cannot('create', Deceased_data::class)) {
-            abort(403);
-        }
         return view('deceaseds.show', ["deceased" => $deceased_data]);
     }
 
@@ -102,9 +97,6 @@ class DeceasedDataController extends Controller
     public function edit(Deceased_data $deceased_data)
     {
         //
-        if (Auth::user()->cannot('create', Deceased_data::class)) {
-            abort(403);
-        }
         return view('deceaseds.edit');
     }
 
@@ -122,9 +114,6 @@ class DeceasedDataController extends Controller
     public function destroy(Deceased_data $deceased_data)
     {
         //
-        if (Auth::user()->cannot('create', Deceased_data::class)) {
-            abort(403);
-        }
         return view('deceaseds.index');
     }
 

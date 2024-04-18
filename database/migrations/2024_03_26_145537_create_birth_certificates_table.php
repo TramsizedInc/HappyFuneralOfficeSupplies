@@ -13,18 +13,20 @@ return new class extends Migration
     {
         Schema::create('birth_certificates', function (Blueprint $table) {
             $table->id();
-            $table->string('degree'); //Végzettség
-            $table->string('job');
-            $table->integer('child_count'); //Gyerekek száma
-            $table->string('degree_of_relative'); //Rokonsági fok
-            $table->string('death_place'); //Város,kerület
-            $table->string('ash_storage_place'); //Hamvak tárolási helye
-            $table->string('deceased_birth_certificate_number');
-            $table->string('wedding_birth_certificate_number');
+            $table->string('name_of_person');
+            $table->string('name_on_birth_c')->nullable();
+            $table->string('degree')->nullable(); //Végzettség
+            $table->string('job')->nullable();
+            $table->integer('child_count')->nullable(); //Gyerekek száma
+            $table->string('degree_of_relative')->nullable(); //Rokonsági fok
+            $table->string('death_place')->nullable(); //Város,kerület
+            $table->string('ash_storage_place')->nullable(); //Hamvak tárolási helye
+            $table->string('deceased_birth_certificate_number')->nullable();
+            $table->string('wedding_birth_certificate_number')->nullable();
             $table->string('wedding_date_and_place')->nullable(); //A fennálló vagy a megszűnt házasságkötés megkötésének helye és ideje:
-            $table->boolean('divorced_or_not');
-            $table->integer('dead_husbands_count'); //Elh házastárs Hak száma:
-            $table->string('legally_binding_autopsy_number');   //Jogerős bonc ítélet száma:
+            $table->boolean('divorced_or_not')->nullable();
+            $table->integer('dead_husbands_count')->nullable(); //Elh házastárs Hak száma:
+            $table->string('legally_binding_autopsy_number')->nullable();   //Jogerős bonc ítélet száma:
             $table->string('selfemployee_tax_number')->nullable();  //Vállalkozói adószám:
             /* Softdeletes */
             $table->softDeletes();
