@@ -11,9 +11,9 @@ class CheckTypeController extends Controller
 {
     public function index()
     {
-        if (Auth::user()->cannot('view', CheckType::class)) {
-            abort(403);
-        }
+        // if (Auth::user()->cannot('view', CheckType::class)) {
+        //     abort(403);
+        // }
         $checkTypes = CheckType::all();
         return view('checkTypes.index',['checkTypes' => $checkTypes]);
     }
@@ -23,9 +23,9 @@ class CheckTypeController extends Controller
      */
     public function create()
     {
-        if (Auth::user()->cannot('create', CheckType::class)) {
-            abort(403);
-        }
+        // if (Auth::user()->cannot('create', CheckType::class)) {
+        //     abort(403);
+        // }
         return view('checkTypes.create');
     }
 
@@ -34,9 +34,9 @@ class CheckTypeController extends Controller
      */
     public function store(StoreCheckTypeRequest $request)
     {
-        if (Auth::user()->cannot('create', CheckType::class)) {
-            abort(403);
-        }
+        // if (Auth::user()->cannot('create', CheckType::class)) {
+        //     abort(403);
+        // }
 
         $checkType = CheckType::create($request->all());
         $checkType->updated_at = now();
@@ -59,9 +59,9 @@ class CheckTypeController extends Controller
      */
     public function edit(CheckType $checkType)
     {
-        if (Auth::user()->cannot('update', CheckType::class)) {
-            abort(403);
-        }
+        // if (Auth::user()->cannot('update', CheckType::class)) {
+        //     abort(403);
+        // }
         return view('checkTypes.edit', ['CheckType' => $checkType]);
 
     }
@@ -71,9 +71,9 @@ class CheckTypeController extends Controller
      */
     public function update(UpdateCheckTypeRequest $request, CheckType $checkType)
     {
-        if(Auth::user()->cannot('update',CheckType::class)){
-            abort(403);
-        }
+        // if(Auth::user()->cannot('update',CheckType::class)){
+        //     abort(403);
+        // }
         $checkType->update($request->all());
         $checkType->updated_at = now();
         $checkType->update();
@@ -85,9 +85,9 @@ class CheckTypeController extends Controller
      */
     public function destroy(CheckType $checkType)
     {
-        if (Auth::user()->cannot('delete', CheckType::class)) {
-            abort(403);
-        }
+        // if (Auth::user()->cannot('delete', CheckType::class)) {
+        //     abort(403);
+        // }
         $checkType->delete();
         return back()->with('message','');
     }
