@@ -26,7 +26,7 @@ class ScheduleController extends Controller
         $item->color = $request->color;
         $item->save();
 
-        return redirect('/fullcalender');
+        return redirect('/fullcalendar');
     }
 
 
