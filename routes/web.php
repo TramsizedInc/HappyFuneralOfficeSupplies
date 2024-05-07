@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\PrinterController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -27,9 +28,15 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+Route::get('/robots.txt', function () {
+    return view('welcome');
+})->middleware(['auth', 'verified'])->name('robot');
+Route::redirect('/robots.txt', '/dashboard', 301)->middleware(['auth', 'verified']);
+
 Route::middleware('auth')->group(function () {
     Route::resource('/printers', App\Http\Controllers\PrinterController::class);
-    Route::get('/printers/updateUtilities/{printer}',[\App\Http\Controllers\PrinterController::class,'updateUtilities'])->name('printers.updateUtilities');
+    Route::get('/printers/updateUtilities/{printer}',[PrinterController::class,'updateUtilities'])->name('printers.updateUtilities');
+    Route::get('/printers/getPrinterData', [PrinterController::class,'getPrinterData']);
     Route::resource('/brands', App\Http\Controllers\BrandController::class);
     Route::resource('/checkTypes', App\Http\Controllers\CheckTypeController::class);
     Route::resource('/checkModels', App\Http\Controllers\CheckModelController::class);
@@ -38,6 +45,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('/deceaseds',App\Http\Controllers\DeceasedDataController::class);
     Route::get('/deceaseds/print', [App\Http\Controllers\DeceasedDataController::class, 'print'])->name('deceaseds.print'); // is needed for easier printing
     Route::resource('/customer',App\Http\Controllers\CustomerDataController::class);
+    Route::resource('/orderdata',App\Http\Controllers\OrderDataController::class);
     Route::resource('/birth_certificate',App\Http\Controllers\BirthCertificateController::class);
     Route::resource('/urn_k_i_a_data',App\Http\Controllers\UrnKIADataController::class);
     Route::get('fullcalendar', [App\Http\Controllers\ScheduleController::class, 'index']);

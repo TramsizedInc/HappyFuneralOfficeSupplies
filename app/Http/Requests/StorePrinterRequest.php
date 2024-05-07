@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Auth;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Foundation\Http\FormRequest;
 
 class StorePrinterRequest extends FormRequest
@@ -12,8 +13,12 @@ class StorePrinterRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        $role = Auth::user()->role->slug;
-        if($role != 'admin')
+        $user = Auth::user();
+        $slug = DB::table('roles')
+            ->select('slug')
+            ->where('id', $user->role_id)
+            ->value('slug');
+        if($slug == '' || $slug == 'Shit_manager')
         {
             toastr()->error('Megtagadva! Indok: nem megfelelő jogosultság');
             return false;

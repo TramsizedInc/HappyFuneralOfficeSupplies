@@ -14,9 +14,6 @@ class PrinterController extends Controller
      */
     public function index()
     {
-        if (Auth::user()->cannot('view', Printer::class)) {
-            return redirect('printers.printers');
-        }
         $printers = Printer::all();
         return view('printers.index',['printers' => $printers]);
     }
@@ -37,9 +34,9 @@ class PrinterController extends Controller
      */
     public function store(StorePrinterRequest $request)
     {
-        if (Auth::user()->cannot('create', Printer::class)) {
-            abort(403);
-        }
+        // if (Auth::user()->cannot('create', Printer::class)) {
+        //     abort(403);
+        // }
         $request->picture->storeAs(
             'picture',
             'printer_picture' . $request->brand . '_' . $request->type . '.jpg',
@@ -138,4 +135,17 @@ class PrinterController extends Controller
         $printers = Printer::withTrashed()->get();
         return view('printers.show_deleted',['printers' => $printers]);
     }
+
+    public function getPrinterData(Printer $request)
+{ 
+    dd($request);
+    $brand = $request->input('brand');
+    $type = $request->input('type');
+
+    $printerData = Printer::where('brand', $brand)
+                                   ->where('type', $type)
+                                   ->get();
+    
+    return response()->json($printerData);
+}
 }

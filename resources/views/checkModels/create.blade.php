@@ -121,6 +121,9 @@
                                         <input datetimepicker id="yearly_check_date" name="yearly_check_date" class="focus:shadow-soft-primary-outline dark:bg-gray-950 dark:placeholder:text-white/80 dark:text-white/80 text-sm leading-5.6 ease-soft block w-full appearance-none rounded-lg border border-solid border-gray-300 bg-white bg-clip-padding px-3 py-2 font-normal text-gray-700 outline-none transition-all placeholder:text-gray-500 focus:border-fuchsia-300 focus:outline-none date-flatpickr" type="text" placeholder="Válassz időpontot" />
                                     </div>
                                 </div>
+                                <div class="sm:col-span-3">
+                                    <label class="bl" for="check_picture">
+                                    <h1 class="text-center">Kép feltöltés(A cssekről)</h1>
 
                                 <div class="md:col-span-6 text-right">
                                     <div class="inline-flex items-end">
