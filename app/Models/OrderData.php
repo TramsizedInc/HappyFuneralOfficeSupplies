@@ -14,7 +14,6 @@ class OrderData extends Model
     protected $fillable = [
         'customer_id',
         'deceased_id',
-        'urn_id',
         'urn_insert_id',
         'urn_kiad_id',
     ];
