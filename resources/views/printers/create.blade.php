@@ -8,14 +8,14 @@
             @csrf
             @method('POST')
             <div>
-                <h2 class="font-semibold text-xl text-gray-600">Create Printer</h2>
-                <p class="text-gray-500 mb-6">Form is mobile responsive. Give it a try.</p>
+                <h2 class="font-semibold text-xl text-gray-600">Nyomtató Hozzá Adása</h2>
+                <p class="text-gray-500 mb-6">Az oldal reszponzív, próbáld ki!</p>
                 <div class="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6">
                     <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
 
                         <div class="text-gray-600">
-                            <p class="font-medium text-lg">Printer Details</p>
-                            <p>Please fill out all the fields.</p>
+                            <p class="font-medium text-lg">Nyomtató Leírás</p>
+                            <p>Kérlek töltsd ki!</p>
                             <img src="{{asset('storage/panda.png')}}">
                         </div>
 
@@ -28,7 +28,7 @@
                                         <option value="{{$office->id}}">{{$office->zip_code}} {{$office->city}}, {{$office->street}} {{$office->house_number}}.</option>
                                         @endforeach
                                     </select>
-                                    <label data-te-select-label-ref for="brand">Brand</label>
+                                    <label data-te-select-label-ref for="brand">Márka</label>
                                 </div>
                                 <div class="md:col-span-5 mb-3">
 
@@ -37,7 +37,7 @@
                                         <option value="{{$brand->name}}">{{$brand->name}}</option>
                                         @endforeach
                                     </select>
-                                    <label data-te-select-label-ref for="brand">Brand</label>
+                                    <label data-te-select-label-ref for="brand">Márka</label>
                                 </div>
                                 <div class="md:col-span-5 mb-3">
 
@@ -46,7 +46,7 @@
                                         <option value="{{$printer->name}}">{{$printer->name}}</option>
                                         @endforeach
                                     </select>
-                                    <label data-te-select-label-ref for="type">Type</label>
+                                    <label data-te-select-label-ref for="type">Típus</label>
                                 </div>
 
 
@@ -55,7 +55,7 @@
                                 <div class="text-gray-600 md:col-span-5">
 
                                     <div class="relative mb-6">
-                                        <label for="labels-range-input">Drumm Unit <span id="drummchange"></span></label>
+                                        <label for="labels-range-input">Dobb egység <span id="drummchange"></span></label>
                                         <input name="drumm_percent" id="labels-range-input" onchange="drummchange(this)" oninput="drummchange(this)" type="range" value="0" min="0" max="100" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700">
                                         <span class="text-sm text-gray-500 dark:text-gray-400 absolute start-0 -bottom-6">0%</span>
                                         <span class="text-sm text-gray-500 dark:text-gray-400 absolute start-1/2 -translate-x-1/2 rtl:translate-x-1/2 -bottom-6">50%</span>
@@ -64,7 +64,7 @@
                                 </div>
                                 <div class="text-gray-600 md:col-span-5">
                                     <div class="relative mb-6">
-                                        <label for="labels-range-input">Toner <span id="donerchange"></span></label>
+                                        <label for="labels-range-input">Toner egység <span id="donerchange"></span></label>
                                         <input name="toner_percent" id="labels-range-input" onchange="donerchange(this)" oninput="donerchange(this)" type="range" value="0" min="0" max="100" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700">
                                         <span class="text-sm text-gray-500 dark:text-gray-400 absolute start-0 -bottom-6">0%</span>
                                         <span class="text-sm text-gray-500 dark:text-gray-400 absolute start-1/2 -translate-x-1/2 rtl:translate-x-1/2 -bottom-6">50%</span>
@@ -72,7 +72,7 @@
                                     </div><span class="text-sm text-gray-500 dark:text-gray-400 absolute end-0 -bottom-6">100%</span>
                                 </div>
                                 <div class="md:col-span-5">
-                                    <label for="cover-photo" class="block text-sm font-medium leading-6 text-gray-900">Cover photo</label>
+                                    <label for="cover-photo" class="block text-sm font-medium leading-6 text-gray-900">Kép a nyomtatóról</label>
                                     <div class="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
                                         <div class="text-center">
                                             <svg class="mx-auto h-12 w-12 text-gray-300" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -80,22 +80,22 @@
                                             </svg>
                                             <div class="mt-4 flex text-sm leading-6 text-gray-600">
                                                 <label for="file-upload" class="relative cursor-pointer rounded-md bg-white font-semibold text-indigo-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-indigo-600 focus-within:ring-offset-2 hover:text-indigo-500">
-                                                    <span>Upload a file</span>
+                                                    <span>Fájl feltöltés</span>
                                                     <input id="file-upload" name="picture" type="file" class="sr-only">
                                                 </label>
-                                                <p class="pl-1">or drag and drop</p>
+                                                <p class="pl-1">Vagy húzd be ide</p>
                                             </div>
                                             <p class="text-xs leading-5 text-gray-600">PNG, JPG, GIF up to 10MB</p>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="md:col-span-5">
-                                    <label for="docs">Documentation</label>
+                                    <label for="docs">Nyomtató Leírás</label>
                                     <textarea name="documentation" type="text" id="docs" class="transition-all flex items-center h-10 border mt-1 rounded px-4 w-full bg-gray-50" placeholder=""></textarea>
                                 </div>
                                 <div class="md:col-span-5 text-right">
                                     <div class="inline-flex items-end">
-                                        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Submit</button>
+                                        <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Kész</button>
                                     </div>
                                 </div>
 
@@ -105,8 +105,39 @@
                 </div>
 
             </div>
-            <div class="md:col-span-5">
-                <canvas id="printerChart"></canvas>
+            
+            <div>
+                <!-- Waste no more time arguing what a good man should be, be one. - Marcus Aurelius -->
+                <div class="row">
+                    <div class="col-md-3">
+                        <label for="type">Type</label>
+                        <select class="form-control" id="printer">
+                            @foreach($printers as $printer){
+                            <option value="{{$printer->id}}">{{$printer->brand}}</option>
+                            }
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label for="From">From</label>
+                        <input type="date" id="from" name="from" class=" from-control" />
+                    </div>
+                    <div class="col-md-3">
+                        <label for="To">To</label>
+                        <input type="date" id="to" name="to" class=" from-control" />
+                    </div>
+                    <div class="col-md-3">
+                        <button type="button " class="btn btn-success" onclick="getData()">Filter</button>
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="md:col-span-5">
+                        <canvas id="printerChart" width="800" height="400">
+                        </canvas>
+                    </div>
+                </div>
             </div>
 
         </form>
@@ -122,44 +153,52 @@
             var val = element.value;
             document.getElementById('drummchange').innerHTML = val + "%";
         }
-
-        // PHP változók betöltése JavaScript-be a Blade templating motorral
-        var printerDataPreArray = <?php echo json_encode($printerData); ?>;
-        var printerData = Array.from(printerDataPreArray);
-        // JavaScript kód a Chart.js inicializálásához és a grafikon megjelenítéséhez
-        window.onload = function() {
-            var ctx = document.getElementById('printerChart').getContext('2d');
-            var myChart = new Chart(ctx, {
-                type: 'bar',
-                data: {
-                    labels: printerData.map(function(item) {
-                        return item.period;
-                    }),
-                    datasets: [{
-                        label: 'Dobegység használódás',
-                        data: printerData.map(function(item) {
-                            return item.usage;
-                        }),
-                        backgroundColor: 'rgb(255, 99, 132)',
-
-                    }, {
-                        label: 'Toner fogyás',
-                        data: printerData.map(function(item) {
-                            return item.toner_consumption;
-                        }),
-                        backgroundColor: 'rgb(54, 162, 235)',
-
-                    }]
-                },
-                options: {
-                    title: {
-                        display: true,
-                        text: 'Fogyasztása'
-                    }
-                }
-            });
-        };
     </script>
-    <!-- </script> -->
-    <!-- </script> -->
+    <script>
+        let chart;
+
+        function getData() {
+            $.ajax({
+                url: 'printers/getPrinterData',
+                method: 'GET',
+                dataType: 'json',
+                data: {
+                    'printer': $("#printer").val(),
+                    'from': $("#from").val(),
+                    'to': $("#to").val(),
+                },
+
+                success: function(data) {
+                    const printer = data.printer;
+                    const printerData = data.printerData;
+
+                    const ctx = document.getElementById('printerChart').getContext('2d');
+                    if (chart) {
+                        chart.destroy();
+                    }
+
+                    chart = new Chart(ctx, {
+                        type: 'line',
+                        data: {
+                            labels: ['Tonner típus', 'Dobegység'],
+                            datasets: [{
+                                label: `Nyomtató statisztika for ${printer}`,
+                                data: [printerData.type_of_toner, printerData.type_of_drumm_unit],
+                                backgroundColor: ['rgb(170, 221, 204)', 'rgb(91, 69, 84)'],
+                                borderWidth: 1,
+                            }]
+                        },
+                        options: {
+                            resposive: true,
+                            mainAspectratio: false
+                        }
+
+                    })
+                },
+                error: function(error) {
+                    console.error(error);
+                }
+            })
+        }
+    </script>
 </x-app-layout>

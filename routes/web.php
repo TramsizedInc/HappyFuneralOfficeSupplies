@@ -55,6 +55,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/schedule/{id}/resize', [App\Http\Controllers\ScheduleController::class, 'resize']);
     Route::get('/events/search', [App\Http\Controllers\ScheduleController::class, 'search']);
     Route::view('add-schedule', 'schedule.add');
+   
     Route::post('create-schedule', [App\Http\Controllers\ScheduleController::class, 'create']);
 });
 

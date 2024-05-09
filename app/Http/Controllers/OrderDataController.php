@@ -41,8 +41,8 @@ class OrderDataController extends Controller
         $req = $request->all();
         $customer = CustomerData::select('id')->where('id_card_number', '=', $req['id_card_number'])->get();
         $deceased = Deceased_data::select('id')->where('deceased_name', '=', $req['deceased_name'])->orderby('created_at', 'desc')->limit(1)->get();
-        $birth_c = BirthCertificate::select('id')->where('name_of_person', '=', $req['name_of_person'])->orderby('created_at', 'desc')->limit(1)->get();
-        $urn_kiad = Urn_k_i_a_data::select('id')->where('name_of_deceased', '=', $req['name_of_deceased'])->orderby('created_at', 'desc')->limit(1)->get();
+        $birth_c = BirthCertificate::select('id')->where('name_of_person', '=', $req['deceased_name'])->orderby('created_at', 'desc')->limit(1)->get();
+        $urn_kiad = Urn_k_i_a_data::select('id')->where('name_of_deceased', '=', $req['deceased_name'])->orderby('created_at', 'desc')->limit(1)->get();
         $unValidatedData = [
             $customer,
             $deceased,

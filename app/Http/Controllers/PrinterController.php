@@ -5,7 +5,11 @@ namespace App\Http\Controllers;
 use App\Models\Printer;
 use App\Http\Requests\StorePrinterRequest;
 use App\Http\Requests\UpdatePrinterRequest;
+use App\View\Components\filters;
 use Illuminate\Support\Facades\Auth;
+use Carbon\Carbon;
+use Illuminate\Http\Request;
+use Illuminate\View\Component\filer;
 
 class PrinterController extends Controller
 {
@@ -26,7 +30,8 @@ class PrinterController extends Controller
         if (Auth::user()->cannot('create', Printer::class)) {
             abort(403);
         }
-        return view('printers.create');
+        $printers = Printer::all();
+        return view('printers.create',['printers' => $printers]);
     }
 
     /**
@@ -136,16 +141,25 @@ class PrinterController extends Controller
         return view('printers.show_deleted',['printers' => $printers]);
     }
 
-    public function getPrinterData(Printer $request)
+    public function getPrinterData(Request $request)
 { 
-    dd($request);
-    $brand = $request->input('brand');
-    $type = $request->input('type');
+    $printerData = Printer::where('printer_id',$request->printer)
 
-    $printerData = Printer::where('brand', $brand)
-                                   ->where('type', $type)
-                                   ->get();
+    ->when($request->from,function($query)use($request){
+        return $query->whereDate('date','>=',$request->from);
+
+    })
+    ->when($request->to,function($query) use ($request){
+        return $query->whereDate('date','<=',$request->to);
+    })
+    ->selectRaw('brand, type, type_of_toner,type_of_drumm_unit, GROUP BY MONTh(created_at) as period')
+    ->first();
     
-    return response()->json($printerData);
+
+    $printer = Printer::where('id',$request->printer)->first()->brand; 
+    if($printerData == null || $printer == null){
+        return response(['printer' => 'printer' , 'printerData' => ['brand' => '0', 'type' => '0', 'type_of_toner' => '0', 'period' => Carbon::now()->month]]);
+    } 
+    return response()->json(['printer'=>$printer,'printerData'=>$printerData]);
 }
 }

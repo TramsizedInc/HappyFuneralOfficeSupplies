@@ -18,7 +18,10 @@ return new class extends Migration
             // $table->foreignId('urn_id')->default(1)->after('id')->references('id')->on('unrs')->constrained();
             // $table->foreignId('urn_kiad_id')->after('id')->references('id')->on('_urn_k_i_a_datas')->constrained();
             // $table->foreignId('urn_insert_id')->after('id')->references('id')->on('urn_inserts')->constrained();
-
+            $table->integer('customer_data_id');
+            $table->integer('deceased_data_id');
+            $table->integer('_urn_k_i_a_datas_id');
+            $table->integer('birth_certificate_id');
             /** soft deletes trait */
             $table->softDeletes();
             $table->integer('created_by')->default(1);

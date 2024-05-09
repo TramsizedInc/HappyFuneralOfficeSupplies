@@ -32,7 +32,7 @@
                                             @endif
                                         @endforeach
                                     </select>
-                                    <label data-te-select-label-ref for="brand">Brand</label>
+                                    <label data-te-select-label-ref for="brand">Márka</label>
                                 </div>
                                 <div class="md:col-span-5 mb-3">
                                     <select name="brand" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" data-te-select-init>
@@ -46,7 +46,7 @@
                                             @endif
                                         @endforeach
                                     </select>
-                                    <label data-te-select-label-ref for="brand">Brand</label>
+                                    <label data-te-select-label-ref for="brand">Márka</label>
                                 </div>
                                 <div class="md:col-span-5 mb-3">
 
@@ -60,7 +60,7 @@
 
                                         @endforeach
                                     </select>
-                                    <label data-te-select-label-ref for="type">Type</label>
+                                    <label data-te-select-label-ref for="type">Típus</label>
                                 </div>
 
 
@@ -69,7 +69,7 @@
                                 <div class="text-gray-600 md:col-span-5">
 
                                     <div class="relative mb-6">
-                                        <label for="labels-range-input" >Dobegység <span id="drummchange">{{$printer->drumm_percent}}%</span></label>
+                                        <label for="labels-range-input" >Dobb Egység <span id="drummchange">{{$printer->drumm_percent}}%</span></label>
                                         <input name="drumm_percent" id="labels-range-input" onchange="drummchange(this)" oninput="drummchange(this)" type="range" value="{{$printer->drumm_percent}}" min="0" max="100" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700">
                                         <span class="text-sm text-gray-500 dark:text-gray-400 absolute start-0 -bottom-6">0%</span>
                                         <span class="text-sm text-gray-500 dark:text-gray-400 absolute start-1/2 -translate-x-1/2 rtl:translate-x-1/2 -bottom-6">50%</span>
@@ -78,7 +78,7 @@
                                 </div>
                                 <div class="text-gray-600 md:col-span-5">
                                     <div class="relative mb-6">
-                                        <label for="labels-range-input" >Toner <span id="donerchange">{{$printer->toner_percent}}%</span></label>
+                                        <label for="labels-range-input" >Toner Egység <span id="donerchange">{{$printer->toner_percent}}%</span></label>
                                         <input name="toner_percent" id="labels-range-input" onchange="donerchange(this)" oninput="donerchange(this)" type="range" value="{{$printer->toner_percent}}" min="0" max="100" class="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer dark:bg-gray-700">
                                         <span class="text-sm text-gray-500 dark:text-gray-400 absolute start-0 -bottom-6">0%</span>
                                         <span class="text-sm text-gray-500 dark:text-gray-400 absolute start-1/2 -translate-x-1/2 rtl:translate-x-1/2 -bottom-6">50%</span>
@@ -105,7 +105,7 @@
                                     </div>
                                 </div>
                                 <div class="md:col-span-5">
-                                    <label for="docs">Documentation</label>
+                                    <label for="docs">Nyomtató Leírás</label>
                                     <textarea name="documentation" type="text" id="docs" class="transition-all flex items-center h-10 border mt-1 rounded px-4 w-full bg-gray-50" placeholder="">{{$printer->documentation}}</textarea>
                                 </div>
                                 <div class="md:col-span-5 text-right">

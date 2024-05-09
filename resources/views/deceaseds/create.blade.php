@@ -295,8 +295,7 @@
         </div>
         <div class="md:flex">
           <div class="md:w-1/4">
-  
-              <select name="" class="form-select block w-full focus:bg-white" id="my-select">
+              <select name="urn_inside_form" class="form-select block w-full focus:bg-white" id="urn_inside_form">
                   <option value="" class="text-gray-200">Urnabetét formája</option>
                   @php
                     $urns = App\Models\UrnInsert::all();
