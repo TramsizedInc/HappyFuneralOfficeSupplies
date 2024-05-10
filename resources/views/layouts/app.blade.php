@@ -17,6 +17,9 @@
         <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <link href="{{ asset('css/toastr.css') }}" rel="stylesheet">
+        <script src="{{ asset('js/app.js') }}"></script>
     </head>
     <body style="background-image: url('{{asset('storage/candle.jpg')}}')" class="font-sans bg-bamboo antialiased">
 

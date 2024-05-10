@@ -369,6 +369,24 @@
     function onIdcardChange(e){
       document.getElementById('id_card_hidden').value = e.value;
     }
+    function submitFormPost(e){
+      $('form').on('submit', function(e) {
+    e.preventDefault();
+    var form = $(this);
+    var url = form.attr('action');
+
+    $.ajax({
+        type: "POST",
+        url: url,
+        data: form.serialize(),
+        success: function(data){
+          if(response.success) {
+            alert(response.message);
+          }
+        }
+    });
+});
+    }
   </script>
   </x-app-layout>
   

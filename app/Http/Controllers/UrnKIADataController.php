@@ -60,8 +60,9 @@ class UrnKIADataController extends Controller
         $Urn_k_i_a_data->created_at = now();
         $Urn_k_i_a_data->update();
 
-        return "ok";
+        // return "ok";
         // return redirect()->route("Urn_k_i_a_datas.index")->with("success", "Urn_k_i_a_data created successfully.");
+        return response()->json(['success' => true, 'message' => 'urnkia mentve']);
     }
 
     /**
