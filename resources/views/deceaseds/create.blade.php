@@ -112,7 +112,7 @@
             @csrf
             <div class="md:flex">
               <div class="md:w-1/6">
-                <input class="form-input block w-full focus:bg-white" id="customer" onchange="onDeceasedChange(this)" name="deceased_name" type="text" placeholder="Elhunyt neve" required>
+                <input class="form-input block w-full focus:bg-white" id="deceased_name" onchange="onDeceasedChange(this)" name="deceased_name" type="text" placeholder="Elhunyt neve" required>
               </div>
               <div class="md:w-1/6">
                   <input class="form-input block w-full focus:bg-white" id="nation" name="nation" type="text" value="" placeholder="Ország"/>
