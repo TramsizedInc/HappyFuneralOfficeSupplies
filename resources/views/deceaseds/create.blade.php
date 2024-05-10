@@ -381,7 +381,7 @@
         data: form.serialize(),
         success: function(data){
           if(response.success) {
-            alert(response.message);
+            toastr.info(response.message);
           }
         }
     });
