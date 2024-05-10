@@ -1,13 +1,6 @@
-@extends('layouts.app')
-@section('head')
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Personal Schedule Tracker</title>
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-@endsection
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-@section('content')
+<x-app-layout>
     <div class="container mt-5">
         {{-- For Search --}}
         <div class="row">
@@ -198,4 +191,4 @@
             downloadLink.click();
         })
     </script>
-@endsection
+</x-app-layout>

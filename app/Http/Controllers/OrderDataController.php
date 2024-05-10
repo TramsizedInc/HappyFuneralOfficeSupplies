@@ -39,6 +39,7 @@ class OrderDataController extends Controller
     {
         //
         $req = $request->all();
+        // dd($req);
         $customer = CustomerData::select('id')->where('id_card_number', '=', $req['id_card_number'])->get();
         $deceased = Deceased_data::select('id')->where('deceased_name', '=', $req['deceased_name'])->orderby('created_at', 'desc')->limit(1)->get();
         $birth_c = BirthCertificate::select('id')->where('name_of_person', '=', $req['deceased_name'])->orderby('created_at', 'desc')->limit(1)->get();
@@ -61,8 +62,8 @@ class OrderDataController extends Controller
     
         // $name = $model->deceased_name;
 
-        // return redirect()->route("customer.index")->with("success", "CheckType created successfully.");
-        return 'ok';
+        return redirect()->route("fullcalendar")->with("success", "CheckType created successfully.");
+        // return 'ok';
     }
 
     /**

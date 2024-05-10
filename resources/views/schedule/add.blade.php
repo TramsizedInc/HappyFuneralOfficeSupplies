@@ -1,6 +1,5 @@
-@extends('layouts.app')
-
-@section('content')
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<x-app-layout>
     <style>
         form {
             width: 100%;
@@ -28,6 +27,7 @@
             color: white;
         }
     </style>
+    <div class="bg-white border-gray-700 p-3 w-2/5 mx-auto">
     <form action="{{ URL('/create-schedule') }}" method="POST">
         @csrf
         <label for='title'>{{ __('title') }}</label>
@@ -48,4 +48,5 @@
 
         <input type="submit" value="Save" class="btn btn-success" />
     </form>
-@endsection
+    </div>
+</x-app-layout>

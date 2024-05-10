@@ -11,7 +11,7 @@ class UpdateUrn_k_i_a_dataRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**

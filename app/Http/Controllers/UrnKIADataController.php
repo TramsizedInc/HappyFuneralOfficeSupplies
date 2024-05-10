@@ -37,23 +37,31 @@ class UrnKIADataController extends Controller
      */
     public function store(StoreUrn_k_i_a_dataRequest $request)
     {
-        if (Auth::user()->cannot('create', Urn_k_i_a_data::class)) {
-            abort(403);
-        }
-        $request->picture->storeAs(
-            'picture',
-            'Urn_k_i_a_data_picture' . $request->brand . '_' . $request->type . '.jpg',
-            'public'
-        );
-        $file_name = 'Urn_k_i_a_data_picture' . $request->brand . '_' . $request->type . '.jpg';
+        $validatedData = $request->validate([
+            'exhibition_date' => 'string',
+            'hv_done_status_date' => 'string',
+            'hv_have_status_date' => 'string',
+            'hv_exhibition_date' => 'string',
+            'choosen_chrematory' => 'string',
+            'urn_inside_form' => 'string',
+            'choosen_cemetary' => 'string',
+            'location' => 'string',
+            'new_or_old' => 'string',
+            'tombstone_number' => 'string',
+            'date_of_funeral' => 'string',
+            'hour_and_minute_of_funeral' => 'string',
+        ]);
 
-        $Urn_k_i_a_data = Urn_k_i_a_data::create($request->all());
-        $Urn_k_i_a_data->picture = $file_name;
+        $Urn_k_i_a_data = new Urn_k_i_a_data();
+        $Urn_k_i_a_data->fill($validatedData);
+        $Urn_k_i_a_data->save();
+
         $Urn_k_i_a_data->updated_at = now();
         $Urn_k_i_a_data->created_at = now();
         $Urn_k_i_a_data->update();
 
-        return redirect()->route("Urn_k_i_a_datas.index")->with("success", "Urn_k_i_a_data created successfully.");
+        return "ok";
+        // return redirect()->route("Urn_k_i_a_datas.index")->with("success", "Urn_k_i_a_data created successfully.");
     }
 
     /**
@@ -72,9 +80,7 @@ class UrnKIADataController extends Controller
      */
     public function edit(Urn_k_i_a_data $Urn_k_i_a_data)
     {
-        if (Auth::user()->cannot('update', Urn_k_i_a_data::class)) {
-            abort(403);
-        }
+
         return view('Urn_k_i_a_datas.edit', ['Urn_k_i_a_data' => $Urn_k_i_a_data]);
     }
 

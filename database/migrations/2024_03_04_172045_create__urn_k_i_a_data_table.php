@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     { //urnakiadas 
-        Schema::create('_urn_k_i_a_datas', function (Blueprint $table) {
+        Schema::create('urn_k_i_a_datas', function (Blueprint $table) {
             $table->id();
             $table->string('name_of_deceased');
             $table->DateTime('exhibition_date')->nullable();
@@ -40,6 +40,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('_urn_k_i_a_data');
+        Schema::dropIfExists('urn_k_i_a_data');
     }
 };

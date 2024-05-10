@@ -112,7 +112,7 @@
             @csrf
             <div class="md:flex">
               <div class="md:w-1/6">
-                <input class="form-input block w-full focus:bg-white" id="customer" onchange="onDeceasedChange(this)" name="decasead_name" type="text" placeholder="Elhunyt neve" required>
+                <input class="form-input block w-full focus:bg-white" id="customer" onchange="onDeceasedChange(this)" name="deceased_name" type="text" placeholder="Elhunyt neve" required>
               </div>
               <div class="md:w-1/6">
                   <input class="form-input block w-full focus:bg-white" id="nation" name="nation" type="text" value="" placeholder="Ország"/>
@@ -188,7 +188,7 @@
       <div class="md:flex md:items-center">
         <div class="md:w-1/3"></div>
         <div class="md:w-2/3">
-          <button class="shadow bg-gray-700 hover:bg-gray-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
+          <button class="shadow bg-gray-700 hover:bg-gray-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
             Kész
           </button>
         </div>
@@ -261,7 +261,7 @@
       <div class="md:flex md:items-center">
         <div class="md:w-1/3"></div>
         <div class="md:w-2/3">
-          <button class="shadow bg-gray-700 hover:bg-gray-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
+          <button class="shadow bg-gray-700 hover:bg-gray-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
             Kész
           </button>
         </div>
@@ -277,6 +277,7 @@
   
       <form action="{{ route('urn_k_i_a_data.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
+          <!-- <input type="hidden" id="deceased_hidden_urnkia" name="deceased_name" /> -->
           <div class="md:flex">
             <div class="md:w-1/4">
               <input class="form-input block w-full focus:bg-white" id="hv_is_done" name="hv_is_done" type="text" placeholder="Boncolás történt-e" required>
@@ -318,6 +319,10 @@
           <div class="md:w-1/4">
             <input datetimepicker class="form-input block w-full focus:bg-white date-flatpickr" id="hv_exhibition_date" name="hv_exhibition_date" type="text" placeholder="Hv Kiállítás dátuma" />
           </div>
+          <div class="md:w-1/4">
+              <input class="form-input block w-full focus:bg-white" id="name_of_deceased" name="name_of_deceased" type="text" placeholder="név" required>
+            </div>
+
         </div>
   
   
@@ -326,7 +331,7 @@
         <div class="md:flex md:items-center">
           <div class="md:w-1/3"></div>
           <div class="md:w-2/3">
-            <button class="shadow bg-gray-700 hover:bg-gray-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
+            <button class="shadow bg-gray-700 hover:bg-gray-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
               Kész
             </button>
           </div>
@@ -346,7 +351,7 @@
     <form method="POST" action="{{route('orderdata.store')}}">
       @csrf
       @method('POST')
-      <input type="hidden" id="deceased_hidden" name="deceased_name" />
+      <input type="hidden" id="deceased_hidden" name="deceased_hidden" />
       <input type="hidden" id="id_card_hidden" name="id_card_number"/>
       <button class="shadow bg-gray-700 hover:bg-gray-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
         Mentés
@@ -358,6 +363,7 @@
   <script>
     function onDecasedChange(e){
       document.getElementById('deceased_hidden').value = e.value;
+      document.getElementById('deceased_hidden_urnkia').value = e.value;
     }
 
     function onIdcardChange(e){

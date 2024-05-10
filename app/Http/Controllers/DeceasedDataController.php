@@ -79,7 +79,7 @@ class DeceasedDataController extends Controller
         // ->format('A4')
         // ->save('pdf/{0}.pdf',$name);
         
-        return redirect()->route("customer.index")->with("success", "CheckType created successfully.");
+        return "ok";
     }
 
     /**
