@@ -79,7 +79,7 @@ class DeceasedDataController extends Controller
         // ->format('A4')
         // ->save('pdf/{0}.pdf',$name);
         
-        return "ok";
+        return response()->json(['success' => true, 'message' => 'deceased mentve']);
     }
 
     /**
