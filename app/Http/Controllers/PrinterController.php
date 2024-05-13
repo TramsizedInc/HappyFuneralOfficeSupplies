@@ -185,6 +185,6 @@ class PrinterController extends Controller
         }
         
 
-        return view('printer-chart', compact('types', 'toners', 'drumUnits', 'months'));
+        return view('printer-chart', ['compressed_data' => compact('types', 'toners', 'drumUnits', 'months')]);
     }
 }

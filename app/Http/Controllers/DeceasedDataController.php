@@ -66,6 +66,7 @@ class DeceasedDataController extends Controller
         
         $model = new Deceased_data();
         $model->fill($validatedData);
+
         $model->save();
 
         $model->updated_at = now();

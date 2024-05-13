@@ -127,7 +127,7 @@
   
             <div class="md:flex">
               <div class="md:w-1/6">
-                <input class="form-input block w-full focus:bg-white" id="born_name" name="born_name" type="text" value="" placeholder="Születési neve">
+                <input class="form-input block w-full focus:bg-white" id="born_name" name="birth_name" type="text" value="" placeholder="Születési neve">
                 </div>
                 <div class="md:w-1/6">
                     <input class="form-input block w-full focus:bg-white" id="zip_code" name="zip_code" type="text" value="" placeholder="Irányítószám"/>
@@ -188,7 +188,7 @@
       <div class="md:flex md:items-center">
         <div class="md:w-1/3"></div>
         <div class="md:w-2/3">
-          <button class="shadow bg-gray-700 hover:bg-gray-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
+          <button class="shadow bg-gray-700 hover:bg-gray-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
             Kész
           </button>
         </div>
@@ -321,7 +321,7 @@
           </div>
           <div class="md:w-1/4">
               <input class="form-input block w-full focus:bg-white" id="name_of_deceased" name="name_of_deceased" type="text" placeholder="név" required>
-            </div>
+          </div>
 
         </div>
   
