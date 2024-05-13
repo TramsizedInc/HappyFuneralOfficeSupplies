@@ -105,44 +105,43 @@
                 </div>
 
             </div>
-            
-            <div>
-                <!-- Waste no more time arguing what a good man should be, be one. - Marcus Aurelius -->
-                <div class="row">
-                    <div class="col-md-3">
-                        <label for="type">Type</label>
-                        <select class="form-control" id="printer">
-                            @foreach($printers as $printer){
-                            <option value="{{$printer->id}}">{{$printer->brand}}</option>
-                            }
-                            @endforeach
-                        </select>
-                    </div>
-                    <div class="col-md-3">
-                        <label for="From">From</label>
-                        <input type="date" id="from" name="from" class=" from-control" />
-                    </div>
-                    <div class="col-md-3">
-                        <label for="To">To</label>
-                        <input type="date" id="to" name="to" class=" from-control" />
-                    </div>
-                    <div class="col-md-3">
-                        <button type="button " class="btn btn-success" onclick="getData()">Filter</button>
-                    </div>
-                </div>
-            </div>
-            <div class="card">
-                <div class="card-body">
-                    <div class="md:col-span-5">
-                        <canvas id="printerChart" width="800" height="400">
-                        </canvas>
-                    </div>
-                </div>
-            </div>
+
 
         </form>
+        <div>
+            <!-- Waste no more time arguing what a good man should be, be one. - Marcus Aurelius -->
+            <div class="row">
+                <div class="col-md-3">
+                    <select name="type" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" id="typeSelect" data-te-select-init>
+                        @foreach(\App\Models\PrinterType::all() as $printer)
+                        <option value="{{$printer->name}}">{{$printer->name}}</option>
+                        @endforeach
+                    </select>
+                    <label data-te-select-label-ref for="type">Típus</label>
+                </div>
+                <div class="col-md-3">
+                    <label for="From">From</label>
+                    <input type="date" id="from" name="from" class=" from-control" />
+                </div>
+                <div class="col-md-3">
+                    <label for="To">To</label>
+                    <input type="date" id="to" name="to" class=" from-control" />
+                </div>
+                <div class="col-md-3">
+                    <button type="button " class="btn btn-success" onclick="getData()">Filter</button>
+                </div>
+            </div>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <div class="md:col-span-5">
+                    <canvas id="printerChart" width="800" height="400">
+                    </canvas>
+                </div>
+            </div>
+        </div>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <script>
         function donerchange(element) {
             var val = element.value;
@@ -158,47 +157,48 @@
         let chart;
 
         function getData() {
-            $.ajax({
-                url: 'printers/getPrinterData',
-                method: 'GET',
-                dataType: 'json',
-                data: {
-                    'printer': $("#printer").val(),
-                    'from': $("#from").val(),
-                    'to': $("#to").val(),
-                },
+            // $.ajax({
+            //     url: 'printers/getPrinterData',
+            //     method: 'GET',
+            //     dataType: 'json',
+            //     data: {
+            //         'printer': $("#printer").val(),
+            //         'from': $("#from").val(),
+            //         'to': $("#to").val(),
+            //     },
 
-                success: function(data) {
-                    const printer = data.printer;
-                    const printerData = data.printerData;
-
-                    const ctx = document.getElementById('printerChart').getContext('2d');
-                    if (chart) {
-                        chart.destroy();
-                    }
-
-                    chart = new Chart(ctx, {
-                        type: 'line',
+            var ctx = document.getElementById('printerChart').getContext('2d');
+            var myChart = new Chart(ctx, {
+                    type: 'line',
+                    dataset: [{
+                        label: 'Toner Type',
                         data: {
-                            labels: ['Tonner típus', 'Dobegység'],
-                            datasets: [{
-                                label: `Nyomtató statisztika for ${printer}`,
-                                data: [printerData.type_of_toner, printerData.type_of_drumm_unit],
-                                backgroundColor: ['rgb(170, 221, 204)', 'rgb(91, 69, 84)'],
-                                borderWidth: 1,
-                            }]
+                            !!json_encode($toners) !!
                         },
-                        options: {
-                            resposive: true,
-                            mainAspectratio: false
-                        }
-
-                    })
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    }
                 },
-                error: function(error) {
-                    console.error(error);
+                options: {
+                    scales: {
+                        yAxes: [{
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }]
+                    },
+                    title: {
+                        display: true,
+                        text: {
+                            !!json_encode($title) !!
+                        } // Use the dynamic title here
+                    },
+                    legend: {
+                        display: true
+                    }
                 }
-            })
+            });
         }
     </script>
 </x-app-layout>

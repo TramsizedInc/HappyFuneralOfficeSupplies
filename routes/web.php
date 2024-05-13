@@ -36,7 +36,7 @@ Route::redirect('/robots.txt', '/dashboard', 301)->middleware(['auth', 'verified
 Route::middleware('auth')->group(function () {
     Route::resource('/printers', App\Http\Controllers\PrinterController::class);
     Route::get('/printers/updateUtilities/{printer}',[PrinterController::class,'updateUtilities'])->name('printers.updateUtilities');
-    Route::get('/printers/getPrinterData', [PrinterController::class,'getPrinterData']);
+    Route::get('/printers/getPrinterData', 'PrinterController@getPrinterData');
     Route::resource('/brands', App\Http\Controllers\BrandController::class);
     Route::resource('/checkTypes', App\Http\Controllers\CheckTypeController::class);
     Route::resource('/checkModels', App\Http\Controllers\CheckModelController::class);
@@ -55,7 +55,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/schedule/{id}/resize', [App\Http\Controllers\ScheduleController::class, 'resize']);
     Route::get('/events/search', [App\Http\Controllers\ScheduleController::class, 'search']);
     Route::view('add-schedule', 'schedule.add');
-   
+ 
     Route::post('create-schedule', [App\Http\Controllers\ScheduleController::class, 'create']);
 });
 

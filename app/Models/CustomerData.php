@@ -16,6 +16,8 @@ class CustomerData extends Model
         'born_name',
         'zip_code',
         'street',
+        'city',
+        'nation',
         'house_number',
         'mother_name',
         'birth_place_with_birth_day',

@@ -11,7 +11,7 @@ class Storeurn_bag__typeRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**

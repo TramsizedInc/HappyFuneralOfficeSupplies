@@ -11,7 +11,7 @@
           <div id='section2' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
               <h2 class="font-sans font-bold break-normal text-gray-700 px-2 pb-8 text-xl">Megrendelő adatai</h2>
       
-        <form action="{{ route('customer.store') }}" method="POST" enctype="multipart/form-data">
+        <form id="customer_form" action="{{ route('customer.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
         <div class="form md:flex">
           <div class="md:w-1/6">
@@ -21,7 +21,7 @@
               <input class="form-input block w-full focus:bg-white" id="nation" name="nation" type="text" value="" placeholder="Ország"/>
             </div>
             <div class="relative md:w-1/6">
-              <input type="text" id="phone-input" aria-describedby="helper-text-explanation" class="ps-10  form-input block w-full focus:bg-white" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="Telenfonszám" required />
+              <input type="text" id="phone-input" aria-describedby="helper-text-explanation" class="ps-10  form-input block w-full focus:bg-white" name="mobile_number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="Telenfonszám" required />
             </div>
             <div class="md:w-1/6">
               <input class="form-input block w-full focus:bg-white" id="id_card_number" onchange="onIdcardChange(this)" name="id_card_number" type="text" placeholder="Személyi igazolvány száma" required/>
@@ -39,7 +39,7 @@
                   <input class="form-input block w-full focus:bg-white" id="zip_code" name="zip_code" type="text" value="" placeholder="Irányítószám"/>
               </div>
               <div class="md:w-1/6">
-                  <input type="email" id="email" class="form-input block w-full focus:bg-white" placeholder="Email" required />
+                  <input type="email" id="email" name="email" class="form-input block w-full focus:bg-white" placeholder="Email" required />
               </div>
               <div class="md:w-1/6">
                 <input datetimepicker class="form-input block w-full focus:bg-white date-flatpickr" id="id_card_expire_date" name="id_card_expire_date"type="text" placeholder="Szig. érvényességi ideje" />
@@ -66,7 +66,7 @@
   
         <div class="md:flex">
           <div class="md:w-1/6">
-            <input class="form-input block w-full focus:bg-white" id="born_place" name="born_place" type="text" value="" placeholder="Születési helye"/>
+            <input class="form-input block w-full focus:bg-white" id="born_place" name="birth_place" type="text" value="" placeholder="Születési helye"/>
           </div>
           <div class="md:w-1/6">
             <input class="form-input block w-full focus:bg-white" id="street" name="street" type="text" value="" placeholder="Utca"/>
@@ -83,7 +83,7 @@
         <div class="md:flex">
           
           <div class="md:w-1/6">
-            <input datetimepicker class="form-input block w-full focus:bg-white date-flatpickr" type="text" placeholder="Születési ideje" />
+            <input datetimepicker class="form-input block w-full focus:bg-white date-flatpickr" name="birth_day" id="birth_day" type="text" placeholder="Születési ideje" />
           </div>
           <div class="md:w-1/6">
             <input class="form-input block w-full focus:bg-white" id="house_number" name="house_number" type="text" value="" placeholder="Házszám">
@@ -94,7 +94,7 @@
         <div class="md:flex md:items-center">
           <div class="md:w-1/3"></div>
           <div class="md:w-2/3">
-            <button class="shadow bg-gray-700 hover:bg-gray-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
+            <button class="shadow bg-gray-700 hover:bg-gray-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
               Kész
             </button>
           </div>
@@ -108,7 +108,7 @@
         <div id='section2' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
           <h2 class="font-sans font-bold break-normal text-gray-700 px-2 pb-8 text-xl">Elhunyt adatai</h2>
   
-          <form action="{{ route('deceaseds.store') }}" method="POST" enctype="multipart/form-data">
+          <form id="deceased_form" action="{{ route('deceaseds.store') }}" method="POST" enctype="multipart/form-data">
             @csrf
             <div class="md:flex">
               <div class="md:w-1/6">
@@ -188,7 +188,7 @@
       <div class="md:flex md:items-center">
         <div class="md:w-1/3"></div>
         <div class="md:w-2/3">
-          <button class="shadow bg-gray-700 hover:bg-gray-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="submit">
+          <button class="shadow bg-gray-700 hover:bg-gray-500 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded" type="button">
             Kész
           </button>
         </div>
@@ -202,7 +202,7 @@
     <div id='section3' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
       <h2 class="font-sans font-bold break-normal text-gray-700 px-2 pb-8 text-xl">Anyakönyvi adatok</h2>
   
-      <form action="{{ route('birth_certificate.store') }}" method="POST" enctype="multipart/form-data">
+      <form id="birthcert_form" action="{{ route('birth_certificate.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="md:flex">
           <div class="md:w-1/4">
@@ -275,7 +275,7 @@
     <div id='section4' class="p-8 mt-6 lg:mt-0 rounded shadow bg-white">
       <h2 class="font-sans font-bold break-normal text-gray-700 px-2 pb-8 text-xl">Hűtés és UrnKIA adatok</h2>
   
-      <form action="{{ route('urn_k_i_a_data.store') }}" method="POST" enctype="multipart/form-data">
+      <form id="urnkia_form" action="{{ route('urn_k_i_a_data.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
           <!-- <input type="hidden" id="deceased_hidden_urnkia" name="deceased_name" /> -->
           <div class="md:flex">
@@ -348,7 +348,7 @@
   </section>
   <!--/Section container-->
   <div class="w-full lg:w-5/5 items-center text-center py-5">
-    <form method="POST" action="{{route('orderdata.store')}}">
+    <form id="orderdata_form" method="POST" action="{{route('orderdata.store')}}">
       @csrf
       @method('POST')
       <input type="hidden" id="deceased_hidden" name="deceased_hidden" />
@@ -361,7 +361,7 @@
   </div>
   
   <script>
-    function onDecasedChange(e){
+    function onDeceasedChange(e){
       document.getElementById('deceased_hidden').value = e.value;
       document.getElementById('deceased_hidden_urnkia').value = e.value;
     }
@@ -369,24 +369,43 @@
     function onIdcardChange(e){
       document.getElementById('id_card_hidden').value = e.value;
     }
-    function submitFormPost(e){
-      $('form').on('submit', function(e) {
-    e.preventDefault();
-    var form = $(this);
-    var url = form.attr('action');
+    // function submitFormPost(e){
+    //   $('form').on('submit', function(e) {
+    //   e.preventDefault();
+    //   var form = $(this);
+    //   var url = form.attr('action');
 
-    $.ajax({
-        type: "POST",
-        url: url,
-        data: form.serialize(),
-        success: function(data){
-          if(response.success) {
-            toastr.info(response.message);
-          }
-        }
+    //   $.ajax({
+    //       type: "POST",
+    //       url: url,
+    //       data: form.serialize(),
+    //       success: function(data){
+    //         if(response.success) {
+    //           toastr.info(response.message);
+    //         }
+    //       }
+    //   });});
+    // }
+    $(document).ready(function() {
+    // Assuming each form has a unique ID like 'form1', 'form2', etc.
+    $('#deceased_form, #birthcert_form, #urnkia_form, #customer_form').on('submit', function(e) {
+        e.preventDefault(); // Prevent the form from submitting via the browser.
+        var form = $(this);
+        var url = form.attr('action');
+
+        $.ajax({
+            type: "POST",
+            url: url,
+            data: form.serialize(), // Serialize form data for AJAX submission
+            success: function(data) {
+                if (data.success) {
+                    toastr.info(data.message);
+                    // Optionally, update the form or page content based on the response
+                }
+            }
+        });
     });
-});
-    }
+    });
   </script>
   </x-app-layout>
   

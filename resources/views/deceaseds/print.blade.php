@@ -4,7 +4,7 @@
       <!--Section container-->
     
       <section class="w-full lg:w-2/5 mx-auto grid">
-
+            <!--Form1:Elhunyt felvétel:  -->
         <div>
           <div class="pl-24 pt-8 pb-8 pr-8 mt-6 lg:mt-0 leading-normal rounded shadow bg-white">
             <h1 class="flex items-center font-sans font-bold break-normal text-gray-700 pb-8 px-2 text-xl mt-12 lg:mt-0 md:text-2xl mb-2">
@@ -135,6 +135,8 @@
             </div>
           </div>
           </form>
+
+          <!--Form2:Elhunyt Adatai:  -->
           <h2 class="font-sans font-bold break-normal text-gray-700 px-2 pb-8 text-xl pt-8">Elhunyt adatai</h2>
     
             <form action="{{ route('deceaseds.store') }}" method="POST" enctype="multipart/form-data">
@@ -271,6 +273,9 @@
             </div>
             </div>
         </form>
+
+        <!--Form3:Anyakönyvi adatok:  -->
+
         <h2 class="font-sans font-bold break-normal text-gray-700 px-2 pb-8 pt-8 text-xl">Anyakönyvi adatok</h2>
         
         <form action="{{ route('birth_certificate.store') }}" method="POST" enctype="multipart/form-data">

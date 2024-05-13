@@ -19,7 +19,7 @@ class PrinterController extends Controller
     public function index()
     {
         $printers = Printer::all();
-        return view('printers.index',['printers' => $printers]);
+        return view('printers.index', ['printers' => $printers]);
     }
 
     /**
@@ -31,7 +31,7 @@ class PrinterController extends Controller
             abort(403);
         }
         $printers = Printer::all();
-        return view('printers.create',['printers' => $printers]);
+        return view('printers.create', ['printers' => $printers]);
     }
 
     /**
@@ -41,19 +41,34 @@ class PrinterController extends Controller
     {
         // if (Auth::user()->cannot('create', Printer::class)) {
         //     abort(403);
-        // }
-        $request->picture->storeAs(
-            'picture',
-            'printer_picture' . $request->brand . '_' . $request->type . '.jpg',
-            'public'
-        );
-        $file_name = 'printer_picture' . $request->brand . '_' . $request->type . '.jpg';
+        //  }
+        // $request->picture->storeAs(
+        //     'picture',
+        //     'printer_picture' . $request->brand . '_' . $request->type . '.jpg',
+        //     'public'
+        // );
+        // $file_name = 'printer_picture' . $request->brand . '_' . $request->type . '.jpg';
 
-        $printer = Printer::create($request->all());
-        $printer->picture = $file_name;
-        $printer->updated_at = now();
-        $printer->created_at = now();
-        $printer->update();
+        // $printer = Printer::create($request->all());
+        // $printer->picture = $file_name;
+        // $printer->updated_at = now();
+        // $printer->created_at = now();
+        // $printer->update();
+
+        $printer = new  Printer(
+            [
+                'brand' => $request->brand,
+                'type' => $request->type,
+                'picture' => $request->picture,
+                'documentation' => $request->documentation,
+                'type_of_toner' => $request->toner_percent,
+                'type_of_drumm_unit' => $request->drumm_percent,
+                'updated_at' => now(),
+                'created_at' => now(),
+
+            ]
+        );
+        $printer->save();
 
         return redirect()->route("printers.index")->with("success", "Printer created successfully.");
     }
@@ -87,24 +102,25 @@ class PrinterController extends Controller
     {
         if (
             !(Auth::user()->cannot('updateUtilities', Printer::class)) &&
-            Auth::user()->cannot('update',Printer::class)
+            Auth::user()->cannot('update', Printer::class)
         ) {
             $printer->drumm_percent = $request->drumm_percent;
             $printer->toner_percent = $request->toner_percent;
             $printer->updated_at = now();
             $printer->update();
             return redirect()->route("printers.index")->with("success", "Printer updated successfully.");
-        } else if(Auth::user()->cannot('update',Printer::class)){
+        } else if (Auth::user()->cannot('update', Printer::class)) {
             abort(403);
         }
         $printer->update($request->all());
-        if($request->picture != null){
+        if ($request->picture != null) {
             $file_name = 'printer_picture' . $request->brand . '_' . $request->type . '.jpg';
             $printer->picture = $file_name;
             $request->picture->storeAs(
                 'picture',
                 'printer_picture' . $request->brand . '_' . $request->type . '.jpg',
-                'public');
+                'public'
+            );
         }
         $printer->updated_at = now();
         $printer->update();
@@ -116,11 +132,12 @@ class PrinterController extends Controller
      * Remove the specified resource from storage.
      */
 
-    public function updateUtilities(Printer $printer){
+    public function updateUtilities(Printer $printer)
+    {
         if (Auth::user()->cannot('updateUtilities', Printer::class)) {
             abort(403);
         }
-        return view('printers.updateUtilities',['printer' => $printer]);
+        return view('printers.updateUtilities', ['printer' => $printer]);
     }
 
     public function destroy(Printer $printer)
@@ -138,28 +155,36 @@ class PrinterController extends Controller
             abort(403);
         }
         $printers = Printer::withTrashed()->get();
-        return view('printers.show_deleted',['printers' => $printers]);
+        return view('printers.show_deleted', ['printers' => $printers]);
     }
 
     public function getPrinterData(Request $request)
-{ 
-    $printerData = Printer::where('printer_id',$request->printer)
+    {
+        $printers = Printer::select('type', 'type_of_toner', 'type_of_drumm_unit', 'created_at')
+                           ->get()
+                           ->groupBy(function($date) {
+                               return \Carbon\Carbon::parse($date->created_at)->format('m');
+                           });
+                           
+        $types = [];
+        $toners = [];
+        $drumUnits = [];
+        $months = [];
 
-    ->when($request->from,function($query)use($request){
-        return $query->whereDate('date','>=',$request->from);
+        foreach ($printers as $month => $data) {
+            $types[] = $data->pluck('type')->avg();
+            $tonerData = $data->pluck('type_of_toner')->reject(function ($value) {
+                return is_null($value) || $value === 0;
+            });
+            $toners[] = $tonerData->isNotEmpty() ? $tonerData->avg() : 0; // Set default value to 0
+            $drumUnitData = $data->pluck('type_of_drumm_unit')->reject(function ($value) {
+                return is_null($value) || $value === 0;
+            });
+            $drumUnits[] = $drumUnitData->isNotEmpty() ? $drumUnitData->avg() : 0; // Set default value to 0
+            $months[] = Carbon::parse($data[0]->created_at)->format('M');
+        }
+        
 
-    })
-    ->when($request->to,function($query) use ($request){
-        return $query->whereDate('date','<=',$request->to);
-    })
-    ->selectRaw('brand, type, type_of_toner,type_of_drumm_unit, GROUP BY MONTh(created_at) as period')
-    ->first();
-    
-
-    $printer = Printer::where('id',$request->printer)->first()->brand; 
-    if($printerData == null || $printer == null){
-        return response(['printer' => 'printer' , 'printerData' => ['brand' => '0', 'type' => '0', 'type_of_toner' => '0', 'period' => Carbon::now()->month]]);
-    } 
-    return response()->json(['printer'=>$printer,'printerData'=>$printerData]);
-}
+        return view('printer-chart', compact('types', 'toners', 'drumUnits', 'months'));
+    }
 }

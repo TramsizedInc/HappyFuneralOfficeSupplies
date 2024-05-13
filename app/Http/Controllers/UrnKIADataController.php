@@ -38,6 +38,7 @@ class UrnKIADataController extends Controller
     public function store(StoreUrn_k_i_a_dataRequest $request)
     {
         $validatedData = $request->validate([
+            'name_of_deceased' => 'string',
             'exhibition_date' => 'string',
             'hv_done_status_date' => 'string',
             'hv_have_status_date' => 'string',
@@ -52,13 +53,16 @@ class UrnKIADataController extends Controller
             'hour_and_minute_of_funeral' => 'string',
         ]);
 
-        $Urn_k_i_a_data = new Urn_k_i_a_data();
-        $Urn_k_i_a_data->fill($validatedData);
+        // $Urn_k_i_a_data->fill($validatedData);
+        // $Urn_k_i_a_data->save();
+        $Urn_k_i_a_data = Urn_k_i_a_data::create($validatedData);
+        // $Urn_k_i_a_data->settable = "_urn_k_i_a_datas";
+        // $Urn_k_i_a_data->setTable("_urn_k_i_a_datas");
+        // dd($Urn_k_i_a_data);
         $Urn_k_i_a_data->save();
-
-        $Urn_k_i_a_data->updated_at = now();
-        $Urn_k_i_a_data->created_at = now();
-        $Urn_k_i_a_data->update();
+        // $Urn_k_i_a_data->updated_at = now();
+        // $Urn_k_i_a_data->created_at = now();
+        // $Urn_k_i_a_data->update();
 
         // return "ok";
         // return redirect()->route("Urn_k_i_a_datas.index")->with("success", "Urn_k_i_a_data created successfully.");

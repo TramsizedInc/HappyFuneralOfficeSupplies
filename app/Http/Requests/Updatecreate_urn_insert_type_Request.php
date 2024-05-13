@@ -11,7 +11,7 @@ class Updatecreate_urn_insert_type_Request extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
