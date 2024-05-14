@@ -43,7 +43,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('/printerTypes', App\Http\Controllers\PrinterTypeController::class);
     Route::resource('/offices',App\Http\Controllers\OfficeController::class);
     Route::resource('/deceaseds',App\Http\Controllers\DeceasedDataController::class);
-    Route::get('/deceaseds/print', [App\Http\Controllers\DeceasedDataController::class, 'print'])->name('deceaseds.print'); // is needed for easier printing
+    Route::get('/deceaseds/print/{id}', [App\Http\Controllers\DeceasedDataController::class, 'print'])->name('deceaseds.print'); // is needed for easier printing
     Route::resource('/customer',App\Http\Controllers\CustomerDataController::class);
     Route::resource('/orderdata',App\Http\Controllers\OrderDataController::class);
     Route::resource('/birth_certificate',App\Http\Controllers\BirthCertificateController::class);
@@ -55,7 +55,7 @@ Route::middleware('auth')->group(function () {
     Route::post('/schedule/{id}/resize', [App\Http\Controllers\ScheduleController::class, 'resize']);
     Route::get('/events/search', [App\Http\Controllers\ScheduleController::class, 'search']);
     Route::view('add-schedule', 'schedule.add');
- 
+    
     Route::post('create-schedule', [App\Http\Controllers\ScheduleController::class, 'create']);
 });
 

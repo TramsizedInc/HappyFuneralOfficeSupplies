@@ -12,9 +12,9 @@ class OrderData extends Model
     use SoftDeletes;
     
     protected $fillable = [
-        'customer_id',
-        'deceased_id',
-        'urn_insert_id',
-        'urn_kiad_id',
+        'customer_data_id',
+        'deceased_data_id',
+        'birth_certificate_id',
+        '_urn_k_i_a_datas_id',
     ];
 }

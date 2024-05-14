@@ -41,12 +41,17 @@ class BirthCertificateController extends Controller
             'deceased_birth_certificate_number' => 'required|string',
             'wedding_birth_certificate_number' => 'required|string',
             'wedding_date_and_place' => 'nullable|string',
-            'divorced_or_not' => 'required|boolean',
+            'divorced_or_not' => 'required',
             'dead_husbands_count' => 'required|integer',
             'legally_binding_autopsy_number' => 'required|string',
             'selfemployee_tax_number' => 'nullable|string',
+            'name_of_person' =>'string'
         ]);
+        $data['divorced_or_not'] = $this->get_boolean_value($data['divorced_or_not']); 
+        // dd($data);
         $model = BirthCertificate::create($data);
+        // dd($model->toArray());
+        return response()->json(['success' => true, 'message' => 'bc stored']);
     }
 
     /**
@@ -80,5 +85,17 @@ class BirthCertificateController extends Controller
     {
         //
         $birthCertificate->delete();
+    }
+    private function get_boolean_value($i){
+        if($i == ''){
+            return false;
+        }
+        $falses = ['nem', 'no', 'not', '0', 'hamis', 'soha'];
+        foreach ($falses as $f){
+            if($i == $f){
+                return false;
+            }
+        }
+        return true;
     }
 }

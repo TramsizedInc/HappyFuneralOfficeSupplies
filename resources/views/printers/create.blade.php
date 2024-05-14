@@ -128,7 +128,7 @@
                     <input type="date" id="to" name="to" class=" from-control" />
                 </div>
                 <div class="col-md-3">
-                    <button type="button " class="btn btn-success" onclick="getData()">Filter</button>
+                    <button type="button " class="btn btn-success" id="filter" >Filter</button>
                 </div>
             </div>
         </div>
@@ -153,33 +153,33 @@
             document.getElementById('drummchange').innerHTML = val + "%";
         }
     </script>
+   
     <script>
         let chart;
 
-        function getData() {
+        $('#filter').click(function getData() {
             var ctx = document.getElementById('printerChart').getContext('2d');
 
 
             var data = {
-                labels: [json_encode($months)],
+                labels: <?php json_encode($compressed_data['month']) ?>,
                 datasets: [{
                         label: 'Printer Type',
-                        // data: [json_encode($types)],
-                        data: <?php json_encode($types); ?>,
+                        data: <?php json_encode($compressed_data['types']); ?>,
                         backgroundColor: 'rgba(255, 99, 132, 0.2)',
                         borderColor: 'rgba(255, 99, 132, 1)',
                         borderWidth: 1
                     },
                     {
                         label: 'Toner Type',
-                        data: [json_encode($toners)],
+                        data: <?php json_encode($compressed_data['toners']) ?>,
                         backgroundColor: 'rgba(54, 162, 235, 0.2)',
                         borderColor: 'rgba(54, 162, 235, 1)',
                         borderWidth: 1
                     },
                     {
                         label: 'Drum Unit Type',
-                        data: [json_encode($drumUnits)],
+                        data: <?php json_encode($compressed_data['drumUnits']) ?>,
                         backgroundColor: 'rgba(75, 192, 192, 0.2)',
                         borderColor: 'rgba(75, 192, 192, 1)',
                         borderWidth: 1
@@ -191,6 +191,6 @@
                 data: data,
             };
             var myChart = new Chart(ctx).Bar(data);
-        };
+        });
     </script>
 </x-app-layout>

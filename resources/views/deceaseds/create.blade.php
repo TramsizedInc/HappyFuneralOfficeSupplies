@@ -247,6 +247,9 @@
           <div class="md:w-1/6">
             <input class="form-input block w-full focus:bg-white" id="deceased_birth_certificate_number" name="deceased_birth_certificate_number" type="text" value="" placeholder="Elh. Szül. AK. száma">
           </div>
+          <div class="md:w-1/4">
+            <input class="form-input block w-full focus:bg-white" id="dead_husbands_count" name="dead_husbands_count" type="number" value="" placeholder="(Volt) Házastársak száma">
+          </div>
 
         </div>
         <div class="md:flex">
@@ -254,8 +257,11 @@
             <input class="form-input block w-full focus:bg-white" id="degree_of_relative" name="degree_of_relative" type="text" value="" placeholder="Rokonsági fok">
           </div>          
           <div class="md:w-1/4">
+            <input class="form-input block w-full focus:bg-white" id="divorced_or_not" name="divorced_or_not" type="text" value="" placeholder="Házas?">
           </div>
-
+          <div class="md:w-1/4">
+            <input class="form-input block w-full focus:bg-white" id="deceased_hidden_bc" name="name_of_person" type="hidden">
+          </div>
     
         </div>
       <div class="md:flex md:items-center">
@@ -363,7 +369,8 @@
   <script>
     function onDeceasedChange(e){
       document.getElementById('deceased_hidden').value = e.value;
-      document.getElementById('deceased_hidden_urnkia').value = e.value;
+      // document.getElementById('deceased_hidden_urnkia').value = e.value;
+      document.getElementById('deceased_hidden_bc').value = e.value;
     }
 
     function onIdcardChange(e){

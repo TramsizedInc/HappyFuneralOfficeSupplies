@@ -13,6 +13,8 @@ use App\Models\BirthCertificate;
 use App\Models\CustomerData;
 use App\Models\Deceased_data;
 use App\Models\Urn_k_i_a_data;
+use Illuminate\Support\Facades\Log;
+
 
 class OrderDataController extends Controller
 {
@@ -40,30 +42,33 @@ class OrderDataController extends Controller
         //
         $req = $request->all();
         // dd($req);
+        $req['deceased_name'] = $req['deceased_hidden'];
         $customer = CustomerData::select('id')->where('id_card_number', '=', $req['id_card_number'])->get();
         $deceased = Deceased_data::select('id')->where('deceased_name', '=', $req['deceased_name'])->orderby('created_at', 'desc')->limit(1)->get();
         $birth_c = BirthCertificate::select('id')->where('name_of_person', '=', $req['deceased_name'])->orderby('created_at', 'desc')->limit(1)->get();
         $urn_kiad = Urn_k_i_a_data::select('id')->where('name_of_deceased', '=', $req['deceased_name'])->orderby('created_at', 'desc')->limit(1)->get();
+        $query = CustomerData::select('id')->where('id_card_number', '=', $req['id_card_number'])->toSql();
+        // dd(Log::info($query)->toArray());
+        // Log::info($query);
+        // dd($customer[0]->id);
         $unValidatedData = [
-            $customer,
-            $deceased,
-            $urn_kiad,
-            $birth_c,
+            'customer_data_id' => $customer[0]->id,
+            'deceased_data_id' => $deceased[0]->id,
+            '_urn_k_i_a_datas_id' => $urn_kiad[0]->id,
+            'birth_certificate_id' => $birth_c[0]->id,
         ];
-
+        // dd($unValidatedData);
+        // dd(gettype($customer->items));
         $model = new OrderData();
         $model->fill($unValidatedData);
+        // dd()
         $model->save();
 
         $model->updated_at = now();
         $model->created_at = now();
         $model->update();
-
     
-        // $name = $model->deceased_name;
-
-        return redirect()->route("fullcalendar")->with("success", "CheckType created successfully.");
-        // return 'ok';
+        return response()->json(['success' => true, 'message' => 'bc stored']);
     }
 
     /**

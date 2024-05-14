@@ -31,6 +31,7 @@ class Deceased_data extends Model
         'driver_licence_number',
         'deceased_weight',
         'weight',
+        // 'customer_id_number'
     ];
 
 }

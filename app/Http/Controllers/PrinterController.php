@@ -158,19 +158,19 @@ class PrinterController extends Controller
         return view('printers.show_deleted', ['printers' => $printers]);
     }
 
-    public function getPrinterData(Request $request)
+    public function getPrinterData()
     {
         $printers = Printer::select('type', 'type_of_toner', 'type_of_drumm_unit', 'created_at')
-                           ->get()
-                           ->groupBy(function($date) {
-                               return \Carbon\Carbon::parse($date->created_at)->format('m');
-                           });
-                           
+            ->get()
+            ->groupBy(function ($date) {
+                return Carbon::parse($date->created_at)->format('m');
+            });
+
         $types = [];
         $toners = [];
         $drumUnits = [];
         $months = [];
-
+        
         foreach ($printers as $month => $data) {
             $types[] = $data->pluck('type')->avg();
             $tonerData = $data->pluck('type_of_toner')->reject(function ($value) {
@@ -183,8 +183,9 @@ class PrinterController extends Controller
             $drumUnits[] = $drumUnitData->isNotEmpty() ? $drumUnitData->avg() : 0; // Set default value to 0
             $months[] = Carbon::parse($data[0]->created_at)->format('M');
         }
-        
+        dd();
+        $compressed_data = compact('types', 'toners', 'drumUnits', 'months');
 
-        return view('printer-chart', ['compressed_data' => compact('types', 'toners', 'drumUnits', 'months')]);
+        return view('printers.create',['compressed_data'=> $compressed_data]);
     }
 }
