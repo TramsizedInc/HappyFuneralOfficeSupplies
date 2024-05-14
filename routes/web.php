@@ -35,8 +35,8 @@ Route::redirect('/robots.txt', '/dashboard', 301)->middleware(['auth', 'verified
 
 Route::middleware('auth')->group(function () {
     Route::resource('/printers', App\Http\Controllers\PrinterController::class);
-    Route::get('/printers/updateUtilities/{printer}',[PrinterController::class,'updateUtilities'])->name('printers.updateUtilities');
-    Route::get('/printers/getPrinterData', 'PrinterController@getPrinterData');
+    Route::get('/printers/updateUtilities/{printer}',[App\Http\Controllers\PrinterController::class,'updateUtilities'])->name('printers.updateUtilities');
+    Route::get('/printers/getPrinterData', [App\Http\Controllers\PrinterController::class,'getPrinterData']);
     Route::resource('/brands', App\Http\Controllers\BrandController::class);
     Route::resource('/checkTypes', App\Http\Controllers\CheckTypeController::class);
     Route::resource('/checkModels', App\Http\Controllers\CheckModelController::class);
