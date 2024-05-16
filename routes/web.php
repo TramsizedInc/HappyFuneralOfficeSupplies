@@ -36,7 +36,7 @@ Route::redirect('/robots.txt', '/dashboard', 301)->middleware(['auth', 'verified
 Route::middleware('auth')->group(function () {
     Route::resource('/printers', App\Http\Controllers\PrinterController::class);
     Route::get('/printers/updateUtilities/{printer}',[App\Http\Controllers\PrinterController::class,'updateUtilities'])->name('printers.updateUtilities');
-    Route::get('/printers/getPrinterData', [App\Http\Controllers\PrinterController::class,'getPrinterData']);
+    Route::get('/statistics/printer', [App\Http\Controllers\PrinterController::class,'getPrinterData'])->name('getPrinterData');
     Route::resource('/brands', App\Http\Controllers\BrandController::class);
     Route::resource('/checkTypes', App\Http\Controllers\CheckTypeController::class);
     Route::resource('/checkModels', App\Http\Controllers\CheckModelController::class);
@@ -48,7 +48,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('/orderdata',App\Http\Controllers\OrderDataController::class);
     Route::resource('/birth_certificate',App\Http\Controllers\BirthCertificateController::class);
     Route::resource('/urn_k_i_a_data',App\Http\Controllers\UrnKIADataController::class);
-    Route::get('fullcalendar', [App\Http\Controllers\ScheduleController::class, 'index']);
+    Route::get('fullcalendar', [App\Http\Controllers\ScheduleController::class, 'index'])->name('fullcalendar');
     Route::get('/events', [App\Http\Controllers\ScheduleController::class, 'getEvents']);
     Route::get('/schedule/delete/{id}', [App\Http\Controllers\ScheduleController::class, 'deleteEvent']);
     Route::post('/schedule/{id}', [App\Http\Controllers\ScheduleController::class, 'update']);

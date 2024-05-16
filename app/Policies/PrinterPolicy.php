@@ -67,7 +67,6 @@ class PrinterPolicy
     {
         $role = Role::all()->find(auth()->user()->role_id);
         switch ($role->slug) {
-
             case 'dev':
             case 'admin':
                 return true;

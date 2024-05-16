@@ -21,7 +21,7 @@
               <input class="form-input block w-full focus:bg-white" id="nation" name="nation" type="text" value="" placeholder="Ország"/>
             </div>
             <div class="relative md:w-1/6">
-              <input type="text" id="phone-input" aria-describedby="helper-text-explanation" class="ps-10  form-input block w-full focus:bg-white" name="mobile_number" pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" placeholder="Telenfonszám" required />
+              <input type="text" id="phone-input" aria-describedby="helper-text-explanation" class="ps-10  form-input block w-full focus:bg-white" name="mobile_number" pattern="[0-9]{4}-[0-9]{3}-[0-9]{4}" placeholder="0630-000-0000" required />
             </div>
             <div class="md:w-1/6">
               <input class="form-input block w-full focus:bg-white" id="id_card_number" onchange="onIdcardChange(this)" name="id_card_number" type="text" placeholder="Személyi igazolvány száma" required/>
@@ -326,7 +326,7 @@
             <input datetimepicker class="form-input block w-full focus:bg-white date-flatpickr" id="hv_exhibition_date" name="hv_exhibition_date" type="text" placeholder="Hv Kiállítás dátuma" />
           </div>
           <div class="md:w-1/4">
-              <input class="form-input block w-full focus:bg-white" id="name_of_deceased" name="name_of_deceased" type="text" placeholder="név" required>
+              <input class="form-input block w-full focus:bg-white" id="deceased_hidden_urnkia" name="name_of_deceased" type="hidden" required>
           </div>
 
         </div>
@@ -369,7 +369,7 @@
   <script>
     function onDeceasedChange(e){
       document.getElementById('deceased_hidden').value = e.value;
-      // document.getElementById('deceased_hidden_urnkia').value = e.value;
+      document.getElementById('deceased_hidden_urnkia').value = e.value;
       document.getElementById('deceased_hidden_bc').value = e.value;
     }
 

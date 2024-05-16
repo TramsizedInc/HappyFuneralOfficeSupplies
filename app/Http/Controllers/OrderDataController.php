@@ -23,7 +23,8 @@ class OrderDataController extends Controller
      */
     public function index()
     {
-        //
+        $orderdatas = OrderData::all();
+        return view('order_data.index',['orderdatas' => $orderdatas]);
     }
 
     /**

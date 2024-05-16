@@ -73,17 +73,14 @@ class PrinterController extends Controller
         return redirect()->route("printers.index")->with("success", "Printer created successfully.");
     }
 
-    /**
-     * Display the specified resource.
-     */
-    /*public function show(Printer $printer)
+        public function show(Printer $printer)
     {
         if (Auth::user()->cannot('viewAny', Printer::class)) {
             abort(403);
         }
         return view('printers.show', ['printer' => $printer]);
     }
-*/
+
     /**
      * Show the form for editing the specified resource.
      */
@@ -186,6 +183,6 @@ class PrinterController extends Controller
         dd();
         $compressed_data = compact('types', 'toners', 'drumUnits', 'months');
 
-        return view('printers.create',['compressed_data'=> $compressed_data]);
+        return view('statistics.printer',['compressed_data'=> $compressed_data]);
     }
 }

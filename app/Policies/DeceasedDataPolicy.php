@@ -18,7 +18,11 @@ class DeceasedDataPolicy
         switch ($role->slug) {
 
             case 'manager':
+                // return Response::allow('Yaaaay!');
+                // need to convert this to response : Response
+                return true;
             case 'dev':
+                return true;
             case 'admin':
                 return true;
             default:
@@ -36,7 +40,9 @@ class DeceasedDataPolicy
         switch ($role->slug) {
 
             case 'manager':
+                return true;
             case 'dev':
+                return true;
             case 'admin':
                 return true;
             default:
@@ -53,6 +59,7 @@ class DeceasedDataPolicy
         switch ($role->slug) {
 
             case 'dev':
+                return true;
             case 'admin':
                 return true;
             default:
@@ -69,6 +76,7 @@ class DeceasedDataPolicy
         switch ($role->slug) {
 
             case 'dev':
+                return true;
             case 'admin':
                 return true;
             default:
@@ -85,6 +93,7 @@ class DeceasedDataPolicy
         switch ($role->slug) {
 
             case 'dev':
+                return true;
             case 'admin':
                 return true;
             default:
@@ -101,6 +110,7 @@ class DeceasedDataPolicy
         switch ($role->slug) {
 
             case 'dev':
+                return true;
             case 'admin':
                 return true;
             default:
@@ -117,6 +127,7 @@ class DeceasedDataPolicy
         switch ($role->slug) {
 
             case 'dev':
+                return true;
             case 'admin':
                 return true;
             default:

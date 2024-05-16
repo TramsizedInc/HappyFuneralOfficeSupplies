@@ -19,8 +19,9 @@ class DeceasedDataController extends Controller
     public function index()
     {
         //
+        $orderdatas = OrderData::all();
         
-        return view('deceaseds.index');
+        return view('deceaseds.index', ['orderdatas' => $orderdatas]);
     }
 
     /**
