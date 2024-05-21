@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('address');
             $table->string('mother_name');
             $table->string('birth_place_with_birth_day')->nullable();
-            $table->integer('mobile_number');
+            $table->bigInteger('mobile_number');
             $table->string('email');
             $table->string('id_card_number'); //example:456456LL
             $table->timestamp('id_card_expire_date');

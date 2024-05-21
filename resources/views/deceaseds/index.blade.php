@@ -1,6 +1,4 @@
 <x-app-layout>
-
-
 <div class="text-start px-6 py-4 whitespace-nowrap text-sm font-medium">
 </div>
 <div class="flex flex-col">

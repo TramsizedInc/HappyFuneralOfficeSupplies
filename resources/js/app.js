@@ -7,6 +7,6 @@ window.Alpine = Alpine;
 Alpine.start();
 
 flatpickr(".date-flatpickr");
-parsley.parsley();
+//parsley.parsley();
 
 initTE({Datetimepicker, Input, Select });

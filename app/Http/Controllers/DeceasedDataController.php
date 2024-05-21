@@ -20,7 +20,7 @@ class DeceasedDataController extends Controller
     {
         //
         $orderdatas = OrderData::all();
-        
+        // dd($orderdatas);
         return view('deceaseds.index', ['orderdatas' => $orderdatas]);
     }
 
@@ -90,7 +90,7 @@ class DeceasedDataController extends Controller
     public function show(Deceased_data $deceased_data)
     {
         //
-        return view('deceaseds.show', ["deceased" => $deceased_data]);
+        // return view('deceaseds.show', ["deceased" => $deceased_data]);
     }
 
     /**
