@@ -60,4 +60,45 @@ var myChart = new Chart(ctx, {
     }
 });
     </script>
+<!--    
+    <script>
+        let chart;
+
+        $('#filter').click(function getData() {
+            var ctx = document.getElementById('printerChart').getContext('2d');
+
+
+            var data = {
+                labels: <?php json_encode($compressed_data['month']) ?>,
+                datasets: [{
+                        label: 'Printer Type',
+                        data: <?php json_encode($compressed_data['types']); ?>,
+                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
+                        borderColor: 'rgba(255, 99, 132, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Toner Type',
+                        data: <?php json_encode($compressed_data['toners']) ?>,
+                        backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                        borderColor: 'rgba(54, 162, 235, 1)',
+                        borderWidth: 1
+                    },
+                    {
+                        label: 'Drum Unit Type',
+                        data: <?php json_encode($compressed_data['drumUnits']) ?>,
+                        backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                        borderColor: 'rgba(75, 192, 192, 1)',
+                        borderWidth: 1
+                    }
+                ]
+            };
+            const config = {
+                type: 'line',
+                data: data,
+            };
+            var myChart = new Chart(ctx).Bar(data);
+        });
+    </script> -->
+
 </x-app-layout>
