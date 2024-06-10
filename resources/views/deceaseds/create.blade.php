@@ -1,6 +1,6 @@
 <x-app-layout>
 
-    <div class="container-fluid w-full  mx-auto px-2 pt-8 lg:pt-16 text-sm">
+    <div class="container-fluid w-full  mx-auto px-2 pt-8 lg:pt-8 text-sm">
         <!--Section container-->
         <h1
             class="flex items-center font-sans font-bold break-normal text-gray-200 px-2 text-xl mt-12 lg:mt-0 md:text-2xl mb-2">
@@ -8,7 +8,7 @@
         </h1>
         <section class="w-full lg:w-5/5 grid grid-cols-2 gap-8">
             <div>
-                <div id='section1' class="h-400 p-8 mt-6 lg:mt-0 rounded shadow-lg bg-gray-100">
+                <div id='section1' class="h-400 p-8 mt-3 lg:mt-0 rounded shadow-lg bg-gray-100">
                     <h2 class="font-sans font-bold break-normal text-gray-800 px-2 pb-8 text-xl">Megrendelő adatai</h2>
                     <form id="customer_form" action="{{ route('customer.store') }}" method="POST"
                         enctype="multipart/form-data">
