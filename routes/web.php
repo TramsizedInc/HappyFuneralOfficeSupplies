@@ -57,6 +57,7 @@ Route::middleware('auth')->group(function () {
     Route::view('add-schedule', 'schedule.add');
     Route::get('/hutesido-kalulator',[App\Http\Controllers\HutosIdoController::class,'index']);
     Route::post('create-schedule', [App\Http\Controllers\ScheduleController::class, 'create']);
+    Route::get('/hutesidocalculation/{id}',[\App\Http\Controllers\HutosIdoController::class, 'Calculation']);
 });
 
 require __DIR__.'/auth.php';
