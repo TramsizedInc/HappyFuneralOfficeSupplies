@@ -428,6 +428,7 @@
                     success: function(data) {
                         if (data.success) {
                             toastr.info(data.message);
+                            // window.location.href = "/hutesido-kalkulator/index";
                             // Optionally, update the form or page content based on the response
                         }
                     }

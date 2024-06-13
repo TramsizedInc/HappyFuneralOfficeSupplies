@@ -21,9 +21,7 @@ class HutosIdoSeeder extends Seeder
             "atal1_ar" => "19050",
             "atal2_ar" => "0",
             "pot_ar" => "3810",
-            "pot_ar2"=> "",
-            "plusz_koltsseg" => "",
-            "plusz_koltsseg_ar" => "",
+            
         ]);
         HutosIdo::create([
             "kh_name"=> "KHIgügy",
@@ -33,9 +31,7 @@ class HutosIdoSeeder extends Seeder
             "atal1_ar" => "32000",
             "atal2_ar" => "13000",
             "pot_ar" => "5000",
-            "pot_ar2"=> "",
-            "plusz_koltsseg" => "",
-            "plusz_koltsseg_ar" => "",
+           
         ]);
         HutosIdo::create([
             "kh_name"=> "KHImre",
@@ -45,9 +41,7 @@ class HutosIdoSeeder extends Seeder
             "atal1_ar" => "16510",
             "atal2_ar" => "0",
             "pot_ar" => "0",
-            "pot_ar2"=> "",
-            "plusz_koltsseg" => "",
-            "plusz_koltsseg_ar" => "",
+            
         ]);
         HutosIdo::create([
             "kh_name"=> "KHIstván",
@@ -57,9 +51,7 @@ class HutosIdoSeeder extends Seeder
             "atal1_ar" => "18600",
             "atal2_ar" => "0",
             "pot_ar" => "800",
-            "pot_ar2"=> "",
-            "plusz_koltsseg" => "",
-            "plusz_koltsseg_ar" => "",
+            
         ]);
         HutosIdo::create([
             "kh_name"=> "KHKárolyi",
@@ -69,9 +61,7 @@ class HutosIdoSeeder extends Seeder
             "atal1_ar" => "15000",
             "atal2_ar" => "0",
             "pot_ar" => "5000",
-            "pot_ar2"=> "",
-            "plusz_koltsseg" => "",
-            "plusz_koltsseg_ar" => "",
+            
         ]);
         HutosIdo::create([
             "kh_name"=> "KHKorányi",
@@ -81,9 +71,7 @@ class HutosIdoSeeder extends Seeder
             "atal1_ar" => "15000",
             "atal2_ar" => "0",
             "pot_ar" => "2440",
-            "pot_ar2"=> "",
-            "plusz_koltsseg" => "",
-            "plusz_koltsseg_ar" => "",
+            
         ]);
         HutosIdo::create([
             "kh_name"=> "KHLászló",
@@ -93,9 +81,7 @@ class HutosIdoSeeder extends Seeder
             "atal1_ar" => "20600",
             "atal2_ar" => "0",
             "pot_ar" => "800",
-            "pot_ar2"=> "",
-            "plusz_koltsseg" => "",
-            "plusz_koltsseg_ar" => "",
+            
         ]);
         HutosIdo::create([
             "kh_name"=> "KHMargit",
@@ -105,9 +91,7 @@ class HutosIdoSeeder extends Seeder
             "atal1_ar" => "15000",
             "atal2_ar" => "0",
             "pot_ar" => "1397",
-            "pot_ar2"=> "",
-            "plusz_koltsseg" => "",
-            "plusz_koltsseg_ar" => "",
+            
         ]);
         HutosIdo::create([
             "kh_name"=> "KHMargitB",
@@ -117,9 +101,7 @@ class HutosIdoSeeder extends Seeder
             "atal1_ar" => "40000",
             "atal2_ar" => "0",
             "pot_ar" => "2000",
-            "pot_ar2"=> "",
-            "plusz_koltsseg" => "",
-            "plusz_koltsseg_ar" => "",
+            
         ]);
         HutosIdo::create([
             "kh_name"=> "KHMária",
@@ -129,9 +111,7 @@ class HutosIdoSeeder extends Seeder
             "atal1_ar" => "55000",
             "atal2_ar" => "15000",
             "pot_ar" => "5000",
-            "pot_ar2"=> "",
-            "plusz_koltsseg" => "",
-            "plusz_koltsseg_ar" => "",
+            
         ]);
         HutosIdo::create([
             "kh_name"=> "KHSotel",
@@ -141,9 +121,7 @@ class HutosIdoSeeder extends Seeder
             "atal1_ar" => "55000",
             "atal2_ar" => "15000",
             "pot_ar" => "5000",
-            "pot_ar2"=> "",
-            "plusz_koltsseg" => "",
-            "plusz_koltsseg_ar" => "",
+            
         ]);
         HutosIdo::create([
             "kh_name"=> "KHSotell",
@@ -153,9 +131,7 @@ class HutosIdoSeeder extends Seeder
             "atal1_ar" => "55000",
             "atal2_ar" => "15000",
             "pot_ar" => "5000",
-            "pot_ar2"=> "",
-            "plusz_koltsseg" => "",
-            "plusz_koltsseg_ar" => "",
+            
         ]);
         HutosIdo::create([
             "kh_name"=> "KHSote1",
@@ -165,9 +141,7 @@ class HutosIdoSeeder extends Seeder
             "atal1_ar" => "55000",
             "atal2_ar" => "15000",
             "pot_ar" => "5000",
-            "pot_ar2"=> "",
-            "plusz_koltsseg" => "",
-            "plusz_koltsseg_ar" => "",
+            
         ]);
         HutosIdo::create([
             "kh_name"=> "KHPéterfy",
@@ -177,9 +151,7 @@ class HutosIdoSeeder extends Seeder
             "atal1_ar" => "3175",
             "atal2_ar" => "0",
             "pot_ar" => "3175",
-            "pot_ar2"=> "",
-            "plusz_koltsseg" => "",
-            "plusz_koltsseg_ar" => "",
+            
         ]);
         HutosIdo::create([
             "kh_name"=> "KHDélpest",
@@ -201,9 +173,7 @@ class HutosIdoSeeder extends Seeder
             "atal1_ar" => "6350",
             "atal2_ar" => "0",
             "pot_ar" => "1250",
-            "pot_ar2"=> "",
-            "plusz_koltsseg" => "",
-            "plusz_koltsseg_ar" => "",
+            
         ]);
         HutosIdo::create([
             "kh_name"=> "KHHonvéd",
@@ -213,9 +183,7 @@ class HutosIdoSeeder extends Seeder
             "atal1_ar" => "20828",
             "atal2_ar" => "0",
             "pot_ar" => "4445",
-            "pot_ar2"=> "",
-            "plusz_koltsseg" => "",
-            "plusz_koltsseg_ar" => "",
+            
         ]);
         HutosIdo::create([
             "kh_name"=> "KHBajcsy",
@@ -225,9 +193,7 @@ class HutosIdoSeeder extends Seeder
             "atal1_ar" => "40000",
             "atal2_ar" => "15000",
             "pot_ar" => "5000",
-            "pot_ar2"=> "",
-            "plusz_koltsseg" => "",
-            "plusz_koltsseg_ar" => "",
+            
         ]);
         HutosIdo::create([
             "kh_name"=> "KHJános",
@@ -237,7 +203,6 @@ class HutosIdoSeeder extends Seeder
             "atal1_ar" => "19050",
             "atal2_ar" => "39370",
             "pot_ar" => "0",
-            "pot_ar2"=> "",
             "plusz_koltsseg" => "Halottkezelési",
             "plusz_koltsseg_ar" => "15240",
         ]);

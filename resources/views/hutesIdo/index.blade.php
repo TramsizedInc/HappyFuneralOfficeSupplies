@@ -8,30 +8,30 @@
 
                         <div class="flex flex-col col-span-1">
                             <label class="text-gray-600">Ügyfélfelvételének napja</label>
-                            <input type="date" value="2023-12-08" readonly
+                            <input id="order_date" type="date" value="2023-12-08" readonly
                                 class="text-lg font-semibold border-gray-300 py-2 px-4 rounded-lg">
-                            <span class="text-gray-600">péntek</span>
+                            <span id="order_date_day" class="text-gray-600">péntek</span>
                         </div>
 
                         <div class="flex flex-col col-span-1">
-                            <label class="text-gray-600">Halálozás dátuma</label>
-                            <input type="date" value="2023-12-02" readonly
+                            <label  class="text-gray-600">Halálozás dátuma</label>
+                            <input id="death_date" type="date" value="2023-12-02" readonly
                                 class="text-lg font-semibold border-gray-300 py-2 px-4 rounded-lg">
-                            <span class="text-gray-600">szombat</span>
+                            <span id="death_day" class="text-gray-600">szombat</span>
                         </div>
 
                         <div class="flex flex-col col-span-1">
                             <label class="text-gray-600">HvKÉSZ állapot dátuma</label>
-                            <input type="date" value="2023-12-11" readonly
+                            <input id="hv_done_date" type="date" value="2023-12-11" readonly
                                 class="text-lg font-semibold border-gray-300 py-2 px-4 rounded-lg">
-                            <span class="text-gray-600">hétfő</span>
+                            <span id="hv_done_day" class="text-gray-600">hétfő</span>
                         </div>
 
                         <div class="flex flex-col col-span-1">
                             <label class="text-gray-600">HvVAN állapot dátuma</label>
-                            <input type="date" value="2023-12-12" readonly
+                            <input id="hv_van_date" type="date" value="2023-12-12" readonly
                                 class="text-lg font-semibold border-gray-300 py-2 px-4 rounded-lg">
-                            <span class="text-gray-600">kedd</span>
+                            <span id="hv_van_date" class="text-gray-600">kedd</span>
                         </div>
 
                         <div class="flex flex-col col-span-1">
@@ -44,19 +44,19 @@
                         <div class="flex flex-col col-span-1">
                             <label class="text-gray-600">KH választás</label>
                             <select class="text-lg font-semibold border-gray-300 py-2 px-4 rounded-lg">
-                                <option>KHMária</option>
+                                <option id="kh_nev">KHMária</option>
                             </select>
                         </div>
                         <div class="flex flex-col col-span-1">
                             <label class="text-gray-600">Hv Kiállítás időpontja</label>
-                            <input type="date" value="2023-12-12" readonly
+                            <input id="hv_kiall" type="date" value="2023-12-12" readonly
                                 class="text-lg font-semibold border-gray-300 py-2 px-4 rounded-lg">
                         </div>
 
                         <div class="flex flex-col col-span-1">
                             <label class="text-gray-600">KREMAválasztás</label>
                             <select class="text-lg font-semibold border-gray-300 py-2 px-4 rounded-lg">
-                                <option>Adytum Budapest</option>
+                                <option id="krema">Adytum Budapest</option>
                             </select>
                         </div>
 
@@ -85,9 +85,9 @@
                                     </tr>
                                     <tr>
 
-                                        <td class="px-4 py-2 border-b border-r text-center border-black">55 000 Ft</td>
-                                        <td class="px-4 py-2 border-b border-r text-center border-black">15 000 Ft</td>
-                                        <td class="px-4 py-2  text-center ">5 000 Ft</td>
+                                        <td id="atal1" class="px-4 py-2 border-b border-r text-center border-black">55 000 Ft</td>
+                                        <td id="atal2"class="px-4 py-2 border-b border-r text-center border-black">15 000 Ft</td>
+                                        <td id="pot" class="px-4 py-2  text-center ">5 000 Ft</td>
                                     </tr>
 
                                 </tbody>
@@ -116,22 +116,22 @@
 
                         <div class="flex flex-col col-span-1">
                             <label class="text-gray-600">KH Hűtött napok száma</label>
-                            <p class="text-lg font-semibold">4</p>
+                            <p id="days" class="text-lg font-semibold">4</p>
                         </div>
 
                         <div class="flex flex-col col-span-1">
                             <label class="text-gray-600">KH Átalány 1</label>
-                            <p class="text-lg font-semibold">55 000 Ft</p>
+                            <p id="actual_atalany1" class="text-lg font-semibold">55 000 Ft</p>
                         </div>
 
                         <div class="flex flex-col col-span-1">
                             <label class="text-gray-600">KH Átalány 2</label>
-                            <p class="text-lg font-semibold">számolás</p>
+                            <p id="actual_atalany2"class="text-lg font-semibold">számolás</p>
                         </div>
 
                         <div class="flex flex-col col-span-1">
                             <label class="text-gray-600">KH PótHD</label>
-                            <p class="text-lg font-semibold">számolás</p>
+                            <p id="actual_pot" class="text-lg font-semibold">számolás</p>
                         </div>
 
                         <div class="flex flex-col col-span-1">
@@ -165,7 +165,7 @@
 
                         <div class="flex flex-col col-span-1">
                             <label class="text-gray-600">Átadás</label>
-                            <p class="text-lg font-semibold">2 nap</p>
+                            <p id="atadas" class="text-lg font-semibold">2 nap</p>
                         </div>
                         <div class="flex flex-col col-span">
                             <label class="font-bold text-lg text-gray-600">Hűtésdíjból rendezve</label>
@@ -174,7 +174,7 @@
                         </div>
                         <div class="border-2 border-red-600 border">
                             <div class="bg-gray-100 justify-center flex py-4 col-span-4">
-                                <p class="text-xl p font-bold ">TELJES HŰTÉSDÍJ: <span class="text-red-600">64 000
+                                <p class="text-xl p font-bold ">TELJES HŰTÉSDÍJ: <span id="price_sum" class="text-red-600">64 000
                                         Ft
                                         <button
                                             class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-lg">Tovább</button>
@@ -190,3 +190,34 @@
         </div>
     </form>
 </x-app-layout>
+<script>
+    $(document).ready(() => {
+        var id_of_order = <?php echo json_encode($id);?>;
+        var url = '/hutesidocalculation/' + id_of_order;
+        fetch(url).then(x => {
+            if(!x.ok){
+                throw new Error('Hálózati hiba');
+            }
+            return x.json();
+        }).then(y => {
+            if(!y.success){
+                throw new Error('Mentési hiba');
+            }
+            toastr.info('Sikeres Mentés');
+            document.getElementById("price_sum").textContent = y.szumma;
+            // document.getElementById("atadas").innerText = y.vegnap;
+            document.getElementById("actual_pot").textContent = y.pot;
+            document.getElementById("pot").textContent = y.pot;
+            document.getElementById("actual_atalany1").textContent = y.atal1;
+            document.getElementById("atal1").textContent = y.atal1;
+            document.getElementById("actual_atalany2").textContent = y.atal2;
+            document.getElementById("atal2").textContent = y.atal2;
+            document.getElementById("death_date").value = y.halal;
+            document.getElementById("order_date").value = y.halal;
+            document.getElementById("hv_done_date").value = y.hv_date;
+            document.getElementById("hv_done_day").value = y.hv_date;
+            document.getElementById("hv_kesz_date").value = y.hv_van;
+            document.getElementById("hv_kesz_day").value =  y.hv_van;
+        })
+    })
+</script>

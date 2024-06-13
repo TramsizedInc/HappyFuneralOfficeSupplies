@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('krema_lists', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->integer('kream_nap');
+            $table->integer('krema_nap');
             $table->integer('vissza_száll');
             $table->integer('kr_hutes');
             $table->timestamps();

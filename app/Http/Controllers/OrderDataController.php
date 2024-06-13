@@ -69,7 +69,8 @@ class OrderDataController extends Controller
         $model->created_at = now();
         $model->update();
     
-        return response()->json(['success' => true, 'message' => 'bc stored']);
+        // return response()->json(['success' => true, 'message' => 'rendelés mentve', 'model_id' => $model->id]);
+        return view("hutesido-kalkulator.index", ['id' => $model->id]);
     }
 
     /**

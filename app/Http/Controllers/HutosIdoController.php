@@ -20,7 +20,8 @@ class HutosIdoController extends Controller
      */
     public function index()
     {
-        //UwU
+        //Csongor kibaszott dokumentációja:        
+        //UwU :3
         return view('hutesIdo.index');
     }
 
@@ -85,6 +86,7 @@ class HutosIdoController extends Controller
         $deceased = Deceased_data::find($orderdata[0]->deceased_data_id);
         $urnkia = Urn_k_i_a_data::find($orderdata[0]->_urn_k_i_a_datas_id);
         $hospital = $deceased[0]->hospital_code;
+        $death_time = $deceased[0]->death_time;
         $chrematory = $urnkia[0]->choosen_chrematory;
         $cemetary = $urnkia[0]->choosen_cemetary;
         /* hv kész állapot dátum */
@@ -93,88 +95,81 @@ class HutosIdoController extends Controller
         /* */
         $return_array = ['chrematory' => $chrematory,
                          'cemetary' => $cemetary,
-                         'kh' => $hospital,
+                         'kh_nev' => $hospital,
                          'hv_kesz' => $hv_done_status,
                          'hv_van' => $hv_have_status,
+                         'halal_ido' => $death_time,
                         ];
     
         return $return_array;
     }
 
+    public function GetHospitalCoolingPrices($hospital_name){
+        $hospital = HutosIdo::select('kh_name', $hospital_name)->limit(1)->get();
+        $at1 = $hospital[0]->atal1_ar;
+        $at2 = $hospital[0]->atal2_ar;
+        $pot = $hospital[0]->pot;
+        $atal1 = $hospital[0]->atal1;
+        $atal2 = $hospital[0]->atal2;
+        return ['atal1_ar' => $at1,
+                'atal2_ar' => $at2,
+                'pot_ar' => $pot,
+                'atal1' => $atal1,
+                'atal2' => $atal2
+                ];
+    }
+
     public function Calculation($id)
     {
-        $datas = $this->GetOrderDataInfo($id);      
-        $hutes_ido = HutosIdo::where('name', $datas[0]['kh_nev'])->first()->get();
-        
+        $datas = $this->GetOrderDataInfo($id);
+        $datas2 = $this->GetHospitalCoolingPrices($datas['kh_nev']);      
         $hutesnap_count = 13; /** Kremanap+visszaszáll */
-        $kh_beker = "KHFlór";
         $hutdate_beker = new DateTime('2024-05-19');
-        $hutnap_beker = 5;
-        $HV_van = false;
-        $eljar_type = "normál";
+        $HV_van = $datas['hv_van'];
 
-        $Atalany1 = DB::HutosIdo('atal1_ar')->where('kh_name', $kh_beker)->first();
-        $Atalany2 = DB::HutosIdo('atal2_ar')->where('kh_name', $kh_beker)->first();
-        $Pot = DB::HutosIdo('pot')->where('kh_name', $kh_beker)->first();
-        $atal1 = DB::HutosIdo('atal1')->where('kh_name', $kh_beker)->first();
-        $atal2 = DB::HutosIdo('atal2')->where('kh_name', $kh_beker)->first();
-        $plusz_koltsseg = DB::HutosIdo('plusz_koltsseg')->where('kh_name', $kh_beker)->first();
+        $eljar_type = "normál";
+        $Atalany1 = $datas2['atal1_ar'];
+        $Atalany2 = $datas2['atal2_ar'];
+        $Pot = $datas2['pot'];
+        $atal1 = $datas2['atal1'];
+        $atal2 = $datas2['atal2'];
+        $plusz_koltsseg = $datas2['plusz_koltsseg'];
         $veg_osszeg = $Atalany1;
         if($HV_van != true){
-             $hutesnap_count += 2;
+             $hutesnap_count += 3;
         }
-       /**switch($eljar_type){
-            case "normál":
-                break;
-                case "Szoros":
-                    $hutesnap_count -= 5;
-                    break;
-                    case "SOS":
-                        $hutesnap_count -= 6;
-                            break;
-                            case "VIPSOS":
-                                $hutesnap_count -= 7;
-                                    break;
-                                    case "Perszonál":
-                                        $hutesnap_count -= 12;
-                                            break;
-        }
-*/
+        /**  
+        * switch($eljar_type){
+        *    case "normál":
+        *         break;
+          *      case "Szoros":
+        *            $hutesnap_count -= 5;
+         *           break;
+         *           case "SOS":
+          *              $hutesnap_count -= 6;
+         *                   break;
+          *                  case "VIPSOS":
+           *                     $hutesnap_count -= 7;
+            *                        break;
+            *                        case "Perszonál":
+             *                           $hutesnap_count -= 12;
+             *                               break;
+        *}
+        */
         if($hutesnap_count > $atal1){
             $veg_osszeg += $Atalany2;
         }
 
-        if($hutesnap_count >= $atal2 + $atal1){
-            $var = $hutnap_beker - $atal1 + $atal2;
+        if($hutesnap_count > $atal2 + $atal1){
+            $var = $hutesnap_count - $atal1 + $atal2;
              $veg_osszeg += $Pot * $var;
         }
         if($plusz_koltsseg != null){
             $veg_osszeg += $plusz_koltsseg;
         }
-        switch($eljar_type){
-            case "normál":
-                break;
-                case "Szoros":
-                    $veg_osszeg = $veg_osszeg * 1.5;
-                    $hutesnap_count -= 5;
-                    break;
-                    case "SOS":
-                        $veg_osszeg = $veg_osszeg * 2;
-                        $hutesnap_count -= 6;
-                            break;
-                            case "VIPSOS":
-                                $veg_osszeg = $veg_osszeg * 3;
-                                $hutesnap_count -= 7;
-                                    break;
-                                    case "Perszonál":
-                                        $veg_osszeg = $veg_osszeg * 5;
-                                        $hutesnap_count -= 12;
-                                            break;
-        }
         $hutdate_beker = date('Y-m-d', strtotime($hutdate_beker . '+ '.$hutesnap_count.' days'));
-        $seged = array($veg_osszeg,$hutdate_beker);
-        
-        return $seged;
+        /* returning an associative array with custom IDs for the values */
+        return response()->json(["success"=> true, "szumma" => $veg_osszeg, "vegnap" => $hutdate_beker, "pot" => $Pot, "days" => $hutesnap_count, "hospital" => $datas['kh_nev'], "hv_van" => $HV_van, "hv_date" => $datas['hv_done_status'], "krema" => $datas['chrematory'], "halal" => $datas['halal_ido'], 'atal1' => $Atalany1, 'atal2' => $Atalany2]);
     }
 
     

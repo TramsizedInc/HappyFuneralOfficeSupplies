@@ -199,5 +199,7 @@ class DatabaseSeeder extends Seeder
         ]);
         
         $this->call([OfficeSupplySeeder::class]);
+        $this->call([HutosIdoSeeder::class]);
+        $this->call([KremaListSeeder::class]);
     }
 }
