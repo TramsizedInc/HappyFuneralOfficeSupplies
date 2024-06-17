@@ -37,6 +37,7 @@ class UrnKIADataController extends Controller
      */
     public function store(StoreUrn_k_i_a_dataRequest $request)
     {
+        //dd($request->all());
         $validatedData = $request->validate([
             'name_of_deceased' => 'string',
             'exhibition_date' => 'string',
@@ -51,19 +52,22 @@ class UrnKIADataController extends Controller
             'tombstone_number' => 'string',
             'date_of_funeral' => 'string',
             'hour_and_minute_of_funeral' => 'string',
+            'hv_is_done' => 'string'
         ]);
-
+        $validatedData['hv_is_done'] = $this->get_boolean_value($validatedData['hv_is_done']); 
+        // dd($validatedData['hv_is_done']);
         // $Urn_k_i_a_data->fill($validatedData);
         // $Urn_k_i_a_data->save();
         $Urn_k_i_a_data = Urn_k_i_a_data::create($validatedData);
         // $Urn_k_i_a_data->settable = "_urn_k_i_a_datas";
         // $Urn_k_i_a_data->setTable("_urn_k_i_a_datas");
+        // $Urn_k_i_a_data->hv_is_done = $validatedData['hv_is_done'];
         // dd($Urn_k_i_a_data);
         $Urn_k_i_a_data->save();
         // $Urn_k_i_a_data->updated_at = now();
         // $Urn_k_i_a_data->created_at = now();
         // $Urn_k_i_a_data->update();
-
+        // dd($Urn_k_i_a_data);
         // return "ok";
         // return redirect()->route("Urn_k_i_a_datas.index")->with("success", "Urn_k_i_a_data created successfully.");
         return response()->json(['success' => true, 'message' => 'urnkia mentve']);
@@ -148,5 +152,17 @@ class UrnKIADataController extends Controller
         }
         $Urn_k_i_a_datas = Urn_k_i_a_data::withTrashed()->get();
         return view('Urn_k_i_a_datas.show_deleted',['Urn_k_i_a_datas' => $Urn_k_i_a_datas]);
+    }
+    private function get_boolean_value($i){
+        if($i == ''){
+            return false;
+        }
+        $falses = ['nem', 'no', 'not', '0', 'hamis', 'soha'];
+        foreach ($falses as $f){
+            if($i == $f){
+                return false;
+            }
+        }
+        return true;
     }
 }

@@ -70,7 +70,7 @@ class OrderDataController extends Controller
         $model->update();
     
         // return response()->json(['success' => true, 'message' => 'rendelés mentve', 'model_id' => $model->id]);
-        return view("hutesido-kalkulator.index", ['id' => $model->id]);
+        return view("hutesIdo.index", ['id' => $model->id]);
     }
 
     /**

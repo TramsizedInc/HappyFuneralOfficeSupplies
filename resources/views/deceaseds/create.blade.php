@@ -198,6 +198,7 @@
                                 Kész
                             </button>
                         </div>
+                    </form>
                 </div>
             </div>
             <div class="">
@@ -430,6 +431,9 @@
                             toastr.info(data.message);
                             // window.location.href = "/hutesido-kalkulator/index";
                             // Optionally, update the form or page content based on the response
+                        }
+                        else{
+                            toastr.info('fuck');
                         }
                     }
                 });

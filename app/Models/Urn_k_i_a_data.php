@@ -14,6 +14,7 @@ class Urn_k_i_a_data extends Model
             'exhibition_date',
             'hv_done_status_date',
             'hv_have_status_date',
+            'hv_is_done',
             'hv_exhibition_date',
             'choosen_chrematory',
             'urn_inside_form',

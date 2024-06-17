@@ -31,7 +31,7 @@
                             <label class="text-gray-600">HvVAN állapot dátuma</label>
                             <input id="hv_van_date" type="date" value="2023-12-12" readonly
                                 class="text-lg font-semibold border-gray-300 py-2 px-4 rounded-lg">
-                            <span id="hv_van_date" class="text-gray-600">kedd</span>
+                            <span id="hv_van_day" class="text-gray-600">kedd</span>
                         </div>
 
                         <div class="flex flex-col col-span-1">
@@ -79,9 +79,9 @@
                                 <tbody>
                                     <tr>
 
-                                        <td class="px-4 py-2 border-b border-r text-center border-black">5</td>
-                                        <td class="px-4 py-2 border-b border-r text-center border-black">5</td>
-                                        <td class="px-4 py-2  text-center ">1</td>
+                                        <td id="atal1_days" class="px-4 py-2 border-b border-r text-center border-black">5</td>
+                                        <td id="atal2_days" class="px-4 py-2 border-b border-r text-center border-black">5</td>
+                                        <td id="pot_days" class="px-4 py-2  text-center ">1</td>
                                     </tr>
                                     <tr>
 
@@ -98,7 +98,7 @@
 
                         <div class="flex flex-col col-span-1">
                             <label class="text-gray-600">Hűtésdíj számolásának első napja</label>
-                            <input type="date" value="2023-12-11" readonly
+                            <input id="cooling_start_date" type="date" value="2023-12-11" readonly
                                 class="text-lg font-semibold border-gray-300 py-2 px-4 rounded-lg">
                         </div>
 
@@ -109,7 +109,7 @@
 
                         <div class="flex flex-col col-span-1">
                             <label class="text-gray-600">Elszállítás határnap</label>
-                            <input type="date" value="2023-12-15" readonly
+                            <input id="transport_date" type="date" value="2023-12-15" readonly
                                 class="text-lg font-semibold border-gray-300 py-2 px-4 rounded-lg">
                             <span class="text-gray-600">péntek</span>
                         </div>
@@ -176,8 +176,7 @@
                             <div class="bg-gray-100 justify-center flex py-4 col-span-4">
                                 <p class="text-xl p font-bold ">TELJES HŰTÉSDÍJ: <span id="price_sum" class="text-red-600">64 000
                                         Ft
-                                        <button
-                                            class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-lg">Tovább</button>
+                                        <button class="bg-blue-500 hover:bg-blue-700 text-white py-2 px-4 rounded-lg">Tovább</button>
                                     </span>
                                 </p>
 
@@ -192,7 +191,7 @@
 </x-app-layout>
 <script>
     $(document).ready(() => {
-        var id_of_order = <?php echo json_encode($id);?>;
+        var id_of_order = String(<?php echo json_encode($id);?>);
         var url = '/hutesidocalculation/' + id_of_order;
         fetch(url).then(x => {
             if(!x.ok){
@@ -204,20 +203,37 @@
                 throw new Error('Mentési hiba');
             }
             toastr.info('Sikeres Mentés');
-            document.getElementById("price_sum").textContent = y.szumma;
-            // document.getElementById("atadas").innerText = y.vegnap;
+            document.getElementById("price_sum").textContent = y.szumma + " Ft";
+            document.getElementById("atadas").innerText = y.vegnap;
             document.getElementById("actual_pot").textContent = y.pot;
             document.getElementById("pot").textContent = y.pot;
             document.getElementById("actual_atalany1").textContent = y.atal1;
             document.getElementById("atal1").textContent = y.atal1;
             document.getElementById("actual_atalany2").textContent = y.atal2;
             document.getElementById("atal2").textContent = y.atal2;
-            document.getElementById("death_date").value = y.halal;
-            document.getElementById("order_date").value = y.halal;
-            document.getElementById("hv_done_date").value = y.hv_date;
+            document.getElementById("death_date").value = y.halal.split(' ')[0];
+            document.getElementById("order_date").value = y.halal.split(' ')[0];
+            document.getElementById("hv_done_date").value = y.hv_date.split(' ')[0];
             document.getElementById("hv_done_day").value = y.hv_date;
-            document.getElementById("hv_kesz_date").value = y.hv_van;
-            document.getElementById("hv_kesz_day").value =  y.hv_van;
+            // toastr.info(y.hv_kesz_date.split(' ')[0]);
+            document.getElementById("hv_van_date").value = y.hv_kesz_date.split(' ')[0];
+            document.getElementById("hv_van_day").value =  y.hv_van;
+            document.getElementById("hv_kiall").value = y.hv_kesz_date.split(' ')[0];
+            document.getElementById("days").innerText = y.days;
+            document.getElementById("kh_nev").innerText = y.hospital;
+            document.getElementById("krema").innerText = y.krema;
+            document.getElementById("atal1_days").innerText = y.atal1_days;
+            document.getElementById("atal2_days").innerText = y.atal2_days;
+            // toastr.info(y.pot_days);
+            document.getElementById("pot_days").innerText = y.pot_days;
+            document.getElementById("cooling_start_date").value = y.halal.split(' ')[0];
+            document.getElementById("transport_date").value = y.vegnap;
+
+
+            document.getElementById("krema").innerText = y.krema;
+
+
+
         })
     })
 </script>

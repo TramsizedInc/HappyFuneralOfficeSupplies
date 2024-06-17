@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('tombstone_number')->nullable(); //sírhely száma
             $table->DateTime('date_of_funeral')->nullable();
             $table->string('hour_and_minute_of_funeral')->nullable();
+            $table->boolean('hv_is_done')->default(false);
             /* Softdeletes */
             $table->softDeletes();
             $table->integer('created_by')->default(1);

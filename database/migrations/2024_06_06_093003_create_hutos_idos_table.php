@@ -21,9 +21,9 @@ return new class extends Migration
             $table->integer('atal1_ar');
             $table->integer('atal2_ar');
             $table->integer('pot_ar');
-            $table->integer('pot_ar2')->nullable();
-            $table->string('plusz_koltsseg')->nullable();
-            $table->integer('plusz_koltsseg_ar')->nullable();
+            $table->integer('pot_ar2')->default(0);
+            $table->string('plusz_koltsseg')->default(0);
+            $table->integer('plusz_koltsseg_ar')->default(0);
             $table->timestamps();
         });
         
