@@ -23,12 +23,12 @@
         <!-- <link href="{{ asset('css/toastr.css') }}" rel="stylesheet"> -->
         <!-- <script src="{{ asset('js/app.js') }}"></script> -->
         <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-        
+        <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
         <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.css" />
         <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.tailwindcss.css" />
         <script src="https://cdn.datatables.net/2.0.7/js/dataTables.js"></script>
     </head>
-    <body style="background-image: url('{{asset('storage/candle.jpg')}}')" class="font-sans bg-bamboo antialiased">
+    <body x-data="{ sidebarOpen: true }" style="background-image: url('{{asset('storage/candle.jpg')}}')" class="font-sans flex bg-bamboo antialiased">
 
             @include('layouts.sidebar')
 

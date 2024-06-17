@@ -108,40 +108,6 @@
 
 
         </form>
-        <div>
-            <!-- Waste no more time arguing what a good man should be, be one. - Marcus Aurelius -->
-            <div class="row">
-                <div class="col-md-3">
-                    <select name="type" class="h-10 border mt-1 rounded px-4 w-full bg-gray-50" id="typeSelect" data-te-select-init>
-                        @foreach(\App\Models\PrinterType::all() as $printer)
-                        <option value="{{$printer->name}}">{{$printer->name}}</option>
-                        @endforeach
-                    </select>
-                    <label data-te-select-label-ref for="type">Típus</label>
-                </div>
-                <div class="col-md-3">
-                    <label for="From">From</label>
-                    <input type="date" id="from" name="from" class=" from-control" />
-                </div>
-                <div class="col-md-3">
-                    <label for="To">To</label>
-                    <input type="date" id="to" name="to" class=" from-control" />
-                </div>
-                <div class="col-md-3">
-                    <button type="button " class="btn btn-success" id="filter" >Filter</button>
-                </div>
-            </div>
-        </div>
-        <div class="card">
-            <div class="card-body">
-                <div class="md:col-span-5">
-                    <canvas id="printerChart" width="800" height="400">
-                    </canvas>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <script>
         function donerchange(element) {
             var val = element.value;
