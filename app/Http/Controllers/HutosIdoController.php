@@ -157,7 +157,8 @@ class HutosIdoController extends Controller
         }
 
         if($hutesnap_count > $atal2 + $atal1){
-            $var = $hutesnap_count - $atal1 + $atal2;
+            $var =  $atal1 + $atal2;
+            $var = $hutesnap_count - $var;
             $veg_osszeg += $Pot * $var;
         }
         if($plusz_koltsseg != null){
