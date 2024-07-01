@@ -81,6 +81,107 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div><x-app-layout>
+        <x-slot name="header">
+            <h2 class="fw-semibold fs-4 text-dark-800 text-light-200">
+                {{ __('Dashboard') }}
+            </h2>
+        </x-slot>
+        <div class="row py-3 px-4">
+            <div class="col-md-3 mb-3">
+                <label class="visually-hidden">Search</label>
+                <div class="input-group">
+                    <input type="text" name="hs-table-with-pagination-search" id="hs-table-with-pagination-search" class="form-control" placeholder="Search for items">
+                    <span class="input-group-text">
+                        <svg class="bi bi-search" width="16" height="16" fill="currentColor" xmlns="https://www.w3.org/2000/svg">
+                            <path d="M11.742 10.344l3.868 3.868c.196.196.196.512 0 .708l-.708.708a.5.5 0 0 1-.708 0l-3.868-3.868a6.5 6.5 0 1 1 .708-.708zm-6.492 1.992a5.5 5.5 0 1 0 0-11 5.5 5.5 0 0 0 0 11z"/>
+                        </svg>
+                    </span>
+                </div>
+            </div>
+        </div>
+    
+        <div class="d-flex flex-column">
+            <div class="overflow-auto">
+                <div class="table-responsive">
+                    <div class="table border rounded bg-white table-hover">
+                        <table class="table align-middle">
+                            <thead class="bg-light">
+                                <tr>
+                                    <th scope="col" class="px-6 py-3 text-start text-uppercase text-secondary">Márka</th>
+                                    <th scope="col" class="px-6 py-3 text-start text-uppercase text-secondary">Típus</th>
+                                    <th scope="col" class="px-6 py-3 text-start text-uppercase text-secondary">Kép</th>
+                                    <th scope="col" class="px-6 py-3 text-start text-uppercase text-secondary">Utoljára Modósitva</th>
+                                    <th scope="col" class="px-6 py-3 text-start text-uppercase text-secondary">Toner Százalék</th>
+                                    <th scope="col" class="px-6 py-3 text-start text-uppercase text-secondary">Dobb Egység Százalék</th>
+                                    <th scope="col" colspan="3" class="px-6 py-3 text-end text-uppercase text-secondary">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach(\App\Models\Printer::all() as $printer)
+                                    @if($printer->office()->value('id') == \Illuminate\Support\Facades\Auth::user()->office_id)
+                                        <tr>
+                                            <td class="px-6 py-4 text-dark-800">{{$printer->brand}}</td>
+                                            <td class="px-6 py-4 text-dark-800">{{$printer->type}}</td>
+                                            <td class="px-6 py-4 text-dark-800">
+                                                <img class="img-thumbnail h-10" src="{{asset('storage/picture/'.$printer->picture)}}" alt="image description">
+                                            </td>
+                                            <td class="px-6 py-4 text-dark-800">{{$printer->updated_at}}</td>
+                                            <td class="px-6 py-4 text-dark-800">{{$printer->toner_percent}}%</td>
+                                            <td class="px-6 py-4 text-dark-800">{{$printer->drumm_percent}}%</td>
+                                            <td class="px-6 py-4 text-end">
+                                                <form action="{{route('printers.updateUtilities',$printer)}}" method="GET">
+                                                    @csrf
+                                                    <button type="submit" class="btn btn-link text-decoration-none text-primary">Modósitás</button>
+                                                </form>
+                                            </td>
+                                        </tr>
+                                    @endif
+                                @endforeach
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="py-3 px-4">
+                        <nav class="d-flex justify-content-center">
+                            <ul class="pagination">
+                                <li class="page-item">
+                                    <button class="page-link" aria-label="Elöző">
+                                        <span aria-hidden="true">«</span>
+                                    </button>
+                                </li>
+                                <li class="page-item active" aria-current="page">
+                                    <button class="page-link">1</button>
+                                </li>
+                                <li class="page-item">
+                                    <button class="page-link">2</button>
+                                </li>
+                                <li class="page-item">
+                                    <button class="page-link">3</button>
+                                </li>
+                                <li class="page-item disabled">
+                                    <button class="page-link">...</button>
+                                </li>
+                                <li class="page-item">
+                                    <button class="page-link">8</button>
+                                </li>
+                                <li class="page-item">
+                                    <button class="page-link">9</button>
+                                </li>
+                                <li class="page-item">
+                                    <button class="page-link">10</button>
+                                </li>
+                                <li class="page-item">
+                                    <button class="page-link" aria-label="Következő">
+                                        <span aria-hidden="true">»</span>
+                                    </button>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </x-app-layout>
+    
 
 </x-app-layout>
