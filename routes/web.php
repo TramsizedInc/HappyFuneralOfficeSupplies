@@ -58,6 +58,11 @@ Route::middleware('auth')->group(function () {
     Route::get('/hutesido-kalulator',[App\Http\Controllers\HutosIdoController::class,'index']);
     Route::post('create-schedule', [App\Http\Controllers\ScheduleController::class, 'create']);
     Route::get('/hutesidocalculation/{id}',[\App\Http\Controllers\HutosIdoController::class, 'Calculation']);
+    Route::any('/docedit/{any}', [\App\Http\Controllers\DocEditProxyController::class, 'index'])->where('any', '.*');
+//    Route::any('/docedit/{any}', function () {
+//        return 'Matched catch-all route';
+//    })->where('any', '.*');
+    
 });
 
 require __DIR__.'/auth.php';

@@ -1,0 +1,3 @@
+[submodule "hypertext-editor"]
+	path = hypertext-editor
+	url = https://github.com/TramSizedInc/hypertext-editor
