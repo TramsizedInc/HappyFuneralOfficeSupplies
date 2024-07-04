@@ -99,7 +99,7 @@
                 </div>
             </div>
         </div>
-        <div class="main col ps-md-2 pt-2">
+        <div class="main ps-md-2 pt-2">
             
                 <a href="#" data-bs-target="#sidebar" data-bs-toggle="collapse"
                     class="r text-danger rounded-3 p-1 fs-2 text-decoration-none">

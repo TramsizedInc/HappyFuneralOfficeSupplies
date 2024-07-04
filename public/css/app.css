@@ -25,7 +25,7 @@ th:not(:last-child) {
     padding: 0.5rem; /* Csökkentett padding */
 }
 
-.form-input,
+/* .form-input,
 .form-select {
     padding-left: 0;
     padding-top: 0;
@@ -37,7 +37,7 @@ th:not(:last-child) {
     border-bottom: none;
     border-right: none;
     border-top: none;
-}
+} */
 
 body {
     position: relative;
