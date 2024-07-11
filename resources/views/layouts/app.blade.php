@@ -48,11 +48,79 @@
     <script src="{{ asset('js/app.js') }}"></script>
 </head>
 
-<body style="background-image: url('{{ asset('storage/candle.jpg') }}')" class="font-sans flex bg-bamboo antialiased">
+<body style="background-image: url('{{ asset('storage/candle.jpg') }}')">
+
+    <div id="screen-size-category"></div>
 
     @include('layouts.sidebar')
 
 
 </body>
+<script>
+    function getScreenSizeCategory(width) {
+        if (width < 576) {
+            return 'xs';
+        } else if (width >= 576 && width < 768) {
+            return 'sm';
+        } else if (width >= 768 && width < 992) {
+            return 'md';
+        } else if (width >= 992 && width < 1200) {
+            return 'lg';
+        } else if (width >= 1200 && width < 1400) {
+            return 'xl';
+        } else {
+            return 'xxl';
+        }
+    }
+
+
+    function updateTextSizeClasses(category) {
+        const textElements = document.querySelectorAll('body *');
+        textElements.forEach(element => {
+            // Remove existing text size classes
+            element.classList.remove('text-sm', 'text-md', 'text-lg', 'text-xl', 'text-xxl');
+
+            // Add the appropriate text size class based on the category
+            switch (category) {
+                case 'sm':
+                    element.classList.add('text-sm');
+                    break;
+                case 'md':
+                    element.classList.add('text-md');
+                    break;
+                case 'lg':
+                    element.classList.add('text-lg');
+                    break;
+                case 'xl':
+                    element.classList.add('text-xl');
+                    break;
+                case 'xxl':
+                    element.classList.add('text-xxl');
+                    break;
+                default:
+                    // For 'xs' category or any unexpected value, do nothing (or handle as needed)
+                    break;
+            }
+        });
+    }
+
+    function updateScreenSizeCategory() {
+        const width = window.innerWidth;
+        const category = getScreenSizeCategory(width);
+
+        // Update text size classes for all text elements in the body
+        updateTextSizeClasses(category);
+
+        // Update the text content of #screen-size-category to reflect the current size category
+        const screenSizeCategoryDiv = document.getElementById('screen-size-category');
+        screenSizeCategoryDiv.textContent = `Size: ${category}`;
+    }
+
+    // Initial call to display the size category when the page loads
+    updateScreenSizeCategory();
+
+    // Update the size category and text size whenever the window is resized
+    window.addEventListener('resize', updateScreenSizeCategory);
+</script>
 
 </html>

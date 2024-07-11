@@ -1,15 +1,23 @@
 /* @tailwind base;
 @tailwind components;
 @tailwind utilities; */
+@import "~bootstrap/scss/bootstrap";
+
+thead {
+    font-size: 1rem;  
+}
 
 
-@media (min-width: 640px) {
-    table {
-        display: inline-table !important;
+@include media-breakpoint-up(sm) {
+    thead {
+        font-size: 1.1rem; 
     }
+}
 
-    thead tr:not(:first-child) {
-        display: none;
+
+@include media-breakpoint-up(lg) {
+    thead {
+        font-size: 1.2rem; 
     }
 }
 
@@ -21,9 +29,7 @@ th:not(:last-child) {
     border-bottom: 2px solid #0000001a;
 } */
 
-.table th, .table td {
-    padding: 0.5rem; /* Csökkentett padding */
-}
+
 
 /* .form-input,
 .form-select {
@@ -47,4 +53,16 @@ body {
 
 #sidebar-nav {
     width: 200px;
+}
+
+#screen-size-category {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    z-index: 1000;
 }

@@ -1,8 +1,8 @@
 <x-app-layout>
 
-    <div class="row justify-content-center py-3 px-4">
-        <div class="col-2"></div>
-        <div class="col-3"> <!-- Column for the input -->
+    <div class="row justify-content-center">
+        <div class="col-xl-2 col-xxl-2 col-lg-3 col-md-2 col-sm-2 col-xs-2"></div>
+        <div class="col-xl-3 col-xxl-3 col-lg-3 col-md-3 col-sm-4 col-xs-2"> <!-- Column for the input -->
             <div class="input-group">
                 <input type="text" name="hs-table-with-pagination-search" id="hs-table-with-pagination-search"
                     class="form-control pe-3" placeholder="Search for items">
@@ -11,7 +11,7 @@
                 </span>
             </div>
         </div>
-        <div class="col-3"> <!-- Column for the button -->
+        <div class="col-xl-3 col-xxl-3 col-lg-3 col-md-3 col-sm-3 col-xs-2"> <!-- Column for the button -->
             <a href="{{ route('printerTypes.create') }}" class="btn btn-primary">Létrehozás</a>
         </div>
     </div>
@@ -20,8 +20,8 @@
 
 
     </div>
-    <div class="row justify-content-center">
-        <div class="col-md-4">
+    <div class="row mt-5 justify-content-center">
+        <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12">
             <div class="d-flex flex-column">
                 <div class="overflow-auto">
                     <div class="table-responsive">

@@ -1,8 +1,8 @@
 <x-app-layout>
 
     <div class="row justify-content-center py-3 px-4">
-        <div class="col-2"></div>
-        <div class="col-3"> <!-- Column for the input -->
+        <div class="col-xl-2 col-xxl-2 col-lg-3 col-md-2 col-sm-2 col-xs-2"></div>
+        <div class="col-xl-3 col-xxl-3 col-lg-3 col-md-3 col-sm-4 col-xs-2">
             <div class="input-group">
                 <input type="text" name="hs-table-with-pagination-search" id="hs-table-with-pagination-search"
                     class="form-control pe-3" placeholder="Search for items">
@@ -11,7 +11,7 @@
                 </span>
             </div>
         </div>
-        <div class="col-3"> <!-- Column for the button -->
+        <div class="col-xl-3 col-xxl-3 col-lg-3 col-md-3 col-sm-3 col-xs-2"> <!-- Column for the button -->
             <a href="{{ route('printers.create') }}" class="btn btn-primary">Létrehozás</a>
         </div>
     </div>
@@ -19,48 +19,49 @@
     
 
 
-    <div class="row justify-content-center">
-        <div class="col-md-4">
+    <div class="row mt-5 justify-content-center">
+        <div class="col-xxl-6 col-xl-8 col-lg-8 col-md-12 col-sm-12">
             <div class="d-flex flex-column">
                 <div class="overflow-auto">
-                    <div class="table-responsive bg-white border rounded-sm">
-                        <table class="table">
-                            <thead class="table-light">
-                                <tr>
-                                    <th scope="col"
-                                        class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
-                                        Márka
-                                    </th>
-                                    <th scope="col"
-                                        class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
-                                        Típus
-                                    </th>
-                                    <th scope="col"
-                                        class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Kép
-                                    </th>
-                                    <th scope="col"
-                                        class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
-                                        Létrehozva
-                                    </th>
-                                    <th scope="col"
-                                        class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
-                                        Utoljára
-                                        Modósitva</th>
-                                    <th scope="col"
-                                        class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
-                                        Toner
-                                        Százalék</th>
-                                    <th scope="col"
-                                        class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">
-                                        Dobb
-                                        Egység
-                                        Százalék</th>
-                                    <th scope="col" colspan="3"
-                                        class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase">
-                                        Actions
-                                    </th>
-                                </tr>
-                            </thead>
+                    <div class="table-responsive">
+                        <div class="table table-responsive bg-dark border border-dark rounded">
+                            <table class="table table-dark">
+                                <thead class="table-dark text-white">
+                                    <tr>
+                                        <th scope="col"
+                                            class="px-3 py-3 text-start text-sm fw-medium text-uppercase small d-sm-table-cell d-none fs-6">
+                                            Márka
+                                        </th>
+                                        <th scope="col"
+                                            class="px-3 py-3 text-start text-sm fw-medium text-uppercase small d-sm-table-cell d-none fs-6">
+                                            Típus
+                                        </th>
+                                        <th scope="col"
+                                            class="px-3 py-3 text-start text-sm fw-medium text-uppercase small d-sm-table-cell d-none fs-6">
+                                            Kép
+                                        </th>
+                                        <th scope="col"
+                                            class="px-3 py-3 text-start text-sm fw-medium text-uppercase small fs-6">
+                                            Létrehozva
+                                        </th>
+                                        <th scope="col"
+                                            class="px-3 py-3 text-start text-sm fw-medium text-uppercase small fs-6">
+                                            Utoljára Modósitva
+                                        </th>
+                                        <th scope="col"
+                                            class="px-3 py-3 text-start text-sm fw-medium text-uppercase small fs-6">
+                                            Toner Százalék
+                                        </th>
+                                        <th scope="col"
+                                            class="px-3 py-3 text-start text-sm fw-medium text-uppercase small fs-6">
+                                            Dobb Egység Százalék
+                                        </th>
+                                        <th scope="col"
+                                            class="px-3 py-3 text-start overflow-visible fw-medium text-uppercase small d-none d-sm-table-cell fs-6">
+                                            Actions
+                                        </th>
+                                    </tr>
+                                </thead>
                             <tbody>
                                 @foreach (\App\Models\Printer::all() as $printer)
                                     <tr>
