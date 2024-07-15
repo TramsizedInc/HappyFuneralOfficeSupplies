@@ -62,7 +62,7 @@ class CheckTypeController extends Controller
         // if (Auth::user()->cannot('update', CheckType::class)) {
         //     abort(403);
         // }
-        return view('checkTypes.edit', ['CheckType' => $checkType]);
+        return view('checkTypes.edit', ['checkType' => $checkType]);
 
     }
 

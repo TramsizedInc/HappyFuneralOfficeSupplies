@@ -57,6 +57,8 @@
 
 </body>
 <script>
+
+    
     function getScreenSizeCategory(width) {
         if (width < 576) {
             return 'xs';

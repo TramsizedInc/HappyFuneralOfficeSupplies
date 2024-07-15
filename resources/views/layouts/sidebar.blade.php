@@ -19,7 +19,10 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
                                     <li><a data-bs-parent="#sidebar" class="dropdown-item"
-                                            href="{{ route('deceaseds.create') }}">Temetés felvétel</a></li>
+                                            href="{{ route('deceaseds.create') }}"><i class="fas fa-plus p-2"></i> Új ügy
+                                            felvétele</a></li>
+                                    <li class="border-top border-secondary"><a data-bs-parent="#sidebar" class="dropdown-item"
+                                            href="{{ route('deceaseds.index') }}"><i class="fas fa-table p-2"></i>Tárolt ügyek</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item dropdown mt-3">
@@ -80,7 +83,7 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink6">
                                     <li>
-                                        <a data-bs-parent="#sidebar" class="dropdown-item disabled text-white"
+                                        <a data-bs-parent="#sidebar" class="dropdown-item disabled text-dark"
                                             href="#">{{ Auth::user()->name }}</a>
                                     </li>
                                     <li>
@@ -100,10 +103,10 @@
             </div>
         </div>
         <div class="main ps-md-2 pt-2">
-            
-                <a href="#" data-bs-target="#sidebar" data-bs-toggle="collapse"
-                    class="r text-danger rounded-3 p-1 fs-2 text-decoration-none">
-                    <i class="fas fa-bars"></i></a>
+
+            <a href="#" data-bs-target="#sidebar" data-bs-toggle="collapse"
+                class="r text-danger rounded-3 p-1 fs-2 text-decoration-none">
+                <i class="fas fa-bars"></i></a>
 
             <div class="container-fluid">
                 {{ $slot }}

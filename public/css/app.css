@@ -1,55 +1,149 @@
 /* @tailwind base;
 @tailwind components;
 @tailwind utilities; */
-@import "~bootstrap/scss/bootstrap";
 
-thead {
-    font-size: 1rem;  
+/* Alapértelmezett szövegméret */
+#bigTable {
+    font-size: 16px;
 }
 
-
-@include media-breakpoint-up(sm) {
-    thead {
-        font-size: 1.1rem; 
-    }
-}
-
-
-@include media-breakpoint-up(lg) {
-    thead {
-        font-size: 1.2rem; 
-    }
-}
-
-/* td:not(:last-child) {
-    border-bottom: 0;
-}
-
-th:not(:last-child) {
-    border-bottom: 2px solid #0000001a;
-} */
-
-
-
-/* .form-input,
-.form-select {
-    padding-left: 0;
-    padding-top: 0;
-    padding-bottom: 0;
-    padding-right: 0;
+#smallTable {
     font-size: 12px;
-
-    border-left: none;
-    border-bottom: none;
-    border-right: none;
-    border-top: none;
-} */
-
-body {
-    position: relative;
-    overflow-x: hidden;
-    background-color: #CFD8DC;
 }
+
+
+/* Különleges méret beállítások */
+@media screen and (max-width: 575px) {
+
+    /* xs kategória */
+    #bigTable {
+        font-size: 10px;
+
+        /* Példa: kisebb méret xs kategóriában */
+    }
+
+    #smallTable {
+        font-size: 7px;
+        font-weight: bold;
+        /* Példa: kisebb méret xs kategóriában */
+    }
+
+
+
+    h1 {
+        font-size: 12px;
+    }
+
+    .save-btn,
+    .next-btn {
+        font-size: 10px;
+        /* A gombokhoz nem tartozik oldalról történő távolság */
+    }
+
+    .table {
+        max-width: fit-content;
+    }
+}
+
+@media screen and (min-width: 576px) and (max-width: 767px) {
+
+    /* sm kategória */
+    #bigTable {
+        font-size: 12px;
+        /* Példa: ugyanolyan méret, mint az alapértelmezett */
+    }
+
+    #smallTable {
+        font-size: 8px;
+        font-weight: bold;
+
+    }
+
+    .table {
+        max-width: fit-content;
+    }
+
+    h1 {
+        font-size: 14px;
+    }
+
+    .save-btn,
+    .next-btn {
+        font-size: 12px;
+        /* A gombokhoz nem tartozik oldalról történő távolság */
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+
+    /* md kategória */
+    #bigTable {
+        font-size: 16px;
+        /* Példa: nagyobb méret md kategóriában */
+    }
+
+    #smallTable {
+        font-size: 14px;
+        /* Példa: kisebb méret xs kategóriában */
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    .save-btn,
+    .next-btn {
+        font-size: 18px;
+        /* A gombokhoz nem tartozik oldalról történő távolság */
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+
+    /* lg kategória */
+    #bigTable {
+        font-size: 18px;
+        /* Példa: még nagyobb méret lg kategóriában */
+    }
+
+    #smallTable {
+        font-size: 16px;
+        /* Példa: kisebb méret xs kategóriában */
+    }
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1399px) {
+
+    /* xl kategória */
+    #bigTable {
+        font-size: 22px;
+        /* Példa: extra nagy méret xl kategóriában */
+    }
+
+    #smallTable {
+        font-size: 18px;
+        /* Példa: kisebb méret xs kategóriában */
+    }
+}
+
+@media screen and (min-width: 1400px) {
+
+    /* xxl kategória */
+    #bigTable {
+        font-size: 24px;
+        /* Példa: extra extra nagy méret xxl kategóriában */
+    }
+
+    #smallTable {
+        font-size: 20px;
+        /* Példa: kisebb méret xs kategóriában */
+    }
+}
+
+/* table {
+    table-layout:;
+    
+} */
 
 #sidebar-nav {
     width: 200px;
@@ -65,4 +159,25 @@ body {
     border-radius: 5px;
     font-size: 14px;
     z-index: 1000;
+}
+
+.flex-container {
+    display: flex;
+    align-items: center;
+    /* Vertikálisan középre igazítja az elemeket */
+    justify-content: space-between;
+    /* Oldalanként egyenletesen elosztja az elemeket */
+    gap: 10px;
+    /* Az elemek közötti távolság */
+}
+
+.title {
+    order: -1;
+    /* Az első elemet a lista végére helyezi */
+}
+
+.save-btn,
+.next-btn {
+    margin-left: 0;
+    /* A gombokhoz nem tartozik oldalról történő távolság */
 }

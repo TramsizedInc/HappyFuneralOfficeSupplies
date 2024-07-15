@@ -1,85 +1,133 @@
 <x-app-layout>
 
-        <div class="grid grid-cols-4 py-3 px-4">
-            <div class="mr-3 relative max-w-xs">
-                <label class="sr-only">Search</label>
-                <input type="text" name="hs-table-with-pagination-search" id="hs-table-with-pagination-search" class="py-2 px-3 ps-9 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600" placeholder="Search for items">
-                <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-3">
-                    <svg class="h-4 w-4 text-gray-400" xmlns="https://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-                </div>
+    <div class="row justify-content-center">
+        <div class="col-xl-2 col-xxl-2 col-lg-3 col-md-2 col-sm-2 col-xs-2"></div>
+        <div class="col-xl-3 col-xxl-3 col-lg-3 col-md-3 col-sm-4 col-xs-2"> <!-- Column for the input -->
+            <div class="input-group">
+                <input type="text" name="hs-table-with-pagination-search" id="hs-table-with-pagination-search"
+                    class="form-control pe-3" placeholder="Search for items">
+                <span class="input-group-text">
+                    <i class="fa fa-search"></i> <!-- Updated icon class -->
+                </span>
             </div>
-
-               </div>
-    <div class=" text-start px-6 py-4 whitespace-nowrap text-sm font-medium">
-
-        <a  href="{{route('offices.create')}}" type="button" class="items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">Create</a>
+        </div>
+        <div class="col-xl-3 col-xxl-3 col-lg-3 col-md-3 col-sm-3 col-xs-2"> <!-- Column for the button -->
+            <a href="{{ route('offices.create') }}" class="btn btn-primary">Létrehozás</a>
+        </div>
     </div>
-    <div class="flex flex-col">
-        <div class="m-1.5 overflow-x-auto">
-            <div class="p-1.5 min-w-full inline-block align-middle">
-                <div class="bg-white border rounded-sm divide-y divide-gray-200 dark:border-gray-700 dark:divide-gray-700">
+    <div class="row mt-5 justify-content-center">
+        <div class="col-xxl-10 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-12">
+            <div class="d-flex flex-column">
+                <div class="overflow-auto">
+                    <div class="table-responsive">
+                        <div class="table table-responsive bg-dark border border-dark rounded">
+                            <table class="table table-dark caption-top">
+                                <caption 
+                                    class="border-bottom border-secondary text-uppercase fs-2 text-center text-danger">
+                                    Írodák</caption>
 
-                    <div class="overflow-hidden">
-                        <table class="table-auto min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                            <thead class="bg-gray-50 dark:bg-gray-700">
-                            <tr>
-                                <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Iroda Név</th>
-                                <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Iroda Vezető</th>
-                                <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Cím</th>
-                                <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Dolgozók száma</th>
-                                <th scope="col" colspan="3" class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase">Actions</th>
-                            </tr>
-                            </thead>
-                            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-                            @foreach(\App\Models\Office::all() as $office)
-                                <tr>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">{{$office->office_name}}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">{{$office->office_manager}}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">{{$office->zip_code}} {{$office->city}}, {{$office->street}} {{$office->house_number}}.</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">{{$office->number_of_workers}}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">
-                                    <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
-                                       <form action="{{route('offices.edit',$office)}}">
-                                           <button type="submit" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">Edit</button>
-                                       </form>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
-                                        <form method="POST" action="{{route('offices.destroy',$office)}}">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">Delete</button>
-                                        </form>
-                                    </td>
+                                <thead>
+                                    <tr class="text-center align-middle">
 
-                                </tr>
-                            @endforeach
+                                       <th scope="col" class="border-end text-start w-xs-10 pe-0 border-secondary d-xs-table-cell d-sm-table-cell text-secondary" id="bigTable">
+                                            Iroda Név</th>
+                                       <th scope="col" class="border-end border-secondary d-xs-table-cell d-sm-table-cell text-secondary" id="bigTable">
+                                            Iroda Vezető</th>
+                                       <th scope="col" class="border-end border-secondary d-xs-table-cell d-sm-table-cell text-secondary" id="bigTable">
+                                            Cím
+                                        </th>
+                                        <th scope="col" class="border-end border-secondary d-xs-table-cell d-sm-table-cell text-secondary" id="bigTable">
+                                            Dolgozók száma</th>
+                                        <th scope="col" class="border-end border-secondary d-xs-table-cell d-sm-table-cell text-secondary" id="bigTable">
+                                            Módosítás
+                                        </th>
+                                        <th scope="col" class="border-end border-secondary d-xs-table-cell d-sm-table-cell text-secondary" id="bigTable">
+                                            Törlés
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (\App\Models\Office::all() as $office)
+                                        <tr class="text-center align-middle">
+
+                                            <td id="smallTable"
+                                                class="bg-dark text-start pe-0 border-end border-secondary table-secondary text-secondary ">
+                                                {{ $office->office_name }}</td>
+                                            <td id="smallTable"
+                                                class="bg-dark border-end border-secondary table-secondary text-secondary text-center">
+                                                {{ $office->office_manager }}</td>
+                                            <td id="smallTable"
+                                                class="bg-dark border-end border-secondary table-secondary text-secondary text-center">
+                                                {{ $office->zip_code }} {{ $office->city }}, {{ $office->street }}
+                                                {{ $office->house_number }}.</td>
+                                            <td id="smallTable"
+                                                class="bg-dark border-end border-secondary table-secondary text-secondary text-center">
+                                                {{ $office->number_of_workers }}</td>
+                                            <td id="smallTable"
+                                                class="bg-dark border-end border-secondary table-secondary  text-center">
+                                                <form action="{{ route('offices.edit', $office) }}">
+                                                    <button type="submit" id="smallTable"
+                                                        class="btn btn-warning text-decoration-none">Módosítás</button>
+                                                </form>
+                                            </td>
+                                            <td id="smallTable" class="bg-dark  table-secondary text-center">
+                                                <form method="POST" action="{{ route('offices.destroy', $office) }}">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" id="smallTable"
+                                                        class="btn btn-danger text-decoration-none">Törlés</button>
+                                                </form>
+                                            </td>
+
+                                        </tr>
+                                    @endforeach
 
 
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class="py-1 px-4">
-                        <nav class="flex justify-center space-x-1">
-                            <button type="button" class="p-2.5 inline-flex items-center gap-x-2 text-sm rounded-full text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-white/10 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
-                                <span aria-hidden="true">«</span>
-                                <span class="sr-only">Previous</span>
-                            </button>
-                            <button type="button" class="min-w-[40px] flex justify-center items-center text-gray-800 hover:bg-gray-100 py-2.5 text-sm rounded-full disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-white/10" aria-current="page">1</button>
-                            <button type="button" class="min-w-[40px] flex justify-center items-center text-gray-800 hover:bg-gray-100 py-2.5 text-sm rounded-full disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-white/10">2</button>
-                            <button type="button" class="min-w-[40px] flex justify-center items-center text-gray-800 hover:bg-gray-100 py-2.5 text-sm rounded-full disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-white/10">3</button>
-                            <button type="button" class="min-w-[40px] flex justify-center items-center text-gray-800 hover:bg-gray-100 py-2.5 text-sm rounded-full disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-white/10" disabled>...</button>
-                            <button type="button" class="min-w-[40px] flex justify-center items-center text-gray-800 hover:bg-gray-100 py-2.5 text-sm rounded-full disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-white/10">8</button>
-                            <button type="button" class="min-w-[40px] flex justify-center items-center text-gray-800 hover:bg-gray-100 py-2.5 text-sm rounded-full disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-white/10">9</button>
-                            <button type="button" class="min-w-[40px] flex justify-center items-center text-gray-800 hover:bg-gray-100 py-2.5 text-sm rounded-full disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-white/10">10</button>
-                            <button type="button" class="p-2.5 inline-flex items-center gap-x-2 text-sm rounded-full text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-white/10 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
-                                <span class="sr-only">Next</span>
-                                <span aria-hidden="true">»</span>
-                            </button>
-                        </nav>
+                                </tbody>
+                            </table>
+                            <div class="py-3  px-4">
+                                <nav class="d-flex bg-dark justify-content-center">
+                                    <ul class="pagination bg-dark ">
+                                        <li class="page-item">
+                                            <button class="page-link" aria-label="Elöző">
+                                                <span aria-hidden="true">«</span>
+                                            </button>
+                                        </li>
+                                        <li class="page-item active" aria-current="page">
+                                            <button class="page-link">1</button>
+                                        </li>
+                                        <li class="page-item">
+                                            <button class="page-link">2</button>
+                                        </li>
+                                        <li class="page-item">
+                                            <button class="page-link">3</button>
+                                        </li>
+                                        <li class="page-item disabled">
+                                            <button class="page-link">...</button>
+                                        </li>
+                                        <li class="page-item">
+                                            <button class="page-link">8</button>
+                                        </li>
+                                        <li class="page-item">
+                                            <button class="page-link">9</button>
+                                        </li>
+                                        <li class="page-item">
+                                            <button class="page-link">10</button>
+                                        </li>
+                                        <li class="page-item">
+                                            <button class="page-link" aria-label="Következő">
+                                                <span aria-hidden="true">»</span>
+                                            </button>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+
+
 </x-app-layout>

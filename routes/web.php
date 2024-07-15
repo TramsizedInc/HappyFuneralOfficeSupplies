@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Office_Choose_Controller;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PrinterController;
 use Illuminate\Support\Facades\Route;
@@ -60,14 +61,20 @@ Route::middleware(['gzip'])->group(function () {
             Route::post('create-schedule', [App\Http\Controllers\ScheduleController::class, 'create']);
             Route::get('/hutesidocalculation/{id}', [\App\Http\Controllers\HutosIdoController::class, 'Calculation']);
             Route::any('/docedit/{any}', [\App\Http\Controllers\DocEditProxyController::class, 'index'])->where('any', '.*');
+            Route::get('/select-office', [Office_Choose_Controller::class, 'select'])->name('select.office');
+            Route::post('/select-office', [Office_Choose_Controller::class, 'store'])->name('store.office');    
             //    Route::any('/docedit/{any}', function () {
             //        return 'Matched catch-all route';
             //    })->where('any', '.*');
             Route::get('/javitas', function () {
                 return view('hutesIdo.index');
             });
+            Route::get('/session-data', function () {
+                return response()->json(['sessionId' => session()->getId()]);
+            });
         });
 
         require __DIR__ . '/auth.php';
     });
+
 });

@@ -19,7 +19,7 @@
 
 
 
-    </div>
+   
     <div class="row mt-5 justify-content-center">
         <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12">
             <div class="d-flex flex-column">
@@ -47,7 +47,7 @@
                                 </thead>
                                 <tbody>
                                     @foreach (\App\Models\PrinterType::all() as $printerType)
-                                        <tr>
+                                    <tr class="text-center align-middle">
 
                                             <td
                                                 class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-50">

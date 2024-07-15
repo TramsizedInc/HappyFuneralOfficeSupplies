@@ -3,21 +3,25 @@
 
     <!--Section container-->
     <div class="row mb-3">
-        <div class="col-md-6">
-            <h1 class="text-end text-white font-weight-bold">
+        <div class="col-md-12 col-md-12 flex-container">
+            <h1 class="title text-start ms-5 text-white font-weight-bold" >
                 Elhunyt felvétele
             </h1>
-        </div>
-        <div class="col-md-6">
+            <h1 class="subtitle text-start ms-5 text-white font-weight-bold">Ügyszám: AE01/240215/0001</h1>
+        
             <form class="text-center" id="orderdata_form" method="POST" action="{{ route('orderdata.store') }}">
                 @csrf
                 @method('POST')
                 <input type="hidden" id="deceased_hidden" name="deceased_hidden" />
                 <input type="hidden" id="id_card_hidden" name="id_card_number" />
-                <button class="btn btn-lg btn-secondary" type="submit" disabled>
-                    Mentés
+                <button class="btn save-btn btn-lg btn-secondary" type="submit" disabled>
+                    Tárolás
                 </button>
             </form>
+        
+            <button class="btn next-btn btn-lg btn-success" type="submit" disabled href="#">
+                Tovább
+            </button>
         </div>
 
 
