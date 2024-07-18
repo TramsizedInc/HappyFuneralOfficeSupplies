@@ -12,14 +12,21 @@
         "autoprefixer": "^10.4.2",
         "axios": "^1.6.4",
         "bootstrap": "^5.2.3",
+        "laravel-mix": "^6.0.49",
         "laravel-vite-plugin": "^1.0.0",
         "postcss": "^8.4.31",
         "sass": "^1.56.1",
         "tailwindcss": "^3.1.0",
+        "toastr": "^2.1.4",
         "vite": "^5.0.0"
     },
     "dependencies": {
+        "flatpickr": "^4.6.13",
         "flowbite": "^2.3.0",
+        "gulp": "^5.0.0",
+        "gulp-cli": "^3.0.0",
+        "parsleyjs": "^2.9.2",
+        "puppeteer": "^22.6.3",
         "tw-elements": "^1.1.0"
     }
 }

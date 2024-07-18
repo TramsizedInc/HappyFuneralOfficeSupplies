@@ -1,46 +1,121 @@
-<!-- component -->
-<script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.min.js" defer></script>
-<div class="md:fixed md:flex flex-col md:flex-row md:min-h-screen">
-    <div @click.away="open = false" class="flex flex-col w-full md:w-64 text-gray-700 bg-white dark-mode:text-gray-200 dark-mode:bg-gray-800 flex-shrink-0" x-data="{ open: false }">
-        <div class="flex-shrink-0 px-8 py-4 flex flex-row items-center justify-between">
-            <a href="#" class="text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg dark-mode:text-white focus:outline-none focus:shadow-outline">OfficeSupplies</a>
-            <button class="rounded-lg md:hidden rounded-lg focus:outline-none focus:shadow-outline" @click="open = !open">
-                <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
-                    <path x-show="!open" fill-rule="evenodd" d="M3 5a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM3 10a1 1 0 011-1h12a1 1 0 110 2H4a1 1 0 01-1-1zM9 15a1 1 0 011-1h6a1 1 0 110 2h-6a1 1 0 01-1-1z" clip-rule="evenodd"></path>
-                    <path x-show="open" fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"></path>
-                </svg>
-            </button>
-        </div>
-        <nav :class="{'block': open, 'hidden': !open}" class="flex-grow md:block px-4 pb-4 md:pb-0 md:overflow-y-auto">
-            <a class="block px-4 py-2 mt-2 text-sm font-semibold text-gray-900 bg-white rounded-lg dark-mode:bg-gray-700 dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="{{route('printers.index')}}">Printers</a>
-            <div @click.away="open = false" class="relative" x-data="{ open: false }">
-                <button @click="open = !open" class="flex flex-row items-center w-full px-4 py-2 mt-2 text-sm font-semibold text-left bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:focus:bg-gray-600 dark-mode:hover:bg-gray-600 md:block hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline">
-                    <span>Account</span>
-                    <svg fill="currentColor" viewBox="0 0 20 20" :class="{'rotate-180': open, 'rotate-0': !open}" class="inline w-4 h-4 mt-1 ml-1 transition-transform duration-200 transform md:-mt-1"><path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd"></path></svg>
-                </button>
-                <div x-show="open" x-transition:enter="transition ease-out duration-100" x-transition:enter-start="transform opacity-0 scale-95" x-transition:enter-end="transform opacity-100 scale-100" x-transition:leave="transition ease-in duration-75" x-transition:leave-start="transform opacity-100 scale-100" x-transition:leave-end="transform opacity-0 scale-95" class="absolute right-0 w-full mt-2 origin-top-right rounded-md shadow-lg">
-                    <div class="px-2 py-2 bg-white rounded-md shadow dark-mode:bg-gray-800">
-                        <a disabled class= "block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" href="">
-                          {{Auth::user()->name}}
-                        </a>
-                        <hr>
-                        <x-dropdown-link class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline" :href="route('profile.edit')">
-                            {{ __('Profile') }}
-                        </x-dropdown-link>
-
-                        <!-- Authentication -->
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-
-                            <x-dropdown-link class="block px-4 py-2 mt-2 text-sm font-semibold bg-transparent rounded-lg dark-mode:bg-transparent dark-mode:hover:bg-gray-600 dark-mode:focus:bg-gray-600 dark-mode:focus:text-white dark-mode:hover:text-white dark-mode:text-gray-200 md:mt-0 hover:text-gray-900 focus:text-gray-900 hover:bg-gray-200 focus:bg-gray-200 focus:outline-none focus:shadow-outline"  :href="route('logout')"
-                                             onclick="event.preventDefault();
-                                                this.closest('form').submit();">
-                                {{ __('Log Out') }}
-                            </x-dropdown-link>
-                        </form>
+<div class="container-fluid">
+    <div class="row flex-nowrap">
+        <div class="col-auto px-0">
+            <div id="sidebar" class="collapse collapse-horizontal  border-end">
+                <div id="sidebar-nav" class="list-group border-0 bg-dark text-white rounded-0 text-sm-start min-vh-100">
+                    <ul class="nav flex-column sidebar-nav">
+                        <div class="sidebar-header">
+                            <div class="sidebar-brand  text-center">
+                                <a data-bs-parent="#sidebar"class="nav-link fs-2 mt-3"
+                                    href="{{ route('dashboard') }}">Dashboard</a>
                             </div>
+                        </div>
+                        <div class="mt-3 text-dark">
+                            <li class="nav-item dropdown mt-3">
+                                <a data-bs-parent="#sidebar"class="nav-link dropdown-toggle" href="#"
+                                    id="dropdownMenuLink1" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Temetés felvételezés
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
+                                    <li><a data-bs-parent="#sidebar" class="dropdown-item"
+                                            href="{{ route('deceaseds.create') }}"><i class="fas fa-plus p-2"></i> Új ügy
+                                            felvétele</a></li>
+                                    <li class="border-top border-secondary"><a data-bs-parent="#sidebar" class="dropdown-item"
+                                            href="{{ route('deceaseds.index') }}"><i class="fas fa-table p-2"></i>Tárolt ügyek</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown mt-3">
+                                <a data-bs-parent="#sidebar"class="nav-link dropdown-toggle" href="#"
+                                    id="dropdownMenuLink2" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Iroda kellékek
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink2">
+                                    <li><a data-bs-parent="#sidebar" class="dropdown-item"
+                                            href="{{ route('printers.index') }}">Nyomtatók</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown mt-3">
+                                <a data-bs-parent="#sidebar"class="nav-link dropdown-toggle" href="#"
+                                    id="dropdownMenuLink3" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Statisztikák
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink3">
+                                    <li><a data-bs-parent="#sidebar" class="dropdown-item"
+                                            href="{{ route('getPrinterData') }}">Nyomtatók</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown mt-3">
+                                <a data-bs-parent="#sidebar"class="nav-link dropdown-toggle" href="#"
+                                    id="dropdownMenuLink4" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Egyéb funkciók
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink4">
+                                    <li><a data-bs-parent="#sidebar" class="dropdown-item"
+                                            href="{{ route('brands.index') }}">Brandek</a></li>
+                                    <li><a data-bs-parent="#sidebar" class="dropdown-item"
+                                            href="{{ route('printerTypes.index') }}">Nyomtató fajták</a></li>
+                                    <li><a data-bs-parent="#sidebar" class="dropdown-item"
+                                            href="{{ route('checkTypes.index') }}">Csekk fajták</a></li>
+                                    <li><a data-bs-parent="#sidebar" class="dropdown-item"
+                                            href="{{ route('offices.index') }}">Irodák</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown mt-3">
+                                <a data-bs-parent="#sidebar"class="nav-link dropdown-toggle" href="#"
+                                    id="dropdownMenuLink5" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Számlák
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink5">
+                                    <li><a data-bs-parent="#sidebar" class="dropdown-item"
+                                            href="{{ route('checkModels.index') }}">Összes</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown mt-3">
+                                <a data-bs-parent="#sidebar"class="nav-link dropdown-toggle" href="#"
+                                    id="dropdownMenuLink6" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Felhasználó
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink6">
+                                    <li>
+                                        <a data-bs-parent="#sidebar" class="dropdown-item disabled text-dark"
+                                            href="#">{{ Auth::user()->name }}</a>
+                                    </li>
+                                    <li>
+                                        <form method="POST" action="{{ route('logout') }}">
+                                            @csrf
+                                            <a data-bs-parent="#sidebar" class="dropdown-item"
+                                                href="{{ route('logout') }}"
+                                                onclick="event.preventDefault(); this.closest('form').submit();">Log
+                                                Out</a>
+                                        </form>
+                                    </li>
+                                </ul>
+                            </li>
+                        </div>
+                    </ul>
                 </div>
             </div>
-        </nav>
+        </div>
+        <div class="main ps-md-2 pt-2">
+
+            <a href="#" data-bs-target="#sidebar" data-bs-toggle="collapse"
+                class="r text-danger rounded-3 p-1 fs-2 text-decoration-none">
+                <i class="fas fa-bars"></i></a>
+
+            <div class="container-fluid">
+                {{ $slot }}
+            </div>
+
+        </div>
+        <!-- /#page-content-wrapper -->
+
+
+
     </div>
 </div>

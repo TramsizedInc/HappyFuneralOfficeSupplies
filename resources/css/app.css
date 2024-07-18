@@ -18,5 +18,41 @@ td:not(:last-child) {
 }
 
 th:not(:last-child) {
-    border-bottom: 2px solid rgba(0, 0, 0, .1);
+    border-bottom: 2px solid #0000001a;
+}
+
+.form-input,
+.form-select {
+    padding-left: 0;
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-right: 0;
+    font-size: 12px;
+
+    border-left: none;
+    border-bottom: none;
+    border-right: none;
+    border-top: none;
+}
+
+body {
+    position: relative;
+    overflow-x: hidden;
+    background-color: #CFD8DC;
+}
+
+#sidebar-nav {
+    width: 200px;
+}
+
+#screen-size-category {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    background-color: rgba(0, 0, 0, 0.7);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+    z-index: 1000;
 }

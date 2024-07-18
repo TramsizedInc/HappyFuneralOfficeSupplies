@@ -1,96 +1,152 @@
 <x-app-layout>
 
-        <div class="grid grid-cols-4 py-3 px-4">
-            <div class="mr-3 relative max-w-xs">
-                <label class="sr-only">Search</label>
-                <input type="text" name="hs-table-with-pagination-search" id="hs-table-with-pagination-search" class="py-2 px-3 ps-9 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600" placeholder="Search for items">
-                <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-3">
-                    <svg class="h-4 w-4 text-gray-400" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
+   
+
+    <div id=list>
+        <div class="row justify-content-center py-3 px-4">
+            <div class="col-xl-2 col-xxl-2 col-lg-3 col-md-2 col-sm-2 col-xs-2"></div>
+            <div class="col-xl-3 col-xxl-3 col-lg-3 col-md-3 col-sm-4 col-xs-2">
+                <div class="input-group">
+                    <input type="text" name="hs-table-with-pagination-search" id="hs-table-with-pagination-search"
+                        class="form-control pe-3" placeholder="Search for items">
+                    <span class="input-group-text">
+                        <i class="fa fa-search"></i> <!-- Updated icon class -->
+                    </span>
                 </div>
             </div>
-
-                  <div class="mr-3">
-
-                      <select id="offices" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                    <option selected>Iroda 1</option>
-                    <option value="US">Iroda 2</option>
-                    <option value="CA">Iroda 3</option>
-                    <option value="FR">Iroda 4</option>
-                    <option value="DE">Iroda 5</option>
-                </select>
-
-            </div>
-
-               </div>
-    <div class="text-start px-6 py-4 whitespace-nowrap text-sm font-medium">
-
-        <a  href="{{route('printers.create')}}" type="button" class="items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">Create</a>
-    </div>
-    <div class="flex flex-col">
-        <div class="-m-1.5 overflow-x-auto">
-            <div class="p-1.5 min-w-full inline-block align-middle">
-                <div class="border rounded-lg divide-y divide-gray-200 dark:border-gray-700 dark:divide-gray-700">
-
-                    <div class="overflow-hidden">
-                        <table class="table-auto min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                            <thead class="bg-gray-50 dark:bg-gray-700">
-                            <tr>
-                                <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Brand</th>
-                                <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Type</th>
-                                <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Picture</th>
-                                <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Documentation</th>
-                                <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Type of toner</th>
-                                <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Type of drumm unit</th>
-                                <th scope="col" colspan="3" class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase">Actions</th>
-                            </tr>
-                            </thead>
-                            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-                            <tr>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">John Brown</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">45</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">
-                                    <img class="h-auto max-w-full" src="/docs/images/examples/image-1@2x.jpg" alt="image description">
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">45</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">45</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-800 dark:text-gray-200">45</td>
-                                <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
-                                    <button type="button" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">View</button>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
-                                    <button type="button" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">Edit</button>
-                                </td>
-                                <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
-                                    <button type="button" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">Delete</button>
-                                </td>
-
-                            </tr>
-
-                            </tbody>
-                        </table>
-                    </div>
-
-                    <div class="py-1 px-4">
-                        <nav class="flex justify-center space-x-1">
-                            <button type="button" class="p-2.5 inline-flex items-center gap-x-2 text-sm rounded-full text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-white/10 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
-                                <span aria-hidden="true">«</span>
-                                <span class="sr-only">Previous</span>
-                            </button>
-                            <button type="button" class="min-w-[40px] flex justify-center items-center text-gray-800 hover:bg-gray-100 py-2.5 text-sm rounded-full disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-white/10" aria-current="page">1</button>
-                            <button type="button" class="min-w-[40px] flex justify-center items-center text-gray-800 hover:bg-gray-100 py-2.5 text-sm rounded-full disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-white/10">2</button>
-                            <button type="button" class="min-w-[40px] flex justify-center items-center text-gray-800 hover:bg-gray-100 py-2.5 text-sm rounded-full disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-white/10">3</button>
-                            <button type="button" class="min-w-[40px] flex justify-center items-center text-gray-800 hover:bg-gray-100 py-2.5 text-sm rounded-full disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-white/10" disabled>...</button>
-                            <button type="button" class="min-w-[40px] flex justify-center items-center text-gray-800 hover:bg-gray-100 py-2.5 text-sm rounded-full disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-white/10">8</button>
-                            <button type="button" class="min-w-[40px] flex justify-center items-center text-gray-800 hover:bg-gray-100 py-2.5 text-sm rounded-full disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-white/10">9</button>
-                            <button type="button" class="min-w-[40px] flex justify-center items-center text-gray-800 hover:bg-gray-100 py-2.5 text-sm rounded-full disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-white/10">10</button>
-                            <button type="button" class="p-2.5 inline-flex items-center gap-x-2 text-sm rounded-full text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-white/10 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
-                                <span class="sr-only">Next</span>
-                                <span aria-hidden="true">»</span>
-                            </button>
-                        </nav>
-                    </div>
-                </div>
+            <div class="col-xl-3 col-xxl-3 col-lg-3 col-md-3 col-sm-3 col-xs-2"> <!-- Column for the button -->
+                <a href="{{ route('printers.create') }}" class="btn btn-primary">Létrehozás</a>
             </div>
         </div>
-    </div>
+
+
+
+
+        <div class="row mt-5 justify-content-center">
+            <div class="col-xxl-10 col-xl-9 col-lg-10 col-md-12 col-sm-12 col-xs-12">
+                <div class="d-flex flex-column">
+                    <div class="overflow-auto">
+                        <div class="table-responsive">
+                            <div class="table table-responsive bg-dark border border-dark rounded">
+                                <table class="table table-dark">
+                                    <thead class="table-dark text-white">
+                                        <tr class="text-center align-middle">
+                                            <th scope="col" class="border-end border-secondary d-xs-table-cell d-sm-table-cell text-secondary" id="bigTable">
+                                                Márka
+                                            </th>
+                                            <th scope="col" class="border-end border-secondary d-xs-table-cell d-sm-table-cell text-secondary" id="bigTable">
+                                                Típus
+                                            </th>
+                                            <th scope="col" class="border-end border-secondary d-xs-table-cell d-sm-table-cell text-secondary" id="bigTable">
+                                                Kép
+                                            </th>
+                                            <th scope="col" class="border-end border-secondary d-xs-table-cell d-sm-table-cell text-secondary" id="bigTable">
+                                                Létrehozva
+                                            </th>
+                                            <th scope="col" class="border-end border-secondary d-xs-table-cell d-sm-table-cell text-secondary" id="bigTable">
+                                                Utoljára Modósitva
+                                            </th>
+                                            <th scope="col" class="border-end border-secondary d-xs-table-cell d-sm-table-cell text-secondary" id="bigTable">
+                                                Toner Százalék
+                                            </th>
+                                            <th scope="col" class="border-end border-secondary d-xs-table-cell d-sm-table-cell text-secondary" id="bigTable">
+                                                Dobb Egység Százalék
+                                            </th>
+                                            <th scope="col" class="border-end border-secondary d-xs-table-cell d-sm-table-cell text-secondary" id="bigTable">
+                                                Gombok
+                                            </th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach (\App\Models\Printer::all() as $printer)
+                                            <tr>
+                                                <td class="px-6 py-4 text-sm text-dark">
+                                                    {{ $printer->brand }}
+                                                </td>
+                                                <td class="px-6 py-4 text-sm text-dark">
+                                                    {{ $printer->type }}
+                                                </td>
+                                                <td class="px-6 py-4 text-sm text-dark">
+                                                    <img class="h-10 w-10"
+                                                        src="{{ asset('storage/picture/' . $printer->picture) }}"
+                                                        alt="image description">
+                                                </td>
+                                                <td class="px-6 py-4 text-sm text-dark">
+                                                    {{ $printer->created_at }}
+                                                </td>
+                                                <td class="px-6 py-4 text-sm text-dark">
+                                                    {{ $printer->updated_at }}
+                                                </td>
+                                                <td class="px-6 py-4 text-sm text-dark">
+                                                    {{ $printer->toner_percent }}%
+                                                </td>
+                                                <td class="px-6 py-4 text-sm text-dark">
+                                                    {{ $printer->drumm_percent }}%
+                                                </td>
+                                                <td class="px-6 py-4 text-end text-sm">
+                                                    <button type="button"
+                                                        class="btn btn-link text-decoration-none text-primary">Nézzet</button>
+                                                </td>
+                                                <td class="px-6 py-4 text-end text-sm">
+                                                    <form action="{{ route('printers.edit', $printer) }}">
+                                                        <button type="submit"
+                                                            class="btn btn-link text-decoration-none text-primary">Módositás</button>
+                                                    </form>
+                                                </td>
+                                                <td class="px-6 py-4 text-end text-sm">
+                                                    <form method="POST"
+                                                        action="{{ route('printers.destroy', $printer) }}">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit"
+                                                            class="btn btn-link text-decoration-none text-primary">Törlés</button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+
+                                <div class="py-1 px-4">
+                                    <nav class="d-flex justify-content-center">
+                                        <ul class="pagination">
+                                            <li class="page-item">
+                                                <button class="page-link" type="button" aria-label="Previous">
+                                                    <span aria-hidden="true">«</span>
+                                                </button>
+                                            </li>
+                                            <li class="page-item active" aria-current="page">
+                                                <button class="page-link" type="button">1</button>
+                                            </li>
+                                            <li class="page-item">
+                                                <button class="page-link" type="button">2</button>
+                                            </li>
+                                            <li class="page-item">
+                                                <button class="page-link" type="button">3</button>
+                                            </li>
+                                            <li class="page-item disabled">
+                                                <button class="page-link" type="button">...</button>
+                                            </li>
+                                            <li class="page-item">
+                                                <button class="page-link" type="button">8</button>
+                                            </li>
+                                            <li class="page-item">
+                                                <button class="page-link" type="button">9</button>
+                                            </li>
+                                            <li class="page-item">
+                                                <button class="page-link" type="button">10</button>
+                                            </li>
+                                            <li class="page-item">
+                                                <button class="page-link" type="button" aria-label="Next">
+                                                    <span aria-hidden="true">»</span>
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </nav>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 </x-app-layout>
