@@ -17,8 +17,8 @@ return new class extends Migration
             $table->string('type');
             $table->string('picture');
             $table->string('documentation');
-            $table->string('type_of_toner');
-            $table->string('type_of_drumm_unit');
+            $table->integer('type_of_toner');
+            $table->integer('type_of_drumm_unit');
             /* Softdeletes */
             $table->softDeletes();
             $table->integer('created_by')->default(1);

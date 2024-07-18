@@ -1,104 +1,74 @@
 <x-app-layout>
-    <div class="container">
-        <div class="row">
-            <div class="card" style="width: 18rem;">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+
+
+    <div class="row m-5 p-5 justify-content-center align-middle">
+        <div class="col-md-8 col-12">
+            <div class="card bg-dark text-center fw-bold text-danger fs-2">
+                <div class="card-header">
+                    <h2 class="card-title">Printer statisztika</h2>
                 </div>
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">An item</li>
-                    <li class="list-group-item">A second item</li>
-                    <li class="list-group-item">A third item</li>
-                </ul>
-                <div class="card-body">
-                    <a href="#" class="card-link">Card link</a>
-                    <a href="#" class="card-link">Another link</a>
-
-
-                    <canvas id="myChart"></canvas>
+                <div class="card-body text-secondary d-flex align-items-center justify-content-center">
+                    <canvas class="align-middle" id="printerChart" style="height: 200px"></canvas>
                 </div>
             </div>
         </div>
     </div>
 
 
-    <script>
-        var ctx = document.getElementById('myChart').getContext('2d');
-var myChart = new Chart(ctx, {
-    type: 'line',
-    data: {
-        labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'],
-        datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255, 99, 132, 1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            y: {
-                beginAtZero: true
-            }
-        }
-    }
-});
-    </script>
-<!--    
-    <script>
-        let chart;
 
-        $('#filter').click(function getData() {
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
             var ctx = document.getElementById('printerChart').getContext('2d');
 
+            var temp = <?php echo json_encode($compressed_data); ?>;
+
+
+
+            var combinedLabels = temp.months.map((month, index) => `In ${month}  (${temp.brands[index]})`);
 
             var data = {
-                labels: <?php json_encode($compressed_data['month']) ?>,
+                labels: combinedLabels,
                 datasets: [{
-                        label: 'Printer Type',
-                        data: <?php json_encode($compressed_data['types']); ?>,
-                        backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                        borderColor: 'rgba(255, 99, 132, 1)',
-                        borderWidth: 1
-                    },
-                    {
                         label: 'Toner Type',
-                        data: <?php json_encode($compressed_data['toners']) ?>,
+                        data: temp.toners,
                         backgroundColor: 'rgba(54, 162, 235, 0.2)',
                         borderColor: 'rgba(54, 162, 235, 1)',
                         borderWidth: 1
                     },
                     {
                         label: 'Drum Unit Type',
-                        data: <?php json_encode($compressed_data['drumUnits']) ?>,
+                        data: temp.drumUnits,
                         backgroundColor: 'rgba(75, 192, 192, 0.2)',
                         borderColor: 'rgba(75, 192, 192, 1)',
                         borderWidth: 1
                     }
                 ]
             };
-            const config = {
-                type: 'line',
+
+            var config = {
+                type: 'bar',
                 data: data,
+                options: {
+                    responsive: true, // Ensures the chart responds to window resizing
+                    maintainAspectRatio: false, // Allows the chart to resize freely
+                    plugins: {
+                        legend: {
+                            position: 'top'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true
+                        }
+                    }
+                }
             };
-            var myChart = new Chart(ctx).Bar(data);
+            var chart = new Chart(ctx, config);
         });
-    </script> -->
+    </script>
+
+
 
 </x-app-layout>

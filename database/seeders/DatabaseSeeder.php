@@ -3,6 +3,8 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\Printer;
 use Illuminate\Database\Seeder;
 use App\Models\User;
 use Illuminate\Support\Facades\Hash;
@@ -23,12 +25,13 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         // \App\Models\User::factory(10)->create();
-        
+
         /**miagecistevesdedvasfaszvan */
         $this->call(
             [
                 RoleSeeder::class,
                 OfficeSeeder::class,
+                PrinterSeeder::class,
                 PrinterTypeSeeder::class,
                 BrandSeeder::class,
                 CheckTypeSeeder::class,
@@ -41,21 +44,21 @@ class DatabaseSeeder extends Seeder
             'email' => 'dev@temetkezes.hu',
             'password' => Hash::make('dev122937'),
             'role_id' => 1,
-            'office_id'=> 1
+            'office_id' => 1
         ]);
         User::factory()->create([
             'name' => 'Edmond',
             'email' => 'edmond@temetkezes.hu',
             'password' => Hash::make('Aevum213897'),
             'role_id' => 1,
-            'office_id'=> 1
+            'office_id' => 1
         ]);
         User::factory()->create([
             'name' => 'Karesz',
             'email' => 'karesz@temetkezes.hu',
             'password' => Hash::make('Aevum798342'),
             'role_id' => 1,
-            'office_id'=> 1
+            'office_id' => 1
         ]);
         // Office 1
         User::factory()->create([
@@ -72,7 +75,7 @@ class DatabaseSeeder extends Seeder
             'role_id' => 4,
             'office_id' => 2
         ]);
-        
+
         // Office 2
         User::factory()->create([
             'name' => 'tem.pesti',
@@ -81,7 +84,7 @@ class DatabaseSeeder extends Seeder
             'role_id' => 4,
             'office_id' => 3
         ]);
-        
+
         // Office 3
         User::factory()->create([
             'name' => 'tem.lenhossék',
@@ -90,7 +93,7 @@ class DatabaseSeeder extends Seeder
             'role_id' => 4,
             'office_id' => 4
         ]);
-        
+
         // Office 4
         User::factory()->create([
             'name' => 'tem.villányi',
@@ -99,7 +102,7 @@ class DatabaseSeeder extends Seeder
             'role_id' => 4,
             'office_id' => 5
         ]);
-        
+
         // Office 5
         User::factory()->create([
             'name' => 'tem.ernő',
@@ -108,7 +111,7 @@ class DatabaseSeeder extends Seeder
             'role_id' => 4,
             'office_id' => 6
         ]);
-        
+
         // Office 6
         User::factory()->create([
             'name' => 'tem.nagyenyed',
@@ -117,7 +120,7 @@ class DatabaseSeeder extends Seeder
             'role_id' => 4,
             'office_id' => 7
         ]);
-        
+
         // Office 7
         User::factory()->create([
             'name' => 'tem.thököly',
@@ -126,7 +129,7 @@ class DatabaseSeeder extends Seeder
             'role_id' => 4,
             'office_id' => 8
         ]);
-        
+
         // Office 8
         User::factory()->create([
             'name' => 'tem.szivacs',
@@ -135,7 +138,7 @@ class DatabaseSeeder extends Seeder
             'role_id' => 4,
             'office_id' => 9
         ]);
-        
+
         // Office 9
         User::factory()->create([
             'name' => 'tem.árpád',
@@ -152,7 +155,7 @@ class DatabaseSeeder extends Seeder
             'role_id' => 4,
             'office_id' => 11
         ]);
-        
+
         // Office 12
         User::factory()->create([
             'name' => 'tem.bécsi',
@@ -161,7 +164,7 @@ class DatabaseSeeder extends Seeder
             'role_id' => 4,
             'office_id' => 12
         ]);
-        
+
         // Office 13
         User::factory()->create([
             'name' => 'tem.debrecen_csapó',
@@ -170,7 +173,7 @@ class DatabaseSeeder extends Seeder
             'role_id' => 4,
             'office_id' => 13
         ]);
-        
+
         // Office 14
         User::factory()->create([
             'name' => 'tem.salgótarján_füleki',
@@ -179,7 +182,7 @@ class DatabaseSeeder extends Seeder
             'role_id' => 4,
             'office_id' => 14
         ]);
-        
+
         // Office 15
         User::factory()->create([
             'name' => 'tem.nyíregyháza_dózsa',
@@ -188,7 +191,7 @@ class DatabaseSeeder extends Seeder
             'role_id' => 4,
             'office_id' => 15
         ]);
-        
+
         // Office 16
         User::factory()->create([
             'name' => 'tem.békéscsaba_munkácsy',
@@ -197,9 +200,11 @@ class DatabaseSeeder extends Seeder
             'role_id' => 4,
             'office_id' => 16
         ]);
-        
-        $this->call([OfficeSupplySeeder::class]);
-        $this->call([HutosIdoSeeder::class]);
-        $this->call([KremaListSeeder::class]);
+
+        $this->call([
+            HutosIdoSeeder::class,
+            OfficeSupplySeeder::class,
+            KremaListSeeder::class
+        ]);
     }
 }

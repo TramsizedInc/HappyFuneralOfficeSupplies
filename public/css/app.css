@@ -44,21 +44,27 @@
         max-width: fit-content;
     }
 
-    #calculator{
+    #calculator {
         max-width: max-content;
-        
+
     }
 
-     #title {
-       
-        font-size: 12px; /* Inherits the font-size from #bigTable */
+    #title {
+
+        font-size: 12px;
+        /* Inherits the font-size from #bigTable */
     }
-    
+
+    #wrap {
+        font-size: 9px;
+        white-space: normal !important;
+    }
+
 }
 
 @media screen and (min-width: 576px) and (max-width: 767px) {
 
-     
+
     /* sm kategória */
     #bigTable {
         font-size: 12px;
@@ -83,6 +89,11 @@
     .next-btn {
         font-size: 12px;
         /* A gombokhoz nem tartozik oldalról történő távolság */
+    }
+
+    #wrap {
+        font-size: 11px;
+        white-space: normal !important;
     }
 }
 
@@ -109,9 +120,14 @@
         /* A gombokhoz nem tartozik oldalról történő távolság */
     }
 
-    #title{
+    #title {
         font-size: 12px;
-        
+
+    }
+
+    #wrap {
+        font-size: 15px;
+        white-space: normal !important;
     }
 }
 
@@ -127,6 +143,11 @@
         font-size: 16px;
         /* Példa: kisebb méret xs kategóriában */
     }
+
+    #wrap {
+        font-size: 17px;
+        white-space: normal !important;
+    }
 }
 
 @media screen and (min-width: 1200px) and (max-width: 1399px) {
@@ -141,6 +162,11 @@
         font-size: 18px;
         /* Példa: kisebb méret xs kategóriában */
     }
+
+    #wrap {
+        font-size: 21px;
+        white-space: normal !important;
+    }
 }
 
 @media screen and (min-width: 1400px) {
@@ -154,6 +180,10 @@
     #smallTable {
         font-size: 20px;
         /* Példa: kisebb méret xs kategóriában */
+    }
+
+    #wrap {
+        font-size: 18px;
     }
 }
 
@@ -197,4 +227,8 @@
 .next-btn {
     margin-left: 0;
     /* A gombokhoz nem tartozik oldalról történő távolság */
+}
+
+canvas{
+    width: fit-content;
 }

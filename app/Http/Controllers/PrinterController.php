@@ -157,19 +157,19 @@ class PrinterController extends Controller
 
     public function getPrinterData()
     {
-        $printers = Printer::select('type', 'type_of_toner', 'type_of_drumm_unit', 'created_at')
+        $printers = Printer::select('brand', 'type_of_toner', 'type_of_drumm_unit', 'created_at')
             ->get()
             ->groupBy(function ($date) {
                 return Carbon::parse($date->created_at)->format('m');
             });
 
-        $types = [];
+        $brands = [];
         $toners = [];
         $drumUnits = [];
         $months = [];
         
         foreach ($printers as $month => $data) {
-            $types[] = $data->pluck('type')->avg();
+            $brands[] = $data->pluck('brand');
             $tonerData = $data->pluck('type_of_toner')->reject(function ($value) {
                 return is_null($value) || $value === 0;
             });
@@ -180,9 +180,10 @@ class PrinterController extends Controller
             $drumUnits[] = $drumUnitData->isNotEmpty() ? $drumUnitData->avg() : 0; // Set default value to 0
             $months[] = Carbon::parse($data[0]->created_at)->format('M');
         }
-        dd();
-        $compressed_data = compact('types', 'toners', 'drumUnits', 'months');
+        
+        $compressed_data = compact('brands', 'toners', 'drumUnits', 'months');
 
         return view('statistics.printer',['compressed_data'=> $compressed_data]);
     }
+
 }

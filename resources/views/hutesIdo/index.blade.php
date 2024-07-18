@@ -6,23 +6,23 @@
 
     <form action="#" method="post">
         <div class="row justify-content-center">
-            <div class="col-md-12 col-xs-3 col-xxl-6">
-                <div class="card bg-dark text-secondary mb-3">
+            <div class="col-xxl-6 col-md-12 col-xs-3 col-xxl-8">
+                <div class="card bg-dark text-secondary">
                     <div class="card-header row">
-                        <div class="col-md-12 text-center">
+                        <div class="col-md-12 col-xxl-3 text-center pt-3">
                             <h2 class="card-title">Hűtés díj kalkulátor</h2>
                         </div>
 
-                        <div class="col-md-12 text-center">
-                            <div class="form-group border border-danger pt-2 mb-2">
-                                <p id="title" class="form-label fw-bold text-danger">TELJES HŰTÉSDÍJ: <span id="price_sum"
+                        <div class="col-md-12 col-xxl-3 text-center pt-3">
+                            <div class="form-group border border-danger">
+                                <p id="title" class="form-label fw-bold m-1 text-danger">TELJES HŰTÉSDÍJ: <span id="price_sum"
                                         class="text-secondary fw-normal fst-italic">64 000 Ft
                                     </span>
                                 </p>
 
                             </div>
                         </div>
-                        <div class="col-md-12 text-center">
+                        <div class="col-md-12 col-xxl-3 text-center pt-3">
                             <div class="form-group">
                                 <div class="input-group">
                                     <label 
@@ -34,8 +34,8 @@
                             </div>
                         </div>
 
-                        <div class="col-md-12 text-center mt-2">
-                            <button class="btn btn-success" type="submit">Tovább</button>
+                        <div class="col-md-12 col-xxl-3 text-center pt-3">
+                            <button class="btn btn-success" style="width: 100%" type="submit">Ajánlat kérése</button>
                         </div>
 
                     </div>
@@ -122,7 +122,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-6 pt-3">
+                            <div class="col-md-6 col-xxl-4 pt-3">
                                 <div class="form-group">
                                     <div class="input-group">
                                         <label id="title"
@@ -136,7 +136,7 @@
                             </div>
 
 
-                            <div class="col-md-6 pt-3 ">
+                            <div class="col-md-6 pt-3 col-xxl-4">
                                 <div class="form-group">
                                     <div class="input-group">
                                         <label id="title"
@@ -149,7 +149,7 @@
                                 </div>
                             </div>
 
-                            <div class="col-md-6 col-x pt-3">
+                            <div class="col-md-6 col-xxl-4 pt-3">
                                 <div class="form-group">
                                     <div class="input-group">
                                         <label id="title"
@@ -332,4 +332,55 @@
 
 
     </form>
+
+    <script>
+         $(document).ready(() => {
+             var id_of_order = String(<?php echo json_encode($id);?>);
+             var url = '/hutesidocalculation/' + id_of_order;
+             fetch(url).then(x => {
+                 if(!x.ok){
+                     throw new Error('Hálózati hiba');
+                 }
+                 return x.json();
+             }).then(y => {
+                 if(!y.success){
+                     throw new Error('Mentési hiba');
+                 }
+                 toastr.info('Sikeres Mentés');
+                 document.getElementById("price_sum").textContent = y.szumma + " Ft";
+                 document.getElementById("atadas").innerText = y.vegnap;
+                 document.getElementById("actual_pot").textContent = y.pot;
+                 document.getElementById("pot").textContent = y.pot;
+                 document.getElementById("actual_atalany1").textContent = y.atal1;
+                 document.getElementById("atal1").textContent = y.atal1;
+                 document.getElementById("actual_atalany2").textContent = y.atal2;
+                 document.getElementById("atal2").textContent = y.atal2;
+                 document.getElementById("death_date").value = y.halal.split(' ')[0];
+                 document.getElementById("order_date").value = y.halal.split(' ')[0];
+                 document.getElementById("hv_done_date").value = y.hv_date.split(' ')[0];
+                 document.getElementById("hv_done_day").value = y.hv_date;
+                 // toastr.info(y.hv_kesz_date.split(' ')[0]);
+                 document.getElementById("hv_van_date").value = y.hv_kesz_date.split(' ')[0];
+                 document.getElementById("hv_van_day").value =  y.hv_van;
+                 document.getElementById("hv_kiall").value = y.hv_kesz_date.split(' ')[0];
+                 document.getElementById("days").innerText = y.days;
+                 document.getElementById("kh_nev").innerText = y.hospital;
+                 document.getElementById("krema").innerText = y.krema;
+                 document.getElementById("atal1_days").innerText = y.atal1_days;
+                 document.getElementById("atal2_days").innerText = y.atal2_days;
+                 // toastr.info(y.pot_days);
+                 document.getElementById("pot_days").innerText = y.pot_days;
+                 document.getElementById("cooling_start_date").value = y.halal.split(' ')[0];
+                 document.getElementById("transport_date").value = y.vegnap;
+    
+    
+        //         document.getElementById("krema").innerText = y.krema;
+    
+    
+    
+        //     })
+        // })
+    </script>
+
+
 </x-app-layout>

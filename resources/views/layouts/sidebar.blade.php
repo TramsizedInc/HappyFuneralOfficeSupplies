@@ -19,10 +19,12 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
                                     <li><a data-bs-parent="#sidebar" class="dropdown-item"
-                                            href="{{ route('deceaseds.create') }}"><i class="fas fa-plus p-2"></i> Új ügy
+                                            href="{{ route('deceaseds.create') }}"><i class="fas fa-plus p-2"></i> Új
+                                            ügy
                                             felvétele</a></li>
-                                    <li class="border-top border-secondary"><a data-bs-parent="#sidebar" class="dropdown-item"
-                                            href="{{ route('deceaseds.index') }}"><i class="fas fa-table p-2"></i>Tárolt ügyek</a></li>
+                                    <li class="border-top border-secondary"><a data-bs-parent="#sidebar"
+                                            class="dropdown-item" href="{{ route('deceaseds.index') }}"><i
+                                                class="fas fa-table p-2"></i>Tárolt ügyek</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item dropdown mt-3">
@@ -109,7 +111,11 @@
                 <i class="fas fa-bars"></i></a>
 
             <div class="container-fluid">
-                {{ $slot }}
+                <div class="row">
+                    <div class="align-items-center justify-content-center">
+                        {{ $slot }}
+                    </div>
+                </div>
             </div>
 
         </div>

@@ -1,6 +1,6 @@
 <x-app-layout>
 
-   
+
 
     <div id=list>
         <div class="row justify-content-center py-3 px-4">
@@ -15,7 +15,8 @@
                 </div>
             </div>
             <div class="col-xl-3 col-xxl-3 col-lg-3 col-md-3 col-sm-3 col-xs-2"> <!-- Column for the button -->
-                <a href="{{ route('printers.create') }}" class="btn btn-primary">Létrehozás</a>
+                <a href="{{ route('printers.create') }}" class="btn btn-primary"><i class="fas fa-plus p-2"></i> Új
+                    nyomtató hozzáadása</a>
             </div>
         </div>
 
@@ -31,77 +32,95 @@
                                 <table class="table table-dark">
                                     <thead class="table-dark text-white">
                                         <tr class="text-center align-middle">
-                                            <th scope="col" class="border-end border-secondary d-xs-table-cell d-sm-table-cell text-secondary" id="bigTable">
+                                            <th id="wrap" scope="col" colspan="1"
+                                                class="border-end border-secondary d-xs-table-cell d-sm-table-cell text-secondary">
                                                 Márka
                                             </th>
-                                            <th scope="col" class="border-end border-secondary d-xs-table-cell d-sm-table-cell text-secondary" id="bigTable">
+                                            <th scope="col" colspan="1"
+                                                class="border-end border-secondary d-xs-table-cell d-sm-table-cell text-secondary">
                                                 Típus
                                             </th>
-                                            <th scope="col" class="border-end border-secondary d-xs-table-cell d-sm-table-cell text-secondary" id="bigTable">
+                                            <th scope="col" colspan="1"
+                                                class="border-end border-secondary d-xs-table-cell d-sm-table-cell text-secondary">
                                                 Kép
                                             </th>
-                                            <th scope="col" class="border-end border-secondary d-xs-table-cell d-sm-table-cell text-secondary" id="bigTable">
-                                                Létrehozva
+                                            <th scope="col" colspan="1"
+                                                class="border-end border-secondary d-xs-table-cell d-sm-table-cell text-secondary">
+                                                Kihelyezve
                                             </th>
-                                            <th scope="col" class="border-end border-secondary d-xs-table-cell d-sm-table-cell text-secondary" id="bigTable">
-                                                Utoljára Modósitva
+                                            <th scope="col" colspan="1"
+                                                class="border-end border-secondary d-xs-table-cell d-sm-table-cell text-secondary">
+                                                Kellék Modósítva
                                             </th>
-                                            <th scope="col" class="border-end border-secondary d-xs-table-cell d-sm-table-cell text-secondary" id="bigTable">
+                                            <th scope="col" colspan="1"
+                                                class="border-end border-secondary d-xs-table-cell d-sm-table-cell text-secondary">
                                                 Toner Százalék
                                             </th>
-                                            <th scope="col" class="border-end border-secondary d-xs-table-cell d-sm-table-cell text-secondary" id="bigTable">
-                                                Dobb Egység Százalék
+                                            <th scope="col" colspan="1"
+                                                class="border-end border-secondary d-xs-table-cell d-sm-table-cell text-secondary">
+                                                Dob Egység Százalék
                                             </th>
-                                            <th scope="col" class="border-end border-secondary d-xs-table-cell d-sm-table-cell text-secondary" id="bigTable">
+                                            <th></th>
+                                            <th scope="col" colspan="2"
+                                                class="border-end border-secondary d-xxl-table-cell  w-200 text-secondary" style="width: 40%">
                                                 Gombok
                                             </th>
+                                            
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach (\App\Models\Printer::all() as $printer)
                                             <tr>
-                                                <td class="px-6 py-4 text-sm text-dark">
+                                                <td
+                                                    class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-50">
                                                     {{ $printer->brand }}
                                                 </td>
-                                                <td class="px-6 py-4 text-sm text-dark">
+                                                <td
+                                                    class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-50">
                                                     {{ $printer->type }}
                                                 </td>
-                                                <td class="px-6 py-4 text-sm text-dark">
+                                                <td
+                                                    class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-50">
                                                     <img class="h-10 w-10"
                                                         src="{{ asset('storage/picture/' . $printer->picture) }}"
                                                         alt="image description">
                                                 </td>
-                                                <td class="px-6 py-4 text-sm text-dark">
+                                                <td
+                                                    class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-50">
                                                     {{ $printer->created_at }}
                                                 </td>
-                                                <td class="px-6 py-4 text-sm text-dark">
+                                                <td
+                                                    class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-50">
                                                     {{ $printer->updated_at }}
                                                 </td>
-                                                <td class="px-6 py-4 text-sm text-dark">
+                                                <td
+                                                    class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-50">
                                                     {{ $printer->toner_percent }}%
                                                 </td>
-                                                <td class="px-6 py-4 text-sm text-dark">
+                                                <td
+                                                    class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-50">
                                                     {{ $printer->drumm_percent }}%
                                                 </td>
-                                                <td class="px-6 py-4 text-end text-sm">
-                                                    <button type="button"
-                                                        class="btn btn-link text-decoration-none text-primary">Nézzet</button>
-                                                </td>
-                                                <td class="px-6 py-4 text-end text-sm">
+                                                <td></td>
+                                                <td colspan="2"
+                                                    class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-200">
+                                                    <button type="button" class="btn btn-success">Nézzet</button>
+
+
                                                     <form action="{{ route('printers.edit', $printer) }}">
                                                         <button type="submit"
-                                                            class="btn btn-link text-decoration-none text-primary">Módositás</button>
+                                                            class="btn btn-warning">Módositás</button>
                                                     </form>
-                                                </td>
-                                                <td class="px-6 py-4 text-end text-sm">
+
+
                                                     <form method="POST"
                                                         action="{{ route('printers.destroy', $printer) }}">
                                                         @csrf
                                                         @method('DELETE')
-                                                        <button type="submit"
-                                                            class="btn btn-link text-decoration-none text-primary">Törlés</button>
+                                                        <button type="submit" class="btn btn-danger">Törlés</button>
                                                     </form>
                                                 </td>
+                                                
                                             </tr>
                                         @endforeach
                                     </tbody>

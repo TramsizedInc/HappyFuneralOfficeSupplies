@@ -26,7 +26,7 @@
 
 
 
-        <section class="row justify-center mt-1 p-5 pt-0 g-4">
+        <section class="row  mt-1 p-5 pt-0 g-4">
             <!-- Customer Data Section -->
             <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-12 col-sm-12">
                 <div id='section1' class="card bg-dark text-white mb-4">

@@ -65,7 +65,7 @@ Route::middleware(['gzip'])->group(function () {
             Route::any('/docedit/{any}', [\App\Http\Controllers\DocEditProxyController::class, 'index'])->where('any', '.*');
             Route::get('/select-office', [Office_Choose_Controller::class, 'select'])->name('select.office');
             Route::post('/select-office', [Office_Choose_Controller::class, 'store'])->name('store.office');
-            Route::post('/upload-image', [ImageController::class, 'storeImage'])->name('upload.image');    
+            Route::post('/upload-image', [ImageController::class, 'storeImage'])->name('upload.image');
             Route::get('/fetch-image/{id}', [ImageController::class, 'fetch'])->name('fetch.image');
             //    Route::any('/docedit/{any}', function () {
             //        return 'Matched catch-all route';
@@ -81,5 +81,4 @@ Route::middleware(['gzip'])->group(function () {
 
         require __DIR__ . '/auth.php';
     });
-
 });
