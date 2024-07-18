@@ -43,11 +43,22 @@
     .table {
         max-width: fit-content;
     }
+
+    #calculator{
+        max-width: max-content;
+        
+    }
+
+     #title {
+       
+        font-size: 12px; /* Inherits the font-size from #bigTable */
+    }
+    
 }
 
 @media screen and (min-width: 576px) and (max-width: 767px) {
 
-    
+     
     /* sm kategória */
     #bigTable {
         font-size: 12px;
@@ -96,6 +107,11 @@
     .next-btn {
         font-size: 18px;
         /* A gombokhoz nem tartozik oldalról történő távolság */
+    }
+
+    #title{
+        font-size: 12px;
+        
     }
 }
 

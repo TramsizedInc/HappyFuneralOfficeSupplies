@@ -1,9 +1,11 @@
 <?php
 
+use App\Http\Controllers\DocumentModelController;
 use App\Http\Controllers\Office_Choose_Controller;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\PrinterController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ImageController;
 
 /*
 |--------------------------------------------------------------------------
@@ -62,7 +64,9 @@ Route::middleware(['gzip'])->group(function () {
             Route::get('/hutesidocalculation/{id}', [\App\Http\Controllers\HutosIdoController::class, 'Calculation']);
             Route::any('/docedit/{any}', [\App\Http\Controllers\DocEditProxyController::class, 'index'])->where('any', '.*');
             Route::get('/select-office', [Office_Choose_Controller::class, 'select'])->name('select.office');
-            Route::post('/select-office', [Office_Choose_Controller::class, 'store'])->name('store.office');    
+            Route::post('/select-office', [Office_Choose_Controller::class, 'store'])->name('store.office');
+            Route::post('/upload-image', [ImageController::class, 'storeImage'])->name('upload.image');    
+            Route::get('/fetch-image/{id}', [ImageController::class, 'fetch'])->name('fetch.image');
             //    Route::any('/docedit/{any}', function () {
             //        return 'Matched catch-all route';
             //    })->where('any', '.*');
@@ -72,6 +76,7 @@ Route::middleware(['gzip'])->group(function () {
             Route::get('/session-data', function () {
                 return response()->json(['sessionId' => session()->getId()]);
             });
+            Route::get('/csrf-token', [DocumentModelController::class, 'getCsrfToken']);
         });
 
         require __DIR__ . '/auth.php';

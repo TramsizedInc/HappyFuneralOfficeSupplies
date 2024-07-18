@@ -43,9 +43,12 @@ class DocumentModelController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(DocumentModel $documentModel)
+    public function edit($documentName)
     {
-        //
+        //route: protocol://domain.postfix/document/save_document/{documentName}
+        //gets a documentname, and a json containing the document, and saves the changes
+
+        DocumentModel::where()
     }
 
     /**

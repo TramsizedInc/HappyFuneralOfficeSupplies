@@ -123,7 +123,7 @@
                                         </div>
                                         <input type="text" id="phone-input"
                                             class="form-control bg-secondary text-white" name="mobile_number"
-                                            pattern="[0-9]{4}-[0-9]{3}-[0-9]{4}" placeholder="+36 00-000-0000"
+                                            pattern="[0-9]{4}-[0-9]{3}-[0-9]{4}" placeholder="00-000-0000"
                                             required />
                                     </div>
                                 </div>
