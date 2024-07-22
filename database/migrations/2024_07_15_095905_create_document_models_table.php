@@ -15,7 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('title');
             $table->string('type');
-            $table->string('file_name');
+            $table->string('file_name')->unique();
+            $table->longText('inner_data');
             /* Softdeletes */
             $table->softDeletes();
             $table->integer('created_by')->default(1);

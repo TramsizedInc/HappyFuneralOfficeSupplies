@@ -15,8 +15,8 @@
 
                         <div class="col-md-12 col-xxl-3 text-center pt-3">
                             <div class="form-group border border-danger">
-                                <p id="title" class="form-label fw-bold m-1 text-danger">TELJES HŰTÉSDÍJ: <span id="price_sum"
-                                        class="text-secondary fw-normal fst-italic">64 000 Ft
+                                <p id="title" class="form-label fw-bold m-1 text-danger">TELJES HŰTÉSDÍJ: <span
+                                        id="price_sum" class="text-secondary fw-normal fst-italic">64 000 Ft
                                     </span>
                                 </p>
 
@@ -25,7 +25,7 @@
                         <div class="col-md-12 col-xxl-3 text-center pt-3">
                             <div class="form-group">
                                 <div class="input-group">
-                                    <label 
+                                    <label
                                         class="input-group-text bg-secondary border border-secondary fw-bold">Hűtésdíjból
                                         rendezve</label>
                                     <input type="number" class="form-control border-secondary" min="0"
@@ -239,7 +239,7 @@
                                 </div>
                             </div>
 
-                            <div  class="col-md-2 col-sm-3">
+                            <div class="col-md-2 col-sm-3">
                                 <div class="form-group">
                                     <label class="form-label fw-bold">Elszállítási határnap</label>
                                     <p class="fst-italic">számolás</p>
@@ -247,76 +247,76 @@
                             </div>
 
 
-                            <div  class="col-md-2 col-sm-3 col-xs-3">
+                            <div class="col-md-2 col-sm-3 col-xs-3">
                                 <div class="form-group">
                                     <label class="form-label fw-bold">KH Hűtött napok száma</label>
                                     <p id="days" class="fst-italic">4</p>
                                 </div>
                             </div>
 
-                            <div  class="col-md-2 col-sm-3 col-xs-3">
+                            <div class="col-md-2 col-sm-3 col-xs-3">
                                 <div class="form-group">
                                     <label class="form-label fw-bold">KH Átalány 1</label>
                                     <p id="actual_atalany1" class="fst-italic">55 000 Ft</p>
                                 </div>
                             </div>
 
-                            <div  class="col-md-2 col-sm-3 col-xs-3">
+                            <div class="col-md-2 col-sm-3 col-xs-3">
                                 <div class="form-group">
                                     <label class="form-label fw-bold">KH Átalány 2</label>
                                     <p id="actual_atalany2" class="fst-italic">számolás</p>
                                 </div>
                             </div>
 
-                            <div  class="col-md-2 col-sm-3 col-xs-3">
+                            <div class="col-md-2 col-sm-3 col-xs-3">
                                 <div class="form-group">
                                     <label class="form-label fw-bold">KH PótHD</label>
                                     <p id="actual_pot" class="fst-italic">számolás</p>
                                 </div>
                             </div>
 
-                            <div  class="col-md-2 col-sm-3 col-xs-3">
+                            <div class="col-md-2 col-sm-3 col-xs-3">
                                 <div class="form-group">
                                     <label class="form-label fw-bold">HH Shk</label>
                                     <p class="fst-italic">- Ft</p>
                                 </div>
                             </div>
 
-                            <div  class="col-md-2 col-sm-3 col-xs-3">
+                            <div class="col-md-2 col-sm-3 col-xs-3">
                                 <div class="form-group">
                                     <label class="form-label fw-bold">Krema Átalány</label>
                                     <p class="fst-italic">9 000 Ft</p>
                                 </div>
                             </div>
 
-                            <div  class="col-md-2 col-sm-3 col-xs-3">
+                            <div class="col-md-2 col-sm-3 col-xs-3">
                                 <div class="form-group">
                                     <label class="form-label fw-bold">Krema nap</label>
                                     <p class="fst-italic">5 nap</p>
                                 </div>
                             </div>
 
-                            <div  class="col-md-2 col-sm-3 col-xs-3">
+                            <div class="col-md-2 col-sm-3 col-xs-3">
                                 <div class="form-group">
                                     <label class="form-label fw-bold">Visszaszállítás</label>
                                     <p class="fst-italic">2 nap</p>
                                 </div>
                             </div>
 
-                            <div  class="col-md-2 col-sm-3 col-xs-3">
+                            <div class="col-md-2 col-sm-3 col-xs-3">
                                 <div class="form-group">
                                     <label class="form-label fw-bold">Kellékezés</label>
                                     <p class="fst-italic">2 nap</p>
                                 </div>
                             </div>
-                            <div  class="col-md-2 col-sm-3 col-xs-3">
+                            <div class="col-md-2 col-sm-3 col-xs-3">
                                 <div class="form-group">
                                     <label class="form-label fw-bold">Urna Kiszállítás</label>
                                     <p class="fst-italic">2 nap</p>
                                 </div>
                             </div>
 
-                            <div  class="col-md-2 col-sm-3 col-xs-3">
+                            <div class="col-md-2 col-sm-3 col-xs-3">
                                 <div class="form-group">
                                     <label class="form-label fw-bold">Átadás</label>
                                     <p id="atadas" class="fst-italic">2 nap</p>
@@ -333,54 +333,54 @@
 
     </form>
 
-    <script>
-         $(document).ready(() => {
-             var id_of_order = String(<?php echo json_encode($id);?>);
-             var url = '/hutesidocalculation/' + id_of_order;
-             fetch(url).then(x => {
-                 if(!x.ok){
-                     throw new Error('Hálózati hiba');
-                 }
-                 return x.json();
-             }).then(y => {
-                 if(!y.success){
-                     throw new Error('Mentési hiba');
-                 }
-                 toastr.info('Sikeres Mentés');
-                 document.getElementById("price_sum").textContent = y.szumma + " Ft";
-                 document.getElementById("atadas").innerText = y.vegnap;
-                 document.getElementById("actual_pot").textContent = y.pot;
-                 document.getElementById("pot").textContent = y.pot;
-                 document.getElementById("actual_atalany1").textContent = y.atal1;
-                 document.getElementById("atal1").textContent = y.atal1;
-                 document.getElementById("actual_atalany2").textContent = y.atal2;
-                 document.getElementById("atal2").textContent = y.atal2;
-                 document.getElementById("death_date").value = y.halal.split(' ')[0];
-                 document.getElementById("order_date").value = y.halal.split(' ')[0];
-                 document.getElementById("hv_done_date").value = y.hv_date.split(' ')[0];
-                 document.getElementById("hv_done_day").value = y.hv_date;
-                 // toastr.info(y.hv_kesz_date.split(' ')[0]);
-                 document.getElementById("hv_van_date").value = y.hv_kesz_date.split(' ')[0];
-                 document.getElementById("hv_van_day").value =  y.hv_van;
-                 document.getElementById("hv_kiall").value = y.hv_kesz_date.split(' ')[0];
-                 document.getElementById("days").innerText = y.days;
-                 document.getElementById("kh_nev").innerText = y.hospital;
-                 document.getElementById("krema").innerText = y.krema;
-                 document.getElementById("atal1_days").innerText = y.atal1_days;
-                 document.getElementById("atal2_days").innerText = y.atal2_days;
-                 // toastr.info(y.pot_days);
-                 document.getElementById("pot_days").innerText = y.pot_days;
-                 document.getElementById("cooling_start_date").value = y.halal.split(' ')[0];
-                 document.getElementById("transport_date").value = y.vegnap;
-    
-    
-        //         document.getElementById("krema").innerText = y.krema;
-    
-    
-    
-        //     })
-        // })
-    </script>
+    {{-- <script>
+        $(document).ready(() => {
+            var id_of_order = String(<?php echo json_encode($id); ?>);
+            var url = '/hutesidocalculation/' + id_of_order;
+            fetch(url).then(x => {
+                if (!x.ok) {
+                    throw new Error('Hálózati hiba');
+                }
+                return x.json();
+            }).then(y => {
+                if (!y.success) {
+                    throw new Error('Mentési hiba');
+                }
+                toastr.info('Sikeres Mentés');
+                document.getElementById("price_sum").textContent = y.szumma + " Ft";
+                document.getElementById("atadas").innerText = y.vegnap;
+                document.getElementById("actual_pot").textContent = y.pot;
+                document.getElementById("pot").textContent = y.pot;
+                document.getElementById("actual_atalany1").textContent = y.atal1;
+                document.getElementById("atal1").textContent = y.atal1;
+                document.getElementById("actual_atalany2").textContent = y.atal2;
+                document.getElementById("atal2").textContent = y.atal2;
+                document.getElementById("death_date").value = y.halal.split(' ')[0];
+                document.getElementById("order_date").value = y.halal.split(' ')[0];
+                document.getElementById("hv_done_date").value = y.hv_date.split(' ')[0];
+                document.getElementById("hv_done_day").value = y.hv_date;
+                // toastr.info(y.hv_kesz_date.split(' ')[0]);
+                document.getElementById("hv_van_date").value = y.hv_kesz_date.split(' ')[0];
+                document.getElementById("hv_van_day").value = y.hv_van;
+                document.getElementById("hv_kiall").value = y.hv_kesz_date.split(' ')[0];
+                document.getElementById("days").innerText = y.days;
+                document.getElementById("kh_nev").innerText = y.hospital;
+                document.getElementById("krema").innerText = y.krema;
+                document.getElementById("atal1_days").innerText = y.atal1_days;
+                document.getElementById("atal2_days").innerText = y.atal2_days;
+                // toastr.info(y.pot_days);
+                document.getElementById("pot_days").innerText = y.pot_days;
+                document.getElementById("cooling_start_date").value = y.halal.split(' ')[0];
+                document.getElementById("transport_date").value = y.vegnap;
+
+
+                ocument.getElementById("krema").innerText = y.krema;
+
+
+
+            })
+        })
+    </script> --}}
 
 
 </x-app-layout>

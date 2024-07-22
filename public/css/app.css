@@ -232,3 +232,19 @@
 canvas{
     width: fit-content;
 }
+
+.btn-group {
+    display: flex;
+    justify-content: space-between;
+}
+
+.btn-group button {
+    margin-right: 0.5rem; /* Opció, hogy növelje a gombok közötti távolságot */
+}
+#table-custom {
+    table-layout: auto !important;
+}
+.border-dashed {
+    border-style: dashed !important;
+    border-color: whitesmoke !important;
+}

@@ -61,8 +61,8 @@ class PrinterController extends Controller
                 'type' => $request->type,
                 'picture' => $request->picture,
                 'documentation' => $request->documentation,
-                'type_of_toner' => $request->toner_percent,
-                'type_of_drumm_unit' => $request->drumm_percent,
+                'toner_percent' => $request->toner_percent,
+                'drumm_percent' => $request->drumm_percent,
                 'updated_at' => now(),
                 'created_at' => now(),
 
@@ -73,11 +73,12 @@ class PrinterController extends Controller
         return redirect()->route("printers.index")->with("success", "Printer created successfully.");
     }
 
-        public function show(Printer $printer)
+    public function show($id)
     {
         if (Auth::user()->cannot('viewAny', Printer::class)) {
             abort(403);
         }
+        $printer = Printer::find($id);
         return view('printers.show', ['printer' => $printer]);
     }
 
@@ -95,36 +96,19 @@ class PrinterController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdatePrinterRequest $request, Printer $printer)
+    public function update(Printer $printer, Request $request)
     {
-        if (
-            !(Auth::user()->cannot('updateUtilities', Printer::class)) &&
-            Auth::user()->cannot('update', Printer::class)
-        ) {
-            $printer->drumm_percent = $request->drumm_percent;
-            $printer->toner_percent = $request->toner_percent;
-            $printer->updated_at = now();
-            $printer->update();
-            return redirect()->route("printers.index")->with("success", "Printer updated successfully.");
-        } else if (Auth::user()->cannot('update', Printer::class)) {
-            abort(403);
-        }
-        $printer->update($request->all());
-        if ($request->picture != null) {
-            $file_name = 'printer_picture' . $request->brand . '_' . $request->type . '.jpg';
-            $printer->picture = $file_name;
-            $request->picture->storeAs(
-                'picture',
-                'printer_picture' . $request->brand . '_' . $request->type . '.jpg',
-                'public'
-            );
-        }
+        // Directly update the printer's attributes
+        $printer->drumm_percent = $request->drumm_percent;
+        $printer->toner_percent = $request->toner_percent;
         $printer->updated_at = now();
-        $printer->update();
 
-        return redirect()->route("printers.index")->with("success", "Printer updated successfully.");
+        // Save the changes to the database
+        $printer->save();
+
+        // Redirect or return a response
+        return redirect()->route('printers.index')->with('success', 'Printer updated successfully.');
     }
-
     /**
      * Remove the specified resource from storage.
      */
@@ -167,7 +151,7 @@ class PrinterController extends Controller
         $toners = [];
         $drumUnits = [];
         $months = [];
-        
+
         foreach ($printers as $month => $data) {
             $brands[] = $data->pluck('brand');
             $tonerData = $data->pluck('type_of_toner')->reject(function ($value) {
@@ -180,10 +164,9 @@ class PrinterController extends Controller
             $drumUnits[] = $drumUnitData->isNotEmpty() ? $drumUnitData->avg() : 0; // Set default value to 0
             $months[] = Carbon::parse($data[0]->created_at)->format('M');
         }
-        
+
         $compressed_data = compact('brands', 'toners', 'drumUnits', 'months');
 
-        return view('statistics.printer',['compressed_data'=> $compressed_data]);
+        return view('statistics.printer', ['compressed_data' => $compressed_data]);
     }
-
 }

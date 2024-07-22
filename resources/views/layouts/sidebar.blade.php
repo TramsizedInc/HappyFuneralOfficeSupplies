@@ -31,59 +31,48 @@
                                 <a data-bs-parent="#sidebar"class="nav-link dropdown-toggle" href="#"
                                     id="dropdownMenuLink2" role="button" data-bs-toggle="dropdown"
                                     aria-expanded="false">
-                                    Iroda kellékek
+                                    Nyomtatók
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink2">
                                     <li><a data-bs-parent="#sidebar" class="dropdown-item"
-                                            href="{{ route('printers.index') }}">Nyomtatók</a></li>
+                                            href="{{ route('printers.index') }}">Nyomtatók kezelése</a></li>
+                                    <li><a data-bs-parent="#sidebar" class="dropdown-item"
+                                            href="{{ route('getPrinterData') }}">Nyomtató statisztikái</a></li>
+                                    <li><a data-bs-parent="#sidebar" class="dropdown-item"
+                                            href="{{ route('printerTypes.index') }}">Nyomtató fajták kezelése</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item dropdown mt-3">
                                 <a data-bs-parent="#sidebar"class="nav-link dropdown-toggle" href="#"
                                     id="dropdownMenuLink3" role="button" data-bs-toggle="dropdown"
                                     aria-expanded="false">
-                                    Statisztikák
+                                    Brandek
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink3">
                                     <li><a data-bs-parent="#sidebar" class="dropdown-item"
-                                            href="{{ route('getPrinterData') }}">Nyomtatók</a></li>
+                                            href="{{ route('brands.index') }}">Márkák kezelése</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item dropdown mt-3">
                                 <a data-bs-parent="#sidebar"class="nav-link dropdown-toggle" href="#"
                                     id="dropdownMenuLink4" role="button" data-bs-toggle="dropdown"
                                     aria-expanded="false">
-                                    Egyéb funkciók
+                                    Számlák
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink4">
                                     <li><a data-bs-parent="#sidebar" class="dropdown-item"
-                                            href="{{ route('brands.index') }}">Brandek</a></li>
+                                            href="{{ route('checkModels.index') }}">Összes számla</a></li>
                                     <li><a data-bs-parent="#sidebar" class="dropdown-item"
-                                            href="{{ route('printerTypes.index') }}">Nyomtató fajták</a></li>
-                                    <li><a data-bs-parent="#sidebar" class="dropdown-item"
-                                            href="{{ route('checkTypes.index') }}">Csekk fajták</a></li>
-                                    <li><a data-bs-parent="#sidebar" class="dropdown-item"
-                                            href="{{ route('offices.index') }}">Irodák</a></li>
+                                            href="{{ route('checkTypes.index') }}">Csekkek kezelése</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item dropdown mt-3">
                                 <a data-bs-parent="#sidebar"class="nav-link dropdown-toggle" href="#"
                                     id="dropdownMenuLink5" role="button" data-bs-toggle="dropdown"
                                     aria-expanded="false">
-                                    Számlák
-                                </a>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink5">
-                                    <li><a data-bs-parent="#sidebar" class="dropdown-item"
-                                            href="{{ route('checkModels.index') }}">Összes</a></li>
-                                </ul>
-                            </li>
-                            <li class="nav-item dropdown mt-3">
-                                <a data-bs-parent="#sidebar"class="nav-link dropdown-toggle" href="#"
-                                    id="dropdownMenuLink6" role="button" data-bs-toggle="dropdown"
-                                    aria-expanded="false">
                                     Felhasználó
                                 </a>
-                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink6">
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink5">
                                     <li>
                                         <a data-bs-parent="#sidebar" class="dropdown-item disabled text-dark"
                                             href="#">{{ Auth::user()->name }}</a>
@@ -105,11 +94,9 @@
             </div>
         </div>
         <div class="main ps-md-2 pt-2">
-
             <a href="#" data-bs-target="#sidebar" data-bs-toggle="collapse"
                 class="r text-danger rounded-3 p-1 fs-2 text-decoration-none">
                 <i class="fas fa-bars"></i></a>
-
             <div class="container-fluid">
                 <div class="row">
                     <div class="align-items-center justify-content-center">
@@ -117,11 +104,6 @@
                     </div>
                 </div>
             </div>
-
         </div>
-        <!-- /#page-content-wrapper -->
-
-
-
     </div>
 </div>

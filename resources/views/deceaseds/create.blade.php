@@ -14,14 +14,14 @@
                 @method('POST')
                 <input type="hidden" id="deceased_hidden" name="deceased_hidden" />
                 <input type="hidden" id="id_card_hidden" name="id_card_number" />
-                <button class="btn save-btn btn-lg btn-secondary" type="submit" disabled>
+                <button class="btn save-btn btn-lg btn-secondary" type="submit" >
                     Tárolás
                 </button>
             </form>
         
-            <button class="btn next-btn btn-lg btn-success" type="submit" disabled href="#">
-                Tovább
-            </button>
+            <a class="btn next-btn btn-lg btn-success" type="submit" href="{{ url('hutesido-kalulator')}}" id="save_all_froms">
+                Ajánalt kérése
+            </a>
         </div>
 
 
@@ -171,7 +171,7 @@
                                     </div>
                                 </div>
                                 <div class="text-center sticky-bottom mt-3">
-                                    <button class="btn btn-secondary" type="submit" disabled>Kész</button>
+                                    <button class="btn btn-secondary" type="submit">Kész</button>
                                 </div>
                             </div>
 
@@ -233,7 +233,7 @@
 
                                 <div class="col-md-6">
                                     <select class="form-select bg-secondary" name="hospital_code" required>
-                                        <option selected disabled value="">Elhunyt jelenleg várakozik</option>
+                                        <option selected  value="">Elhunyt jelenleg várakozik</option>
                                         @foreach (\App\Models\HutosIdo::all() as $hutosido)
                                             <option value="{{ $hutosido->id }}">{{ $hutosido->kh_name }}
                                         @endforeach
@@ -319,7 +319,7 @@
 
 
                                     <div class="text-center sticky-bottom mt-3">
-                                        <button class="btn btn-secondary" type="submit" disabled>Kész</button>
+                                        <button class="btn btn-secondary" type="submit" >Kész</button>
                                     </div>
                                 </div>
                             </div>
@@ -444,7 +444,7 @@
                             </div>
                             <div class="card-footer">
                                 <div class="text-center sticky-bottom mt-3">
-                                    <button class="btn btn-secondary" type="submit" disabled>Kész</button>
+                                    <button class="btn btn-secondary" type="submit" >Kész</button>
                                 </div>
                             </div>
                         </form>
@@ -555,7 +555,7 @@
                             </div>
                             <div class="card-footer">
                                 <div class="text-center sticky-bottom mt-3">
-                                    <button class="btn btn-secondary" type="submit" disabled>Kész</button>
+                                    <button class="btn btn-secondary" type="submit" >Kész</button>
                                 </div>
                             </div>
                         </form>
@@ -618,6 +618,17 @@
                         }
                     }
                 });
+            });
+            $('#save_all_forms').on('click', (e) => {
+                var d_form = document.getElementById('deceased_form');
+                var bc_form = document.getElementById('birthcert_form');
+                var u_form = document.getElementById('urnkia_form');
+                var c_form = document.getElementById('customer_form');
+                
+                d_form.submit();
+                bc_form.submit();
+                c_form.submit();
+                u_form.submit();
             });
         });
     </script>

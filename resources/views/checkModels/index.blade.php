@@ -1,86 +1,137 @@
 <x-app-layout>
 
-        <div class="grid grid-cols-4 py-3 px-4">
-            <div class="mr-3 relative max-w-xs">
-                <label class="sr-only">Search</label>
-                <input type="text" name="hs-table-with-pagination-search" id="hs-table-with-pagination-search" class="py-2 px-3 ps-9 block w-full border-gray-200 shadow-sm rounded-lg text-sm focus:z-10 focus:border-blue-500 focus:ring-blue-500 disabled:opacity-50 disabled:pointer-events-none dark:bg-slate-900 dark:border-gray-700 dark:text-gray-400 dark:focus:ring-gray-600" placeholder="Search for items">
-                <div class="absolute inset-y-0 start-0 flex items-center pointer-events-none ps-3">
-                    <svg class="h-4 w-4 text-gray-400" xmlns="https://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.3-4.3"/></svg>
-                </div>
+    <div class="row justify-content-center py-3 px-4">
+        <div class="col-xl-2 col-xxl-2 col-lg-3 col-md-2 col-sm-2 col-xs-2"></div>
+        <div class="col-xl-3 col-xxl-3 col-lg-3 col-md-3 col-sm-4 col-xs-2">
+            <div class="input-group">
+                <input type="text" name="hs-table-with-pagination-search" id="hs-table-with-pagination-search"
+                    class="form-control pe-3" placeholder="Search for items">
+                <span class="input-group-text">
+                    <i class="fa fa-search"></i> <!-- Updated icon class -->
+                </span>
             </div>
-
-               </div>
-    <div class=" text-start px-6 py-4 whitespace-nowrap text-sm font-medium">
-
-        <a  href="{{route('checkModels.create')}}" type="button" class="items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">Create</a>
+        </div>
+        <div class="col-xl-3 col-xxl-3 col-lg-3 col-md-3 col-sm-3 col-xs-2"> <!-- Column for the button -->
+            <a href="{{ route('checkModels.create') }}" class="btn btn-primary"><i class="fas fa-plus p-2"></i> Új
+                számla hozzáadása</a>
+        </div>
     </div>
-    <div class="flex flex-col">
-        <div class="m-1.5 overflow-x-auto">
-            <div class="p-1.5 min-w-full inline-block align-middle">
-                <div class="bg-white border rounded-sm divide-y divide-gray-200 dark:border-gray-700 dark:divide-gray-700">
 
-                    <div class="overflow-hidden">
-                        <table class="table-auto min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-                            <thead class="bg-gray-50 dark:bg-gray-700">
-                            <tr>
-                                <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Iroda Név</th>
-                                <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Számla Típus</th>
-                                <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Kiállítás</th>
-                                <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Lejárat</th>
-                                <th scope="col" class="px-6 py-3 text-start text-xs font-medium text-gray-500 uppercase">Összeg</th>
-                                <th scope="col" colspan="3" class="px-6 py-3 text-end text-xs font-medium text-gray-500 uppercase">Actions</th>
-                            </tr>
-                            </thead>
-                            <tbody class="divide-y divide-gray-200 dark:divide-gray-700">
-                            @foreach(\App\Models\CheckModel::all() as $checkModel)
-                                <tr>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">{{$checkModel->type}}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200"></td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">{{$checkModel->exhibition_date}}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">{{$checkModel->expire_date}}</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm font-medium text-gray-800 dark:text-gray-200">{{$checkModel->amount_to_be_paid}} FT</td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
-                                       <form action="{{route('checkModels.edit',$checkModel)}}">
-                                           <button type="submit" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">Edit</button>
-                                       </form>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
-                                        <form method="POST" action="{{route('checkModels.destroy',$checkModel)}}">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="inline-flex items-center gap-x-2 text-sm font-semibold rounded-lg border border-transparent text-blue-600 hover:text-blue-800 disabled:opacity-50 disabled:pointer-events-none dark:text-blue-500 dark:hover:text-blue-400 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">Delete</button>
-                                        </form>
-                                    </td>
 
+    <div class="row mt-5 justify-content-center">
+        <div class="col-xxl-auto col-xl-9 col-lg-10 col-md-12 col-sm-12 col-xs-12">
+            <div class="d-flex flex-column">
+                <div class="overflow-auto">
+                    <div id="table-custom" class="table table-responsive bg-dark border border-dark rounded">
+                        <table class="table table-dark">
+                            <thead class="table-dark text-white">
+                                <tr class="text-center align-middle">
+                                    <th scope="col"
+                                        class="border-end align-middle col-4 border-secondary text-secondary">Iroda
+                                        Név</th>
+                                    <th scope="col"
+                                        class="border-end align-middle col-4 border-secondary text-secondary">Számla
+                                        Típus</th>
+                                    <th scope="col"
+                                        class="border-end align-middle col-4 border-secondary text-secondary">
+                                        Kiállítás</th>
+                                    <th scope="col"
+                                        class="border-end align-middle col-4 border-secondary text-secondary">Lejárat
+                                    </th>
+                                    <th scope="col"
+                                        class="border-end align-middle col-4 border-secondary text-secondary">Összeg
+                                    </th>
+                                    <th scope="col"
+                                        class="border-end align-middle col-4 border-secondary text-secondary">Műveletek
+                                    </th>
                                 </tr>
-                            @endforeach
+                            </thead>
+                            <tbody>
+                                @foreach (\App\Models\CheckModel::all() as $checkModel)
+                                    <tr class="align-middle">
+                                        <td
+                                            class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-50">
+                                            {{ $checkModel->type }}</td>
+                                        <td
+                                            class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-50">
+                                        </td>
+                                        <td
+                                            class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-50">
+                                            {{ $checkModel->exhibition_date }}</td>
+                                        <td
+                                            class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-50">
+                                            {{ $checkModel->expire_date }}</td>
+                                        <td
+                                            class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-50">
+                                            {{ $checkModel->amount_to_be_paid }} FT</td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-end text-sm font-medium">
+                                            <div class="d-flex justify-content-between align-items-center">
+
+                                                <a href="{{ route('checkModel.show', $checkModel->id) }}">Megnézés</a>
+                                                
+                                                <form action="{{ route('checkModels.edit', $checkModel) }}"
+                                                    class="d-inline-block ms-2">
+                                                    <button type="submit"
+                                                        class="btn btn-warning btn-sm">Szerkesztés</button>
+                                                </form>
+
+
+                                                <form method="POST"
+                                                    action="{{ route('checkModels.destroy', $checkModel) }}"class="d-inline-block ms-2">
+                                                    @csrf
+                                                    @method('DELETE')
+                                                    <button type="submit" class="btn btn-danger btn-sm">Törlés</button>
+                                                </form>
+                                            </div>
+                                        </td>
+
+                                    </tr>
+                                @endforeach
 
 
                             </tbody>
                         </table>
-                    </div>
+                        </table>
 
-                    <div class="py-1 px-4">
-                        <nav class="flex justify-center space-x-1">
-                            <button type="button" class="p-2.5 inline-flex items-center gap-x-2 text-sm rounded-full text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-white/10 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
-                                <span aria-hidden="true">«</span>
-                                <span class="sr-only">Previous</span>
-                            </button>
-                            <button type="button" class="min-w-[40px] flex justify-center items-center text-gray-800 hover:bg-gray-100 py-2.5 text-sm rounded-full disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-white/10" aria-current="page">1</button>
-                            <button type="button" class="min-w-[40px] flex justify-center items-center text-gray-800 hover:bg-gray-100 py-2.5 text-sm rounded-full disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-white/10">2</button>
-                            <button type="button" class="min-w-[40px] flex justify-center items-center text-gray-800 hover:bg-gray-100 py-2.5 text-sm rounded-full disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-white/10">3</button>
-                            <button type="button" class="min-w-[40px] flex justify-center items-center text-gray-800 hover:bg-gray-100 py-2.5 text-sm rounded-full disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-white/10" disabled>...</button>
-                            <button type="button" class="min-w-[40px] flex justify-center items-center text-gray-800 hover:bg-gray-100 py-2.5 text-sm rounded-full disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-white/10">8</button>
-                            <button type="button" class="min-w-[40px] flex justify-center items-center text-gray-800 hover:bg-gray-100 py-2.5 text-sm rounded-full disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-white/10">9</button>
-                            <button type="button" class="min-w-[40px] flex justify-center items-center text-gray-800 hover:bg-gray-100 py-2.5 text-sm rounded-full disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-white/10">10</button>
-                            <button type="button" class="p-2.5 inline-flex items-center gap-x-2 text-sm rounded-full text-gray-800 hover:bg-gray-100 disabled:opacity-50 disabled:pointer-events-none dark:text-white dark:hover:bg-white/10 dark:focus:outline-none dark:focus:ring-1 dark:focus:ring-gray-600">
-                                <span class="sr-only">Next</span>
-                                <span aria-hidden="true">»</span>
-                            </button>
-                        </nav>
+                        <div class="py-1 px-4">
+                            <nav class="d-flex justify-content-center">
+                                <ul class="pagination">
+                                    <li class="page-item">
+                                        <button class="page-link" type="button" aria-label="Previous">
+                                            <span aria-hidden="true">«</span>
+                                        </button>
+                                    </li>
+                                    <li class="page-item active" aria-current="page">
+                                        <button class="page-link" type="button">1</button>
+                                    </li>
+                                    <li class="page-item">
+                                        <button class="page-link" type="button">2</button>
+                                    </li>
+                                    <li class="page-item">
+                                        <button class="page-link" type="button">3</button>
+                                    </li>
+                                    <li class="page-item disabled">
+                                        <button class="page-link" type="button">...</button>
+                                    </li>
+                                    <li class="page-item">
+                                        <button class="page-link" type="button">8</button>
+                                    </li>
+                                    <li class="page-item">
+                                        <button class="page-link" type="button">9</button>
+                                    </li>
+                                    <li class="page-item">
+                                        <button class="page-link" type="button">10</button>
+                                    </li>
+                                    <li class="page-item">
+                                        <button class="page-link" type="button" aria-label="Next">
+                                            <span aria-hidden="true">»</span>
+                                        </button>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 </x-app-layout>
