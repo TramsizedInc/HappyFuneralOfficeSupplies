@@ -14,7 +14,12 @@ return new class extends Migration
         Schema::create('deceased_datas', function (Blueprint $table) {
             $table->id();
             $table->string('exhibiting_office')->nullable();
-            $table->string('deceased_name');
+            // $table->string('deceased_name');
+            $table->string('deceased_name_prefix')->nullabe();
+            // $table->string('deceased_name_postfix');
+            $table->string('deceased_first_name');
+            $table->string('deceased_last_name');
+            
             $table->string('birth_name')->nullable();
             $table->string('mother_name')->nullable();
             // livin' location

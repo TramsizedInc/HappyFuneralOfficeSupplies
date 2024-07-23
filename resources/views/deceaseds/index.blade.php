@@ -11,8 +11,8 @@
             </div>
         </div>
         <div class="col-xl-3 col-xxl-3 col-lg-3 col-md-3 col-sm-3 col-xs-2"> <!-- Column for the button -->
-            <a href="{{ route('deceaseds.create') }}" class="btn btn-primary">Létrehozás</a>
-        </div>
+            <a href="{{ route('deceaseds.create') }}" class="btn btn-primary"><i class="fas fa-plus p-2"></i> Új
+                Temetés felvétele</a>
     </div>
 
     <div class="row mt-5 justify-content-center">
@@ -30,7 +30,10 @@
                                         <th id="wrap" scope="col"
                                             class="bg-dark text-center border-end border-secondary text-uppercase text-secondary w-50 text-nowrap">
                                             Temetés
-                                            száma</th>
+                                            Azonosító</th>
+                                        <th id="wrap" scope="col"
+                                            class="bg-dark text-center border-end border-secondary text-uppercase text-secondary w-50 text-nowrap">
+                                            QR code</th>
                                         <th id="wrap" scope="col"
                                             class="bg-dark text-center border-end border-secondary text-uppercase text-secondary w-50 text-nowrap">
                                             Megrendelő neve</th>
@@ -53,6 +56,9 @@
                                             class="bg-dark text-center border-end border-secondary text-uppercase text-secondary w-50 text-nowrap">
                                             Felvétel
                                             ideje</th>
+                                        <th scope="col" id="wrap"
+                                            class="border-end border-secondary d-xxl-table-cel text-center text-secondary">
+                                            Műveletek</th>
                                     </tr>
                                 </thead>
                                 <tbody
@@ -85,6 +91,28 @@
                                             <td
                                                 class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-50">
                                                 {{ $item->created_at }}</td>
+                                            <td
+                                                class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-200">
+                                                <div class="d-flex justify-content-between align-items-center">
+
+                                                    <a href="{{ route('desceaseds.show', ['desceased' => $desceased->id]) }}"
+                                                        class="btn btn-success btn-sm me-2">Megnézés</a>
+
+                                                    <form action="{{ route('desceaseds.edit', $desceased) }}"
+                                                        class="d-inline-block ms-2">
+                                                        <button type="submit"
+                                                            class="btn btn-warning btn-sm">Szerkesztés</button>
+                                                    </form>
+                                                    <form method="POST"
+                                                        action="{{ route('desceaseds.destroy', $desceased) }}"
+                                                        class="d-inline-block ms-2">
+                                                        @csrf
+                                                        @method('DELETE')
+                                                        <button type="submit"
+                                                            class="btn btn-danger btn-sm">Törlés</button>
+                                                    </form>
+                                                </div>
+                                            </td>
 
                                         </tr>
                                     @endforeach

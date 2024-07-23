@@ -71,12 +71,14 @@ Route::middleware(['gzip'])->group(function () {
             //        return 'Matched catch-all route';
             //    })->where('any', '.*');
             Route::get('/javitas', function () {
-                return view('hutesIdo.index');
+                return view('deceaseds.print');
             });
+            Route::resource('/cars',App\Http\Controllers\CarController::class );
             Route::get('/session-data', function () {
                 return response()->json(['sessionId' => session()->getId()]);
             });
             Route::get('/csrf-token', [DocumentModelController::class, 'getCsrfToken']);
+            Route::view('/deceaseds/print', [\App\Http\Controllers\DeceasedDataController::class, 'print']);
         });
 
         require __DIR__ . '/auth.php';

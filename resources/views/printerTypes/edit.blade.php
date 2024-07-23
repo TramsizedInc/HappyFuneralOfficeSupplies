@@ -1,41 +1,56 @@
-<!-- component -->
-<div class="min-h-screen p-6 flex items-center justify-center">
-    <form action="{{ route('printerTypes.update',$printerType) }}" method="POST" enctype="multipart/form-data" class="container max-w-screen-lg mx-auto">
-        @csrf
-        @method('PUT')
-        <div>
-            <h2 class="font-semibold text-xl text-gray-600">Nyomtató Típus modosítása</h2>
-            <p class="text-gray-500 mb-6">Az oldal reszponzív, próbáld ki!</p>
-            <div class="bg-white rounded shadow-lg p-4 px-4 md:p-8 mb-6">
-                <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 lg:grid-cols-3">
-
-                    <div class="text-gray-600">
-                        <p class="font-medium text-lg">Nyomtató Típus Adatok</p>
-                        <p>Töltsd ki az összes mezőt!</p>
-                        <img src="{{asset('storage/panda.png')}}">
-                    </div>
-
-                    <div class="lg:col-span-2 mb-3">
-
-                        <div class="grid gap-4 gap-y-2 text-sm grid-cols-1 md:grid-cols-5">
-
-                            <div class="md:col-span-5">
-                                <label for="docs">Nyomtató típus</label>
-                                <input type="text" name="name" id="docs" value="{{$printerType->name}}" class="transition-all flex items-center h-10 border mt-1 rounded px-4 w-full bg-gray-50" placeholder="Nyomtató típus">
-                            </div>
-
-                            <div class="md:col-span-5 text-right">
-                                <div class="inline-flex items-end">
-                                    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Kész</button>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
+<x-app-layout>
+    <!-- component -->
+    <div class="row justify-content-center">
+        <div class="col-xxl-3 col-md-8 mb-3">
+            <div class="card text-white bg-dark">
+                <div class="card-body">
+                    <img src="{{ asset('storage/panda.gif') }}" height="423" class="img-fluid" alt="Printer Image">
                 </div>
             </div>
-
         </div>
+        <div class="col-xxl-6 col-md-8">
+            <div class="card shadow-lg border border-secondary rounded-lg overflow-hidden bg-black text-secondary">
+                <div class="card-header border-bottom border-secondary align-items-center">
+                    <h3 class="text-center text-uppercase text-danger fw-bold">{{ $printerType->name }}
+                    </h3>
+                </div>
 
-    </form>
-</div>
+                <div class="card-body">
+                    <form action="{{ route('printerTypes.update', ['printerType' => $printerType->id]) }}"
+                        method="POST" enctype="multipart/form-data" class="form">
+                        @csrf
+                        @method('PUT')
+                        <div class="row">
+                            <div class="col-lg-6 col-xxl-6">
+                                <div class="form-group">
+                                    <label for="">Típus neve:</label>
+                                    <input type="text" for="drumm-percent" class="form-control">
+
+                                </div>
+                            </div>
+                            <div class="col-xxl-6">
+                                <div class="form-group">
+                                    <label for=""></label>
+                                    <button type="submit"
+                                        class="btn btn-success text-upper  fw-bold w-100">Kész</button>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function tonerchange(element) {
+            var val = element.value;
+            document.getElementById('tonerchange').innerHTML = val + "%";
+        }
+
+        function drummchange(element) {
+            var val = element.value;
+            document.getElementById('drummchange').innerHTML = val + "%";
+        }
+    </script>
+</x-app-layout>

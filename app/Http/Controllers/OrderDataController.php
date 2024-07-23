@@ -14,6 +14,7 @@ use App\Models\CustomerData;
 use App\Models\Deceased_data;
 use App\Models\Urn_k_i_a_data;
 use Illuminate\Support\Facades\Log;
+use Carbon\Carbon;
 
 
 class OrderDataController extends Controller
@@ -48,7 +49,10 @@ class OrderDataController extends Controller
         $deceased = Deceased_data::select('id')->where('deceased_name', '=', $req['deceased_name'])->orderby('created_at', 'desc')->limit(1)->get();
         $birth_c = BirthCertificate::select('id')->where('name_of_person', '=', $req['deceased_name'])->orderby('created_at', 'desc')->limit(1)->get();
         $urn_kiad = Urn_k_i_a_data::select('id')->where('name_of_deceased', '=', $req['deceased_name'])->orderby('created_at', 'desc')->limit(1)->get();
-        $query = CustomerData::select('id')->where('id_card_number', '=', $req['id_card_number'])->toSql();
+        // $query = CustomerData::select('id')->where('id_card_number', '=', $req['id_card_number'])->toSql();
+        $company = "Aevum";
+        $inner_uuid = strtoupper($company[0] . $company[1]) . Carbon::today()->format('Ymd') . '/' . OrderData::count();
+
         // dd(Log::info($query)->toArray());
         // Log::info($query);
         // dd($customer[0]->id);
@@ -57,6 +61,7 @@ class OrderDataController extends Controller
             'deceased_data_id' => $deceased[0]->id,
             '_urn_k_i_a_datas_id' => $urn_kiad[0]->id,
             'birth_certificate_id' => $birth_c[0]->id,
+            'inner_uuid' => $inner_uuid,
         ];
         // dd($unValidatedData);
         // dd(gettype($customer->items));

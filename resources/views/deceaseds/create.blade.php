@@ -2,14 +2,14 @@
 
 
     <!--Section container-->
-    <div class="row mb-3">
-        <div class="col-md-12 col-md-12 flex-container">
-            <h1 class="title text-start ms-5 text-white font-weight-bold" >
+    <div class="row mb-3 ">
+        <div class="col-md-11 flex-container justify-content-between">
+            <h1 class="title ms-5 text-white font-weight-bold" >
                 Elhunyt felvétele
             </h1>
-            <h1 class="subtitle text-start ms-5 text-white font-weight-bold">Ügyszám: AE01/240215/0001</h1>
+            <h1 class="subtitle  ms-5 text-white font-weight-bold">Ügyszám: AE01/240215/0001</h1>
         
-            <form class="text-center" id="orderdata_form" method="POST" action="{{ route('orderdata.store') }}">
+            <form class=" pe-0" id="orderdata_form" method="POST" action="{{ route('orderdata.store') }}">
                 @csrf
                 @method('POST')
                 <input type="hidden" id="deceased_hidden" name="deceased_hidden" />
@@ -19,7 +19,7 @@
                 </button>
             </form>
         
-            <a class="btn next-btn btn-lg btn-success" type="submit" href="{{ url('hutesido-kalulator')}}" id="save_all_froms">
+            <a class="btn me-2 next-btn btn-lg btn-success" type="submit" href="{{ url('hutesido-kalulator')}}" id="save_all_froms">
                 Ajánalt kérése
             </a>
         </div>

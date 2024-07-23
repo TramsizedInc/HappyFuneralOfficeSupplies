@@ -35,11 +35,30 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink2">
                                     <li><a data-bs-parent="#sidebar" class="dropdown-item"
-                                            href="{{ route('printers.index') }}">Nyomtatók kezelése</a></li>
+                                            href="{{ route('printers.index') }}"><i
+                                                class="fas fa-wrench p-2"></i>Nyomtatók kezelése</a></li>
                                     <li><a data-bs-parent="#sidebar" class="dropdown-item"
-                                            href="{{ route('getPrinterData') }}">Nyomtató statisztikái</a></li>
+                                            href="{{ route('getPrinterData') }}"><i class="fas fa-chart-line"></i>
+                                            Nyomtató statisztikái</a></li>
                                     <li><a data-bs-parent="#sidebar" class="dropdown-item"
-                                            href="{{ route('printerTypes.index') }}">Nyomtató fajták kezelése</a></li>
+                                            href="{{ route('printerTypes.index') }}"><i
+                                                class="fas fa-cog p-2"></i>Nyomtató fajták kezelése</a></li>
+                                </ul>
+                            </li>
+                            <li class="nav-item dropdown mt-3">
+                                <a data-bs-parent="#sidebar"class="nav-link dropdown-toggle" href="#"
+                                    id="dropdownMenuLink1" role="button" data-bs-toggle="dropdown"
+                                    aria-expanded="false">
+                                    Autók
+                                </a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink1">
+                                    <li><a data-bs-parent="#sidebar" class="dropdown-item"
+                                            href="{{ route('cars.create') }}"><i class="fas fa-plus p-2"></i> Új
+                                            autó
+                                            hozzáadás</a></li>
+                                    <li class="border-top border-secondary"><a data-bs-parent="#sidebar"
+                                            class="dropdown-item" href="{{ route('cars.index') }}"><i
+                                                class="fas fa-table p-2"></i>Tárolt autók</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item dropdown mt-3">
@@ -50,7 +69,8 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink3">
                                     <li><a data-bs-parent="#sidebar" class="dropdown-item"
-                                            href="{{ route('brands.index') }}">Márkák kezelése</a></li>
+                                            href="{{ route('brands.index') }}"><i class="fas fa-wrench p-2"></i>Márkák
+                                            kezelése</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item dropdown mt-3">
@@ -61,9 +81,11 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink4">
                                     <li><a data-bs-parent="#sidebar" class="dropdown-item"
-                                            href="{{ route('checkModels.index') }}">Összes számla</a></li>
+                                            href="{{ route('checkModels.index') }}"><i class="fas fa-table p-2"></i>Összes
+                                                számla</a></li>
                                     <li><a data-bs-parent="#sidebar" class="dropdown-item"
-                                            href="{{ route('checkTypes.index') }}">Csekkek kezelése</a></li>
+                                            href="{{ route('checkTypes.index') }}"><i
+                                                class="fas fa-wrench p-2"></i>Csekkek kezelése</a></li>
                                 </ul>
                             </li>
                             <li class="nav-item dropdown mt-3">
@@ -75,14 +97,15 @@
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink5">
                                     <li>
                                         <a data-bs-parent="#sidebar" class="dropdown-item disabled text-dark"
-                                            href="#">{{ Auth::user()->name }}</a>
+                                            href="#"><i class="fas fa-user"></i> {{ Auth::user()->name }}</a>
                                     </li>
                                     <li>
                                         <form method="POST" action="{{ route('logout') }}">
                                             @csrf
                                             <a data-bs-parent="#sidebar" class="dropdown-item"
                                                 href="{{ route('logout') }}"
-                                                onclick="event.preventDefault(); this.closest('form').submit();">Log
+                                                onclick="event.preventDefault(); this.closest('form').submit();"><i
+                                                    class="fas fa-sign-out-alt"></i> Log
                                                 Out</a>
                                         </form>
                                     </li>

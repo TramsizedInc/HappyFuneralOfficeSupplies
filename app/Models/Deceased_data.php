@@ -12,7 +12,9 @@ class Deceased_data extends Model
     use SoftDeletes;
     protected $fillable = [
         'exhibiting_office',
-        'deceased_name',
+        'deceased_first_name',
+        'deceased_last_name',
+        'deceased_name_prefix',
         'birth_name',
         'mother_name',
         'zip_code',

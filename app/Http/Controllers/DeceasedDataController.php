@@ -43,7 +43,9 @@ class DeceasedDataController extends Controller
         //
         $validatedData = $request->validate([
             'exhibiting_office' => 'string',
-            'deceased_name' => 'required',
+            // 'deceased_name' => 'required',
+            'deceased_first_name' => 'required|string',
+            'deceased_last_name' => 'required|string',
             'birth_name' => 'required',
             'mother_name' => 'string',
             'zip_code' => 'string',
@@ -87,10 +89,10 @@ class DeceasedDataController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Deceased_data $deceased_data)
+    public function show()
     {
-        //
-        // return view('deceaseds.show', ["deceased" => $deceased_data]);
+        
+         return view('deceaseds.show');
     }
 
     /**
@@ -119,13 +121,13 @@ class DeceasedDataController extends Controller
         return view('deceaseds.index');
     }
 
-    public function print($id)
+    public function print()
     {
-        $order = OrderData::findOrFail($id);
-        $deceased = Deceased_data::findOrFail($order->deceased_id);
-        // $customer = CustomerData::findOrFail($order->customer_id);
-        // $urn_insert = urn_insert_type::findOrFail($order->urn_insert_id);
-        // $insert = Urn::findOrFail($order->urn_id);
-        return view('deceaseds.print', ['deceased' => $deceased]);
+        // $order = OrderData::findOrFail();
+        // $deceased = Deceased_data::findOrFail($order->deceased_id);
+        // // $customer = CustomerData::findOrFail($order->customer_id);
+        // // $urn_insert = urn_insert_type::findOrFail($order->urn_insert_id);
+        // // $insert = Urn::findOrFail($order->urn_id);
+        return view('deceaseds.print');
     }
 }

@@ -16,5 +16,6 @@ class OrderData extends Model
         'deceased_data_id',
         'birth_certificate_id',
         '_urn_k_i_a_datas_id',
+        'inner_uuid',
     ];
 }

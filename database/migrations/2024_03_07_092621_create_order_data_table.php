@@ -17,6 +17,7 @@ return new class extends Migration
             $table->integer('deceased_data_id');
             $table->integer('_urn_k_i_a_datas_id');
             $table->integer('birth_certificate_id');
+            $table->string('inner_uuid');
             /** soft deletes trait */
             $table->softDeletes();
             $table->integer('created_by')->default(1);

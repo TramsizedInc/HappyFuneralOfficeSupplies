@@ -39,7 +39,7 @@ class UrnKIADataController extends Controller
     {
         //dd($request->all());
         $validatedData = $request->validate([
-            'name_of_deceased' => 'string',
+            'deceased_id' => 'numeric|integer|required',
             'exhibition_date' => 'string',
             'hv_done_status_date' => 'string',
             'hv_have_status_date' => 'string',
