@@ -15,6 +15,8 @@ return new class extends Migration
             $table->id();
             $table->string('degree'); //Végzettség
             $table->string('job');
+            
+            $table->string('deceased_id_card_number');
             $table->integer('child_count'); //Gyerekek száma
             $table->string('degree_of_relative'); //Rokonsági fok
             $table->string('death_place'); //Város,kerület

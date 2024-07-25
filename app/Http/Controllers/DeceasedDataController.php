@@ -10,6 +10,7 @@ use App\Http\Requests\StoreDeceased_dataRequest;
 use App\Http\Requests\UpdateDeceased_dataRequest;
 use Spatie\LaravelPdf\Facades\Pdf;
 use Spatie\LaravelPdf\Enums\Format;
+use App\Http\Controllers\OrderDataController;
 
 class DeceasedDataController extends Controller
 {
@@ -32,7 +33,9 @@ class DeceasedDataController extends Controller
         // if (Auth::user()->cannot('create', Deceased_data::class)) {
         //     abort(403);
         // }
-        return view('deceaseds.create');
+        $orderdata = new OrderDataController();
+        $deceased_uuid = $orderdata->create_inner_uuid();
+        return view('deceaseds.create', ['deceased_uuid' => $deceased_uuid]);
     }
 
     /**

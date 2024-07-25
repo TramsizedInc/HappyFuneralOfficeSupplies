@@ -24,6 +24,7 @@ class Urn_k_i_a_data extends Model
             'tombstone_number',
             'date_of_funeral',
             'hour_and_minute_of_funeral',
-            'deceased_id'
+            'deceased_id',
+            'customer_id_card_number'
     ];
 }

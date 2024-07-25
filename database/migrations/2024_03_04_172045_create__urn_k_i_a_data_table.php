@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('urn_k_i_a_datas', function (Blueprint $table) {
             $table->id();
             // $table->string('name_of_deceased');
-            $table->integer('deceased_id');
+            $table->string('deceased_id_card_number');
             $table->DateTime('exhibition_date')->nullable();
             $table->DateTime('hv_done_status_date')->nullable();
             $table->DateTime('hv_have_status_date')->nullable();

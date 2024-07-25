@@ -6,13 +6,13 @@
                     <ul class="nav flex-column sidebar-nav">
                         <div class="sidebar-header">
                             <div class="sidebar-brand  text-center">
-                                <a data-bs-parent="#sidebar"class="nav-link fs-2 mt-3"
+                                <a data-bs-parent="#sidebar"class="nav-link text-light fs-2 mt-3"
                                     href="{{ route('dashboard') }}">Dashboard</a>
                             </div>
                         </div>
                         <div class="mt-3 text-dark">
                             <li class="nav-item dropdown mt-3">
-                                <a data-bs-parent="#sidebar"class="nav-link dropdown-toggle" href="#"
+                                <a data-bs-parent="#sidebar"class="nav-link text-light dropdown-toggle" href="#"
                                     id="dropdownMenuLink1" role="button" data-bs-toggle="dropdown"
                                     aria-expanded="false">
                                     Temetés felvételezés
@@ -28,7 +28,7 @@
                                 </ul>
                             </li>
                             <li class="nav-item dropdown mt-3">
-                                <a data-bs-parent="#sidebar"class="nav-link dropdown-toggle" href="#"
+                                <a data-bs-parent="#sidebar"class="nav-link text-light dropdown-toggle" href="#"
                                     id="dropdownMenuLink2" role="button" data-bs-toggle="dropdown"
                                     aria-expanded="false">
                                     Nyomtatók
@@ -46,7 +46,7 @@
                                 </ul>
                             </li>
                             <li class="nav-item dropdown mt-3">
-                                <a data-bs-parent="#sidebar"class="nav-link dropdown-toggle" href="#"
+                                <a data-bs-parent="#sidebar"class="nav-link text-light dropdown-toggle" href="#"
                                     id="dropdownMenuLink1" role="button" data-bs-toggle="dropdown"
                                     aria-expanded="false">
                                     Autók
@@ -62,7 +62,7 @@
                                 </ul>
                             </li>
                             <li class="nav-item dropdown mt-3">
-                                <a data-bs-parent="#sidebar"class="nav-link dropdown-toggle" href="#"
+                                <a data-bs-parent="#sidebar"class="nav-link text-light dropdown-toggle" href="#"
                                     id="dropdownMenuLink3" role="button" data-bs-toggle="dropdown"
                                     aria-expanded="false">
                                     Brandek
@@ -74,7 +74,7 @@
                                 </ul>
                             </li>
                             <li class="nav-item dropdown mt-3">
-                                <a data-bs-parent="#sidebar"class="nav-link dropdown-toggle" href="#"
+                                <a data-bs-parent="#sidebar"class="nav-link text-light dropdown-toggle" href="#"
                                     id="dropdownMenuLink4" role="button" data-bs-toggle="dropdown"
                                     aria-expanded="false">
                                     Számlák
@@ -89,7 +89,7 @@
                                 </ul>
                             </li>
                             <li class="nav-item dropdown mt-3">
-                                <a data-bs-parent="#sidebar"class="nav-link dropdown-toggle" href="#"
+                                <a data-bs-parent="#sidebar"class="nav-link text-light dropdown-toggle" href="#"
                                     id="dropdownMenuLink5" role="button" data-bs-toggle="dropdown"
                                     aria-expanded="false">
                                     Felhasználó

@@ -33,9 +33,6 @@
                                             Azonosító</th>
                                         <th id="wrap" scope="col"
                                             class="bg-dark text-center border-end border-secondary text-uppercase text-secondary w-50 text-nowrap">
-                                            QR code</th>
-                                        <th id="wrap" scope="col"
-                                            class="bg-dark text-center border-end border-secondary text-uppercase text-secondary w-50 text-nowrap">
                                             Megrendelő neve</th>
                                         <th id="wrap" scope="col"
                                             class="bg-dark text-center border-end border-secondary text-uppercase text-secondary w-50 text-nowrap">

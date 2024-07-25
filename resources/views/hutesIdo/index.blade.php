@@ -28,7 +28,7 @@
                                     <label
                                         class="input-group-text bg-secondary border border-secondary fw-bold">Hűtésdíjból
                                         rendezve</label>
-                                    <input type="number" class="form-control border-secondary" min="0"
+                                    <input disabled type="number" class="form-control border-secondary" min="0"
                                         class="input-group-text fst-italic"></input>
                                 </div>
                             </div>
@@ -48,7 +48,7 @@
                                         <label id="title"
                                             class="input-group-text bg-secondary border border-secondary fw-bold">Ügyfélfelvételének
                                             napja</label>
-                                        <input id="order_date" type="date" value="2023-12-08" readonly
+                                        <input disabled id="order_date" type="date" value="2023-12-08" readonly
                                             class="form-control text-center bg-secondary border-secondary">
                                         <span class="input-group-text fst-italic">péntek</span>
                                     </div>
@@ -63,7 +63,7 @@
                                             class="input-group-text bg-secondary border border-secondary fw-bold">Halálozás
                                             dátuma</label>
                                         <!-- Input Field -->
-                                        <input id="death_date" type="date" value="2023-12-02" readonly
+                                        <input disabled id="death_date" type="date" value="2023-12-02" readonly
                                             class="form-control text-center bg-secondary border-secondary">
                                         <!-- Additional Span if needed -->
                                         <span id="death_day" class="input-group-text fst-italic">szombat</span>
@@ -77,7 +77,7 @@
                                         <label id="title"
                                             class="input-group-text bg-secondary border border-secondary fw-bold">HvKÉSZ
                                             állapot dátuma</label>
-                                        <input id="hv_done_date" type="date" value="2023-12-11" readonly readonly
+                                        <input disabled id="hv_done_date" type="date" value="2023-12-11" readonly readonly
                                             class="form-control text-center bg-secondary border-secondary">
                                         <span id="hv_done_day" class="input-group-text fst-italic">hétfő</span>
                                     </div>
@@ -90,7 +90,7 @@
                                         <label id="title"
                                             class="input-group-text bg-secondary border border-secondary fw-bold">HvVAN
                                             állapot dátuma</label>
-                                        <input id="hv_van_date" type="date" value="2023-12-12" readonly readonly
+                                        <input disabled id="hv_van_date" type="date" value="2023-12-12" readonly readonly
                                             class="form-control text-center bg-secondary border-secondary">
                                         <span id="hv_van_day" class="input-group-text fst-italic">kedd</span>
                                     </div>
@@ -103,7 +103,7 @@
                                         <label id="title"
                                             class="input-group-text bg-secondary border border-secondary fw-bold">Hv
                                             Kiállítás időpontja</label>
-                                        <input id="hv_kiall" type="date" value="2023-12-12" readonly readonly
+                                        <input disabled id="hv_kiall" type="date" value="2023-12-12" readonly readonly
                                             class="form-control text-center bg-secondary border-secondary">
                                     </div>
                                 </div>
@@ -115,7 +115,7 @@
                                         <label id="title"
                                             class="input-group-text bg-secondary border border-secondary fw-bold">Boncolás
                                             történt-e</label>
-                                        <select class="form-select text-center border-secondary bg-secondary">
+                                        <select disabled class="form-select text-center border-secondary bg-secondary">
                                             <option value="yes">Igen</option>
                                         </select>
                                     </div>
@@ -128,7 +128,7 @@
                                         <label id="title"
                                             class="input-group-text bg-secondary border border-secondary fw-bold">KH
                                             választás</label>
-                                        <select class="form-select text-center border-secondary bg-secondary">
+                                        <select disabled class="form-select text-center border-secondary bg-secondary">
                                             <option id="kh_nev">KHMária</option>
                                         </select>
                                     </div>
@@ -142,7 +142,7 @@
                                         <label id="title"
                                             class="input-group-text bg-secondary border border-secondary fw-bold">
                                             KREMAválasztás</label>
-                                        <select class="form-select text-center border-secondary bg-secondary">
+                                        <select disabled class="form-select text-center border-secondary bg-secondary">
                                             <option id="krema">Adytum Budapest</option>
                                         </select>
                                     </div>
@@ -154,7 +154,7 @@
                                     <div class="input-group">
                                         <label id="title"
                                             class="input-group-text bg-secondary border border-secondary fw-bold">Eljárás</label>
-                                        <select class="form-select text-center border-secondary bg-secondary">
+                                        <select disabled class="form-select text-center border-secondary bg-secondary">
                                             <option>Normál</option>
                                         </select>
                                     </div>
@@ -220,7 +220,7 @@
                                             class="input-group-text bg-secondary border border-secondary fw-bold">Hűtésdíj
                                             számolásának első
                                             napja</label>
-                                        <input id="cooling_start_date" type="date" value="2023-12-11" readonly
+                                        <input disabled id="cooling_start_date" type="date" value="2023-12-11" readonly
                                             class="form-control text-center bg-secondary border-secondary">
                                     </div>
                                 </div>
@@ -232,7 +232,7 @@
                                         <label id="title"
                                             class="input-group-text bg-secondary border border-secondary fw-bold">Elszállítás
                                             határnap</label>
-                                        <input id="transport_date" type="date" value="2023-12-15" readonly
+                                        <input disabled id="transport_date" type="date" value="2023-12-15" readonly
                                             class="form-control text-center bg-secondary border-secondary">
                                         <span class="input-group-text fst-italic">péntek</span>
                                     </div>

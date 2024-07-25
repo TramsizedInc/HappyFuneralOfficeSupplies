@@ -44,14 +44,15 @@ class OrderDataController extends Controller
         //
         $req = $request->all();
         // dd($req);
-        $req['deceased_name'] = $req['deceased_hidden'];
+        // $req['deceased_name'] = $req['deceased_hidden'];
         $customer = CustomerData::select('id')->where('id_card_number', '=', $req['id_card_number'])->get();
-        $deceased = Deceased_data::select('id')->where('deceased_name', '=', $req['deceased_name'])->orderby('created_at', 'desc')->limit(1)->get();
-        $birth_c = BirthCertificate::select('id')->where('name_of_person', '=', $req['deceased_name'])->orderby('created_at', 'desc')->limit(1)->get();
-        $urn_kiad = Urn_k_i_a_data::select('id')->where('name_of_deceased', '=', $req['deceased_name'])->orderby('created_at', 'desc')->limit(1)->get();
+        $deceased = Deceased_data::select('id')->where('customer_id_card_number', '=', $req['id_card_number'])->orderby('created_at', 'desc')->limit(1)->get();
+        $birth_c = BirthCertificate::select('id')->where('deceased_id_card_number', '=', $req['id_card_number'])->orderby('created_at', 'desc')->limit(1)->get();
+        $urn_kiad = Urn_k_i_a_data::select('id')->where('deceased_id_card_number', '=', $req['id_card_number'])->orderby('created_at', 'desc')->limit(1)->get();
         // $query = CustomerData::select('id')->where('id_card_number', '=', $req['id_card_number'])->toSql();
         $company = "Aevum";
-        $inner_uuid = strtoupper($company[0] . $company[1]) . Carbon::today()->format('Ymd') . '/' . OrderData::count();
+        $office = "1";
+        $inner_uuid = strtoupper($company[0] . $company[1]) . $this->create_inventory_number($office,2). '/'. Carbon::today()->format('Ymd') . '/' . OrderData::count();
 
         // dd(Log::info($query)->toArray());
         // Log::info($query);
@@ -118,5 +119,36 @@ class OrderDataController extends Controller
         $insert = Urn::findOrFail($order->urn_id);
 
         return view('deceaseds.print');
+    }
+
+    /**
+     * Retruns a number formatted to start with zeroes, and its length can be set
+     * 
+     * @param int|string $id The id that needs to be converted to the appripriate format
+     * @param int|string $length The length of the resulting string
+     * 
+     * @return string  
+     */
+    public function create_inventory_number($id, $length){
+        $id_s = (string)$id;
+        $zeroes = strlen($id_s) - (intval($length));
+        for ($i = 0; $i<=$zeroes; $i++){
+            $id_s = "0".$id_s;
+        }
+        return $id_s;
+    }
+
+    /**
+     * Retruns an inner id for a new case
+     * 
+     * @return string  
+     */
+    public function create_inner_uuid(){
+
+        $company = "Aevum";
+        $office = "1";
+        $inner_uuid = strtoupper($company[0] . $company[1]) . $this->create_inventory_number($office,2). '/'. Carbon::today()->format('Ymd') . '/' . OrderData::count();
+        
+        return $inner_uuid;
     }
 }

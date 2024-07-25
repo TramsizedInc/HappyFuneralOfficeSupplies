@@ -7,7 +7,7 @@
             <h1 class="title ms-5 text-white font-weight-bold" >
                 Elhunyt felvétele
             </h1>
-            <h1 class="subtitle  ms-5 text-white font-weight-bold">Ügyszám: AE01/240215/0001</h1>
+            <h1 class="subtitle  ms-5 text-white font-weight-bold">{{$deceased_uuid}}</h1>
         
             <form class=" pe-0" id="orderdata_form" method="POST" action="{{ route('orderdata.store') }}">
                 @csrf
@@ -39,8 +39,17 @@
                             @csrf
                             <div class="row g-3">
                                 <div class="col-md-6">
-                                    <input class="form-control bg-secondary text-white" id="customer" name="customer"
+                                    <select class="form-select bg-secondary " id="customer" name="customer"
                                         type="text" placeholder="Előtag" required>
+                                        <option value="" selected disabled hidden>Előtag</option>
+                                        <option value="Dr.">Dr.</option>
+                                        <option value="Id.">Id.</option>
+                                        <option value="Ifj.">Ifj.</option>
+                                        <option value="Özv.">Özv.</option>
+                                        <option value="Phd">Phd.</option>
+                                        <option value="Prof.">Prof.</option>
+                                    </select>
+                                        
                                 </div>
                                 <div class="col-md-6">
                                     <input class="form-control bg-secondary text-white" id="customer" name="customer"
@@ -191,9 +200,18 @@
                             @csrf
                             <div class="row g-3">
                                 <div class="col-md-6">
-                                    <input class="form-control bg-secondary text-white" id="deceased_name"
+                                    <select class="form-select bg-secondary " id="deceased_name"
                                         onchange="onDeceasedChange(this)" name="deceased_name" type="text"
                                         placeholder="Előtag" required>
+                                        <option value="(Nincs)" selected>Előtag</option>
+                                        <option value="Dr.">Dr.</option>
+                                        <option value="Id.">Id.</option>
+                                        <option value="Ifj.">Ifj.</option>
+                                        <option value="Özv.">Özv.</option>
+                                        <option value="Phd">Phd.</option>
+                                        <option value="Prof.">Prof.</option>
+                                    
+                                    </select>
                                 </div>
 
                                 <div class="col-md-6">
@@ -317,6 +335,10 @@
                                             name="house_number" type="text" placeholder="Házszám">
                                     </div>
 
+                                    <div class="col-md-12">
+                                    <input class="form-control bg-secondary text-white" id="customer_id_hidden_deceased"
+                                        name="customer_id_card_number" type="hidden" required>
+                                    </div>
 
                                     <div class="text-center sticky-bottom mt-3">
                                         <button class="btn btn-secondary" type="submit" >Kész</button>
@@ -439,7 +461,7 @@
                                 </div>
                                 <div class="col-md-6">
                                     <input class="form-control bg-secondary text-white" id="deceased_hidden_bc"
-                                        name="name_of_person" type="hidden">
+                                        name="deceased_id_card_number" type="hidden">
                                 </div>
                             </div>
                             <div class="card-footer">
@@ -550,7 +572,7 @@
                                 </div>
                                 <div class="col-md-12">
                                     <input class="form-control bg-secondary text-white" id="deceased_hidden_urnkia"
-                                        name="name_of_deceased" type="hidden" required>
+                                        name="deceased_id_card_number" type="hidden" required>
                                 </div>
                             </div>
                             <div class="card-footer">
@@ -573,12 +595,12 @@
     <script>
         function onDeceasedChange(e) {
             document.getElementById('deceased_hidden').value = e.value;
-            document.getElementById('deceased_hidden_urnkia').value = e.value;
-            document.getElementById('deceased_hidden_bc').value = e.value;
         }
 
         function onIdcardChange(e) {
             document.getElementById('id_card_hidden').value = e.value;
+            document.getElementById('deceased_hidden_urnkia').value = e.value;
+            document.getElementById('deceased_hidden_bc').value = e.value;
         }
         // function submitFormPost(e){
         //   $('form').on('submit', function(e) {

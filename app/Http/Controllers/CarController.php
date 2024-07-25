@@ -31,6 +31,13 @@ class CarController extends Controller
     public function store(StoreCarRequest $request)
     {
         //
+        $model = new Car();
+        $model->fill($request->all);
+        $model->save();
+
+        $model->updated_at = now();
+        $model->created_at = now();
+        $model->update();
     }
 
     /**

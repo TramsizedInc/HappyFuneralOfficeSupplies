@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('customer_data', function (Blueprint $table) {
             $table->id();
             $table->string('customer');
+            $table->string('deceased_id_card_number');
             $table->string('born_name');
             $table->string('address');
             $table->string('mother_name');
@@ -33,6 +34,7 @@ return new class extends Migration
             $table->string('zip_code');
             $table->string('street');
             $table->string('house_number');
+
             /* Softdeletes */
             $table->softDeletes();
             $table->integer('created_by')->default(1);

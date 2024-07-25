@@ -20,6 +20,8 @@ return new class extends Migration
             $table->string('deceased_first_name');
             $table->string('deceased_last_name');
             
+            $table->string('customer_id_card_number');
+
             $table->string('birth_name')->nullable();
             $table->string('mother_name')->nullable();
             // livin' location
