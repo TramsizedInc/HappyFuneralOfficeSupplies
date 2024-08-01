@@ -25,6 +25,8 @@
         "flowbite": "^2.3.0",
         "gulp": "^5.0.0",
         "gulp-cli": "^3.0.0",
+        "inputmask": "^5.0.9",
+        "parsley": "^0.1.0",
         "parsleyjs": "^2.9.2",
         "puppeteer": "^22.6.3",
         "tw-elements": "^1.1.0"

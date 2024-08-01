@@ -1,7 +1,7 @@
 <x-app-layout>
 
 
-    <!--Section container-->
+    <!--Section container -->
     <div class="row mb-3 ">
         <div class="col-md-11 flex-container justify-content-between">
             <h1 class="title ms-5 text-white font-weight-bold" >
@@ -14,12 +14,12 @@
                 @method('POST')
                 <input type="hidden" id="deceased_hidden" name="deceased_hidden" />
                 <input type="hidden" id="id_card_hidden" name="id_card_number" />
-                <button class="btn save-btn btn-lg btn-secondary" type="submit" >
+                <button class="btn save-btn btn-lg btn-secondary" type="submit" id="save_all_forms">
                     Tárolás
                 </button>
             </form>
         
-            <a class="btn me-2 next-btn btn-lg btn-success" type="submit" href="{{ url('hutesido-kalulator')}}" id="save_all_froms">
+            <a class="btn me-2 next-btn btn-lg btn-success" type="submit" id="save_all_froms">
                 Ajánalt kérése
             </a>
         </div>
@@ -132,7 +132,7 @@
                                         </div>
                                         <input type="text" id="phone-input"
                                             class="form-control bg-secondary text-white" name="mobile_number"
-                                            pattern="[0-9]{4}-[0-9]{3}-[0-9]{4}" placeholder="00-000-0000"
+                                            pattern="[0-9]{2}-[0-9]{3}-[0-9]{4}" placeholder="00-000-0000"
                                             required />
                                     </div>
                                 </div>
@@ -204,6 +204,7 @@
                                         onchange="onDeceasedChange(this)" name="deceased_name" type="text"
                                         placeholder="Előtag" required>
                                         <option value="(Nincs)" selected>Előtag</option>
+                                        <option value="(Nincs)">Nincs előtag</option>
                                         <option value="Dr.">Dr.</option>
                                         <option value="Id.">Id.</option>
                                         <option value="Ifj.">Ifj.</option>
@@ -651,6 +652,38 @@
                 bc_form.submit();
                 c_form.submit();
                 u_form.submit();
+            });
+
+
+            $('#orderdata_form').on('submit', function(e) {
+                e.preventDefault(); // Prevent the form from submitting via the browser.
+                var form = $(this);
+                var url = form.attr('action');
+                
+                var d_form = document.getElementById('deceased_form');
+                var bc_form = document.getElementById('birthcert_form');
+                var u_form = document.getElementById('urnkia_form');
+                var c_form = document.getElementById('customer_form');
+                
+                d_form.submit();
+                bc_form.submit();
+                c_form.submit();
+                u_form.submit();
+
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: form.serialize(), // Serialize form data for AJAX submission
+                    success: function(data) {
+                        if (data.success) {
+                            toastr.info(data.message);
+                            window.location.href = "/hutesido-kalkulator/index";
+                            // Optionally, update the form or page content based on the response
+                        } else {
+                            toastr.info('fuck');
+                        }
+                    }
+                });
             });
         });
     </script>
