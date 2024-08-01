@@ -1,36 +1,32 @@
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 
-<x-app-layout>
-    <div class="container mt-5">
-        {{-- For Search --}}
-        <div class="row">
-            <div class="col-md-6">
-                <div class="input-group mb-3">
-                    <input type="text" id="searchInput" class="form-control" placeholder="Search events">
-                    <div class="input-group-append">
-                        <button id="searchButton" class="btn btn-primary">{{__('Search')}}</button>
-                    </div>
+    <div class="row">
+        <div class="col-md-6">
+            <div class="input-group mb-3">
+                <input type="text" id="searchInput" class="form-control" placeholder="Search events">
+                <div class="input-group-append">
+                    <button id="searchButton" class="btn btn-primary">{{ __('Search') }}</button>
                 </div>
-            </div>
-
-            <div class="col-md-6">
-                <div class="btn-group mb-3" role="group" aria-label="Calendar Actions">
-                    <button id="exportButton" class="btn btn-success">{{__('Export Calendar')}}</button>
-                </div>
-                <div class="btn-group mb-3" role="group" aria-label="Calendar Actions">
-                    <a href="{{ URL('add-schedule') }}" class="btn btn-success">{{__('Add')}}</a>
-                </div>
-
             </div>
         </div>
 
-        <div class="card">
-            <div class="card-body">
-                <div id="calendar" style="width: 100%;height:100vh"></div>
-
+        <div class="col-md-6">
+            <div class="btn-group mb-3" role="group" aria-label="Calendar Actions">
+                <button id="exportButton" class="btn btn-success">{{ __('Export Calendar') }}</button>
             </div>
+            <div class="btn-group mb-3" role="group" aria-label="Calendar Actions">
+                <a href="{{ URL('add-schedule') }}" class="btn btn-success">{{ __('Add') }}</a>
+            </div>
+
         </div>
     </div>
+
+    <div class="card">
+        <div class="card-body">
+            <div id="calendar" style="width: 100%;height:100vh"></div>
+
+        </div>
+    </div>
+    </body>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.8/index.global.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.0/xlsx.full.min.js"></script>
@@ -191,4 +187,5 @@
             downloadLink.click();
         })
     </script>
-</x-app-layout>
+
+

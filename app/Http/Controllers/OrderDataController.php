@@ -147,7 +147,7 @@ class OrderDataController extends Controller
 
         $company = "Aevum";
         $office = "1";
-        $inner_uuid = strtoupper($company[0] . $company[1]) . $this->create_inventory_number($office,2). '/'. Carbon::today()->format('Ymd') . '/' . OrderData::count();
+        $inner_uuid = strtoupper($company[0] . $company[1]) . $this->create_inventory_number($office,2). '/'. Carbon::today()->format('Ymd') . '/' .( OrderData::count()+1);
         
         return $inner_uuid;
     }

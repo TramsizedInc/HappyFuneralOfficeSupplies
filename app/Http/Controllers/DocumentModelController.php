@@ -53,7 +53,7 @@ class DocumentModelController extends Controller
         //gets a documentname, and a json containing the document, and saves the changes
 
         $document = DocumentModel::findByDocumentName($documentName);
-
+        return response()->json($document->inner_data);
     }
 
     /**

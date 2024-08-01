@@ -14,6 +14,9 @@ class CustomerData extends Model
     protected $fillable = [
         'customer',
         'born_name',
+        'customer_first_name',
+        'customer_last_name',
+        'customer_name_prefix',
         'zip_code',
         'street',
         'city',

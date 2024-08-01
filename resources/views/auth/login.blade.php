@@ -144,7 +144,7 @@
         $(document).ready(function() {
             // Hide the second welcome text and the first button
             $('#secondWelcomeText').addClass('hidden');
-            // $('#firstButton').addClass('hidden');
+             //$('#firstButton').addClass('hidden');
             $('#selectOffice').addClass('hidden');
 
             $('#switchButton').on('click', function() {

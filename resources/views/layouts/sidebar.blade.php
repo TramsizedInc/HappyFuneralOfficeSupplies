@@ -81,8 +81,9 @@
                                 </a>
                                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuLink4">
                                     <li><a data-bs-parent="#sidebar" class="dropdown-item"
-                                            href="{{ route('checkModels.index') }}"><i class="fas fa-table p-2"></i>Összes
-                                                számla</a></li>
+                                            href="{{ route('checkModels.index') }}"><i
+                                                class="fas fa-table p-2"></i>Összes
+                                            számla</a></li>
                                     <li><a data-bs-parent="#sidebar" class="dropdown-item"
                                             href="{{ route('checkTypes.index') }}"><i
                                                 class="fas fa-wrench p-2"></i>Csekkek kezelése</a></li>
@@ -105,8 +106,7 @@
                                             <a data-bs-parent="#sidebar" class="dropdown-item"
                                                 href="{{ route('logout') }}"
                                                 onclick="event.preventDefault(); this.closest('form').submit();"><i
-                                                    class="fas fa-sign-out-alt"></i> Log
-                                                Out</a>
+                                                    class="fas fa-sign-out-alt"></i> Kijelentkezés</a>
                                         </form>
                                     </li>
                                 </ul>
@@ -118,8 +118,9 @@
         </div>
         <div class="main ps-md-2 pt-2">
             <a href="#" data-bs-target="#sidebar" data-bs-toggle="collapse"
-                class="r text-danger rounded-3 p-1 fs-2 text-decoration-none">
-                <i class="fas fa-bars"></i></a>
+                class="text-danger rounded-3 p-1 fs-2 text-decoration-none">
+                <i class="fas fa-bars"></i>
+            </a>
             <div class="container-fluid">
                 <div class="row">
                     <div class="align-items-center justify-content-center">

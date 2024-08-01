@@ -4,22 +4,22 @@
     <!--Section container -->
     <div class="row mb-3 ">
         <div class="col-md-11 flex-container justify-content-between">
-            <h1 class="title ms-5 text-white font-weight-bold" >
+            <h1 class="title ms-5 text-white font-weight-bold">
                 Elhunyt felvétele
             </h1>
-            <h1 class="subtitle  ms-5 text-white font-weight-bold">{{$deceased_uuid}}</h1>
-        
+            <h1 class="subtitle  ms-5 text-white font-weight-bold">{{ $deceased_uuid }}</h1>
+
             <form class=" pe-0" id="orderdata_form" method="POST" action="{{ route('orderdata.store') }}">
                 @csrf
                 @method('POST')
                 <input type="hidden" id="deceased_hidden" name="deceased_hidden" />
                 <input type="hidden" id="id_card_hidden" name="id_card_number" />
-                <button class="btn save-btn btn-lg btn-secondary" type="submit" id="save_all_forms">
+                <button class="btn save-btn btn-lg btn-warning" type="submit" id="save_all_forms">
                     Tárolás
                 </button>
             </form>
-        
-            <a class="btn me-2 next-btn btn-lg btn-success" type="submit" id="save_all_froms">
+
+            <a class="btn me-2 next-btn btn-lg btn-success" type="submit">
                 Ajánalt kérése
             </a>
         </div>
@@ -38,10 +38,11 @@
                             enctype="multipart/form-data">
                             @csrf
                             <div class="row g-3">
-                                <div class="col-md-6">
-                                    <select class="form-select bg-secondary " id="customer" name="customer"
+                                <div class="col-md-4">
+                                    <select class="form-select bg-secondary " id="customer_name_prefix" name="customer_name_prefix"
                                         type="text" placeholder="Előtag" required>
-                                        <option value="" selected disabled hidden>Előtag</option>
+                                        <option value="Előtag" selected disabled hidden>Előtag</option>
+                                        <option value="Nincs">Nincs</option>
                                         <option value="Dr.">Dr.</option>
                                         <option value="Id.">Id.</option>
                                         <option value="Ifj.">Ifj.</option>
@@ -49,14 +50,14 @@
                                         <option value="Phd">Phd.</option>
                                         <option value="Prof.">Prof.</option>
                                     </select>
-                                        
+
                                 </div>
-                                <div class="col-md-6">
-                                    <input class="form-control bg-secondary text-white" id="customer" name="customer"
+                                <div class="col-md-4">
+                                    <input class="form-control bg-secondary text-white" id="customer_last_name" name="customer"
                                         type="text" placeholder="Vezeték neve" required>
                                 </div>
-                                <div class="col-md-6">
-                                    <input class="form-control bg-secondary text-white" id="customer" name="customer"
+                                <div class="col-md-4">
+                                    <input class="form-control bg-secondary text-white" id="customer_first_name" name="customer"
                                         type="text" placeholder="Kereszt neve" required>
                                 </div>
 
@@ -69,18 +70,32 @@
                                     <input class="form-control bg-secondary text-white" id="mother_name"
                                         name="mother_name" type="text" placeholder="Anyja neve" />
                                 </div>
+                                <div class="col-md-4">
+                                    <input class="form-control bg-secondary text-white" id="born_place"
+                                        name="birth_place" type="text" placeholder="Születési helye" />
+                                </div>
 
+                                <div class="col-md-8">
+                                    <div class="input-group">
+                                        <div class="input-group-prepend">
+                                            <span class="bg-secondary form-control input-group-text">Születési
+                                                ideje</span>
+                                        </div>
+                                        <input class="form-control bg-secondary" name="birth_day" id="birth_day"
+                                            type="date" />
+                                    </div>
+                                </div>
 
-                                <div class="col-md-6">
+                                <div class="col-md-4">
                                     <input class="form-control bg-secondary text-white" id="id_card_number"
                                         onchange="onIdcardChange(this)" name="id_card_number" type="text"
-                                        placeholder="Személyi igazolvány száma" required />
+                                        placeholder="Szig. száma" required />
                                 </div>
 
 
 
 
-                                <div class="col-md-12">
+                                <div class="col-md-8">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text form-control bg-secondary">Szig. érvényességi
@@ -105,24 +120,11 @@
 
                                 <div class="col-md-6">
                                     <input class="form-control bg-secondary text-white" id="exhibiting_office"
-                                        name="exhibiting_office" type="text" placeholder="Szig. kiállító hatóság" />
+                                        name="exhibiting_office" type="text"
+                                        placeholder="Szig. kiállító hatóság" />
                                 </div>
 
-                                <div class="col-md-6">
-                                    <input class="form-control bg-secondary text-white" id="born_place"
-                                        name="birth_place" type="text" placeholder="Születési helye" />
-                                </div>
 
-                                <div class="col-md-12">
-                                    <div class="input-group">
-                                        <div class="input-group-prepend">
-                                            <span class="bg-secondary form-control input-group-text">Születési
-                                                ideje</span>
-                                        </div>
-                                        <input class="form-control bg-secondary" name="birth_day" id="birth_day"
-                                            type="date" />
-                                    </div>
-                                </div>
                                 <div class="col-md-6">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
@@ -132,8 +134,7 @@
                                         </div>
                                         <input type="text" id="phone-input"
                                             class="form-control bg-secondary text-white" name="mobile_number"
-                                            pattern="[0-9]{2}-[0-9]{3}-[0-9]{4}" placeholder="00-000-0000"
-                                            required />
+                                            placeholder="" data-mask="(99) 999-9999" required />
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -199,32 +200,32 @@
                             enctype="multipart/form-data">
                             @csrf
                             <div class="row g-3">
-                                <div class="col-md-6">
-                                    <select class="form-select bg-secondary " id="deceased_name"
-                                        onchange="onDeceasedChange(this)" name="deceased_name" type="text"
+                                <div class="col-md-4">
+                                    <select class="form-select bg-secondary " id="deceased_name_prefix"
+                                        onchange="onDeceasedChange(this)" name="deceased_name_prefix" type="text"
                                         placeholder="Előtag" required>
                                         <option value="(Nincs)" selected>Előtag</option>
-                                        <option value="(Nincs)">Nincs előtag</option>
+                                        <option value="(Nincs)">Nincs</option>
                                         <option value="Dr.">Dr.</option>
                                         <option value="Id.">Id.</option>
                                         <option value="Ifj.">Ifj.</option>
                                         <option value="Özv.">Özv.</option>
                                         <option value="Phd">Phd.</option>
                                         <option value="Prof.">Prof.</option>
-                                    
+
                                     </select>
                                 </div>
 
-                                <div class="col-md-6">
-                                    <input class="form-control bg-secondary text-white" id="deceased_name"
-                                        onchange="onDeceasedChange(this)" name="deceased_name" type="text"
+                                <div class="col-md-4">
+                                    <input class="form-control bg-secondary text-white" id="deceased_last_name"
+                                        onchange="onDeceasedChange(this)" name="deceased_last_name" type="text"
                                         placeholder="Vezeték neve" required>
                                 </div>
 
 
-                                <div class="col-md-6">
-                                    <input class="form-control bg-secondary text-white" id="deceased_name"
-                                        onchange="onDeceasedChange(this)" name="deceased_name" type="text"
+                                <div class="col-md-4">
+                                    <input class="form-control bg-secondary text-white" id="deceased_first_name"
+                                        onchange="onDeceasedChange(this)" name="deceased_first_name" type="text"
                                         placeholder="Kereszt neve" required>
                                 </div>
 
@@ -244,21 +245,6 @@
                                     <input class="form-control bg-secondary text-white" id="mother_name"
                                         name="mother_name" type="text" placeholder="Anyja neve" />
                                 </div>
-
-                                <div class="col-md-6">
-                                    <input class="form-control bg-secondary text-white" id="id_card_number"
-                                        name="id_card_number" type="text" placeholder="Személyi igazolvány száma">
-                                </div>
-
-                                <div class="col-md-6">
-                                    <select class="form-select bg-secondary" name="hospital_code" required>
-                                        <option selected  value="">Elhunyt jelenleg várakozik</option>
-                                        @foreach (\App\Models\HutosIdo::all() as $hutosido)
-                                            <option value="{{ $hutosido->id }}">{{ $hutosido->kh_name }}
-                                        @endforeach
-                                    </select>
-                                </div>
-
                                 <div class="col-md-6">
                                     <input class="form-control bg-secondary text-white" id="birth_place"
                                         name="birth_place" type="text" placeholder="Születési helye" />
@@ -275,6 +261,19 @@
                                     </div>
                                 </div>
 
+                                <div class="col-md-6">
+                                    <input class="form-control bg-secondary text-white" id="id_card_number"
+                                        name="id_card_number" type="text" placeholder="Személyi igazolvány száma">
+                                </div>
+
+                                <div class="col-md-6">
+                                    <select class="form-select bg-secondary" name="hospital_code" required>
+                                        <option selected value="">Elhunyt jelenleg várakozik</option>
+                                        @foreach (\App\Models\HutosIdo::all() as $hutosido)
+                                            <option value="{{ $hutosido->id }}">{{ $hutosido->kh_name }}
+                                        @endforeach
+                                    </select>
+                                </div>
 
                                 <div class="col-md-6">
                                     <input class="form-control bg-secondary text-white" type="text"
@@ -308,7 +307,7 @@
                                 </div>
                                 <div class="row g-3">
                                     <div class="col-md-6">
-                                        <input class="form-control bg-secondary text-white" id=""
+                                        <input class="form-control bg-secondary text-white" id="address_id_number"
                                             name="" type="text" placeholder="Lakcím igazolvány száma"
                                             required />
                                     </div>
@@ -337,12 +336,13 @@
                                     </div>
 
                                     <div class="col-md-12">
-                                    <input class="form-control bg-secondary text-white" id="customer_id_hidden_deceased"
-                                        name="customer_id_card_number" type="hidden" required>
+                                        <input class="form-control bg-secondary text-white"
+                                            id="customer_id_hidden_deceased" name="customer_id_card_number"
+                                            type="hidden" required>
                                     </div>
 
                                     <div class="text-center sticky-bottom mt-3">
-                                        <button class="btn btn-secondary" type="submit" >Kész</button>
+                                        <button class="btn btn-secondary" type="submit">Kész</button>
                                     </div>
                                 </div>
                             </div>
@@ -467,7 +467,7 @@
                             </div>
                             <div class="card-footer">
                                 <div class="text-center sticky-bottom mt-3">
-                                    <button class="btn btn-secondary" type="submit" >Kész</button>
+                                    <button class="btn btn-secondary" type="submit">Kész</button>
                                 </div>
                             </div>
                         </form>
@@ -489,16 +489,16 @@
                                 <div class="col-md-12  rounded g-3">
                                     <label class="pe-4">Boncolás történt-e?</label>
                                     <div class="form-check form-check-inline pe-4 g-3">
-                                        <input class="form-check-input " type="radio" name="divorced_or_not"
-                                            id="maritalStatus1" value="Igen">
-                                        <label class="form-check-label " for="maritalStatus1">
+                                        <input class="form-check-input " type="radio" name="hv_is_done"
+                                            id="hv_is_done" value="1">
+                                        <label class="form-check-label " for="1">
                                             Igen
                                         </label>
                                     </div>
                                     <div class="form-check form-check-inline g-3">
-                                        <input class="form-check-input" type="radio" name="divorced_or_not"
-                                            id="maritalStatus2" value="Nem">
-                                        <label class="form-check-label" for="maritalStatus2">
+                                        <input class="form-check-input" type="radio" name="hv_is_done"
+                                            id="hv_is_done" value="0">
+                                        <label class="form-check-label" for="0">
                                             Nem
                                         </label>
                                     </div>
@@ -578,7 +578,7 @@
                             </div>
                             <div class="card-footer">
                                 <div class="text-center sticky-bottom mt-3">
-                                    <button class="btn btn-secondary" type="submit" >Kész</button>
+                                    <button class="btn btn-secondary" type="submit">Kész</button>
                                 </div>
                             </div>
                         </form>
@@ -594,6 +594,19 @@
     </div>
 
     <script>
+        const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
+        document.addEventListener('DOMContentLoaded', function() {
+            // Get the current date in YYYY-MM-DD format
+            let currentDate = new Date().toISOString().split('T')[0];
+
+            // Select the input element by its ID
+            let deathTimeInput = document.getElementById('death_time');
+
+            // Set the value of the input element to the current date
+            deathTimeInput.value = currentDate;
+
+        });
+
         function onDeceasedChange(e) {
             document.getElementById('deceased_hidden').value = e.value;
         }
@@ -621,8 +634,13 @@
         //   });});
         // }
         $(document).ready(function() {
+            $('#phone-input').each(function() {
+                var maskPattern = $(this).data('mask');
+                $(this).mask(maskPattern);
+            });
             // Assuming each form has a unique ID like 'form1', 'form2', etc.
-            $('#deceased_form, #birthcert_form, #urnkia_form, #customer_form').on('submit', function(e) {
+            $('#deceased_form, #birthcert_form, #urnkia_form, #customer_form').on('submit', function(
+                e) {
                 e.preventDefault(); // Prevent the form from submitting via the browser.
                 var form = $(this);
                 var url = form.attr('action');
@@ -642,47 +660,82 @@
                     }
                 });
             });
-            $('#save_all_forms').on('click', (e) => {
-                var d_form = document.getElementById('deceased_form');
-                var bc_form = document.getElementById('birthcert_form');
-                var u_form = document.getElementById('urnkia_form');
-                var c_form = document.getElementById('customer_form');
-                
-                d_form.submit();
-                bc_form.submit();
-                c_form.submit();
-                u_form.submit();
-            });
+            // $('#save_all_forms').on('click', (e) => {
+            //     var d_form = document.getElementById('deceased_form');
+            //     var bc_form = document.getElementById('birthcert_form');
+            //     var u_form = document.getElementById('urnkia_form');
+            //     var c_form = document.getElementById('customer_form');
+
+            //     d_form.submit();
+            //     bc_form.submit();
+            //     c_form.submit();
+            //     u_form.submit();
+            // });
 
 
-            $('#orderdata_form').on('submit', function(e) {
-                e.preventDefault(); // Prevent the form from submitting via the browser.
-                var form = $(this);
-                var url = form.attr('action');
-                
-                var d_form = document.getElementById('deceased_form');
-                var bc_form = document.getElementById('birthcert_form');
-                var u_form = document.getElementById('urnkia_form');
-                var c_form = document.getElementById('customer_form');
-                
-                d_form.submit();
-                bc_form.submit();
-                c_form.submit();
-                u_form.submit();
+            // $('#orderdata_form').on('submit', function(e) {
+            //     e.preventDefault(); // Prevent the form from submitting via the browser.
+            //     var form = $(this);
+            //     var url = form.attr('action');
+
+            //     var d_form = document.getElementById('deceased_form');
+            //     // console.log(d_form);
+            //     toastr.info((d_form));
+            //     // await sleep(3000);
+            //     var bc_form = document.getElementById('birthcert_form');
+            //     var u_form = document.getElementById('urnkia_form');
+            //     var c_form = document.getElementById('customer_form');
+
+            //     d_form.submit();
+            //     bc_form.submit();
+            //     c_form.submit();
+            //     u_form.submit();
+
+            //     $.ajax({
+            //         type: "POST",
+            //         url: url,
+            //         data: form.serialize(), // Serialize form data for AJAX submission
+            //         success: function(data) {
+            //             if (data.success) {
+            //                 toastr.info(data.message);
+            //                 //window.location.href = "/hutesido-kalkulator/index";
+            //                 // Optionally, update the form or page content based on the response
+            //             } else {
+            //                 toastr.info('fuck');
+            //             }
+            //         }
+            //     });
+            // });
+        
+            function submitForm(formId, callback) {
+                var form = $('#' + formId);
+                var formData = form.serialize();
 
                 $.ajax({
                     type: "POST",
-                    url: url,
-                    data: form.serialize(), // Serialize form data for AJAX submission
-                    success: function(data) {
-                        if (data.success) {
-                            toastr.info(data.message);
-                            window.location.href = "/hutesido-kalkulator/index";
-                            // Optionally, update the form or page content based on the response
-                        } else {
-                            toastr.info('fuck');
-                        }
+                    url: form.attr('action'), // Assuming the action attribute contains the URL to submit to
+        
+                    data: formData,
+                    success: function(response) {
+                        if(callback) callback();
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        console.error("Form submission failed:", textStatus, errorThrown);
                     }
+                });
+            }
+
+            $("#orderdata_form").on('submit', function(e) {
+                e.preventDefault();
+
+                submitForm('deceased_form', function() {
+                    submitForm('birthcert_form', function() {
+                        submitForm('urnkia_form', function() {
+                            submitForm('customer_form', function() {
+                                submitForm('orderdata_form');
+                            });
+                        });
+                    });
                 });
             });
         });

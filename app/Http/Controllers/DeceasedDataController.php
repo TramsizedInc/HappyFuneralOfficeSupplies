@@ -43,10 +43,10 @@ class DeceasedDataController extends Controller
      */
     public function store(StoreDeceased_dataRequest $request)
     {
-        //
+        
         $validatedData = $request->validate([
             'exhibiting_office' => 'string',
-            // 'deceased_name' => 'required',
+            'deceased_name_prefix' => 'required',
             'deceased_first_name' => 'required|string',
             'deceased_last_name' => 'required|string',
             'birth_name' => 'required',
@@ -66,7 +66,7 @@ class DeceasedDataController extends Controller
             'passport_number' => 'string',
             'driver_licence_number' => 'string',
             'deceased_weight' => 'string',
-            'weight' => 'string',
+            //'weight' => 'string',
             'name_of_deceased' => 'string',
         ]);
         

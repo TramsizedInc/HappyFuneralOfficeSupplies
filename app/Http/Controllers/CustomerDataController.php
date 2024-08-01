@@ -28,7 +28,6 @@ class CustomerDataController extends Controller
             abort(403);
         }
         return view('customer.create');
-
     }
 
     /**
@@ -38,32 +37,34 @@ class CustomerDataController extends Controller
     {
         //
         $validatedData = $request->validate([
-        'nation' => 'required|string',
-        'customer' => 'required',
-        'born_name' => 'required',
-        'zip_code' => 'required',
-        'street' => 'required',
-        'house_number' => 'required',
-        'mother_name' => 'required',
-        // 'birth_place_with_birth_day' => 'required',
-        'city' => 'string',
-        'mobile_number' => 'required',
-        'email' => 'required|email',
-        'id_card_number' => 'string',
-        'id_card_expire_date' => 'date',
-        'id_card_exhibition_place' => 'string',
-        'exhibiting_office' => 'string',
-        'address_id_number' => 'string',
-        'customer_birth_day' => 'date',
-        'birth_place' => 'required',
+            'nation' => 'required|string',
+            'customer_name_prefix' => 'required',
+            'customer_first_name' => 'required|string',
+            'customer_last_name' => 'required|string',
+            'born_name' => 'required',
+            'zip_code' => 'required',
+            'street' => 'required',
+            'house_number' => 'required',
+            'mother_name' => 'required',
+            // 'birth_place_with_birth_day' => 'required',
+            'city' => 'string',
+            'mobile_number' => 'required',
+            'email' => 'required|email',
+            'id_card_number' => 'string',
+            'id_card_expire_date' => 'date',
+            'id_card_exhibition_place' => 'string',
+            'exhibiting_office' => 'string',
+            'address_id_number' => 'string',
+            'customer_birth_day' => 'date',
+            'birth_place' => 'required',
         ]);
         $model = new CustomerData();
         $model->fill($validatedData);
         $mobile_number = join(explode('-', $model->mobile_number));
         $model->mobile_number = (int) $mobile_number;
         $model->customer_birth_day = $request->validate(['birth_day' => 'required|date'])['birth_day'];
-        $model->birth_place_with_birth_day = $model->birth_place .' '. $model->customer_birth_day;
-        $model->address = $model->zip_code ." ". $validatedData['city'] ." ". $model->street ." ". $model->house_number;
+        $model->birth_place_with_birth_day = $model->birth_place . ' ' . $model->customer_birth_day;
+        $model->address = $model->zip_code . " " . $validatedData['city'] . " " . $model->street . " " . $model->house_number;
         $model->city = $validatedData['city'];
         $model->save();
         $model->updated_at = now();
