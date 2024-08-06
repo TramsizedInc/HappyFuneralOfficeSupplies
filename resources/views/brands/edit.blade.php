@@ -1,4 +1,6 @@
-<!-- component -->
+@extends('layouts.app')
+
+@section('content')
 <div class="min-h-screen p-6 flex items-center justify-center">
     <form action="{{ route('brands.update',$brand) }}" method="POST" enctype="multipart/form-data" class="container max-w-screen-lg mx-auto">
         @csrf
@@ -39,3 +41,4 @@
 
     </form>
 </div>
+@endsection

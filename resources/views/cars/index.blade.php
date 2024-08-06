@@ -1,4 +1,6 @@
-<x-app-layout>
+@extends('layouts.app')
+
+@section('content')
 
     <div class="row justify-content-center py-3 px-4">
         <div class="col-xl-2 col-xxl-2 col-lg-3 col-md-2 col-sm-2 col-xs-2"></div>
@@ -107,4 +109,4 @@
         </div>
     </div>
 
-</x-app-layout>
+@endsection

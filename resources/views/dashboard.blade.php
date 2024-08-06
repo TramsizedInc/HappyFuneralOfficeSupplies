@@ -1,302 +1,350 @@
-<x-app-layout>
-    <style>
-        /* Custom styles for the carousel simulation */
-        .carousel-container {
+@extends('layouts.app')
+
+@section('content')
+    {{-- <style>
+        .left-info {
+            width: 260px;
+            height: 100%;
+            float: left;
             display: flex;
-            overflow-x: auto;
-            scroll-snap-type: x mandatory;
-            -webkit-overflow-scrolling: touch;
+            border-radius: 25px;
+            justify-content: center;
+            background-image: url("{{ asset('storage/login_card.jpg') }}");
+            background-position: center;
+            background-size: cover;
+            transform: scale(1.03) perspective(200px);
+            cursor: pointer;
+            box-shadow: 0 0 20px -10px rrgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
         }
-
-        .carousel-item {
-            flex: 0 0 auto;
-            min-width: 300px;
-            /* Adjust based on your needs */
-            max-width: 300px;
-            /* Adjust based on your needs */
-            margin-right: 20px;
-            /* Space between items */
-            padding: 20px;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            background-color: #fff;
-            box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
-            scroll-snap-align: start;
-        }
-
-        .carousel-item.active {
-            transform: translateX(calc(-25% * var(--scroll-index)));
-        }
-
-        #calendar {
-            height: 400px;
-            /* Adjusted height for better visibility */
-            width: 100%;
-        }
-
-        .fc-header-title {
-            font-weight: bold;
-        }
-
-        .fc-prev-button,
-        .fc-next-button {
-            background-color: transparent;
-            border: none;
-            font-size: 16px;
-            /* Larger for better touch targets */
-        }
-
-        .fc-day-top {
-            font-weight: bold;
-        }
-
-        .fc-weekend {
-            background-color: rgba(255, 255, 255, 0.1);
-            /* Lighter shade for weekends */
-        }
-
-        .fc-today {
-            background-color: #e9ecef;
-            /* Lighter shade for today */
-        }
-
-        .fc-event {
-            font-size: 14px;
-            /* Slightly larger for readability */
-            padding: 6px;
-            /* More padding for better touch targets */
-            border-radius: 8px;
-            /* Softer corners */
-        }
-
-        .fc-event:hover {
-            background-color: #0056b3;
-            /* Darker blue for contrast */
-            color: white;
-        }
-
-        /* Enhanced styles for better readability and accessibility */
-        .card-body {
-            font-size: 1rem;
-            /* Standard base font size */
-            line-height: 1.5;
-            /* Improved spacing between lines */
-        }
-
-        .card-text {
-            margin-bottom: 0.5rem;
-            /* Space between text elements */
-        }
-
-        .card-title {
-            font-weight: bold;
-            /* Emphasize the company names */
-        }
-
-        /* Optional: Add hover effects for interactive elements */
-        .card-title a:hover,
-        .card-text a:hover {
-            text-decoration: underline;
-        }
-    </style>
-    @php
-        $companies = [
-            [
-                'name' => 'Aevum Internet Temetkezés Kft.',
-                'tax_number' => '23414985-2-43',
-                'office' => 'Dembinszky',
-                'address' => '1071 Budapest, Dembinszky utca 44.',
-                'email' => 'dembinszky@aevum.hu',
-                'phone' => '+36 1 919 0130',
-                'mobile' => '+36 30 229 5279',
-            ],
-            [
-                'name' => 'Aevum Internet Temetkezés Kft.',
-                'tax_number' => '23414985-2-43',
-                'office' => 'Pap Károly',
-                'address' => '1139 Budapest, Pap Károly utca 12.',
-                'email' => 'papkarolyutca@aevum.hu',
-                'phone' => '+36 1 919 0132',
-                'mobile' => '+36 30 253 5258',
-            ],
-            [
-                'name' => 'Aevum Internet Temetkezés Kft.',
-                'tax_number' => '23414985-2-43',
-                'office' => 'Bécsi út',
-                'address' => '1034 Budapest, Bécsi út 141-143.',
-                'email' => 'becsiut@aevum.hu',
-                'phone' => '+36 1 919 0133',
-                'mobile' => '+36 30 576 7216',
-            ],
-            [
-                'name' => 'Aevum Internet Temetkezés Kft.',
-                'tax_number' => '23414985-2-43',
-                'office' => 'Árpád út',
-                'address' => '1042 Budapest, Árpád út 88.',
-                'email' => 'arpadut@aevum.hu',
-                'phone' => '+36 1 919 0131',
-                'mobile' => '+36 30 664 5758',
-            ],
-            [
-                'name' => 'Szomorúfűz Temetkezési Hálózat Kft.',
-                'tax_number' => '26704450-2-42',
-                'office' => 'Izabella',
-                'address' => '1064 Budapest, Izabella u. 65.',
-                'email' => 'budapest@temetkezes.hu',
-                'phone' => '+36 1 919 0170',
-                'mobile' => '+36 30 847 1915',
-            ],
-            [
-                'name' => 'Szomorúfűz Temetkezési Hálózat Kft.',
-                'tax_number' => '26704450-2-42',
-                'office' => 'Pesti út',
-                'address' => '1173 Budapest, Pesti út 41/A.',
-                'email' => 'pesti@temetkezes.hu',
-                'phone' => '+36 1 919 0171',
-                'mobile' => '+36 30 313 7920',
-            ],
-            [
-                'name' => 'Szomorúfűz Temetkezési Hálózat Kft.',
-                'tax_number' => '26704450-2-42',
-                'office' => 'Nagyenyed',
-                'address' => '1123 Budapest, Nagyenyed utca 1.',
-                'email' => 'nagyenyed@temetkezes.hu',
-                'phone' => '+36 1 919 0886',
-                'mobile' => '+36 30 203 2300',
-            ],
-            [
-                'name' => 'Szomorúfűz Temetkezési Hálózat Kft.',
-                'tax_number' => '26704450-2-42',
-                'office' => 'Thököly',
-                'address' => '1146 Budapest, Thököly út 167.',
-                'email' => 'thokoly@temetkezes.hu',
-                'phone' => '+36 1 919 0172',
-                'mobile' => '+36 30 965 1783',
-            ],
-            [
-                'name' => 'Szomorúfűz Temetkezési Hálózat Kft.',
-                'tax_number' => '26704450-2-42',
-                'office' => 'Szivacs',
-                'address' => '1204 Budapest, Szivacs utca 5.',
-                'email' => 'szivacs@temetkezes.hu',
-                'phone' => '',
-                'mobile' => '+36 30 576 7206',
-            ],
-            [
-                'name' => 'Gyászhuszár Kegyeleti Kft.',
-                'tax_number' => '24280237-2-43',
-                'office' => 'Lenhossék',
-                'address' => '1096 Budapest, Lenhossék utca 33.',
-                'email' => 'lenhossek@gyaszhuszar.hu',
-                'phone' => '+36 1 919 0021',
-                'mobile' => '+36 30 633 5677',
-            ],
-            [
-                'name' => 'Gyászhuszár Kegyeleti Kft.',
-                'tax_number' => '24280237-2-43',
-                'office' => 'Villányi',
-                'address' => '1114 Budapest, Villányi út 6.',
-                'email' => 'villanyi@gyaszhuszar.hu',
-                'phone' => '+36 1 919 0020',
-                'mobile' => '+36 30 879 8970',
-            ],
-            [
-                'name' => 'Lélekhajó Szolgáltató Kft.',
-                'tax_number' => '23434464-2-43',
-                'office' => 'Lélekhajó',
-                'address' => '1096 Budapest, Ernő utca 30-34. fszt. 1.',
-                'email' => 'info@lelekhajotemetkezes.hu',
-                'phone' => '+36 1 919 0165',
-                'mobile' => '+36 20 586 8800',
-            ],
-            [
-                'name' => 'Menefrisz Kegyeleti Szolgáltató Kft.',
-                'tax_number' => '26132790-2-42',
-                'office' => 'Menefrisz',
-                'address' => '1156 Budapest, Kontyfa utca 8.',
-                'email' => 'info@menefrisztemetkezes.hu',
-                'phone' => '',
-                'mobile' => '+36 30 780 4804',
-            ],
-        ];
-    @endphp;
-
-    <div class="container py-4">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <h1>Welcome, {{ Auth::user()->name }}</h1>
-            </div>
-        </div>
-        <div class="row">
-
-            <div class="col-6">
-                <h3 class="mb-3">Céges infók</h3>
-            </div>
-            <!-- Insert the navigation buttons here -->
-            <div class="col-6 text-right">
-                <a class="btn btn-primary mb-3 mr-1" href="#carouselExampleIndicators2" role="button" data-slide="prev">
-                    <i class="fa fa-arrow-left"></i>
-                </a>
-                <a class="btn btn-primary mb-3 " href="#carouselExampleIndicators2" role="button" data-slide="next">
-                    <i class="fa fa-arrow-right"></i>
-                </a>
-            </div>
-            <div class="col-12">
-                <div id="carouselExampleIndicators2" class="carousel slide" data-ride="carousel">
-                    <div class="carousel-inner">
-                        @php
-                            $counter = 0; // Initialize a counter outside the loop
-                        @endphp
-                        @foreach ($companies as $index => $company)
-                            @if ($index <= 3)
-                                <div class="carousel-item active">
-                                    <div class="row">
-                                        <div class="col-md-6 mb-3">
-                                            <div class="card">
-                                                <div class="card-body">
-                                                    <h4 class="card-title">{{ $company['name'] }}</h4>
-                                                    <p class="card-text">Adószám: {{ $company['tax_number'] }}</p>
-                                                    <p class="card-text">Iróda: {{ $company['office'] }}</p>
-                                                    <p class="card-text">Cím: {{ $company['address'] }}</p>
-                                                    <p class="card-text">Email: <a
-                                                            href="mailto:{{ $company['email'] }}">{{ $company['email'] }}</a>
-                                                    </p>
-                                                    <p class="card-text">Voip: {{ $company['phone'] }}</p>
-                                                    <p class="card-text">Mobilszám: {{ $company['mobile'] }}</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                @else
-                                    <div class="carousel-item">
-                                        <div class="row">
-                                            <div class="col-md-6 mb-3">
-                                                <div class="card">
-                                                    <div class="card-body">
-                                                        <h5>{{ $company['name'] }}</h5>
-                                                        <p>Adószám: {{ $company['tax_number'] }}</p>
-                                                        <p>Iróda: {{ $company['office'] }}</p>
-                                                        <p>Cím: {{ $company['address'] }}</p>
-                                                        <p>Email: <a
-                                                                href="mailto:{{ $company['email'] }}">{{ $company['email'] }}</a>
-                                                        </p>
-                                                        <p>Voip: {{ $company['phone'] }}</p>
-                                                        <p>Mobilszám: {{ $company['mobile'] }}</p>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                            @endif
-                            @php
-                                $counter++; // Increment the counter at the end of each loop iteration
-                            @endphp
-                        @endforeach
-                    </div>
-                </div>
-            </div>
+    </style> --}}
+    <div class="row">
+        <div class="col-lg-12 text-center">
+            <h1 class="fs-1 fw-bolder">Welcome, {{ Auth::user()->name }}</h1>
         </div>
     </div>
+    <div class="row m-3">
+        <div class="col-6 border rounded border-warning">
+            <div class="col-4 mt-2">
+                <h1 class="ps-5 mb-3">Céges infók:</h1>
+            </div>
+            <div class="d-flex flex-wrap">
+                @foreach (\App\Models\Companies::all() as $index => $company)
+                    <div class="col-md-4">
+                        <div class="accordion accordion-flush" id="accordionFlushExample{{ $index }}">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="flush-heading{{ $index }}">
+                                    <button class="accordion-button text-dark b-none collapsed" type="button"
+                                        data-bs-toggle="collapse" data-bs-target="#flush-collapse{{ $index }}"
+                                        aria-expanded="false" aria-controls="flush-collapse{{ $index }}">
+                                        {{ $company['name'] }} ({{ $company['office'] }})
+                                    </button>
+                                </h2>
+                                <div id="flush-collapse{{ $index }}" class="accordion-collapse collapse"
+                                    aria-labelledby="flush-heading{{ $index }}"
+                                    data-bs-parent="#accordionFlushExample{{ $index }}">
+                                    <div class="accordion-body">
+                                        Adószám: {{ $company['tax_number'] }}<br>
+                                        Cím: {{ $company['address'] }}<br>
+                                        Email: <a href="mailto:{{ $company['email'] }}">{{ $company['email'] }}</a><br>
+                                        Voip: {{ $company['phone'] }}<br>
+                                        Mobilszám: {{ $company['mobile'] }}
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+            </div>
 
-</x-app-layout>
+        </div>
+
+        <div class="col-md-3 dark">
+
+            <div class="calendar">
+                <div class="calendar-header">
+                    <span class="month-picker" id="month-picker">
+                        @php
+                            $currentYear = \Carbon\Carbon::now()->format('Y');
+                            $currentMonthName = \Carbon\Carbon::now()->formatLocalized('%B');
+                            $monthNames = [
+                                'January' => 'Január',
+                                'February' => 'Február',
+                                'March' => 'Március',
+                                'April' => 'Április',
+                                'May' => 'Május',
+                                'June' => 'Június',
+                                'July' => 'Július',
+                                'August' => 'Augusztus',
+                                'September' => 'Szeptember',
+                                'October' => 'Október',
+                                'November' => 'November',
+                                'December' => 'December',
+                            ];
+                            $currentMonthNameHungarian = isset($monthNames[$currentMonthName])
+                                ? $monthNames[$currentMonthName]
+                                : '';
+                        @endphp
+                        {{ $currentMonthNameHungarian }}
+                    </span>
+                    <div class="year-picker">
+                        <span class="year-change" id="prev-year">
+                            <pre><</pre>
+                        </span>
+                        <span id="year">{{ $currentYear }}</span>
+                        <span class="year-change" id=next-year>
+                            <pre>></pre>
+                        </span>
+                    </div>
+                </div>
+                <div class="calendar-body">
+                    <div class="calendar-week-day">
+                        <div>Hétfő</div>
+                        <div>Kedd</div>
+                        <div>Szerda</div>
+                        <div>Csütörtök</div>
+                        <div>Péntek</div>
+                        <div>Szombat</div>
+                        <div>Vasárnap</div>
+                    </div>
+                    <div class="calendar-days"></div>
+                </div>
+
+                <div class="month-list"></div>
+            </div>
+        </div>
+
+
+        <div class="col-md-3">
+            <div class="weather-widget">
+                <div class="left-info">
+                    <div class="pic-gradient"></div>
+                    <div class="today-info">
+                        <h2></h2>
+                        <span></span>
+                        <div>
+                            <i class='bx bx-current-location'></i>
+                            <span></span>
+                        </div>
+                    </div>
+                    <div class="today-weather">
+                        <i class='bx bx-sun'></i>
+                        <h1 class="weather-temp">
+
+                        </h1>
+                        <h3></h3>
+                    </div>
+                </div>
+
+                <div class="right-info">
+                    <div class="day-info">
+                        <div>
+                            <span class="title">PRECIPITATION</span>
+                            <span class="value"></span>
+                        </div>
+                        <div>
+                            <span class="title">HUMIDITY</span>
+                            <span class="value"></span>
+                        </div>
+                        <div>
+                            <span class="title">WIND SPEED</span>
+                            <span class="value"></span>
+                        </div>
+                    </div>
+
+                    <ul class="days-list">
+                        <li>
+                            <i class='bx bx-cloud'></i>
+                            <span></span>
+                            <span class="day-temp"></span>
+                        </li>
+                        <li>
+                            <i class='bx bx-sun'></i>
+                            <span></span>
+                            <span class="day-temp"></span>
+                        </li>
+                        <li>
+                            <i class='bx bx-cloud-rain'></i>
+                            <span></span>
+                            <span class="day-temp"></span>
+                        </li>
+                        <li>
+                            <i class='bx bx-cloud-drizzle'></i>
+                            <span></span>
+                            <span class="day-temp"></span>
+                        </li>
+                    </ul>
+
+                    <div class="btn-container">
+                        <button class="loc-button">Search Location</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <script>
+            $(document).ready(function() {
+                $('.loc-button').click(function() {
+                    const locationInput = $(
+                    '#location-input'); // Assuming there's an input with id="location-input"
+                    const location = locationInput.val();
+
+                    if (!location) {
+                        alert("Please enter a location.");
+                        return;
+                    }
+
+                    const apiKey = '418b0deb282ab7edb575084d43a375d0'; // Replace YOUR_API_KEY with your actual API key
+                    const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${location}`;
+
+                    $.getJSON(url, function(data) {
+                        console.log(data); // For debugging purposes
+                        updateUI(data);
+                    }).fail(function(jqXHR, textStatus, errorThrown) {
+                        console.error('Error:', textStatus, errorThrown);
+                    });
+                });
+
+                function updateUI(data) {
+                    const currentLocation = data.location.name;
+                    const currentTemp = data.current.temp_c; // Assuming Celsius
+                    const currentCondition = data.current.condition.text;
+                    console.log(currentLocation)
+                    // Update today's info
+                    $('.today-info span:nth-child(2)').text(`${data.location.localtime.split(' ')[0]}`);
+                    $('.today-info div span').text(`${currentLocation}, ${data.location.country}`);
+                    $('.today-weather .weather-temp').text(`${currentTemp}°C`);
+                    $('.today-weather h3').text(currentCondition);
+
+                    // Clear existing forecast items
+                    $('.days-list li').remove();
+
+                    // Update day forecast
+                    const forecastDays = ['Sat', 'Sun', 'Mon', 'Tue'];
+                    data.forecast.forEach((day, index) => {
+                        const iconClass = day.day.condition.icon;
+                        const temp = day.day.maxtemp_c; // Assuming Celsius
+                        const condition = day.day.condition.text;
+
+                        $('<li>').append(
+                            `<i class="${iconClass}"></i><span>${forecastDays[index]}</span><span class="day-temp">${temp}°C</span>`
+                        ).appendTo('.days-list');
+                    });
+                }
+            });
+
+
+
+            let calendar = document.querySelector('.calendar')
+            isLeapYear = (year) => {
+                return (year % 4 === 0 && year % 100 !== 0 && year % 400 !== 0) || (year % 100 === 0 && year % 400 === 0)
+            }
+
+            getFebDays = (year) => {
+                return isLeapYear(year) ? 29 : 28
+            }
+            const month_names = ['Január',
+                'Február',
+                'Március',
+                'Április',
+                'Május',
+                'Június',
+                'Július',
+                'Augusztus',
+                'Szeptember',
+                'Október',
+                'November',
+                'December'
+            ]
+
+
+
+            let month_picker = calendar.querySelector('#month-picker')
+
+            month_picker.onclick = () => {
+                month_list.classList.add('show')
+            }
+
+            generateCalendar = (month, year) => {
+                console.log("initial month: " + month)
+                let calendar_days = calendar.querySelector('.calendar-days')
+                let calendar_header_year = calendar.querySelector('#year')
+
+                let days_of_month = [31, getFebDays(year), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
+
+                calendar_days.innerHTML = ''
+
+                let currDate = new Date()
+
+                if (month != 0 && !month) month = currDate.getMonth()
+                if (!year) year = currDate.getFullYear()
+
+                console.log("selected month: " + month)
+
+
+                let curr_month = `${month_names[month]}`
+                month_picker.innerHTML = curr_month
+                calendar_header_year.innerHTML = year
+
+                // get first day of month
+
+                let first_day = new Date(year, month, 1)
+                console.log(first_day)
+
+                for (let i = 0; i <= days_of_month[month] + first_day.getDay() - 2; i++) {
+                    let day = document.createElement('div')
+                    if (i >= first_day.getDay() - 1) {
+                        day.classList.add('calendar-day-hover')
+                        day.innerHTML = i - first_day.getDay() + 2
+                        day.innerHTML += `<span></span>
+                        <span></span>
+                        <span></span>
+                        <span></span>`
+                        if (i - first_day.getDay() + 2 === currDate.getDate() && year === currDate.getFullYear() &&
+                            month === currDate.getMonth()) {
+                            day.classList.add('curr-date')
+                        }
+                    }
+                    calendar_days.appendChild(day)
+                }
+            }
+
+            let month_list = calendar.querySelector('.month-list')
+
+            month_names.forEach((e, index) => {
+                let month = document.createElement('div')
+                month.innerHTML = `<div data-month="${index}">${e}</div>`
+                month.querySelector('div').onclick = () => {
+                    month_list.classList.remove('show')
+                    curr_month.value = index
+                    generateCalendar(index, curr_year.value)
+                    console.log(index)
+                }
+                month_list.appendChild(month)
+            })
+
+
+            let currDate = new Date()
+
+            let curr_month = {
+                value: currDate.getMonth()
+            }
+            let curr_year = {
+                value: currDate.getFullYear()
+            }
+
+            generateCalendar(curr_month.value, curr_year.value)
+
+            document.querySelector('#prev-year').onclick = () => {
+                --curr_year.value
+                generateCalendar(curr_month.value, curr_year.value)
+            }
+
+            document.querySelector('#next-year').onclick = () => {
+                ++curr_year.value
+                generateCalendar(curr_month.value, curr_year.value)
+            }
+        </script>
+    @endsection
+    <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">

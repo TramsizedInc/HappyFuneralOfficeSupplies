@@ -1,4 +1,6 @@
-<x-app-layout>
+@extends('layouts.app')
+
+@section('content')
     <!-- component -->
     <div class="row justify-content-center">
         <div class="col-xxl-3 col-md-8 mb-3">
@@ -81,4 +83,4 @@
             document.getElementById('drummchange').innerHTML = val + "%";
         }
     </script>
-</x-app-layout>
+@endsection

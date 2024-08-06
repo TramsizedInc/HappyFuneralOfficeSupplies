@@ -13,9 +13,9 @@ return new class extends Migration
     {
         Schema::create('customer_data', function (Blueprint $table) {
             $table->id();
-            $table->string('customer');
-            $table->string('customer_name_prefix')->nullabe();
-            // $table->string('deceased_name_postfix');
+
+            $table->string('order_uuid');
+
             $table->string('customer_first_name');
             $table->string('customer_last_name');
             $table->string('customer_id_card_number');

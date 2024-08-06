@@ -1,5 +1,7 @@
 
-<x-app-layout>
+@extends('layouts.app')
+
+@section('content')
     <div class="container-fluid w-full  mx-auto px-2 pt-8 lg:pt-16 mt-10 text-sm">
       <!--Section container-->
       <h1 class="flex items-center font-sans font-bold break-normal text-gray-200 px-2 text-xl mt-12 lg:mt-0 md:text-2xl mb-2">
@@ -414,5 +416,5 @@
       });
       });
     </script>
-    </x-app-layout>
+    @endsection
     

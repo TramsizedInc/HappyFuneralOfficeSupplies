@@ -28,7 +28,7 @@ Route::middleware(['gzip'])->group(function () {
             return view('/deceaseds/create');
         });
 
-        Route::get('/dashboard', function () {
+        Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'showWeather'], function () {
             return view('dashboard');
         })->middleware(['auth', 'verified'])->name('dashboard');
 
@@ -71,9 +71,9 @@ Route::middleware(['gzip'])->group(function () {
             //        return 'Matched catch-all route';
             //    })->where('any', '.*');
             Route::get('/javitas', function () {
-                return view('deceaseds.print');
+                return view('hutesIdo.index');
             });
-            Route::resource('/cars',App\Http\Controllers\CarController::class );
+            Route::resource('/cars', App\Http\Controllers\CarController::class);
             Route::get('/session-data', function () {
                 return response()->json(['sessionId' => session()->getId()]);
             });

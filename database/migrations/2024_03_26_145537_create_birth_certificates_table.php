@@ -13,9 +13,8 @@ return new class extends Migration
     {
         Schema::create('birth_certificates', function (Blueprint $table) {
             $table->id();
-            // $table->string('name_of_person');
+            $table->string('order_uuid');
             $table->string('name_on_birth_c')->nullable();
-            $table->string('deceased_id_card_number');
             $table->string('degree')->nullable(); //Végzettség
             $table->string('job')->nullable();
             $table->integer('child_count')->nullable(); //Gyerekek száma

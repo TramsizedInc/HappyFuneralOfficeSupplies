@@ -1,5 +1,6 @@
-<x-app-layout>
+@extends('layouts.app')
 
+@section('content')
 
     <div class="text-start px-6 py-4 whitespace-nowrap text-sm font-medium">
     </div>
@@ -60,5 +61,5 @@
 
              
     </script>
-    </x-app-layout>
+    @endsection
     

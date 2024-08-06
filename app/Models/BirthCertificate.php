@@ -24,6 +24,6 @@ class BirthCertificate extends Model
         'dead_husbands_count',
         'legally_binding_autopsy_number',
         'selfemployee_tax_number',
-        'name_of_person'
+        'order_uuid',
     ];
 }

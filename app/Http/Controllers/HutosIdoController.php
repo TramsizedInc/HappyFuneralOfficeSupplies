@@ -134,13 +134,14 @@ class HutosIdoController extends Controller
 
     public function Calculation($id)
     {
+
         $datas = $this->GetOrderDataInfo($id);
         $datas2 = $this->GetHospitalCoolingPrices($datas['kh_nev']);      
         $hutesnap_count = 13; /** Kremanap+visszaszáll */
         $hutdate_beker = new DateTime($datas['halal_ido']);
         $HV_van = $datas['hv_van'];
+        $multi = $datas['multiplier'];
 
-        $eljar_type = "normál";
         $Atalany1 = $datas2['atal1_ar'];
         $Atalany2 = $datas2['atal2_ar'];
         $Pot = $datas2['pot_ar'];
@@ -148,6 +149,8 @@ class HutosIdoController extends Controller
         $atal2 = $datas2['atal2'];
         $plusz_koltsseg = $datas2['plusz_koltsseg_ar'];
         $veg_osszeg = $Atalany1;
+
+
         if($HV_van != true){
              $hutesnap_count += 3;
         }
@@ -164,6 +167,8 @@ class HutosIdoController extends Controller
         if($plusz_koltsseg != null){
             $veg_osszeg += $plusz_koltsseg;
         }
+
+        
         $formattedHutdateBeker = $hutdate_beker->format('Y-m-d');
         $hutdate_beker = date('Y-m-d', strtotime($formattedHutdateBeker. '+ '.$hutesnap_count.' days'));
         /* returning an associative array with custom IDs for the values */

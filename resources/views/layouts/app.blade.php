@@ -10,6 +10,7 @@
 
 
     <!-- Fonts -->
+    <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=figtree:400,500,600&display=swap" rel="stylesheet" />
@@ -183,7 +184,8 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="align-items-center justify-content-center">
-                            {{ $slot }}
+                           
+                            @yield('content')
                         </div>
                     </div>
                 </div>

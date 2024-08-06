@@ -13,8 +13,7 @@ return new class extends Migration
     { //urnakiadas 
         Schema::create('urn_k_i_a_datas', function (Blueprint $table) {
             $table->id();
-            // $table->string('name_of_deceased');
-            $table->string('deceased_id_card_number');
+            $table->string('order_uuid');
             $table->DateTime('exhibition_date')->nullable();
             $table->DateTime('hv_done_status_date')->nullable();
             $table->DateTime('hv_have_status_date')->nullable();
@@ -27,6 +26,7 @@ return new class extends Migration
             $table->string('tombstone_number')->nullable(); //sírhely száma
             $table->DateTime('date_of_funeral')->nullable();
             $table->string('hour_and_minute_of_funeral')->nullable();
+            $table->string('multiplier')->nullable();
             $table->boolean('hv_is_done')->default(false);
             /* Softdeletes */
             $table->softDeletes();

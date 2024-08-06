@@ -17,10 +17,11 @@ return new class extends Migration
             // $table->string('deceased_name');
             $table->string('deceased_name_prefix')->nullabe();
             // $table->string('deceased_name_postfix');
-            $table->string('deceased_first_name');
-            $table->string('deceased_last_name');
+            $table->string('deceased_first_name')->nullabe();
+            $table->string('deceased_last_name')->nullabe();
             
-            $table->string('customer_id_card_number');
+
+            $table->string('order_uuid');
 
             $table->string('birth_name')->nullable();
             $table->string('mother_name')->nullable();

@@ -1,7 +1,6 @@
-<x-app-layout>
+@extends('layouts.app')
 
-
-
+@section('content')
 
 
     <form action="#" method="post">
@@ -35,7 +34,7 @@
                         </div>
 
                         <div class="col-md-12 col-xxl-3 text-center pt-3">
-                            <button class="btn btn-success" style="width: 100%" type="submit">Ajánlat kérése</button>
+                            <button class="btn btn-success" style="width: 100%" type="submit">Ajánlat Befejezése</button>
                         </div>
 
                     </div>
@@ -154,7 +153,7 @@
                                     <div class="input-group">
                                         <label id="title"
                                             class="input-group-text bg-secondary border border-secondary fw-bold">Eljárás</label>
-                                        <select disabled class="form-select text-center border-secondary bg-secondary">
+                                        <select class="form-select text-center border-secondary bg-secondary">
                                             <option>Normál</option>
                                         </select>
                                     </div>
@@ -383,4 +382,4 @@
     </script> --}}
 
 
-</x-app-layout>
+@endsection

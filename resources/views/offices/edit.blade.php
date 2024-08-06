@@ -1,4 +1,6 @@
-<x-app-layout>
+@extends('layouts.app')
+
+@section('content')
     <!-- component -->
     <div class="min-h-screen p-6 flex items-center justify-center">
         <form action="{{ route('offices.update',$office) }}" method="POST" enctype="multipart/form-data" class="container max-w-screen-lg mx-auto">
@@ -81,4 +83,4 @@
     </div>
 
 
-</x-app-layout>
+@endsection

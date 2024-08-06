@@ -12,7 +12,6 @@ class CustomerData extends Model
     use SoftDeletes;
 
     protected $fillable = [
-        'customer',
         'born_name',
         'customer_first_name',
         'customer_last_name',
@@ -33,5 +32,6 @@ class CustomerData extends Model
         'address_id_number',
         'customer_birth_day',
         'birth_place',
+        'order_uuid'
     ];
 }

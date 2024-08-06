@@ -1,4 +1,6 @@
-<x-app-layout>
+@extends('layouts.app')
+
+@section('content')
     <!-- component -->
     <div class="min-h-screen p-6 bg-gray-100 flex items-center justify-center">
         <div class="container max-w-screen-lg mx-auto">
@@ -155,4 +157,4 @@
          document.getElementById('drummchange').innerHTML = val+"%";
      }
 </script>
-</x-app-layout>
+@endsection

@@ -1,0 +1,517 @@
+:root {
+    --dark-body: #4d4c5a;
+    --dark-main: #141529;
+    --dark-second: #79788c;
+    --dark-hover: #323048;
+    --dark-text: #f8fbff;
+
+    --light-body: #f3f8fe;
+    --light-main: #fdfdfd;
+    --light-second: #c3c2c8;
+    --light-hover: #edf0f5;
+    --light-text: #151426;
+
+    --blue: #0000ff;
+    --white: #fff;
+
+    --shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+    --font-family: cursive;
+}
+
+.dark {
+    --bg-body: var(--dark-body);
+    --bg-main: var(--dark-main);
+    --bg-second: var(--dark-second);
+    --color-hover: var(--dark-hover);
+    --color-txt: var(--dark-text);
+}
+
+.calendar {
+    height: max-content;
+    width: max-content;
+    background-color: var(--bg-main);
+    border-radius: 30px;
+    padding: 20px;
+    position: relative;
+    overflow: hidden;
+    /* transform: scale(1.25); */
+}
+
+.light .calendar {
+    box-shadow: var(--shadow);
+}
+
+.calendar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 25px;
+    font-weight: 600;
+    color: var(--color-txt);
+    padding: 10px;
+}
+
+.calendar-body {
+    padding: 10px;
+}
+
+.calendar-week-day {
+    height: 50px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    font-weight: 600;
+}
+
+.calendar-week-day div {
+    display: grid;
+    place-items: center;
+    color: var(--bg-second);
+}
+
+.calendar-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+    color: var(--color-txt);
+}
+
+.calendar-days div {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px;
+    position: relative;
+    cursor: pointer;
+    animation: to-top 1s forwards;
+    /* border-radius: 50%; */
+}
+
+.calendar-days div span {
+    position: absolute;
+}
+
+.calendar-days div:hover span {
+    transition: width 0.2s ease-in-out, height 0.2s ease-in-out;
+}
+
+.calendar-days div span:nth-child(1),
+.calendar-days div span:nth-child(3) {
+    width: 2px;
+    height: 0;
+    background-color: var(--color-txt);
+}
+
+.calendar-days div:hover span:nth-child(1),
+.calendar-days div:hover span:nth-child(3) {
+    height: 100%;
+}
+
+.calendar-days div span:nth-child(1) {
+    bottom: 0;
+    left: 0;
+}
+
+.calendar-days div span:nth-child(3) {
+    top: 0;
+    right: 0;
+}
+
+.calendar-days div span:nth-child(2),
+.calendar-days div span:nth-child(4) {
+    width: 0;
+    height: 2px;
+    background-color: var(--color-txt);
+}
+
+.calendar-days div:hover span:nth-child(2),
+.calendar-days div:hover span:nth-child(4) {
+    width: 100%;
+}
+
+.calendar-days div span:nth-child(2) {
+    top: 0;
+    left: 0;
+}
+
+.calendar-days div span:nth-child(4) {
+    bottom: 0;
+    right: 0;
+}
+
+.calendar-days div:hover span:nth-child(2) {
+    transition-delay: 0.2s;
+}
+
+.calendar-days div:hover span:nth-child(3) {
+    transition-delay: 0.4s;
+}
+
+.calendar-days div:hover span:nth-child(4) {
+    transition-delay: 0.6s;
+}
+
+.calendar-days div.curr-date,
+.calendar-days div.curr-date:hover {
+    background-color: var(--blue);
+    color: var(--white);
+    border-radius: 50%;
+}
+
+.calendar-days div.curr-date span {
+    display: none;
+}
+
+.month-picker {
+    padding: 5px 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.month-picker:hover {
+    background-color: var(--color-hover);
+}
+
+.year-picker {
+    display: flex;
+    align-items: center;
+}
+
+.year-change {
+    height: 40px;
+    width: 40px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.year-change:hover {
+    background-color: var(--color-hover);
+}
+
+.calendar-footer {
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.toggle {
+    display: flex;
+}
+
+.toggle span {
+    margin-right: 10px;
+    color: var(--color-txt);
+}
+
+.dark-mode-switch {
+    position: relative;
+    width: 48px;
+    height: 25px;
+    border-radius: 14px;
+    background-color: var(--bg-second);
+    cursor: pointer;
+}
+
+.dark-mode-switch-ident {
+    width: 21px;
+    height: 21px;
+    border-radius: 50%;
+    background-color: var(--bg-main);
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    transition: left 0.2s ease-in-out;
+}
+
+.dark .dark-mode-switch .dark-mode-switch-ident {
+    top: 2px;
+    left: calc(2px + 50%);
+}
+
+.month-list {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: var(--bg-main);
+    padding: 20px;
+    grid-template-columns: repeat(3, auto);
+    gap: 5px;
+    display: grid;
+    transform: scale(1.5);
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.month-list.show {
+    transform: scale(1);
+    visibility: visible;
+    pointer-events: visible;
+    transition: all 0.2s ease-in-out;
+}
+
+.month-list>div {
+    display: grid;
+    place-items: center;
+}
+
+.month-list>div>div {
+    width: 100%;
+    padding: 5px 20px;
+    border-radius: 10px;
+    text-align: center;
+    cursor: pointer;
+    color: var(--color-txt);
+}
+
+.month-list>div>div:hover {
+    background-color: var(--color-hover);
+}
+
+@keyframes to-top {
+    0% {
+        transform: translateY(100%);
+        opacity: 0;
+    }
+
+    100% {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+/* General styling for the accordion */
+.accordion {
+    border: none;
+    /* Removes the border for a cleaner look */
+    border-radius: 8px;
+    /* Softer corners for a modern touch */
+    overflow: hidden;
+    /* Ensures content stays within bounds */
+    max-width: 90%;
+    /* Sets a maximum width for responsiveness */
+    margin: 30px auto;
+    /* Centers the accordion and adds some space */
+    padding: 20px;
+    /* Internal padding for spacing */
+    background-color: #ffffff;
+    /* Pure white background */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, .1);
+    /* Subtle shadow for depth */
+    transition: transform .2s;
+    /* Smooth transition for animations */
+}
+
+.accordion-item {
+    border-top: 1px solid #eee;
+    /* Top border for separation */
+    padding: 15px 0;
+    /* Increased vertical padding for spaciousness */
+}
+
+.accordion-header button {
+    background-color: linear-gradient(to right, #007bff, #00c6ff);
+    /* Gradient background */
+    color: #000;
+    /* Default text color */
+    border: none;
+    padding: 8px 16px;
+    /* Reduced padding for a smaller button */
+    cursor: pointer;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bold;
+    font-size: 14px;
+    /* Smaller font size */
+    border-radius: 5px;
+    transition: background-color .3s ease, color .3s ease;
+}
+
+.accordion-header button:hover {
+    background-color: #0056b3;
+    color: #ffffff !important;
+    /* Darker shade of blue on hover */
+}
+
+.accordion-collapse {
+    background-color: #f9f9f9;
+    /* Light grey background for content */
+    color: #333;
+    /* Dark text for content */
+    border: none;
+    /* Removes default border */
+    padding: 0;
+    /* Minimal padding for content */
+}
+
+.accordion-body {
+    margin: 0;
+    /* Removes default margin */
+    padding: 15px 0;
+    /* Adds some padding for better readability */
+    font-family: 'Roboto', sans-serif;
+    /* Keeps the modern font */
+    line-height: 1.6;
+    /* Enhances readability by increasing line spacing */
+}
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+
+
+.weather-widget {
+    height: 400px;
+    background-color: #232931;
+    color: #fff;
+    border-radius: 25px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+}
+
+.left-info {
+    width: 260px;
+    height: 100%;
+    float: left;
+    display: flex;
+    border-radius: 25px;
+    justify-content: center;
+    background-image: url('../storage/login_card.jpg');
+    background-position: center;
+    background-size: cover;
+    transform: scale(1.03) perspective(200px);
+    cursor: pointer;
+    box-shadow: 0 0 20px -10px rrgba(0, 0, 0, 0.2);
+    transition: all 0.3s ease;
+}
+
+.left-info:hover {
+    transform: scale(1.1) perspective(2500px) rotateY(5deg);
+}
+
+.pic-gradient {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background: linear-gradient(135deg, #5c6bc0 10%, #0d47a1 100%);
+    border-radius: 25px;
+    opacity: 0.5;
+}
+
+.today-info {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    margin-top: 25px;
+}
+
+.today-weather {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    bottom: 20px;
+    left: 20px;
+}
+
+.today-weather .bx {
+    font-size: 4.6rem;
+}
+
+.weather-temp {
+    font-weight: 700;
+    font-size: 3.5rem;
+}
+
+.right-info {
+    float: right;
+    position: relative;
+    height: 100%;
+    padding-top: 25px;
+}
+
+.day-info {
+    padding: 25px 35px;
+    display: flex;
+    flex-direction: column;
+}
+
+.day-info div:not(:last-child) {
+    margin-bottom: 6px;
+}
+
+.day-info div .title {
+    font-weight: 700;
+}
+
+.day-info div .value {
+    float: right;
+}
+
+.days-list {
+    display: flex;
+    list-style: none;
+    margin: 10px 35px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+    border-radius: 10px;
+}
+
+.days-list li {
+    padding: 15px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+.days-list li .bx {
+    margin-bottom: 5px;
+    font-size: 2rem;
+}
+
+.days-list li:hover {
+    transform: scale(1.1);
+    background: #fff;
+    color: #222831;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+}
+
+.days-list li .day-temp {
+    margin-top: 6px;
+    font-weight: 700;
+}
+
+.btn-container {
+    padding: 25px 35px;
+}
+
+.loc-button {
+    outline: none;
+    width: 100%;
+    border: none;
+    font-weight: 700;
+    border-radius: 25px;
+    padding: 10px;
+    background: #303f9f;
+    color: #fff;
+    cursor: pointer;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+    transition: all 0.3s ease;
+}
+
+.loc-button:hover {
+    background: #1a237e;
+}

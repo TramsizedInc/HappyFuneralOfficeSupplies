@@ -31,21 +31,23 @@ class BirthCertificateController extends Controller
     public function store(StoreBirthCertificateRequest $request)
     {
         //
+        dd($request);
         $data = $request->validate([
-            'degree' => 'required|string',
-            'job' => 'required|string',
-            'child_count' => 'required|integer',
-            'degree_of_relative' => 'required|string',
-            'death_place' => 'required|string',
-            'ash_storage_place' => 'required|string',
-            'deceased_birth_certificate_number' => 'required|string',
-            'wedding_birth_certificate_number' => 'required|string',
+            'degree' => 'string',
+            'job' => 'string',
+            'child_count' => 'nullable|integer',
+            'degree_of_relative' => 'nullable|string',
+            'death_place' => 'nullable|string',
+            'ash_storage_place' => 'nullable|string',
+            'deceased_birth_certificate_number' => 'nullable|string',
+            'wedding_birth_certificate_number' => 'nullable|string',
             'wedding_date_and_place' => 'nullable|string',
-            'divorced_or_not' => 'required',
-            'dead_husbands_count' => 'required|integer',
-            'legally_binding_autopsy_number' => 'required|string',
+            'divorced_or_not' => 'boolean|nullable',
+            'dead_husbands_count' => 'numeric|integer',
+            'legally_binding_autopsy_number' => 'nullable|string',
             'selfemployee_tax_number' => 'nullable|string',
-            'name_of_person' =>'string'
+            'name_of_person' =>'string',
+            'order_uuid' => 'string'
         ]);
         $data['divorced_or_not'] = $this->get_boolean_value($data['divorced_or_not']); 
         // dd($data);

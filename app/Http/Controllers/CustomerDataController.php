@@ -37,30 +37,31 @@ class CustomerDataController extends Controller
     {
         //
         $validatedData = $request->validate([
-            'nation' => 'required|string',
-            'customer_name_prefix' => 'required',
-            'customer_first_name' => 'required|string',
-            'customer_last_name' => 'required|string',
-            'born_name' => 'required',
-            'zip_code' => 'required',
-            'street' => 'required',
-            'house_number' => 'required',
-            'mother_name' => 'required',
+            'nation' => 'string',
+            'customer_name_prefix' => 'string',
+            'customer_first_name' => 'string',
+            'customer_last_name' =>  'string',
+            'born_name' => 'string',
+            'zip_code' => 'string',
+            'street' => 'string',
+            'house_number' => 'string',
+            'mother_name' =>  'string',
             // 'birth_place_with_birth_day' => 'required',
             'city' => 'string',
-            'mobile_number' => 'required',
-            'email' => 'required|email',
+            'mobile_number' => 'string',
+            'email' => 'email',
             'id_card_number' => 'string',
             'id_card_expire_date' => 'date',
             'id_card_exhibition_place' => 'string',
             'exhibiting_office' => 'string',
             'address_id_number' => 'string',
             'customer_birth_day' => 'date',
-            'birth_place' => 'required',
+            'birth_place' => 'string',
+            'order_uuid' => 'string',
         ]);
         $model = new CustomerData();
         $model->fill($validatedData);
-        $mobile_number = join(explode('-', $model->mobile_number));
+        $mobile_number = preg_replace('/\D/', '', $model->mobile_number); 
         $model->mobile_number = (int) $mobile_number;
         $model->customer_birth_day = $request->validate(['birth_day' => 'required|date'])['birth_day'];
         $model->birth_place_with_birth_day = $model->birth_place . ' ' . $model->customer_birth_day;

@@ -211,7 +211,8 @@ class DatabaseSeeder extends Seeder
         $this->call([
             HutosIdoSeeder::class,
             OfficeSupplySeeder::class,
-            KremaListSeeder::class
+            KremaListSeeder::class,
+            CompaniesSeeder::class
         ]);
     }
 }
