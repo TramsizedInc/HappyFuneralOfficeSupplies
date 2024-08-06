@@ -28,7 +28,7 @@ Route::middleware(['gzip'])->group(function () {
             return view('/deceaseds/create');
         });
 
-        Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'showWeather'], function () {
+        Route::get('/dashboard', function () {
             return view('dashboard');
         })->middleware(['auth', 'verified'])->name('dashboard');
 

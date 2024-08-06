@@ -3,6 +3,7 @@
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use phpDocumentor\Reflection\Types\Null_;
 
 return new class extends Migration
 {
@@ -14,13 +15,9 @@ return new class extends Migration
         Schema::create('deceased_datas', function (Blueprint $table) {
             $table->id();
             $table->string('exhibiting_office')->nullable();
-            // $table->string('deceased_name');
-            $table->string('deceased_name_prefix')->nullabe();
-            // $table->string('deceased_name_postfix');
-            $table->string('deceased_first_name')->nullabe();
-            $table->string('deceased_last_name')->nullabe();
-            
-
+            $table->string('deceased_name_prefix')->default('Null');
+            $table->string('deceased_first_name')->nullable();
+            $table->string('deceased_last_name')->nullable();
             $table->string('order_uuid');
 
             $table->string('birth_name')->nullable();
@@ -28,7 +25,7 @@ return new class extends Migration
             // livin' location
             $table->string('zip_code')->nullable();
             $table->string('street')->nullable();
-            $table->string('house_number')->nullable();           
+            $table->string('house_number')->nullable();
 
             $table->string('hospital_code')->nullable();
             $table->DateTime('deceased_birth_day')->nullable();
@@ -41,7 +38,7 @@ return new class extends Migration
             $table->string('address_id_number')->nullable();
             $table->string('passport_number')->nullable();
             $table->string('driver_licence_number')->nullable();
-            $table->integer('deceased_weight')->nullable(); 
+            $table->integer('deceased_weight')->nullable();
             $table->integer('weight')->nullable();
             /* Softdeletes */
             $table->softDeletes();

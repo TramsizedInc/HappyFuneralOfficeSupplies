@@ -187,7 +187,7 @@
             $(document).ready(function() {
                 $('.loc-button').click(function() {
                     const locationInput = $(
-                    '#location-input'); // Assuming there's an input with id="location-input"
+                        '#location-input'); // Assuming there's an input with id="location-input"
                     const location = locationInput.val();
 
                     if (!location) {
@@ -195,7 +195,8 @@
                         return;
                     }
 
-                    const apiKey = '418b0deb282ab7edb575084d43a375d0'; // Replace YOUR_API_KEY with your actual API key
+                    const apiKey =
+                    '418b0deb282ab7edb575084d43a375d0'; // Replace YOUR_API_KEY with your actual API key
                     const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${location}`;
 
                     $.getJSON(url, function(data) {
@@ -346,5 +347,5 @@
                 generateCalendar(curr_month.value, curr_year.value)
             }
         </script>
+        <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
     @endsection
-    <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
