@@ -94,16 +94,16 @@
                                                 class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-200">
                                                 <div class="d-flex justify-content-between align-items-center">
 
-                                                    <a href="{{ route('desceaseds.show', ['desceased' => $desceased->id]) }}"
+                                                    <a href="{{ route('deceaseds.show', ['deceased' => $deceaseds->id]) }}"
                                                         class="btn btn-success btn-sm me-2">Megnézés</a>
 
-                                                    <form action="{{ route('desceaseds.edit', $desceased) }}"
+                                                    <form action="{{ route('deceaseds.edit', $deceased) }}"
                                                         class="d-inline-block ms-2">
                                                         <button type="submit"
                                                             class="btn btn-warning btn-sm">Szerkesztés</button>
                                                     </form>
                                                     <form method="POST"
-                                                        action="{{ route('desceaseds.destroy', $desceased) }}"
+                                                        action="{{ route('deceaseds.destroy', $deceased) }}"
                                                         class="d-inline-block ms-2">
                                                         @csrf
                                                         @method('DELETE')

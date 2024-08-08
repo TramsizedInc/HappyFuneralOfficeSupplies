@@ -31,10 +31,10 @@ class BirthCertificateController extends Controller
     public function store(StoreBirthCertificateRequest $request)
     {
         //
-        dd($request);
+        //dd($request);
         $data = $request->validate([
-            'degree' => 'string',
-            'job' => 'string',
+            'degree' => 'nullable|string',
+            'job' => 'nullable|string',
             'child_count' => 'nullable|integer',
             'degree_of_relative' => 'nullable|string',
             'death_place' => 'nullable|string',
@@ -42,15 +42,15 @@ class BirthCertificateController extends Controller
             'deceased_birth_certificate_number' => 'nullable|string',
             'wedding_birth_certificate_number' => 'nullable|string',
             'wedding_date_and_place' => 'nullable|string',
-            'divorced_or_not' => 'boolean|nullable',
-            'dead_husbands_count' => 'numeric|integer',
+            'divorced_or_not' => 'boolean',
+            'dead_husbands_count' => 'nullable|numeric|integer',
             'legally_binding_autopsy_number' => 'nullable|string',
             'selfemployee_tax_number' => 'nullable|string',
-            'name_of_person' =>'string',
+            'name_of_person' => 'string',
             'order_uuid' => 'string'
         ]);
-        $data['divorced_or_not'] = $this->get_boolean_value($data['divorced_or_not']); 
-        // dd($data);
+        $data['divorced_or_not'] = $request->input('divorced_or_not') === 'on';
+        //dd($data);
         $model = BirthCertificate::create($data);
         // dd($model->toArray());
         return response()->json(['success' => true, 'message' => 'bc stored']);
@@ -88,13 +88,14 @@ class BirthCertificateController extends Controller
         //
         $birthCertificate->delete();
     }
-    private function get_boolean_value($i){
-        if($i == ''){
+    private function get_boolean_value($i)
+    {
+        if ($i == '') {
             return false;
         }
         $falses = ['nem', 'no', 'not', '0', 'hamis', 'soha'];
-        foreach ($falses as $f){
-            if($i == $f){
+        foreach ($falses as $f) {
+            if ($i == $f) {
                 return false;
             }
         }

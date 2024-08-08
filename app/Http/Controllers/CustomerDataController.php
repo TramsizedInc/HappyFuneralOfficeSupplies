@@ -37,33 +37,33 @@ class CustomerDataController extends Controller
     {
         //
         $validatedData = $request->validate([
-            'nation' => 'string',
-            'customer_name_prefix' => 'string',
-            'customer_first_name' => 'string',
-            'customer_last_name' =>  'string',
-            'born_name' => 'string',
-            'zip_code' => 'string',
-            'street' => 'string',
-            'house_number' => 'string',
-            'mother_name' =>  'string',
+            'nation' => 'nullable|string',
+            'customer_name_prefix' => 'nullable|string',
+            'customer_first_name' => 'nullable|string',
+            'customer_last_name' =>  'nullable|string',
+            'born_name' => 'nullable|string',
+            'zip_code' => 'nullable|string',
+            'street' => 'nullable|string',
+            'house_number' => 'nullable|string',
+            'mother_name' =>  'nullable|string',
             // 'birth_place_with_birth_day' => 'required',
-            'city' => 'string',
-            'mobile_number' => 'string',
-            'email' => 'email',
-            'id_card_number' => 'string',
-            'id_card_expire_date' => 'date',
-            'id_card_exhibition_place' => 'string',
-            'exhibiting_office' => 'string',
-            'address_id_number' => 'string',
-            'customer_birth_day' => 'date',
-            'birth_place' => 'string',
-            'order_uuid' => 'string',
+            'city' => 'nullable|string',
+            'mobile_number' => 'nullable|string',
+            'email' => 'nullable|email',
+            'id_card_number' => 'nullable|string',
+            'id_card_expire_date' => 'nullable|date',
+            'id_card_exhibition_place' => 'nullable|string',
+            'exhibiting_office' => 'nullable|string',
+            'address_id_number' => 'nullable|string',
+            'customer_birth_day' => 'nullable|date',
+            'birth_place' => 'nullable|string',
+            'order_uuid' => 'nullable|string',
         ]);
         $model = new CustomerData();
         $model->fill($validatedData);
         $mobile_number = preg_replace('/\D/', '', $model->mobile_number); 
         $model->mobile_number = (int) $mobile_number;
-        $model->customer_birth_day = $request->validate(['birth_day' => 'required|date'])['birth_day'];
+        $model->customer_birth_day = $request->validate(['birth_day' => 'nullable|date'])['birth_day'];
         $model->birth_place_with_birth_day = $model->birth_place . ' ' . $model->customer_birth_day;
         $model->address = $model->zip_code . " " . $validatedData['city'] . " " . $model->street . " " . $model->house_number;
         $model->city = $validatedData['city'];

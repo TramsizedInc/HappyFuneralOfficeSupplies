@@ -30,12 +30,12 @@
 .calendar {
     height: max-content;
     width: max-content;
-    background-color: var(--bg-main);
+    background-color:#232931;
     border-radius: 30px;
     padding: 20px;
     position: relative;
     overflow: hidden;
-    /* transform: scale(1.25); */
+     transform: scale(0.9);
 }
 
 .light .calendar {
@@ -368,13 +368,13 @@
 }
 
 
-
 .weather-widget {
     height: 400px;
     background-color: #232931;
     color: #fff;
     border-radius: 25px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
+    transform: scale(0.9);
 }
 
 .left-info {

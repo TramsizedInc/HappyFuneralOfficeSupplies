@@ -43,10 +43,10 @@ class DeceasedDataController extends Controller
      */
     public function store(StoreDeceased_dataRequest $request)
     {
-        
+
         $validatedData = $request->validate([
             'exhibiting_office' =>   'nullable|string',
-            'deceased_name_prefix' =>'nullable|string',
+            'deceased_name_prefix' => 'nullable|string',
             'deceased_first_name' => 'nullable|string',
             'deceased_last_name' =>  'nullable|string',
             'birth_name' => 'nullable|string',
@@ -69,7 +69,7 @@ class DeceasedDataController extends Controller
             'weight' => 'nullable|numeric',
             'order_uuid' => 'nullable|string',
         ]);
-        
+
         $model = new Deceased_data();
         $model->fill($validatedData);
 
@@ -79,23 +79,23 @@ class DeceasedDataController extends Controller
         $model->created_at = now();
         $model->update();
 
-    
+
         $name = $model->deceased_name;
 
         // Pdf::view('create')
         // ->format('A4')
         // ->save('pdf/{0}.pdf',$name);
-        
+
         return response()->json(['success' => true, 'message' => 'deceased mentve']);
     }
 
     /**
      * Display the specified resource.
      */
-    public function show()
+    public function show($id)
     {
-        
-         return view('deceaseds.show');
+        $deceased = Deceased_data::find($id);
+        return view('deceaseds.show')->with('deceased', $deceased);
     }
 
     /**

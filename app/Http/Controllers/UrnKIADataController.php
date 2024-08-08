@@ -40,21 +40,21 @@ class UrnKIADataController extends Controller
         //dd($request->all());
         $validatedData = $request->validate([
             'order_uuid' => 'string|required',
-            'exhibition_date' => 'string',
-            'hv_done_status_date' => 'string',
-            'hv_have_status_date' => 'string',
-            'hv_exhibition_date' => 'string',
+            'exhibition_date' => 'date',
+            'hv_done_status_date' => 'date',
+            'hv_have_status_date' => 'date',
+            'hv_exhibition_date' => 'date',
             'choosen_chrematory' => 'string',
-            'urn_inside_form' => 'string',
+            'urn_inside_form' => 'nullable|string',
             'choosen_cemetary' => 'string',
             'location' => 'string',
             'new_or_old' => 'string',
             'tombstone_number' => 'string',
             'date_of_funeral' => 'string',
             'hour_and_minute_of_funeral' => 'string',
-            'hv_is_done' => 'string'
+            'hv_is_done' => 'boolean'
         ]);
-        $validatedData['hv_is_done'] = $this->get_boolean_value($validatedData['hv_is_done']); 
+        $validatedData['hv_is_done'] =  $request->input('hv_is_done') === 'on'; 
         // dd($validatedData['hv_is_done']);
         // $Urn_k_i_a_data->fill($validatedData);
         // $Urn_k_i_a_data->save();

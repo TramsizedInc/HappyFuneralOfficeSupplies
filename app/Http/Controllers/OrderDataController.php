@@ -25,7 +25,7 @@ class OrderDataController extends Controller
     public function index()
     {
         $orderdatas = OrderData::all();
-        return view('order_data.index',['orderdatas' => $orderdatas]);
+        return view('order_data.index', ['orderdatas' => $orderdatas]);
     }
 
     /**
@@ -43,17 +43,18 @@ class OrderDataController extends Controller
     {
         //
         $req = $request->all();
-        // dd($req);
+        //dd($req);
         // $req['deceased_name'] = $req['deceased_hidden'];
-        $customer = CustomerData::select('id')->where('id_card_number', '=', $req['id_card_number'])->get();
-        $deceased = Deceased_data::select('id')->where('customer_id_card_number', '=', $req['id_card_number'])->orderby('created_at', 'desc')->limit(1)->get();
-        $birth_c = BirthCertificate::select('id')->where('deceased_id_card_number', '=', $req['id_card_number'])->orderby('created_at', 'desc')->limit(1)->get();
-        $urn_kiad = Urn_k_i_a_data::select('id')->where('deceased_id_card_number', '=', $req['id_card_number'])->orderby('created_at', 'desc')->limit(1)->get();
+
         // $query = CustomerData::select('id')->where('id_card_number', '=', $req['id_card_number'])->toSql();
         $company = "Aevum";
         $office = "1";
-        $inner_uuid = strtoupper($company[0] . $company[1]) . $this->create_inventory_number($office,2). '/'. Carbon::today()->format('Ymd') . '/' . OrderData::count();
-
+        $inner_uuid = strtoupper($company[0] . $company[1]) . $this->create_inventory_number($office, 2) . '/' . Carbon::today()->format('Ymd') . '/' . OrderData::count() + 1;
+        $customer = CustomerData::select('id')->where('order_uuid', '=', $inner_uuid)->get();
+        $deceased = Deceased_data::select('id')->where('order_uuid', '=', $inner_uuid)->get();
+        $birth_c = BirthCertificate::select('id')->where('order_uuid', '=', $inner_uuid)->get();
+        $urn_kiad = Urn_k_i_a_data::select('id')->where('order_uuid', '=', $inner_uuid)->get();
+        //dd(  $customer[0]->id );
         // dd(Log::info($query)->toArray());
         // Log::info($query);
         // dd($customer[0]->id);
@@ -64,7 +65,7 @@ class OrderDataController extends Controller
             'birth_certificate_id' => $birth_c[0]->id,
             'inner_uuid' => $inner_uuid,
         ];
-        // dd($unValidatedData);
+        //dd($unValidatedData);
         // dd(gettype($customer->items));
         $model = new OrderData();
         $model->fill($unValidatedData);
@@ -74,9 +75,8 @@ class OrderDataController extends Controller
         $model->updated_at = now();
         $model->created_at = now();
         $model->update();
-    
-        // return response()->json(['success' => true, 'message' => 'rendelés mentve', 'model_id' => $model->id]);
-        return view("hutesIdo.index", ['id' => $model->id]);
+
+        return response()->json(["success" => true, "message" => "A megrendelés mentve"]);
     }
 
     /**
@@ -129,11 +129,12 @@ class OrderDataController extends Controller
      * 
      * @return string  
      */
-    public function create_inventory_number($id, $length){
+    public function create_inventory_number($id, $length)
+    {
         $id_s = (string)$id;
         $zeroes = strlen($id_s) - (intval($length));
-        for ($i = 0; $i<=$zeroes; $i++){
-            $id_s = "0".$id_s;
+        for ($i = 0; $i <= $zeroes; $i++) {
+            $id_s = "0" . $id_s;
         }
         return $id_s;
     }
@@ -143,12 +144,13 @@ class OrderDataController extends Controller
      * 
      * @return string  
      */
-    public function create_inner_uuid(){
+    public function create_inner_uuid()
+    {
 
         $company = "Aevum";
         $office = "1";
-        $inner_uuid = strtoupper($company[0] . $company[1]) . $this->create_inventory_number($office,2). '/'. Carbon::today()->format('Ymd') . '/' .( OrderData::count()+1);
-        
+        $inner_uuid = strtoupper($company[0] . $company[1]) . $this->create_inventory_number($office, 2) . '/' . Carbon::today()->format('Ymd') . '/' . (OrderData::count() + 1);
+
         return $inner_uuid;
     }
 }

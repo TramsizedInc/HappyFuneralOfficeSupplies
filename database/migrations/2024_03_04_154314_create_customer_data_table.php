@@ -14,30 +14,30 @@ return new class extends Migration
         Schema::create('customer_data', function (Blueprint $table) {
             $table->id();
 
-            $table->string('order_uuid');
+            $table->string('order_uuid')->nullable();
 
-            $table->string('customer_first_name');
-            $table->string('customer_last_name');
-            $table->string('customer_id_card_number');
-            $table->string('born_name');
-            $table->string('address');
-            $table->string('mother_name');
+            $table->string('customer_first_name')->nullable();
+            $table->string('customer_last_name')->nullable();
+            $table->string('customer_id_card_number')->nullable();
+            $table->string('born_name')->nullable();
+            $table->string('address')->nullable();
+            $table->string('mother_name')->nullable();
             $table->string('birth_place_with_birth_day')->nullable();
-            $table->bigInteger('mobile_number');
-            $table->string('email');
-            $table->string('id_card_number'); //example:456456LL
-            $table->timestamp('id_card_expire_date');
-            $table->string('id_card_exhibition_place'); //example:Budapest
-            $table->string('exhibiting_office'); //igazolványt kiállító szerv
-            $table->string('address_id_number'); 
-            $table->DateTime('customer_birth_day');
-            $table->string('birth_place');
+            $table->bigInteger('mobile_number')->nullable();
+            $table->string('email')->nullable();
+            $table->string('id_card_number')->nullable(); //example:456456LL
+            $table->timestamp('id_card_expire_date')->nullable();
+            $table->string('id_card_exhibition_place')->nullable(); //example:Budapest
+            $table->string('exhibiting_office')->nullable(); //igazolványt kiállító szerv
+            $table->string('address_id_number')->nullable(); 
+            $table->DateTime('customer_birth_day')->nullable();
+            $table->string('birth_place')->nullable();
             // livin' location
-            $table->string('city');
-            $table->string('nation');
-            $table->string('zip_code');
-            $table->string('street');
-            $table->string('house_number');
+            $table->string('city')->nullable();
+            $table->string('nation')->nullable();
+            $table->string('zip_code')->nullable();
+            $table->string('street')->nullable();
+            $table->string('house_number')->nullable();
 
             /* Softdeletes */
             $table->softDeletes();

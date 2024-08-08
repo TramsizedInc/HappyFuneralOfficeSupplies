@@ -14,8 +14,6 @@
                 @method('POST')
                 <input class="subtitle d-none ms-5 text-white font-weight-bold" value="{{ $deceased_uuid }}"
                     name="inner_uuid"></input>
-                <input type="hidden" id="deceased_hidden" name="deceased_hidden" />
-                <input type="hidden" id="id_card_hidden" name="id_card_number" />
                 <button class="btn save-btn btn-lg btn-warning" type="submit" id="save_all_forms">
                     Tárolás
                 </button>
@@ -438,8 +436,8 @@
                                 <div class="col-md-6 align-middle text-center rounded  g-3">
                                     <label class="fs-4 pe-4">Házas?</label>
                                     <div class="form-check form-check-inline">
-                                        <input class="form-check-input" type="radio" name="divorced_or_not"
-                                            id="divorced_or_not" value="True">
+                                        <input class="form-check-input" type="checkbox" name="divorced_or_not"
+                                            id="divorced_or_not" value="true">
                                         <label class="form-check-label fs-5" for="maritalStatus1">
                                             Igen
                                         </label>
@@ -474,7 +472,7 @@
                                 <div class="col-md-12  rounded g-3">
                                     <label class="pe-4 fs-4">Boncolás történt-e?</label>
                                     <div class="form-check form-check-inline pe-4 g-3">
-                                        <input class="form-check-input " type="radio" name="hv_is_done"
+                                        <input class="form-check-input " type="checkbox" name="hv_is_done"
                                             id="hv_is_done" value="1">
                                         <label class="form-check-label fs-5" for="1">
                                             Igen
@@ -570,17 +568,31 @@
         const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
         document.addEventListener('DOMContentLoaded', function() {
             // Get the current date in YYYY-MM-DD format
-            let currentDate = new Date().toISOString().split('T')[0];
 
+            let currentDate = new Date().toISOString().split('T')[0];
+    
             // Select the input element by its ID
             let deathTimeInput = document.getElementById('death_time');
-
+            let exhibition_dateInput = document.getElementById('exhibition_date');
+            let hv_done_status_dateInput = document.getElementById('hv_done_status_date');
+            let hv_have_status_dateInput = document.getElementById('hv_have_status_date');
+            let hv_exhibition_date_Input = document.getElementById('hv_exhibition_date');
+    
+    
             // Set the value of the input element to the current date
             deathTimeInput.value = currentDate;
+    
+    
+            exhibition_dateInput.value = currentDate;
+            hv_done_status_dateInput.value = currentDate;
+            hv_have_status_dateInput.value = currentDate;
+            hv_exhibition_date_Input.value = currentDate;
+
 
         });
 
         $(document).ready(function() {
+
             $('#phone-input').each(function() {
                 var maskPattern = $(this).data('mask');
                 $(this).mask(maskPattern);
@@ -597,7 +609,7 @@
                     success: function(data) {
                         if (data.success) {
                             toastr.info(data.message);
-                            // window.location.href = "/hutesido-kalkulator/index";
+                            window.location.href = "/orderdata";
                             // Optionally, update the form or page content based on the response
                         } else {
                             toastr.info('fuck');
@@ -616,6 +628,7 @@
 
                     data: formData,
                     success: function(response) {
+                        if(formId == 'orderdata_form') toastr.info(response.message);
                         if (callback) callback();
                     },
                     error: function(jqXHR, textStatus, errorThrown) {
@@ -631,7 +644,9 @@
                     submitForm('birthcert_form', function() {
                         submitForm('urnkia_form', function() {
                             submitForm('customer_form', function() {
-                                submitForm('orderdata_form');
+                                submitForm('orderdata_form', function() {
+                                    window.location.href = "/orderdata";
+                                });
                             });
                         });
                     });
