@@ -32,7 +32,7 @@ class CarController extends Controller
     {
         //
         $model = new Car();
-        $model->fill($request->all);
+        $model->fill($request->all());
         $model->save();
 
         $model->updated_at = now();

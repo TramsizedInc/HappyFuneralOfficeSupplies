@@ -52,13 +52,6 @@
                                     <th scope="col"
                                         class="border-end align-middle col-4 border-secondary text-secondary text-nowrap fs-5 text-nowrap text-nowrap">
                                         Tulajdonos</th>
-                                    <th scope="col"
-                                        class="border-end align-middle col-4 border-secondary text-secondary text-nowrap fs-5 text-nowrap">
-                                        Regisztráció
-                                        képe</th>
-                                    <th scope="col"
-                                        class="border-end align-middle col-4 border-secondary text-secondary text-nowrap fs-5 text-nowrap">
-                                        Biztosítás képe</th>
                                 </tr>
                             </thead>
                             <tbody>

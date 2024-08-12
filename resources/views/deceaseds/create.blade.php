@@ -218,14 +218,14 @@
 
                                 <div class="col-md-4">
                                     <input class="form-control bg-secondary text-white" id="deceased_last_name"
-                                        onchange="onDeceasedChange(this)" name="deceased_last_name" type="text"
+                                        name="deceased_last_name" type="text"
                                         placeholder="Vezeték neve">
                                 </div>
 
 
                                 <div class="col-md-4">
                                     <input class="form-control bg-secondary text-white" id="deceased_first_name"
-                                        onchange="onDeceasedChange(this)" name="deceased_first_name" type="text"
+                                        name="deceased_first_name" type="text"
                                         placeholder="Kereszt neve">
                                 </div>
 
