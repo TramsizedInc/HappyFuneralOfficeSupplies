@@ -58,57 +58,58 @@
                             @foreach ($cars as @car)
                                 <tr id="smallTable" class="align-middle">
                                     <td
-                                                    class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-50">
-                                                    {{ $car->license_plate }}
-                                                </td>
-                                                <td
-                                                    class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-50">
-                                                    {{ $car->brand }}
-                                                </td>
-                                                <td
-                                                    class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-50">
-                                                    {{ $car->model }}
-                                                </td>
-                                                <td
-                                                    class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-50">
-                                                    {{ $car->year }}
-                                                </td>
-                                                <td
-                                                    class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-50">
-                                                    {{ $car->insurance_company }}
-                                                </td>
-                                                <td
-                                                    class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-50">
-                                                    {{ $car->insurance_renewal_date }}
-                                                </td>
-                                                <td
-                                                    class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-50">
-                                                    {{ $car->registration_renewal_date }}
-                                                </td>
-                                                <td
-                                                    class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-50">
-                                                    {{ $car->owner }}
-                                                </td>
-                                                <td
-                                                    class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-200">
-                                                    <div id="actions" class="smallTable d-flex justify-content-between align-items-center">
+                                        class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-50">
+                                        {{ $car->license_plate }}
+                                    </td>
+                                    <td
+                                        class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-50">
+                                        {{ $car->brand }}
+                                    </td>
+                                    <td
+                                        class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-50">
+                                        {{ $car->model }}
+                                    </td>
+                                    <td
+                                        class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-50">
+                                        {{ $car->year }}
+                                    </td>
+                                    <td
+                                        class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-50">
+                                        {{ $car->insurance_company }}
+                                    </td>
+                                    <td
+                                        class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-50">
+                                        {{ $car->insurance_renewal_date }}
+                                    </td>
+                                    <td
+                                        class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-50">
+                                        {{ $car->registration_renewal_date }}
+                                    </td>
+                                    <td
+                                        class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-50">
+                                        {{ $car->owner }}
+                                    </td>
+                                    <td
+                                        class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-200">
+                                        <div id="actions" class="smallTable d-flex justify-content-between align-items-center">
 
-                                                        <a id="action_btn" href="#"
-                                                            class="btn btn-success btn-sm me-2">Megnézés</a>
+                                            <a id="action_btn" href="#"
+                                                class="btn btn-success btn-sm me-2">Megnézés</a>
 
-                                                        <form action="#" class="d-inline-block ms-2">
-                                                            <a href="#" id="action_btn" type="submit"
-                                                                class="btn btn-warning btn-sm">Szerkesztés</a>
-                                                        </form>
-                                                        <form action="#" class="d-inline-block ms-2">
-                                                            {{-- @csrf
-                                                        @method('DELETE') --}}
-                                                            <a href="#" id="action_btn" type="submit"
-                                                                class="btn btn-danger btn-sm">Törlés</a>
-                                                        </form>
-                                                    </div>
-                                                </td>
+                                            <form action="#" class="d-inline-block ms-2">
+                                                <a href="#" id="action_btn" type="submit"
+                                                    class="btn btn-warning btn-sm">Szerkesztés</a>
+                                            </form>
+                                            <form action="#" class="d-inline-block ms-2">
+                                                {{-- @csrf
+                                            @method('DELETE') --}}
+                                                <a href="#" id="action_btn" type="submit"
+                                                    class="btn btn-danger btn-sm">Törlés</a>
+                                            </form>
+                                        </div>
+                                    </td>
                                 </tr>
+                            @endforeach
                             </tbody>
                         </table>
                         <div class="py-1 px-4">
@@ -153,5 +154,12 @@
             </div>
         </div>
     </div>
-
+    <script>
+        $(document).ready(function() {
+            $('#action_btn').on('click', function(e) {
+                e.preventDefault();
+                toastr.info('Ez a funkció még fejlesztés alatt áll', 'A következő verzióban már működik');
+            });
+        });
+    </script>
 @endsection
