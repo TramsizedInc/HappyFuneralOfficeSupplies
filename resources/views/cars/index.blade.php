@@ -54,8 +54,60 @@
                                         Tulajdonos</th>
                                 </tr>
                             </thead>
-                            <tbody>
-                                <tr class="text-center align-middle">
+                            <tbody class="bg-gray-50 dark:bg-gray-700 divide-y divide-gray-200 dark:divide-gray-700">
+                            @foreach ($cars as @car)
+                                <tr id="smallTable" class="align-middle">
+                                    <td
+                                                    class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-50">
+                                                    {{ $car->license_plate }}
+                                                </td>
+                                                <td
+                                                    class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-50">
+                                                    {{ $car->brand }}
+                                                </td>
+                                                <td
+                                                    class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-50">
+                                                    {{ $car->model }}
+                                                </td>
+                                                <td
+                                                    class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-50">
+                                                    {{ $car->year }}
+                                                </td>
+                                                <td
+                                                    class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-50">
+                                                    {{ $car->insurance_company }}
+                                                </td>
+                                                <td
+                                                    class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-50">
+                                                    {{ $car->insurance_renewal_date }}
+                                                </td>
+                                                <td
+                                                    class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-50">
+                                                    {{ $car->registration_renewal_date }}
+                                                </td>
+                                                <td
+                                                    class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-50">
+                                                    {{ $car->owner }}
+                                                </td>
+                                                <td
+                                                    class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-200">
+                                                    <div id="actions" class="smallTable d-flex justify-content-between align-items-center">
+
+                                                        <a id="action_btn" href="#"
+                                                            class="btn btn-success btn-sm me-2">Megnézés</a>
+
+                                                        <form action="#" class="d-inline-block ms-2">
+                                                            <a href="#" id="action_btn" type="submit"
+                                                                class="btn btn-warning btn-sm">Szerkesztés</a>
+                                                        </form>
+                                                        <form action="#" class="d-inline-block ms-2">
+                                                            {{-- @csrf
+                                                        @method('DELETE') --}}
+                                                            <a href="#" id="action_btn" type="submit"
+                                                                class="btn btn-danger btn-sm">Törlés</a>
+                                                        </form>
+                                                    </div>
+                                                </td>
                                 </tr>
                             </tbody>
                         </table>
