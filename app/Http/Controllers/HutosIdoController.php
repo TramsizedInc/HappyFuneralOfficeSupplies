@@ -18,11 +18,11 @@ class HutosIdoController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index($id)
     {
         //Csongor kibaszott dokumentációja:        
         //UwU :3
-        return view('hutesIdo.index');
+        return view('hutesIdo.index', ['id' => $id]);
     }
 
     /**
@@ -95,6 +95,9 @@ class HutosIdoController extends Controller
         $hv_done_status = $urnkia->hv_done_status_date;
         $hv_have_status=  $urnkia->hv_have_status_date;
         $boncolva = $urnkia->hv_is_done;
+        $order_date_tmp = $orderdata->created_at;
+        $order_date = date('Y-m-d', strtotime($order_date_tmp));
+        // dd($order_date);
 
         /* */
         $return_array = ['chrematory' => $chrematory,
@@ -104,6 +107,7 @@ class HutosIdoController extends Controller
                          'hv_van_date' => $hv_have_status,
                          'hv_van' =>  $boncolva,
                          'halal_ido' => $death_time,
+                         'order_date' => $order_date,
                         ];
 
         return $return_array;
@@ -111,12 +115,14 @@ class HutosIdoController extends Controller
 
     public function GetHospitalCoolingPrices($hospital_name){
         //$hospital = HutosIdo::select('kh_name', $hospital_name)->limit(1)->get();
-        $hospital = HutosIdo::where('kh_name', '=', $hospital_name)->first();
+        $hospital = HutosIdo::find($hospital_name);
+        // $hospital = HutosIdo::where('kh_name', '=', $hospital_name)->first();
+        // dd($hospital_name);
         
-        $at2 =   $hospital->atal2_ar;
-        $at1 =   $hospital->atal1_ar;
-        $pot =   $hospital->pot_ar;
-        $pot_days =   $hospital->pot;
+        $at2 = $hospital->atal2_ar;
+        $at1 = $hospital->atal1_ar;
+        $pot = $hospital->pot_ar;
+        $pot_days = $hospital->pot;
         $atal1 = $hospital->atal1;
         $atal2 = $hospital->atal2;
         $plusz_koltsseg = $hospital->plusz_koltsseg;
@@ -140,7 +146,8 @@ class HutosIdoController extends Controller
         $hutesnap_count = 13; /** Kremanap+visszaszáll */
         $hutdate_beker = new DateTime($datas['halal_ido']);
         $HV_van = $datas['hv_van'];
-        $multi = $datas['multiplier'];
+        // $multi = $datas['multiplier'];
+        // $multi =  
 
         $Atalany1 = $datas2['atal1_ar'];
         $Atalany2 = $datas2['atal2_ar'];
@@ -174,7 +181,7 @@ class HutosIdoController extends Controller
         /* returning an associative array with custom IDs for the values */
         // Format the DateTime object to match the expected "yyyy-MM-dd" format
         //$formattedDate = $hutdate_beker->format('Y-m-d'); // Note: 'Y-m-d' corresponds to 'yyyy-MM-dd'
-        return response()->json(["success"=> true, "szumma" => $veg_osszeg, "vegnap" => $hutdate_beker, "pot" => $Pot, "days" => $hutesnap_count, "hospital" => $datas['kh_nev'], "hv_van" => $HV_van, "hv_date" => $datas['hv_kesz'], "hv_kesz_date" => $datas['hv_van_date'], "krema" => $datas['chrematory'], "halal" => $datas['halal_ido'], 'atal1' => $Atalany1, 'atal2' => $Atalany2, 'atal1_days' => $atal1, 'atal2_days' => $atal2,'pot_days' => $datas2['pot_days'],]);
+        return response()->json(["success"=> true, "szumma" => $veg_osszeg, "vegnap" => $hutdate_beker, "pot" => $Pot, "days" => $hutesnap_count, "hospital" => $datas['kh_nev'], "hv_van" => $HV_van, "hv_date" => $datas['hv_kesz'], "hv_kesz_date" => $datas['hv_van_date'], "krema" => $datas['chrematory'], "halal" => $datas['halal_ido'], 'atal1' => $Atalany1, 'atal2' => $Atalany2, 'atal1_days' => $atal1, 'atal2_days' => $atal2,'pot_days' => $datas2['pot_days'],'order_date'=>$datas['order_date'],]);
     }
 
     

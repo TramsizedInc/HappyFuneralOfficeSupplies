@@ -1,8 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
-
     <form action="#" method="post">
         <div class="row justify-content-center">
             <div class="col-xxl-6 col-md-12 col-xs-3 col-xxl-8">
@@ -24,8 +22,7 @@
                         <div class="col-md-12 col-xxl-3 text-center pt-3">
                             <div class="form-group">
                                 <div class="input-group">
-                                    <label
-                                        class="input-group-text bg-secondary border border-secondary fw-bold">Hűtésdíjból
+                                    <label class="input-group-text bg-secondary border border-secondary fw-bold">Hűtésdíjból
                                         rendezve</label>
                                     <input disabled type="number" class="form-control border-secondary" min="0"
                                         class="input-group-text fst-italic"></input>
@@ -49,7 +46,7 @@
                                             napja</label>
                                         <input disabled id="order_date" type="date" value="2023-12-08" readonly
                                             class="form-control text-center bg-secondary border-secondary">
-                                        <span class="input-group-text fst-italic">péntek</span>
+                                        <span class="input-group-text fst-italic" id="order_date_day">péntek</span>
                                     </div>
                                 </div>
                             </div>
@@ -76,8 +73,8 @@
                                         <label id="title"
                                             class="input-group-text bg-secondary border border-secondary fw-bold">HvKÉSZ
                                             állapot dátuma</label>
-                                        <input disabled id="hv_done_date" type="date" value="2023-12-11" readonly readonly
-                                            class="form-control text-center bg-secondary border-secondary">
+                                        <input disabled id="hv_done_date" type="date" value="2023-12-11" readonly
+                                            readonly class="form-control text-center bg-secondary border-secondary">
                                         <span id="hv_done_day" class="input-group-text fst-italic">hétfő</span>
                                     </div>
                                 </div>
@@ -219,8 +216,8 @@
                                             class="input-group-text bg-secondary border border-secondary fw-bold">Hűtésdíj
                                             számolásának első
                                             napja</label>
-                                        <input disabled id="cooling_start_date" type="date" value="2023-12-11" readonly
-                                            class="form-control text-center bg-secondary border-secondary">
+                                        <input disabled id="cooling_start_date" type="date" value="2023-12-11"
+                                            readonly class="form-control text-center bg-secondary border-secondary">
                                     </div>
                                 </div>
                             </div>
@@ -233,7 +230,7 @@
                                             határnap</label>
                                         <input disabled id="transport_date" type="date" value="2023-12-15" readonly
                                             class="form-control text-center bg-secondary border-secondary">
-                                        <span class="input-group-text fst-italic">péntek</span>
+                                        <span class="input-group-text fst-italic" id="transport_date_day">péntek</span>
                                     </div>
                                 </div>
                             </div>
@@ -332,7 +329,7 @@
 
     </form>
 
-    {{-- <script>
+    <script>
         $(document).ready(() => {
             var id_of_order = String(<?php echo json_encode($id); ?>);
             var url = '/hutesidocalculation/' + id_of_order;
@@ -346,6 +343,7 @@
                     throw new Error('Mentési hiba');
                 }
                 toastr.info('Sikeres Mentés');
+                let tmp_date;
                 document.getElementById("price_sum").textContent = y.szumma + " Ft";
                 document.getElementById("atadas").innerText = y.vegnap;
                 document.getElementById("actual_pot").textContent = y.pot;
@@ -355,12 +353,20 @@
                 document.getElementById("actual_atalany2").textContent = y.atal2;
                 document.getElementById("atal2").textContent = y.atal2;
                 document.getElementById("death_date").value = y.halal.split(' ')[0];
-                document.getElementById("order_date").value = y.halal.split(' ')[0];
+
+                tmp_date = new Date(y.halal.split(' ')[0].trim().replace(/\./g, '-'));
+                document.getElementById("death_day").textContent = tmp_date.toLocaleDateString('hu', { weekday: 'long'},);
+                // toastr.info(tmp_date.toLocaleDateString('hu', { weekday: 'long'},));
+                document.getElementById("order_date").value = y.order_date;
+                tmp_date = new Date(y.order_date);
+                document.getElementById("order_date_day").textContent = tmp_date.toLocaleDateString('hu', { weekday: 'long'},);
                 document.getElementById("hv_done_date").value = y.hv_date.split(' ')[0];
-                document.getElementById("hv_done_day").value = y.hv_date;
+                tmp_date = new Date(y.hv_date.split(' ')[0].trim().replace(/\./g, '-'));
+                document.getElementById("hv_done_day").textContent = tmp_date.toLocaleDateString('hu', { weekday: 'long'},);
                 // toastr.info(y.hv_kesz_date.split(' ')[0]);
                 document.getElementById("hv_van_date").value = y.hv_kesz_date.split(' ')[0];
-                document.getElementById("hv_van_day").value = y.hv_van;
+                tmp_date = new Date(y.hv_kesz_date.split(' ')[0].trim().replace(/\./g, '-'));
+                document.getElementById("hv_van_day").textContent = tmp_date.toLocaleDateString('hu', { weekday: 'long'},);
                 document.getElementById("hv_kiall").value = y.hv_kesz_date.split(' ')[0];
                 document.getElementById("days").innerText = y.days;
                 document.getElementById("kh_nev").innerText = y.hospital;
@@ -371,15 +377,16 @@
                 document.getElementById("pot_days").innerText = y.pot_days;
                 document.getElementById("cooling_start_date").value = y.halal.split(' ')[0];
                 document.getElementById("transport_date").value = y.vegnap;
-
-
-                ocument.getElementById("krema").innerText = y.krema;
-
+                // tmp_date = new Date(y.vegnap.split(' ')[0].trim().replace(/\.g, '-'));
+                tmp_date = new Date(y.vegnap);
+                
+                document.getElementById("transport_date_day").textContent = tmp_date.toLocaleDateString('hu', { weekday: 'long'},);
+                // toastr.info(tmp_date.toLocaleDateString('hu', {weekday: 'long'}));
+                document.getElementById("krema").innerText = y.krema;
+                
 
 
             })
         })
-    </script> --}}
-
-
+    </script>
 @endsection

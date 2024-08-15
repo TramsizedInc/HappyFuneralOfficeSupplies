@@ -25,39 +25,39 @@
                             <div class="col-lg-3 mb-2">
                                 <div class="form-group">
                                     <label class="small mb-1">Rendszáma:</label>
-                                    <input id="license_plate" name="license_plate" type="text" class="form-control" placeholder="Rendszám">
+                                    <input id="license_plate" name="license_plate" type="text" class="form-control  border-secondary bg-secondary text-dark" placeholder="Rendszám">
                                 </div>
                             </div>
                             <div class="col-lg-3 mb-2">
                                 <div class="form-group">
                                     <label class="small mb-1">Márkája:</label>
-                                    <input id="brand" name="brand" type="text" class="form-control" placeholder="Márka">
+                                    <input id="brand" name="brand" type="text" class="form-control  border-secondary bg-secondary text-dark" placeholder="Márka">
                                 </div>
                             </div>
                             <div class="col-lg-3 mb-2">
                                 <div class="form-group">
                                     <label class="small mb-1">Modell:</label>
-                                    <input id="model" name="model" type="text" class="form-control" placeholder="Modell">
+                                    <input id="model" name="model" type="text" class="form-control  border-secondary bg-secondary text-dark" placeholder="Modell">
                                 </div>
                             </div>
                             <div class="col-lg-3 mb-2">
                                 <div class="form-group">
                                     <label class="small mb-1">Év:</label>
-                                    <input id="year" name="year" type="number" class="form-control" min="1900" max="2099"
+                                    <input id="year" name="year" type="number" class="form-control  border-secondary bg-secondary text-dark" min="1900" max="2099"
                                         placeholder="2024">
                                 </div>
                             </div>
                             <div class="col-lg-3 mb-2">
                                 <div class="form-group">
                                     <label class="small mb-1">Kilométer óraállás:</label>
-                                    <input id="odometer" name="odometer" type="number" class="form-control" min="0"
+                                    <input id="odometer" name="odometer" type="number" class="form-control  border-secondary bg-secondary text-dark" min="0"
                                         placeholder="192325">
                                 </div>
                             </div>
 
                             <div class="col-lg-3 mb-2 ">
-                                <label class="small mb-1">Üzemanyag tpus:</label>
-                                <select class="form-select" id="fuel_type"
+                                <label class="small mb-1">Üzemanyag tipus:</label>
+                                <select class="form-select text-dark border-secondary bg-secondary" id="fuel_type"
                                     name="fuel_type" type="text" placeholder="Üzemanyag típus">
                                     <option value="Benzin" selected disabled hidden>Benzin</option>
                                     <option value="Benzin">Benzin</option>
@@ -74,55 +74,55 @@
                             <div class="col-lg-3 mb-2">
                                 <div class="form-group">
                                     <label class="small mb-1">Biztosító Cég:</label>
-                                    <input id="insurance_company" name="insurance_company" type="text" class="form-control" placeholder="Biztosító Cég">
+                                    <input id="insurance_company" name="insurance_company" type="text" class="form-control  border-secondary bg-secondary text-dark" placeholder="Biztosító Cég">
                                 </div>
                             </div>
                             <div class="col-lg-3 mb-2">
                                 <div class="form-group">
                                     <label class="small mb-1">Biztosítás kötvényszáma:</label>
-                                    <input id="insurance_bond_number" name="insurance_bond_number" type="text" class="form-control" placeholder="Biztosítás kötvényszáma:">
+                                    <input id="insurance_bond_number" name="insurance_bond_number" type="text" class="form-control  border-secondary bg-secondary text-dark" placeholder="Biztosítás kötvényszáma:">
                                 </div>
                             </div>
                             <div class="col-lg-3 mb-2">
                                 <div class="form-group">
                                     <label class="small mb-1">Biztosítás megújítási dátuma:</label>
-                                    <input id="insurance_renewal_date" name="insurance_renewal_date" type="date" class="form-control">
+                                    <input id="insurance_renewal_date" name="insurance_renewal_date" type="date" class="form-control  border-secondary bg-secondary text-dark">
                                 </div>
                             </div>
                             <div class="col-lg-3 mb-2">
                                 <div class="form-group">
                                     <label class="small mb-1">Forgalmi engedély száma:</label>
-                                    <input id="registration_number" name="registration_number" type="text" class="form-control" placeholder="Forgalmi engedély száma:">
+                                    <input id="registration_number" name="registration_number" type="text" class="form-control  border-secondary bg-secondary text-dark" placeholder="Forgalmi engedély száma:">
                                 </div>
                             </div>
                             <div class="col-lg-3 mb-2">
                                 <div class="form-group">
                                     <label class="small mb-1">Motorszám:</label>
-                                    <input id="engine_id" name="engine_id" type="text" class="form-control" placeholder="Motorszám">
+                                    <input id="engine_id" name="engine_id" type="text" class="form-control  border-secondary bg-secondary text-dark" placeholder="Motorszám">
                                 </div>
                             </div>
                             <div class="col-lg-3 mb-2">
                                 <div class="form-group">
                                     <label class="small mb-1">Alvázszám:</label>
-                                    <input id="vin_number" name="vin_number" type="text" class="form-control" placeholder="Alvázszám">
+                                    <input id="vin_number" name="vin_number" type="text" class="form-control  border-secondary bg-secondary text-dark" placeholder="Alvázszám">
                                 </div>
                             </div>
                             <div class="col-lg-3 mb-2">
                                 <div class="form-group">
                                     <label class="small mb-1">Műszaki vizsga lejárati dátuma:</label>
-                                    <input id="registration_renewal_date" name="registration_renewal_date" type="date" class="form-control">
+                                    <input id="registration_renewal_date" name="registration_renewal_date" type="date" class="form-control  border-secondary bg-secondary text-dark">
                                 </div>
                             </div>
                             <div class="col-lg-3 mb-2">
                                 <div class="form-group">
                                     <label class="small mb-1">Tulajdonos:</label>
-                                    <input id="owner" name="owner" type="text" class="form-control" placeholder="Tulajdonos">
+                                    <input id="owner" name="owner" type="text" class="form-control  border-secondary bg-secondary text-dark" placeholder="Tulajdonos">
                                 </div>
                             </div>
                             <div class="col-lg-3 mb-2">
                                 <div class="form-group">
                                     <label class="small mb-1">Üzembentartó:</label>
-                                    <input id="vehicle_operator" name="vehicle_operator" type="text" class="form-control" placeholder="Üzembentartó">
+                                    <input id="vehicle_operator" name="vehicle_operator" type="text" class="form-control  border-secondary bg-secondary text-dark" placeholder="Üzembentartó">
                                 </div>
                             </div>
                             <!-- <div class="col-lg-6 mb-2">
@@ -132,7 +132,7 @@
                                     <form action="{{ route('upload.image') }}" method="POST"
                                         enctype="multipart/form-data">
                                         @csrf
-                                        <input class="form-control" type="file" id="registrationImage"
+                                        <input class="form-control  border-secondary bg-secondary text-dark" type="file" id="registrationImage"
                                             name="image">
                                         <div class="d-flex flex-column align-items-center justify-content-center">
                                             <button class="btn btn-secondary mt-1 text-upper fs-2 fw-bold w-100"
@@ -147,7 +147,7 @@
                                     <form action="{{ route('upload.image') }}" method="POST"
                                         enctype="multipart/form-data">
                                         @csrf
-                                        <input class="form-control" type="file" id="insuranceImage" name="image">
+                                        <input class="form-control  border-secondary bg-secondary text-dark" type="file" id="insuranceImage" name="image">
                                         <div class="d-flex flex-column align-items-center justify-content-center">
                                             <button class="btn btn-secondary mt-1 text-upper fs-2 fw-bold w-100"
                                                 type="submit">Feltöltés</button>

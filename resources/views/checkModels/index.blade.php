@@ -1,4 +1,6 @@
-<x-app-layout>
+@extends('layouts.app')
+
+@section('content')
 
     <div class="row justify-content-center py-3 px-4">
         <div class="col-xl-2 col-xxl-2 col-lg-3 col-md-2 col-sm-2 col-xs-2"></div>
@@ -68,7 +70,7 @@
                                             <div class="d-flex justify-content-between align-items-center">
 
                                                 <a href="{{ route('checkModel.show', $checkModel->id) }}">Megnézés</a>
-                                                
+
                                                 <form action="{{ route('checkModels.edit', $checkModel) }}"
                                                     class="d-inline-block ms-2">
                                                     <button type="submit"
@@ -134,4 +136,4 @@
                 </div>
             </div>
         </div>
-</x-app-layout>
+@endsection

@@ -59,7 +59,7 @@ Route::middleware(['gzip'])->group(function () {
             Route::post('/schedule/{id}/resize', [App\Http\Controllers\ScheduleController::class, 'resize']);
             Route::get('/events/search', [App\Http\Controllers\ScheduleController::class, 'search']);
             Route::view('add-schedule', 'schedule.add');
-            Route::get('/hutesido-kalulator', [App\Http\Controllers\HutosIdoController::class, 'index']);
+            Route::get('/hutesido-kalulator/{id}', [App\Http\Controllers\HutosIdoController::class, 'index']);
             Route::post('create-schedule', [App\Http\Controllers\ScheduleController::class, 'create']);
             Route::get('/hutesidocalculation/{id}', [\App\Http\Controllers\HutosIdoController::class, 'Calculation']);
             Route::any('/docedit/{any}', [\App\Http\Controllers\DocEditProxyController::class, 'index'])->where('any', '.*');

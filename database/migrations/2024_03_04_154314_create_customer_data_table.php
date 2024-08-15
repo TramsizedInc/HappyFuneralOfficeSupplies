@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
 
             $table->string('order_uuid')->nullable();
-
+            $table->string('customer_name_prefix')->nullable();
             $table->string('customer_first_name')->nullable();
             $table->string('customer_last_name')->nullable();
             $table->string('customer_id_card_number')->nullable();

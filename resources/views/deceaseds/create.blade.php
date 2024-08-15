@@ -19,7 +19,7 @@
                 </button>
             </form>
 
-            <a class="btn me-2 next-btn btn-lg btn-success" type="submit">
+            <a id="order_request_btn" class="btn me-2 next-btn btn-lg btn-success" type="submit">
                 Ajánalt kérése
             </a>
         </div>
@@ -202,7 +202,7 @@
                                     value="{{ $deceased_uuid }}" name="order_uuid"></input>
                                 <div class="col-md-4">
                                     <select class="form-select bg-secondary " id="deceased_name_prefix"
-                                        onchange="onDeceasedChange(this)" name="deceased_name_prefix" type="text"
+                                        name="deceased_name_prefix" type="text"
                                         placeholder="Előtag">
                                         <option value="(Nincs)" selected>Előtag</option>
                                         <option value="(Nincs)">Nincs</option>
@@ -652,6 +652,32 @@
                     });
                 });
             });
+
+            $("#order_request_btn").on('click', 
+            function(e) {
+                e.preventDefault();
+
+                submitForm('deceased_form', function() {
+                    submitForm('birthcert_form', function() {
+                        submitForm('urnkia_form', function() {
+                            submitForm('customer_form', function() {
+                                submitForm('orderdata_form', function() {
+                                    // window.location.href = "/orderdata";
+                                    toastr.info("Átirányítás fejlesztés alatt", "Adatbázismódosítás végett fejlesztés alatt áll");
+                                    toastr.info("Átirányítás fejlesztés alatt", "Minta megnyitása");
+                                    // await sleep(5000);
+                                    // window.location.href = "/javitas";
+                                    setTimeout(() => {
+                                        window.location.href = "/javitas";
+                                    }, 5000);
+                                });
+                            });
+                        });
+                    });
+                });
+            });
+
+            
         });
         // , () => window.location.href = "/deceaseds";
     </script>

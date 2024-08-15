@@ -49,7 +49,7 @@ class OrderDataController extends Controller
         // $query = CustomerData::select('id')->where('id_card_number', '=', $req['id_card_number'])->toSql();
         $company = "Aevum";
         $office = "1";
-        $inner_uuid = strtoupper($company[0] . $company[1]) . $this->create_inventory_number($office, 2) . '/' . Carbon::today()->format('Ymd') . '/' . OrderData::count() + 1;
+        $inner_uuid = strtoupper($company[0] . $company[1]) . $this->create_inventory_number($office, 2) . '/' . Carbon::today()->format('Ymd') . '/' . OrderData::withTrashed()->count() + 1;
         $customer = CustomerData::select('id')->where('order_uuid', '=', $inner_uuid)->get();
         $deceased = Deceased_data::select('id')->where('order_uuid', '=', $inner_uuid)->get();
         $birth_c = BirthCertificate::select('id')->where('order_uuid', '=', $inner_uuid)->get();
@@ -149,7 +149,7 @@ class OrderDataController extends Controller
 
         $company = "Aevum";
         $office = "1";
-        $inner_uuid = strtoupper($company[0] . $company[1]) . $this->create_inventory_number($office, 2) . '/' . Carbon::today()->format('Ymd') . '/' . (OrderData::count() + 1);
+        $inner_uuid = strtoupper($company[0] . $company[1]) . $this->create_inventory_number($office, 2) . '/' . Carbon::today()->format('Ymd') . '/' . (OrderData::withTrashed()->count() + 1);
 
         return $inner_uuid;
     }

@@ -35,7 +35,7 @@
     padding: 20px;
     position: relative;
     overflow: hidden;
-     transform: scale(0.9);
+     transform: scale(0.8);
 }
 
 .light .calendar {
@@ -370,11 +370,12 @@
 
 .weather-widget {
     height: 400px;
+    width: 700px;
     background-color: #232931;
     color: #fff;
     border-radius: 25px;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.35);
-    transform: scale(0.9);
+    transform: scale(0.8);
 }
 
 .left-info {
@@ -437,7 +438,7 @@
     float: right;
     position: relative;
     height: 100%;
-    padding-top: 25px;
+    padding-top: 5px;
 }
 
 .day-info {

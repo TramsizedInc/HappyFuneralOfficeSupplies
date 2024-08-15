@@ -27,9 +27,7 @@ class CheckModelController extends Controller
      */
     public function create()
     {
-        if (Auth::user()->cannot('create', CheckModel::class)) {
-            abort(403);
-        }
+        
         return view('checkModels.create');
     }
 
@@ -38,10 +36,7 @@ class CheckModelController extends Controller
      */
     public function store(StoreCheckModelRequest $request)
     {
-        if (Auth::user()->cannot('create', CheckModel::class)) {
-            abort(403);
-        }
-
+        
         $checkModel = CheckModel::create($request->all());
         $checkModel->updated_at = now();
         $checkModel->created_at = now();
