@@ -38,6 +38,7 @@ class CarController extends Controller
         $model->updated_at = now();
         $model->created_at = now();
         $model->update();
+        return redirect()->route('cars.index');
     }
 
     /**

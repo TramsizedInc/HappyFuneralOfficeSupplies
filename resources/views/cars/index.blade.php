@@ -52,10 +52,14 @@
                                     <th scope="col"
                                         class="border-end align-middle col-4 border-secondary text-secondary text-nowrap fs-5 text-nowrap text-nowrap">
                                         Tulajdonos</th>
-                                </tr>
+                                        <th scope="col"
+                                        class="border-end align-middle col-4 border-secondary text-secondary text-nowrap fs-5 text-nowrap text-nowrap">
+                                        Műveletek</th>
+                                    </tr>
+                                    
                             </thead>
                             <tbody class="bg-gray-50 dark:bg-gray-700 divide-y divide-gray-200 dark:divide-gray-700">
-                            @foreach ($cars as @car)
+                            @foreach ($cars as $car)
                                 <tr id="smallTable" class="align-middle">
                                     <td
                                         class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-50">

@@ -29,7 +29,7 @@
                 <h1 class="ps-5 mb-3">Céges infók:</h1>
             </div>
             <div class="d-flex flex-wrap">
-                @foreach (\App\Models\Companies::all() as $index => $company)
+                @foreach (\App\Models\companies::all() as $index => $company)
                     <div class="col-md-3">
                         <div class="accordion accordion-flush" id="accordionFlushExample{{ $index }}">
                             <div class="accordion-item">
