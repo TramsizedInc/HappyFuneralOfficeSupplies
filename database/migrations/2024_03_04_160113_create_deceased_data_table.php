@@ -26,6 +26,7 @@ return new class extends Migration
             $table->string('zip_code')->nullable();
             $table->string('street')->nullable();
             $table->string('house_number')->nullable();
+            $table->string('city')->nullable();
 
             $table->string('hospital_code')->nullable();
             $table->DateTime('deceased_birth_day')->nullable();
@@ -34,12 +35,13 @@ return new class extends Migration
             $table->DateTime('death_time')->nullable();
             $table->DateTime('exhibiton_time')->nullable();
             $table->string('pensioner_id')->nullable();
+            $table->string('personal_id')->nullable();
             $table->string('id_card_number')->nullable();
             $table->string('address_id_number')->nullable();
             $table->string('passport_number')->nullable();
             $table->string('driver_licence_number')->nullable();
             $table->integer('deceased_weight')->nullable();
-            $table->integer('weight')->nullable();
+            $table->integer('weight')->default(0);
             /* Softdeletes */
             $table->softDeletes();
             $table->integer('created_by')->default(1);

@@ -82,9 +82,10 @@ class OrderDataController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(OrderData $orderData)
+    public function show($id)
     {
-        //
+        $orderdata = OrderData::find($id);
+        return view('order_data.show', ['orderdata' => $orderdata]);
     }
 
     /**
@@ -92,7 +93,11 @@ class OrderDataController extends Controller
      */
     public function edit(OrderData $orderData)
     {
-        //
+       
+        
+
+
+        return view('order_data.edit', ['orderdata' => $orderData]);
     }
 
     /**
@@ -152,5 +157,48 @@ class OrderDataController extends Controller
         $inner_uuid = strtoupper($company[0] . $company[1]) . $this->create_inventory_number($office, 2) . '/' . Carbon::today()->format('Ymd') . '/' . (OrderData::withTrashed()->count() + 1);
 
         return $inner_uuid;
+    }
+    
+    public static function get_state($id){
+        $order = OrderData::findOrFail($id);
+        $deceased = Deceased_data::findOrFail($order->deceased_data_id);
+        $customer = CustomerData::findOrFail($order->customer_data_id);
+        $urn_kia = Urn_k_i_a_data::findOrFail($order->_urn_k_i_a_datas_id);
+        $birth_c = BirthCertificate::findOrFail($order->birth_certificate_id);
+
+        $order_ready = true; 
+        $deceased_ready =   OrderDataController::is_model_ready($deceased);
+        $customer_ready =   OrderDataController::is_model_ready($customer);
+        $urn_insert_ready = OrderDataController::is_model_ready($urn_kia);
+        $birth_ready =      OrderDataController::is_model_ready($birth_c);
+
+        if (!($deceased_ready == $customer_ready && $urn_insert_ready == $birth_ready && $deceased_ready == $order_ready))
+        {
+            return "kitöltésre vár";
+        }
+
+        return "ki van töltve";
+    }
+
+    public static function is_model_ready($model)
+    {
+        foreach ($model->getAttributes() as $value) {
+            // Check if the value is empty
+            if (empty($value)) {
+                return false; // Model is not ready
+            }
+        }
+
+        return true; // Model is ready
+    }
+    public function GetOrderData($id){
+
+    $orderdata = OrderData::find($id);
+
+    $deceased = Deceased_data::find($orderdata->deceased_data_id);
+    $customer = CustomerData::find($orderdata->customer_data_id);
+    $urnkia = Urn_k_i_a_data::find($orderdata->_urn_k_i_a_datas_id);
+    $birthcert = BirthCertificate::find($orderdata->birth_certificate_id);
+
     }
 }

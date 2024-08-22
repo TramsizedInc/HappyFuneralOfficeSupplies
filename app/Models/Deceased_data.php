@@ -34,6 +34,8 @@ class Deceased_data extends Model
         'deceased_weight',
         'weight',
         'order_uuid',
+        'personal_id',
+        'city',
     ];
 
 }

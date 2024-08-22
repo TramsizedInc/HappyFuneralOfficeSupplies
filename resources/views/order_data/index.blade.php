@@ -19,144 +19,84 @@
             </div>
         </div>
 
-        <div class="row mt-5 justify-content-center">
-            <div class="col-xxl-12 col-xl-12 col-lg-12 col-md-12 col-sm-12 col-xs-4">
-                <div class="d-flex overflow-visible flex-column">
-                    <div class="overflow-visible">
-                        <div class="table-responsive">
-                            <table class="table table-dark modern-table caption-top" style="max-width: fit-content;">
-                                <caption class="border-bottom border-secondary text-uppercase fs-2 text-center text-danger">
-                                    Temetések</caption>
-                                <thead>
-                                    <tr class="table-dark text-center align-middle">
-                                        <th data-label="Temetés Azonosító" scope="col"
-                                            class="bg-dark text-center border-end border-secondary text-uppercase text-secondary w-50 text-nowrap">
-                                            Temetés Azonosító</th>
-                                        <th data-label="Megrendelő neve" scope="col"
-                                            class="bg-dark text-center border-end border-secondary text-uppercase text-secondary w-50 text-nowrap">
-                                            Megrendelő neve</th>
-                                        <th data-label="Megrendelő szem.ig. száma" scope="col"
-                                            class="bg-dark text-center border-end border-secondary text-uppercase text-secondary w-50 text-nowrap">
-                                            Megrendelő szem.ig. száma</th>
-                                        <th data-label="Elhunyt neve" scope="col"
-                                            class="bg-dark text-center border-end border-secondary text-uppercase text-secondary w-50 text-nowrap">
-                                            Elhunyt neve</th>
-                                        <th data-label="Urna típusa" scope="col"
-                                            class="bg-dark text-center border-end border-secondary text-uppercase text-secondary w-50 text-nowrap">
-                                            Urna típusa</th>
-                                        <th data-label="Halál helye" scope="col"
-                                            class="bg-dark text-center border-end border-secondary text-uppercase text-secondary w-50 text-nowrap">
-                                            Halál helye</th>
-                                        <th data-label="Felvétel ideje" scope="col"
-                                            class="bg-dark text-center border-end border-secondary text-uppercase text-secondary w-50 text-nowrap">
-                                            Felvétel ideje</th>
-                                        <th data-label="Állapot" scope="col"
-                                            class="bg-dark text-center border-end border-secondary text-secondary">Állapot
-                                        </th>
-                                        <th scope="col"
-                                            class="border-end border-secondary d-xxl-table-cel text-center text-secondary">
-                                            Műveletek</th>
-                                    </tr>
-                                </thead>
-                                <tbody class="bg-gray-50 dark:bg-gray-700 divide-y divide-gray-200 dark:divide-gray-700">
-                                    @foreach ($orderdatas as $item)
-                                        <tr id="smallTable" class="align-middle">
-                                            <td
-                                                class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-50">
-                                                {{ $item->inner_uuid }}</td>
-                                            <td
-                                                class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-50">
-                                                {{ \App\Models\CustomerData::all()->find($item->customer_data_id)->customer_name_prefix }}
-                                                {{ \App\Models\CustomerData::all()->find($item->customer_data_id)->customer_last_name }}
-                                                {{ \App\Models\CustomerData::all()->find($item->customer_data_id)->customer_first_name }}
-                                            </td>
-                                            <td
-                                                class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-50">
-                                                {{ \App\Models\CustomerData::all()->find($item->customer_data_id)->id_card_number }}
-                                            </td>
-                                            <td
-                                                class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-50">
-                                                {{ \App\Models\Deceased_data::all()->find($item->deceased_data_id)->deceased_name }}
-                                            </td>
-                                            <td
-                                                class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-50">
-                                                {{ \App\Models\Urn_k_i_a_data::all()->find($item->_urn_k_i_a_datas_id)->urn_inside_form }}
-                                            </td>
-                                            <td
-                                                class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-50">
-                                                {{ \App\Models\BirthCertificate::all()->find($item->birth_certificate_id)->death_place }}
-                                            </td>
-                                            <td
-                                                class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-50">
-                                                {{ $item->created_at }}</td>
-                                            <td
-                                                class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-50">
-                                            </td>
-                                            <td
-                                                class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-200">
-                                                <div id="actions"
-                                                    class="smallTable d-flex justify-content-between align-items-center">
-                                                    <a id="action_btn" href="#"
-                                                        class="btn btn-success btn-sm me-2">Megnézés</a>
-                                                    <form action="#" class="d-inline-block ms-2">
-                                                        <a href="#" id="action_btn" type="submit"
-                                                            class="btn btn-warning btn-sm">Szerkesztés</a>
-                                                    </form>
-                                                    <form action="#" class="d-inline-block ms-2">
-                                                        <a href="#" id="action_btn" type="submit"
-                                                            class="btn btn-danger btn-sm">Törlés</a>
-                                                    </form>
-                                                    <a href="/hutes-ido/{{ $item->id }}" id="cooling_bill"
-                                                        type="submit" class="btn btn-info btn-sm">Ajánlat Kéres</a>
-                                                </div>
-                                            </td>
-                                        </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
-                            <div class="py-1 px-4">
-                                <nav class="d-flex justify-content-center">
-                                    <ul class="pagination">
-                                        <li class="page-item">
-                                            <button class="page-link" type="button" aria-label="Previous">
-                                                <span aria-hidden="true">«</span>
-                                            </button>
-                                        </li>
-                                        <li class="page-item active" aria-current="page">
-                                            <button class="page-link" type="button">1</button>
-                                        </li>
-                                        <li class="page-item">
-                                            <button class="page-link" type="button">2</button>
-                                        </li>
-                                        <li class="page-item">
-                                            <button class="page-link" type="button">3</button>
-                                        </li>
-                                        <li class="page-item disabled">
-                                            <button class="page-link" type="button">...</button>
-                                        </li>
-                                        <li class="page-item">
-                                            <button class="page-link" type="button">8</button>
-                                        </li>
-                                        <li class="page-item">
-                                            <button class="page-link" type="button">9</button>
-                                        </li>
-                                        <li class="page-item">
-                                            <button class="page-link" type="button">10</button>
-                                        </li>
-                                        <li class="page-item">
-                                            <button class="page-link" type="button" aria-label="Next">
-                                                <span aria-hidden="true">»</span>
-                                            </button>
-                                        </li>
-                                    </ul>
-                                </nav>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+
+        <div class="row mt-5 justify-content-center w-100">
+
+            <div class="table-responsive">
+                <table class="table table-dark caption-top">
+                    <caption class="border-bottom border-secondary text-uppercase fs-2 text-center text-danger">
+                        Temetések</caption>
+                    <thead>
+                        <tr class="text-center align-middle">
+                            <!-- Columns -->
+                            <th class="bg-dark text-center border-end border-secondary text-uppercase text-secondary">
+                                Temetés Azonosító</th>
+                            <th class="bg-dark text-center border-end border-secondary text-uppercase text-secondary">
+                                Megrendelő neve</th>
+                            <th class="bg-dark text-center border-end border-secondary text-uppercase text-secondary">
+                                Megrendelő szem.ig. száma</th>
+                            <th class="bg-dark text-center border-end border-secondary text-uppercase text-secondary">
+                                Elhunyt neve</th>
+                            <th class="bg-dark text-center border-end border-secondary text-uppercase text-secondary">
+                                Urna típusa</th>
+                            <th class="bg-dark text-center border-end border-secondary text-uppercase text-secondary">
+                                Halál helye</th>
+                            <th class="bg-dark text-center border-end border-secondary text-uppercase text-secondary">
+                                Felvétel ideje</th>
+                            <th class="bg-dark text-center border-end border-secondary text-secondary">Állapot</th>
+                            <th class="border-end border-secondary text-center text-secondary">Műveletek</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($orderdatas as $item)
+                            <tr class="align-middle">
+                                <!-- Cells -->
+                                <td class="bg-dark border-end border-secondary text-secondary text-center">
+                                    {{ $item->inner_uuid }}</td>
+                                <td class="bg-dark border-end border-secondary text-secondary text-center">
+                                    {{ \App\Models\CustomerData::all()->find($item->customer_data_id)->customer_name_prefix }}
+                                    {{ \App\Models\CustomerData::all()->find($item->customer_data_id)->customer_last_name }}
+                                    {{ \App\Models\CustomerData::all()->find($item->customer_data_id)->customer_first_name }}
+                                </td>
+                                <td class="bg-dark border-end border-secondary text-secondary text-center">
+                                    {{ \App\Models\CustomerData::all()->find($item->customer_data_id)->id_card_number }}
+                                </td>
+                                <td class="bg-dark border-end border-secondary text-secondary text-center">
+                                    {{ \App\Models\Deceased_data::all()->find($item->deceased_data_id)->deceased_name }}
+                                </td>
+                                <td class="bg-dark border-end border-secondary text-secondary text-center">
+                                    {{ \App\Models\Urn_k_i_a_data::all()->find($item->_urn_k_i_a_datas_id)->urn_inside_form }}
+                                </td>
+                                <td class="bg-dark border-end border-secondary text-secondary text-center">
+                                    {{ \App\Models\BirthCertificate::all()->find($item->birth_certificate_id)->death_place }}
+                                </td>
+                                <td class="bg-dark border-end border-secondary text-secondary text-center">
+                                    {{ $item->created_at }}</td>
+                                <td class="bg-dark border-end border-secondary text-secondary text-center" >
+                                    {{ \App\Http\Controllers\OrderDataController::get_state($item->id) }}
+                                </td>
+                                <td class="bg-dark border-end border-secondary text-secondary text-center w-200">
+                                    <div class="d-flex flex-column align-items-center">
+                                        <a href="{{ route('orderdata.show' ,['orderdatum' =>$item->id])}}" class="btn btn-success btn-md  mb-2">Megnézés</a>
+                                        
+                                        <form action="{{ route('orderdata.edit',['orderdatum'=>$item->id]) }}" class="d-inline-block ms-2">
+                                            <button type="submit" class="btn btn-warning btn-md   mb-2">Szerkesztés</button>
+                                        </form>
+                                        <form action="#" class="d-inline-block ms-2">
+                                            <button type="submit" class="btn btn-danger btn-md mb-2" style="width: 100% ">Törlés</button>
+                                        </form>
+                                        <a href="/hutesido-kalkulator/{{ $item->id }}" type="submit"
+                                            class="btn btn-info btn-md ">Ajánlat Kéres</a>
+                                    </div>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
+
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
@@ -177,7 +117,7 @@
                 e.preventDefault();
                 toastr.warning('Csak teljesen kitöltött adatokkal működik');
                 setTimeout(() => {
-                    window.location.href =$(this).attr('href');
+                    window.location.href = $(this).attr('href');
                 }, 5000);
             });
         });

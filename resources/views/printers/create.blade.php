@@ -38,7 +38,7 @@
                             <div class="col-lg-6 mb-2">
                                 <div class="form-group">
                                     <label class="small mb-1" for="office_id">Típus</label>
-                                    <select name="office_id" class="form-select bg-secondary" id="office_id">
+                                    <select name="type" class="form-select bg-secondary" id="type">
                                         @foreach (\App\Models\PrinterType::all() as $pritertype)
                                             <option value="{{ $pritertype->id }}">{{ $pritertype->name }}
 
@@ -81,7 +81,12 @@
                                         <!-- FontAwesome Icon for Image -->
                                         <p class="text-xs text-muted">PNG, JPG, GIF maximum 10MB</p>
                                     </div>
-
+                                    <form action="{{ route('upload.image') }}" method="POST"
+                                        enctype="multipart/form-data">
+                                        @csrf
+                                        <input type="file" name="image">
+                                        <!-- <button type="submit">Upload</button> -->
+                                    </form>
                                     <div class="align-middle">
                                         <label for="file-upload" class="form-label text-nowrap">Fájl feltöltés</label>
                                         <div class="custom-file">
@@ -97,8 +102,7 @@
 
                             <div class="col-lg-12 col-xxl-6">
                                 <div class="position-relative mb-4">
-                                    <label for="drumm-percent">Dob egység százaléka <span
-                                            id="drummchange"></span>%</label>
+                                    <label for="drumm-percent">Dob egység százaléka <span id="drummchange"></span>%</label>
                                     <input name="drumm_percent" id="drumm-percent" type="range" value="0"
                                         min="0" max="100" class="form-range">
                                     <div class="d-flex justify-content-between align-items-center mb-3">
@@ -124,6 +128,93 @@
 
 
     <script>
+        $(document).ready(function() {
+            $('#deceased_form, #birthcert_form, #urnkia_form, #customer_form').on('submit', function(e) {
+                e.preventDefault(); // Prevent the form from submitting via the browser.
+                var form = $(this);
+                var url = form.attr('action');
+
+                $.ajax({
+                    type: "POST",
+                    url: url,
+                    data: form.serialize(), // Serialize form data for AJAX submission
+                    success: function(data) {
+                        if (data.success) {
+                            toastr.info(data.message);
+                            window.location.href = "/orderdata";
+                            // Optionally, update the form or page content based on the response
+                        } else {
+                            toastr.info('fuck');
+                        }
+                    }
+                });
+            });
+
+            function submitForm(formId, callback, imageId) {
+                var form = $('#' + formId);
+                
+                var formData = form.serialize();
+                toastr.info(formData);
+                if(formId == 'printer_form' && imageId) formData + "image_id=" + imageId;
+                if(formId == 'printer_form') toastr.info(formData);
+                $.ajax({
+                    type: "POST",
+                    url: form.attr('action'), // Assuming the action attribute contains the URL to submit to
+                    data: formData,
+                    success: function(response) {
+                        if (callback) callback();
+                        if(formId == 'printer_form') toastr.info(response.message);
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        console.error("Form submission failed:", textStatus, errorThrown);
+                    }
+                });
+            }
+
+            $("#orderdata_form").on('submit', function(e) {
+                e.preventDefault();
+
+                submitForm('deceased_form', function() {
+                    submitForm('birthcert_form', function() {
+                        submitForm('urnkia_form', function() {
+                            submitForm('customer_form', function() {
+                                submitForm('orderdata_form', function() {
+                                    window.location.href = "/orderdata";
+                                });
+                            });
+                        });
+                    });
+                });
+            });
+
+            $("#order_request_btn").on('click', 
+            function(e) {
+                e.preventDefault();
+
+                submitForm('deceased_form', function() {
+                    submitForm('birthcert_form', function() {
+                        submitForm('urnkia_form', function() {
+                            submitForm('customer_form', function() {
+                                submitForm('orderdata_form', function() {
+                                    // window.location.href = "/orderdata";
+                                    toastr.info("Átirányítás fejlesztés alatt", "Adatbázismódosítás végett fejlesztés alatt áll");
+                                    toastr.info("Átirányítás fejlesztés alatt", "Minta megnyitása");
+                                    // await sleep(5000);
+                                    // window.location.href = "/javitas";
+                                    setTimeout(() => {
+                                        window.location.href = "/javitas";
+                                    }, 5000);
+                                });
+                            });
+                        });
+                    });
+                });
+            });
+
+            
+        });
+        // , () => window.location.href = "/deceaseds";
+
         function donerchange(element) {
             var val = element.value;
             document.getElementById('donerchange').innerText = val + "%";

@@ -28,6 +28,7 @@
         font-weight: bold;
         /* Példa: kisebb méret xs kategóriában */
     }
+
     .smallTable {
         font-size: 7px;
         font-weight: bold;
@@ -51,7 +52,7 @@
     }
 
     .table {
-        max-width: fit-content;
+        max-width: max-content;
     }
 
     #calculator {
@@ -191,6 +192,10 @@
 
 @media screen and (min-width: 1400px) {
 
+    #actions {
+        flex-direction: column;
+    }
+
     /* xxl kategória */
     #bigTable {
         font-size: 24px;
@@ -204,6 +209,10 @@
 
     #wrap {
         font-size: 18px;
+    }
+
+    .table {
+        max-width: fit-content;
     }
 }
 

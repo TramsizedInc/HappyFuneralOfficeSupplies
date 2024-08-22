@@ -1,5 +1,6 @@
-<x-app-layout>
+@extends('layouts.app')
 
+@section('content')
     <div class="row justify-content-center">
         <div class="col-xl-2 col-xxl-2 col-lg-3 col-md-2 col-sm-2 col-xs-2"></div>
         <div class="col-xl-3 col-xxl-3 col-lg-3 col-md-3 col-sm-4 col-xs-2"> <!-- Column for the input -->
@@ -19,7 +20,7 @@
 
 
 
-   
+
     <div class="row mt-5 justify-content-center">
         <div class="col-xxl-6 col-xl-6 col-lg-6 col-md-12 col-sm-12">
             <div class="d-flex flex-column">
@@ -27,8 +28,7 @@
                     <div class="table-responsive">
                         <div class="table table-responsive bg-dark border border-dark rounded">
                             <table class="table table-dark caption-top">
-                                <caption
-                                    class="border-bottom border-secondary text-uppercase fs-2 text-center text-danger">
+                                <caption class="border-bottom border-secondary text-uppercase fs-2 text-center text-danger">
                                     Nyomtató típusok</caption>
 
                                 <thead>
@@ -40,21 +40,21 @@
                                             class="bg-dark text-center text-uppercase border-end border-secondary text-secondary w-25">
                                             Módosítás
                                         </th>
-                                        <th scope="col"
-                                            class="bg-dark text-center text-uppercase text-secondary w-25">Törlés
+                                        <th scope="col" class="bg-dark text-center text-uppercase text-secondary w-25">
+                                            Törlés
                                         </th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     @foreach (\App\Models\PrinterType::all() as $printerType)
-                                    <tr class="text-center align-middle">
+                                        <tr class="text-center align-middle">
 
                                             <td
                                                 class="bg-dark border-end border-secondary table-secondary text-secondary text-center w-50">
                                                 {{ $printerType->name }}</td>
                                             <td
                                                 class="bg-dark border-end border-secondary table-secondary  text-center w-25">
-                                                <form action="{{ route('printerTypes.edit', $printerType) }}">
+                                                 
                                                     <button type="submit"
                                                         class="btn btn-warning text-decoration-none">Módosítás</button>
                                                 </form>
@@ -115,6 +115,4 @@
             </div>
         </div>
     </div>
-
-
-</x-app-layout>
+@endsection

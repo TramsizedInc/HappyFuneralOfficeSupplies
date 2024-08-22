@@ -61,6 +61,8 @@ class DeceasedDataController extends Controller
             'death_time' => 'nullable|date',
             'exhibition_time' => 'nullable|date',
             'pensioner_id' => 'nullable|string',
+            'personal_id' => 'nullable|string',
+            'city' => 'nullable|string',
             'id_card_number' => 'nullable|string',
             'address_id_number' => 'nullable|string',
             'passport_number' => 'nullable|string',

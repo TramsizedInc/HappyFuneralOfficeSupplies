@@ -202,8 +202,7 @@
                                     value="{{ $deceased_uuid }}" name="order_uuid"></input>
                                 <div class="col-md-4">
                                     <select class="form-select bg-secondary " id="deceased_name_prefix"
-                                        name="deceased_name_prefix" type="text"
-                                        placeholder="Előtag">
+                                        name="deceased_name_prefix" type="text" placeholder="Előtag">
                                         <option value="(Nincs)" selected>Előtag</option>
                                         <option value="(Nincs)">Nincs</option>
                                         <option value="Dr.">Dr.</option>
@@ -218,15 +217,13 @@
 
                                 <div class="col-md-4">
                                     <input class="form-control bg-secondary text-white" id="deceased_last_name"
-                                        name="deceased_last_name" type="text"
-                                        placeholder="Vezeték neve">
+                                        name="deceased_last_name" type="text" placeholder="Vezeték neve">
                                 </div>
 
 
                                 <div class="col-md-4">
                                     <input class="form-control bg-secondary text-white" id="deceased_first_name"
-                                        name="deceased_first_name" type="text"
-                                        placeholder="Kereszt neve">
+                                        name="deceased_first_name" type="text" placeholder="Kereszt neve">
                                 </div>
 
                                 <div class="col-md-6">
@@ -297,6 +294,15 @@
                                 </div>
 
 
+                                <div class="col-md-5">
+                                    <div class="input-group">
+                                        <input class="form-control bg-secondary text-end text-white" type="number" name="weight"
+                                        id="weight" placeholder="Elhunyt súlya" min="0">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text bg-secondary">Kg</span>
+                                        </div>
+                                    </div>
+                                </div>
 
 
                             </div>
@@ -570,25 +576,23 @@
             // Get the current date in YYYY-MM-DD format
 
             let currentDate = new Date().toISOString().split('T')[0];
-    
+
             // Select the input element by its ID
             let deathTimeInput = document.getElementById('death_time');
             let exhibition_dateInput = document.getElementById('exhibition_date');
             let hv_done_status_dateInput = document.getElementById('hv_done_status_date');
             let hv_have_status_dateInput = document.getElementById('hv_have_status_date');
             let hv_exhibition_date_Input = document.getElementById('hv_exhibition_date');
-    
-    
+
+
             // Set the value of the input element to the current date
             deathTimeInput.value = currentDate;
-    
-    
+
+
             exhibition_dateInput.value = currentDate;
             hv_done_status_dateInput.value = currentDate;
             hv_have_status_dateInput.value = currentDate;
             hv_exhibition_date_Input.value = currentDate;
-
-
         });
 
         $(document).ready(function() {
@@ -628,7 +632,7 @@
 
                     data: formData,
                     success: function(response) {
-                        if(formId == 'orderdata_form') toastr.info(response.message);
+                        if (formId == 'orderdata_form') toastr.info(response.message);
                         if (callback) callback();
                     },
                     error: function(jqXHR, textStatus, errorThrown) {
@@ -645,39 +649,48 @@
                         submitForm('urnkia_form', function() {
                             submitForm('customer_form', function() {
                                 submitForm('orderdata_form', function() {
-                                    window.location.href = "/orderdata";
-                                });
+                                window.location.href =
+                                    "/orderdata";
+                                    });
                             });
                         });
                     });
                 });
             });
 
-            $("#order_request_btn").on('click', 
-            function(e) {
-                e.preventDefault();
+            $("#order_request_btn").on('click',
+                function(e) {
+                    e.preventDefault();
 
-                submitForm('deceased_form', function() {
-                    submitForm('birthcert_form', function() {
-                        submitForm('urnkia_form', function() {
-                            submitForm('customer_form', function() {
-                                submitForm('orderdata_form', function() {
-                                    // window.location.href = "/orderdata";
-                                    toastr.info("Átirányítás fejlesztés alatt", "Adatbázismódosítás végett fejlesztés alatt áll");
-                                    toastr.info("Átirányítás fejlesztés alatt", "Minta megnyitása");
-                                    // await sleep(5000);
-                                    // window.location.href = "/javitas";
-                                    setTimeout(() => {
-                                        window.location.href = "/javitas";
-                                    }, 5000);
+                    submitForm('deceased_form', function() {
+                        submitForm('birthcert_form', function() {
+                            submitForm('urnkia_form', function() {
+                                submitForm('customer_form', function() {
+                                    submitForm('orderdata_form', function() {
+                                        // window.location.href = "/orderdata";
+                                        toastr.info(
+                                            "Átirányítás fejlesztés alatt",
+                                            "Adatbázismódosítás végett fejlesztés alatt áll"
+                                        );
+                                        toastr.info(
+                                            "Átirányítás fejlesztés alatt",
+                                            "Minta megnyitása");
+                                        // await sleep(5000);
+                                        // window.location.href = "/javitas";
+                                        setTimeout(() => {
+                                            window.location
+                                                .href =
+                                                "/hutesido-kalkulator/" +
+                                                "";
+                                        }, 5000);
+                                    });
                                 });
                             });
                         });
                     });
                 });
-            });
 
-            
+
         });
         // , () => window.location.href = "/deceaseds";
     </script>
