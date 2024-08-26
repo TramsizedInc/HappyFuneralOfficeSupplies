@@ -103,7 +103,10 @@ class CustomerDataController extends Controller
      */
     public function update(UpdateCustomerDataRequest $request, CustomerData $customerData)
     {
-        //
+        $customerData->update($request->all());
+
+       return response()->json(['success' => true, 'message' => 'customer updated']);
+
     }
 
     /**

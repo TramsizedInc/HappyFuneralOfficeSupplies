@@ -98,31 +98,12 @@ class UrnKIADataController extends Controller
      */
     public function update(UpdateUrn_k_i_a_dataRequest $request, Urn_k_i_a_data $Urn_k_i_a_data)
     {
-        if (
-            !(Auth::user()->cannot('updateUtilities', Urn_k_i_a_data::class)) &&
-            Auth::user()->cannot('update',Urn_k_i_a_data::class)
-        ) {
-            $Urn_k_i_a_data->drumm_percent = $request->drumm_percent;
-            $Urn_k_i_a_data->toner_percent = $request->toner_percent;
-            $Urn_k_i_a_data->updated_at = now();
-            $Urn_k_i_a_data->update();
-            return redirect()->route("Urn_k_i_a_datas.index")->with("success", "Urn_k_i_a_data updated successfully.");
-        } else if(Auth::user()->cannot('update',Urn_k_i_a_data::class)){
-            abort(403);
-        }
+        
         $Urn_k_i_a_data->update($request->all());
-        if($request->picture != null){
-            $file_name = 'Urn_k_i_a_data_picture' . $request->brand . '_' . $request->type . '.jpg';
-            $Urn_k_i_a_data->picture = $file_name;
-            $request->picture->storeAs(
-                'picture',
-                'Urn_k_i_a_data_picture' . $request->brand . '_' . $request->type . '.jpg',
-                'public');
-        }
-        $Urn_k_i_a_data->updated_at = now();
-        $Urn_k_i_a_data->update();
+        
 
-        return redirect()->route("Urn_k_i_a_datas.index")->with("success", "Urn_k_i_a_data updated successfully.");
+        return response()->json(['success' => true, 'message' => 'urnkia m']);
+
     }
 
     /**

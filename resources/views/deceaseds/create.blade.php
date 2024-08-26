@@ -7,7 +7,7 @@
             <h1 class="title ms-5 text-white font-weight-bold">
                 Elhunyt felvétele
             </h1>
-            <h1 class="subtitle  ms-5 text-white font-weight-bold">{{ $deceased_uuid }}</h1>
+            <h1 class="subtitle  ms-5 text-white font-weight-bold"  id="orderdata_order_uuid">{{ $deceased_uuid }}</h1>
 
             <form class=" pe-0" id="orderdata_form" method="POST" action="{{ route('orderdata.store') }}">
                 @csrf
@@ -39,7 +39,7 @@
                             @csrf
                             <div class="row g-3">
                                 <input class="subtitle d-none ms-5 text-white font-weight-bold" value="{{ $deceased_uuid }}"
-                                    name="order_uuid"></input>
+                                    id="customer_order_uuid" name="order_uuid"></input>
                                 <div class="col-md-4">
                                     <select class="form-select bg-secondary " id="customer_name_prefix"
                                         name="customer_name_prefix" type="text" placeholder="Előtag">
@@ -199,7 +199,7 @@
                             @csrf
                             <div class="row g-3">
                                 <input class="subtitle d-none ms-5 text-white font-weight-bold"
-                                    value="{{ $deceased_uuid }}" name="order_uuid"></input>
+                                    value="{{ $deceased_uuid }}" id="deceased_order_uuid" name="order_uuid"></input>
                                 <div class="col-md-4">
                                     <select class="form-select bg-secondary " id="deceased_name_prefix"
                                         name="deceased_name_prefix" type="text" placeholder="Előtag">
@@ -362,7 +362,7 @@
                             @csrf
                             <div class="row g-3">
                                 <input class="subtitle d-none ms-5 text-white font-weight-bold"
-                                    value="{{ $deceased_uuid }}" name="order_uuid"></input>
+                                    value="{{ $deceased_uuid }}" id="birthcertificate_order_uuid" name="order_uuid"></input>
                                 <div class="col-md-6">
                                     <select class="form-select bg-secondary" id="degree" name="degree"
                                         type="text" placeholder="Iskolai végzettsége">
@@ -474,7 +474,7 @@
                             @csrf
                             <div class="row text-center g-3">
                                 <input class="subtitle d-none ms-5 text-white font-weight-bold"
-                                    value="{{ $deceased_uuid }}" name="order_uuid"></input>
+                                    value="{{ $deceased_uuid }}" id="urnkia_order_uuid" name="order_uuid"></input>
                                 <div class="col-md-12  rounded g-3">
                                     <label class="pe-4 fs-4">Boncolás történt-e?</label>
                                     <div class="form-check form-check-inline pe-4 g-3">
@@ -625,15 +625,45 @@
             function submitForm(formId, callback) {
                 var form = $('#' + formId);
                 var formData = form.serialize();
-
+                    // toastr.info(formId, formData);
+                // var order = fetch("/order-id").then(response => response.json()).then(data => data.csrfToken).catch(error => toastr.error(error));
                 $.ajax({
                     type: "POST",
                     url: form.attr('action'), // Assuming the action attribute contains the URL to submit to
 
                     data: formData,
                     success: function(response) {
-                        if (formId == 'orderdata_form') toastr.info(response.message);
-                        if (callback) callback();
+                        if (formId == 'orderdata_form') {
+                            // toastr.info(response.message);
+                            if(callback){
+                                let instructions = callback.toString();
+                                if(instructions.includes("/hutesido-kalkulator/")){
+                                    // toastr.info(formData);
+                                    // if()
+                                    let inner_uuid = formData.split("&").find((word) => word.includes("inner_uuid"));
+                                    $.ajax({
+                                        type: "GET",
+                                        url: "/order-ready/" + inner_uuid.split("=")[1].replaceAll("%2F","-"), 
+                                        success: function(response) {
+                                            if(!response.ready_state){
+                                                toastr.error("Adatok mentve, de hiányos", "További adatok kitöltésére van szükség a számításhoz.");
+                                                // toastr.info("Adatok mentve")
+                                                setTimeout(() => {
+                                                    window.location.href =
+                                                    "/orderdata";
+                                                }, 5000);
+                                                return;
+                                            }
+                                            else {callback();}
+                                        },
+                                        error: function() {
+                                            alert('An error occurred');
+                                        }
+                                    });
+                                }
+                                else {callback();}
+                            }
+                        }else if (callback) callback();
                     },
                     error: function(jqXHR, textStatus, errorThrown) {
                         console.error("Form submission failed:", textStatus, errorThrown);
@@ -649,9 +679,11 @@
                         submitForm('urnkia_form', function() {
                             submitForm('customer_form', function() {
                                 submitForm('orderdata_form', function() {
-                                window.location.href =
-                                    "/orderdata";
-                                    });
+                                setTimeout(() => {
+                                    window.location.href =
+                                        "/orderdata";
+                                    }, 5000);
+                                });
                             });
                         });
                     });

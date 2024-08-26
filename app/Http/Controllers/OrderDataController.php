@@ -49,7 +49,8 @@ class OrderDataController extends Controller
         // $query = CustomerData::select('id')->where('id_card_number', '=', $req['id_card_number'])->toSql();
         $company = "Aevum";
         $office = "1";
-        $inner_uuid = strtoupper($company[0] . $company[1]) . $this->create_inventory_number($office, 2) . '/' . Carbon::today()->format('Ymd') . '/' . OrderData::withTrashed()->count() + 1;
+        // $inner_uuid = strtoupper($company[0] . $company[1]) . $this->create_inventory_number($office, 4) . '/' . Carbon::today()->format('Ymd') . '/' . OrderData::withTrashed()->count() + 1;
+        $inner_uuid = strtoupper($company[0] . $company[1]) . $this->create_inventory_number($office, 2) . '/' . Carbon::today()->format('Ymd') . '/' . $this->create_inventory_number(OrderData::withTrashed()->count() + 1, 3);
         $customer = CustomerData::select('id')->where('order_uuid', '=', $inner_uuid)->get();
         $deceased = Deceased_data::select('id')->where('order_uuid', '=', $inner_uuid)->get();
         $birth_c = BirthCertificate::select('id')->where('order_uuid', '=', $inner_uuid)->get();
@@ -91,13 +92,13 @@ class OrderDataController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(OrderData $orderData)
+    public function edit($orderData)
     {
        
         
 
-
-        return view('order_data.edit', ['orderdata' => $orderData]);
+        // dd($orderData);
+        return view('order_data.edit', ['orderdata' => OrderData::find($orderData)]);
     }
 
     /**
@@ -106,6 +107,8 @@ class OrderDataController extends Controller
     public function update(UpdateOrderDataRequest $request, OrderData $orderData)
     {
         //
+        $orderData->update($request->all());
+        return redirect()->route("orderdata.index")->with('success', 'Frissítve.');
     }
 
     /**
@@ -137,7 +140,8 @@ class OrderDataController extends Controller
     public function create_inventory_number($id, $length)
     {
         $id_s = (string)$id;
-        $zeroes = strlen($id_s) - (intval($length));
+        // $zeroes = strlen($id_s) - (intval($length));
+        $zeroes = (intval($length)) - strlen($id_s);
         for ($i = 0; $i <= $zeroes; $i++) {
             $id_s = "0" . $id_s;
         }
@@ -154,9 +158,10 @@ class OrderDataController extends Controller
 
         $company = "Aevum";
         $office = "1";
-        $inner_uuid = strtoupper($company[0] . $company[1]) . $this->create_inventory_number($office, 2) . '/' . Carbon::today()->format('Ymd') . '/' . (OrderData::withTrashed()->count() + 1);
+        $inner_uuid = strtoupper($company[0] . $company[1]) . $this->create_inventory_number($office, 2) . '/' . Carbon::today()->format('Ymd') . '/' . $this->create_inventory_number(OrderData::withTrashed()->count() + 1, 3);
 
-        return $inner_uuid;
+        // return $inner_uuid;
+        return response()->json(["inner_uuid" => $inner_uuid]);
     }
     
     public static function get_state($id){
@@ -178,6 +183,18 @@ class OrderDataController extends Controller
         }
 
         return "ki van töltve";
+    }
+
+    public function get_state_by_inner_uuid($uuid){
+        $uuid = str_replace("-", "/", $uuid); 
+        // dd($uuid);
+        $order = OrderData::where('inner_uuid', '=', $uuid)->get();
+        // dd($order[0]);
+        $state = OrderDataController::get_state($order[0]->id);
+        $retval = $state == "ki van töltve";
+        return response()->json(["ready_state" => $retval]);
+        // return response()->json(["fasz" => $uuid]);
+        // return view("printers.create");
     }
 
     public static function is_model_ready($model)

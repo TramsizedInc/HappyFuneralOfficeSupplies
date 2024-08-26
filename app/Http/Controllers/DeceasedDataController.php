@@ -34,8 +34,10 @@ class DeceasedDataController extends Controller
         //     abort(403);
         // }
         $orderdata = new OrderDataController();
-        $deceased_uuid = $orderdata->create_inner_uuid();
-        return view('deceaseds.create', ['deceased_uuid' => $deceased_uuid]);
+        $deceased_uuid = ($orderdata->create_inner_uuid());
+        // dd($deceased_uuid->getData(true)['inner_uuid']);
+        // dd($deceased_uuid["inner_uuid"]);
+        return view('deceaseds.create', ['deceased_uuid' => $deceased_uuid->getData(true)['inner_uuid']]);
     }
 
     /**

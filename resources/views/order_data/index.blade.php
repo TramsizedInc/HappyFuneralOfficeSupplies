@@ -74,19 +74,23 @@
                                 </td>
                                 <td class="bg-dark border-end border-secondary text-secondary text-center">
                                     {{ $item->created_at }}</td>
-                                <td class="bg-dark border-end border-secondary text-secondary text-center" >
+                                <td class="bg-dark border-end border-secondary text-secondary text-center">
                                     {{ \App\Http\Controllers\OrderDataController::get_state($item->id) }}
-                                    
+
                                 </td>
                                 <td class="bg-dark border-end border-secondary text-secondary text-center w-200">
                                     <div class="d-flex flex-column align-items-center">
-                                        <a href="{{ route('orderdata.show' ,['orderdatum' =>$item->id])}}" class="btn btn-success btn-md  mb-2">Megnézés</a>
-                                        
-                                        <form action="{{ route('orderdata.edit',['orderdatum'=>$item->id]) }}" class="d-inline-block ms-2">
-                                            <button type="submit" class="btn btn-warning btn-md   mb-2">Szerkesztés</button>
+                                        <a href="{{ route('orderdata.show', ['orderdatum' => $item->id]) }}"
+                                            class="btn btn-success btn-md  mb-2">Megnézés</a>
+
+                                        <form action="{{ route('orderdata.edit', ['orderdatum' => $item->id]) }}"
+                                            class="d-inline-block ms-2">
+                                            <button type="submit"
+                                                class="btn btn-warning btn-md   mb-2">Szerkesztés</button>
                                         </form>
                                         <form action="#" class="d-inline-block ms-2">
-                                            <button type="submit" class="btn btn-danger btn-md mb-2" style="width: 100% ">Törlés</button>
+                                            <button type="submit" class="btn btn-danger btn-md mb-2"
+                                                style="width: 100% ">Törlés</button>
                                         </form>
                                         <a href="/hutesido-kalkulator/{{ $item->id }}" type="submit"
                                             class="btn btn-info btn-md ">Ajánlat Kéres</a>

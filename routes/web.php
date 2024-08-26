@@ -63,6 +63,8 @@ Route::middleware(['gzip'])->group(function () {
             Route::post('create-schedule', [App\Http\Controllers\ScheduleController::class, 'create']);
             Route::get('/hutesidocalculation/{id}', [\App\Http\Controllers\HutosIdoController::class, 'Calculation']);
             // Route::get('/order-state/{id}', [\App\Http\Controllers\OrderDataController::class, 'get_state']);
+            Route::get('/order-id', [\App\Http\Controllers\OrderDataController::class, 'create_inner_uuid']);
+            Route::get('/order-ready/{uuid}', [\App\Http\Controllers\OrderDataController::class, 'get_state_by_inner_uuid']);
             Route::any('/docedit/{any}', [\App\Http\Controllers\DocEditProxyController::class, 'index'])->where('any', '.*');
             Route::get('/select-office', [Office_Choose_Controller::class, 'select'])->name('select.office');
             Route::post('/select-office', [Office_Choose_Controller::class, 'store'])->name('store.office');
