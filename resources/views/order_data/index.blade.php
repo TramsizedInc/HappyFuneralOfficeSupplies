@@ -62,7 +62,9 @@
                                     {{ \App\Models\CustomerData::all()->find($item->customer_data_id)->id_card_number }}
                                 </td>
                                 <td class="bg-dark border-end border-secondary text-secondary text-center">
-                                    {{ \App\Models\Deceased_data::all()->find($item->deceased_data_id)->deceased_name }}
+                                    {{ \App\Models\Deceased_data::all()->find($item->deceased_data_id)->deceased_name_prefix }}
+                                    {{ \App\Models\Deceased_data::all()->find($item->deceased_data_id)->deceased_last_name }}
+                                    {{ \App\Models\Deceased_data::all()->find($item->deceased_data_id)->deceased_first_name }}
                                 </td>
                                 <td class="bg-dark border-end border-secondary text-secondary text-center">
                                     {{ \App\Models\Urn_k_i_a_data::all()->find($item->_urn_k_i_a_datas_id)->urn_inside_form }}
@@ -74,6 +76,7 @@
                                     {{ $item->created_at }}</td>
                                 <td class="bg-dark border-end border-secondary text-secondary text-center" >
                                     {{ \App\Http\Controllers\OrderDataController::get_state($item->id) }}
+                                    
                                 </td>
                                 <td class="bg-dark border-end border-secondary text-secondary text-center w-200">
                                     <div class="d-flex flex-column align-items-center">

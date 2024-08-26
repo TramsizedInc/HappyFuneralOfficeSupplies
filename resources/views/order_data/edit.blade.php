@@ -12,9 +12,7 @@
             <form class=" pe-0" id="orderdata_form" method="POST" action="{{ route('orderdata.store') }}">
                 @csrf
                 @method('POST')
-                <?php
                 {{ \App\Models\Deceased_data::all()->find($orderdata>deceaseds_data_id)->deceaseds_name_prefix }}
-                ?>
                 <input class="subtitle d-none ms-5 text-white font-weight-bold" value="{{ $deceased_uuid }}"
               
                     name="inner_uuid"></input>
@@ -242,16 +240,16 @@
 
                                 <div class="col-md-6">
                                     <input class="form-control bg-secondary text-white" type="text"
-                                        name="social_security_number" id="social_security_number" placeholder="TAJ szám">
+                                        name="social_security_number" id="social_security_number" placeholder="TAJ szám" value="{{\App\Models\DeceasedData::all()->find($orderdata->deceaseds_data_id)->social_security_number) }}">
                                 </div>
 
                                 <div class="col-md-6">
                                     <input class="form-control bg-secondary text-white" id="mother_name"
-                                        name="mother_name" type="text" placeholder="Anyja neve" />
+                                        name="mother_name" type="text" placeholder="Anyja neve" value="{{\App\Models\DeceasedData::all()->find($orderdata->deceaseds_data_id)->mother_name) }}"/>
                                 </div>
                                 <div class="col-md-6">
                                     <input class="form-control bg-secondary text-white" id="birth_place"
-                                        name="birth_place" type="text" placeholder="Születési helye" />
+                                        name="birth_place" type="text" placeholder="Születési helye" value="{{\App\Models\DeceasedData::all()->find($orderdata->deceaseds_data_id)->birth_place) }}" />
                                 </div>
 
 
@@ -261,13 +259,13 @@
                                             <span class="input-group-text bg-secondary">Születési ideje</span>
                                         </div>
                                         <input class="form-control bg-secondary" name="birth_day" id="birth_day"
-                                            type="date" placeholder="Születési ideje" />
+                                            type="date" placeholder="Születési ideje" value="{{\App\Models\DeceasedData::all()->find($orderdata->deceaseds_data_id)->birth_day) }}" />
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <input class="form-control bg-secondary text-white" id="id_card_number"
-                                        name="id_card_number" type="text" placeholder="Személyi igazolvány száma">
+                                        name="id_card_number" type="text" placeholder="Személyi igazolvány száma" value="{{\App\Models\DeceasedData::all()->find($orderdata->deceaseds_data_id)->id_card_number) }}">
                                 </div>
 
                                 <div class="col-md-6">
@@ -281,7 +279,7 @@
 
                                 <div class="col-md-6">
                                     <input class="form-control bg-secondary text-white" type="text" name="death_place"
-                                        id="death_place" placeholder="Halál helye">
+                                        id="death_place" placeholder="Halál helye" value="{{\App\Models\DeceasedData::all()->find($orderdata->deceaseds_data_id)->death_place) }}">
                                 </div>
 
 
@@ -292,13 +290,13 @@
                                             <span class="input-group-text bg-secondary">Halálozás napja</span>
                                         </div>
                                         <input datetimepicker class="form-control bg-secondary" id="death_time"
-                                            name="death_time" type="date" placeholder="Halálozás napja" />
+                                            name="death_time" type="date" placeholder="Halálozás napja" value="{{\App\Models\DeceasedData::all()->find($orderdata->deceaseds_data_id)->death_time) }}"/>
                                     </div>
                                 </div>
 
                                 <div class="col-md-6">
                                     <input class="form-control bg-secondary text-white" type="text"
-                                        placeholder="Nyugdíjas törzsszám"id="pensioner_id" name="pensioner_id">
+                                        placeholder="Nyugdíjas törzsszám"id="pensioner_id" name="pensioner_id" value="{{\App\Models\DeceasedData::all()->find($orderdata->deceaseds_data_id)->pensioner_id) }}">
                                 </div>
 
 
@@ -313,30 +311,30 @@
                                     <div class="col-md-6">
                                         <input class="form-control bg-secondary text-white" id="address_id_number"
                                             name="address_id_number" type="text"
-                                            placeholder="Lakcím igazolvány száma" />
+                                            placeholder="Lakcím igazolvány száma" value="{{\App\Models\DeceasedData::all()->find($orderdata->deceaseds_data_id)->address_id_number) }}"/>
                                     </div>
                                     <div class="col-md-6">
                                         <input class="form-control bg-secondary text-white" id="nation" name="nation"
-                                            type="text" placeholder="Ország" />
+                                            type="text" placeholder="Ország" value="{{\App\Models\DeceasedData::all()->find($orderdata->deceaseds_data_id)->nation) }}" />
                                     </div>
                                     <div class="col-md-6">
                                         <input class="form-control bg-secondary text-white" id="zip_code"
-                                            name="zip_code" type="text" placeholder="Irányítószám" />
+                                            name="zip_code" type="text" placeholder="Irányítószám" value="{{\App\Models\DeceasedData::all()->find($orderdata->deceaseds_data_id)->zip_code) }}" />
                                     </div>
 
                                     <div class="col-md-6">
                                         <input class="form-control bg-secondary text-white" id="city" name="city"
-                                            type="text" placeholder="Város">
+                                            type="text" placeholder="Város" value="{{\App\Models\DeceasedData::all()->find($orderdata->deceaseds_data_id)->city) }}" >
                                     </div>
 
                                     <div class="col-md-6">
                                         <input class="form-control bg-secondary text-white" id="street" name="street"
-                                            type="text" placeholder="Utca" />
+                                            type="text" placeholder="Utca" value="{{\App\Models\DeceasedData::all()->find($orderdata->deceaseds_data_id)->street) }}"/>
                                     </div>
 
                                     <div class="col-md-6">
                                         <input class="form-control bg-secondary text-white" id="house_number"
-                                            name="house_number" type="text" placeholder="Házszám">
+                                            name="house_number" type="text" placeholder="Házszám" value="{{\App\Models\DeceasedData::all()->find($orderdata->deceaseds_data_id)->house_number) }}" >
                                     </div>
 
 
@@ -378,35 +376,36 @@
                                 </div>
                                 <div class="col-md-6">
                                     <input class="form-control bg-secondary text-white" id="job" name="job"
-                                        type="text" placeholder="Foglalkozása">
+                                        type="text" placeholder="Foglalkozása" value="{{\App\Models\BirthCertificate::all()->find($orderdata->birth_certificate_data_id)->birth_name) }}">
                                 </div>
                                 <div class="col-md-6">
                                     <input class="form-control bg-secondary text-white" id="child_count"
                                         name="child_count" type="number" min="0"
-                                        placeholder="Gyerekeinek száma">
+                                        placeholder="Gyerekeinek száma" value="{{\App\Models\BirthCertificate::all()->find($orderdata->birth_certificate_data_id)->child_count) }}">
                                 </div>
                                 <div class="col-md-6">
                                     <input class="form-control bg-secondary text-white" id="degree_of_relative"
-                                        name="degree_of_relative" type="text" placeholder="Rokonsági fok">
+                                        name="degree_of_relative" type="text" placeholder="Rokonsági fok" value="{{\App\Models\BirthCertificate::all()->find($orderdata->birth_certificate_data_id)->degree_of_relative) }}">
                                 </div>
                                 <div class="col-md-6">
                                     <input class="form-control bg-secondary text-white" id="death_place"
                                         name="death_place" type="text"
-                                        placeholder="Elhalálozás helysége (Város,Kerület)">
+                                        placeholder="Elhalálozás helysége (Város,Kerület)"
+                                        value="{{\App\Models\BirthCertificate::all()->find($orderdata->birth_certificate_data_id)->death_place) }}">
                                 </div>
                                 <div class="col-md-6">
                                     <input class="form-control bg-secondary text-white" id="ash_storage_place"
-                                        name="ash_storage_place" type="text" placeholder="Hamvak tárolási helye">
+                                        name="ash_storage_place" type="text" placeholder="Hamvak tárolási helye" value="{{\App\Models\BirthCertificate::all()->find($orderdata->birth_certificate_data_id)->ash_storage_place) }}">
                                 </div>
                                 <div class="col-md-6">
                                     <input class="form-control bg-secondary text-white"
                                         id="deceased_birth_certificate_number" name="deceased_birth_certificate_number"
-                                        type="text" placeholder="Elh. Szül. AK. száma">
+                                        type="text" placeholder="Elh. Szül. AK. száma" value="{{\App\Models\BirthCertificate::all()->find($orderdata->birth_certificate_data_id)->deceased_birth_certificate_number) }}">
                                 </div>
                                 <div class="col-md-6">
                                     <input class="form-control bg-secondary text-white"
                                         id="wedding_birth_certificate_number" name="wedding_birth_certificate_number"
-                                        type="text" placeholder="Házassági AK. száma">
+                                        type="text" placeholder="Házassági AK. száma" value="{{\App\Models\BirthCertificate::all()->find($orderdata->birth_certificate_data_id)->wedding_birth_certificate_number) }}">
                                 </div>
                                 <div class="col-md-12">
                                     <input class="form-control bg-secondary text-white" type="text"
