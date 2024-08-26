@@ -41,7 +41,7 @@ return new class extends Migration
             $table->string('passport_number')->nullable();
             $table->string('driver_licence_number')->nullable();
             $table->integer('deceased_weight')->nullable();
-            $table->integer('weight')->default(0);
+            $table->integer('weight')->nullable();
             /* Softdeletes */
             $table->softDeletes();
             $table->integer('created_by')->default(1);
