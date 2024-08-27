@@ -50,6 +50,7 @@ Route::middleware(['gzip'])->group(function () {
             Route::get('/deceaseds/print/{id}', [App\Http\Controllers\DeceasedDataController::class, 'print'])->name('deceaseds.print'); // is needed for easier printing
             Route::resource('/customer', App\Http\Controllers\CustomerDataController::class);
             Route::resource('/orderdata', App\Http\Controllers\OrderDataController::class);
+           
             Route::resource('/birth_certificate', App\Http\Controllers\BirthCertificateController::class);
             Route::resource('/urn_k_i_a_data', App\Http\Controllers\UrnKIADataController::class);
             Route::get('fullcalendar', [App\Http\Controllers\ScheduleController::class, 'index'])->name('fullcalendar');

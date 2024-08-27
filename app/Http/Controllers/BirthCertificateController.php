@@ -75,9 +75,33 @@ class BirthCertificateController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateBirthCertificateRequest $request, BirthCertificate $birthCertificate)
+    public function update(UpdateBirthCertificateRequest $request, $birthCertificate)
     {
         //
+        $data = $request->validate([
+            'degree' => 'nullable|string',
+            'job' => 'nullable|string',
+            'child_count' => 'nullable|integer',
+            'degree_of_relative' => 'nullable|string',
+            'death_place' => 'nullable|string',
+            'ash_storage_place' => 'nullable|string',
+            'deceased_birth_certificate_number' => 'nullable|string',
+            'wedding_birth_certificate_number' => 'nullable|string',
+            'wedding_date_and_place' => 'nullable|string',
+            'divorced_or_not' => 'boolean',
+            'dead_husbands_count' => 'nullable|numeric|integer',
+            'legally_binding_autopsy_number' => 'nullable|string',
+            'selfemployee_tax_number' => 'nullable|string',
+            'name_of_person' => 'string',
+            'order_uuid' => 'string'
+        ]);
+        $data['divorced_or_not'] = $request->input('divorced_or_not') === 'on';
+        //dd($data);
+        $model = BirthCertificate::find($birthCertificate);
+        
+        $model->update($data);
+        // dd($model->toArray());
+        return response()->json(['success' => true, 'message' => 'bc updated']);
     }
 
     /**

@@ -30,6 +30,7 @@ class CustomerDataPolicy
     public function create(User $user): bool
     {
         //
+        return true;
     }
 
     /**
@@ -38,6 +39,7 @@ class CustomerDataPolicy
     public function update(User $user, CustomerData $customerData): bool
     {
         //
+        return true;
     }
 
     /**
@@ -46,6 +48,7 @@ class CustomerDataPolicy
     public function delete(User $user, CustomerData $customerData): bool
     {
         //
+        return true;
     }
 
     /**
@@ -54,6 +57,7 @@ class CustomerDataPolicy
     public function restore(User $user, CustomerData $customerData): bool
     {
         //
+        return true;
     }
 
     /**

@@ -104,11 +104,14 @@ class OrderDataController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateOrderDataRequest $request, OrderData $orderData)
+    public function update(UpdateOrderDataRequest $request, $orderData)
     {
         //
-        $orderData->update($request->all());
-        return redirect()->route("orderdata.index")->with('success', 'Frissítve.');
+        $order = OrderData::find($orderData);
+        $order->updated_at = now();
+        $order->update();
+        // return redirect()->route("orderdata.index")->with('success', 'Frissítve.');
+        return response()->json(['success' => true, 'message' => 'Rendelés frissítve']);
     }
 
     /**

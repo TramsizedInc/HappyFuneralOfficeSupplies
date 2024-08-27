@@ -101,11 +101,22 @@ class CustomerDataController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateCustomerDataRequest $request, CustomerData $customerData)
+    public function update(UpdateCustomerDataRequest $request,  $customerData)
     {
-        $customerData->update($request->all());
-
-       return response()->json(['success' => true, 'message' => 'customer updated']);
+        $model = CustomerData::find($customerData);  
+        // $request-> 
+        // $customerData->update($request->all());
+        $model->fill($request->all());
+        $mobile_number = preg_replace('/\D/', '', $model->mobile_number); 
+        $model->mobile_number = (int) $mobile_number;
+        $model->customer_birth_day = $request->validate(['birth_day' => 'nullable|date'])['birth_day'];
+        $model->birth_place_with_birth_day = $model->birth_place . ' ' . $model->customer_birth_day;
+        $model->address = $model->zip_code . " " . $request['city'] . " " . $model->street . " " . $model->house_number;
+        $model->city = $request['city'];
+        $model->save();
+        $model->updated_at = now();
+        $model->update();
+        return response()->json(['success' => true, 'message' => 'customerData updated']);
 
     }
 

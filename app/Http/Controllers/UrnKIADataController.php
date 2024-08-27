@@ -96,14 +96,43 @@ class UrnKIADataController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateUrn_k_i_a_dataRequest $request, Urn_k_i_a_data $Urn_k_i_a_data)
+    public function update(UpdateUrn_k_i_a_dataRequest $request, $Urn_k_i_a_data)
     {
-        
-        $Urn_k_i_a_data->update($request->all());
-        
 
-        return response()->json(['success' => true, 'message' => 'urnkia m']);
-
+        $validatedData = $request->validate([
+            'order_uuid' => 'string|required',
+            'exhibition_date' => 'date',
+            'hv_done_status_date' => 'date',
+            'hv_have_status_date' => 'date',
+            'hv_exhibition_date' => 'date',
+            'choosen_chrematory' => 'string',
+            'urn_inside_form' => 'nullable|string',
+            'choosen_cemetary' => 'string',
+            'location' => 'string',
+            'new_or_old' => 'string',
+            'tombstone_number' => 'string',
+            'date_of_funeral' => 'string',
+            'hour_and_minute_of_funeral' => 'string',
+            'hv_is_done' => 'boolean'
+        ]);
+        $validatedData['hv_is_done'] =  $request->input('hv_is_done') === 'on'; 
+        // dd($validatedData['hv_is_done']);
+        $Urn_k_i_a_data = Urn_k_i_a_data::find($Urn_k_i_a_data);
+        // $Urn_k_i_a_data = Urn_k_i_a_data::create($validatedData);
+        $Urn_k_i_a_data->fill($validatedData);
+        // $Urn_k_i_a_data->save();
+        // $Urn_k_i_a_data->settable = "_urn_k_i_a_datas";
+        // $Urn_k_i_a_data->setTable("_urn_k_i_a_datas");
+        // $Urn_k_i_a_data->hv_is_done = $validatedData['hv_is_done'];
+        // dd($Urn_k_i_a_data);
+        $Urn_k_i_a_data->save();
+        $Urn_k_i_a_data->updated_at = now();
+        // $Urn_k_i_a_data->created_at = now();
+        $Urn_k_i_a_data->update();
+        // dd($Urn_k_i_a_data);
+        // return "ok";
+        // return redirect()->route("Urn_k_i_a_datas.index")->with("success", "Urn_k_i_a_data created successfully.");
+        return response()->json(['success' => true, 'message' => 'urnkia frissítve']);
     }
 
     /**

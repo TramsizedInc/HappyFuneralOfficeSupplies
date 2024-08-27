@@ -114,9 +114,11 @@ class DeceasedDataController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(UpdateDeceased_dataRequest $request, Deceased_data $deceased_data)
+    public function update(UpdateDeceased_dataRequest $request, $deceased_data)
     {
-        //
+        $deceased = Deceased_data::find($deceased_data);  
+        $deceased->update($request->all());
+        return response()->json(['success' => true, 'message' => 'deceased updated']);
     }
 
     /**

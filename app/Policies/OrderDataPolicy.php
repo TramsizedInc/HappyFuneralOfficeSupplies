@@ -30,6 +30,7 @@ class OrderDataPolicy
     public function create(User $user): bool
     {
         //
+        return true;
     }
 
     /**
@@ -38,6 +39,7 @@ class OrderDataPolicy
     public function update(User $user, OrderData $orderData): bool
     {
         //
+        return true;
     }
 
     /**
