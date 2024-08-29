@@ -19,8 +19,6 @@ class Urn_k_i_a_data extends Model
             'choosen_chrematory',
             'urn_inside_form',
             'choosen_cemetary',
-            'location',
-            'new_or_old',
             'tombstone_number',
             'date_of_funeral',
             'hour_and_minute_of_funeral',

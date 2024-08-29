@@ -69,7 +69,7 @@ class DeceasedDataController extends Controller
             'address_id_number' => 'nullable|string',
             'passport_number' => 'nullable|string',
             'driver_licence_number' => 'nullable|string',
-            'deceased_weight' => 'nullable|string',
+            // 'deceased_weight' => 'nullable|string',
             'weight' => 'nullable|numeric',
             'order_uuid' => 'nullable|string',
         ]);

@@ -30,12 +30,11 @@ class Deceased_data extends Model
         'id_card_number',
         'address_id_number',
         'passport_number',
-        'driver_licence_number',
-        'deceased_weight',
         'weight',
         'order_uuid',
         'personal_id',
         'city',
+        'driver_licence_number',
     ];
 
 }

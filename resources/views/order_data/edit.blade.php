@@ -293,7 +293,11 @@
                                         name="id_card_number" type="text" placeholder="Személyi igazolvány száma"
                                         value="{{ \App\Models\Deceased_data::all()->find($orderdata->deceased_data_id)->id_card_number ?? '' }}">
                                 </div>
-
+                                <div class="col-md-6">
+                                    <input class="form-control bg-secondary text-white" id="personal_id"
+                                        name="personal_id" type="text" placeholder="Elhunyt személyi száma"
+                                        value="{{ \App\Models\Deceased_data::all()->find($orderdata->deceased_data_id)->personal_id ?? ''}}">
+                                </div>
                                 <div class="col-md-6">
                                     <select class="form-select bg-secondary" id="hospital_code" name="hospital_code">
                                         <option selected value="">Elhunyt jelenleg várakozik</option>
@@ -328,7 +332,26 @@
                                         value="{{ \App\Models\Deceased_data::all()->find($orderdata->deceased_data_id)->pensioner_id ?? '' }}">
                                 </div>
 
-
+                                <div class="col-md-5">
+                                    <div class="input-group">
+                                        <input class="form-control bg-secondary text-end text-white" type="number"
+                                            name="weight" id="weight" placeholder="Elhunyt súlya" value="{{ \App\Models\Deceased_data::all()->find($orderdata->deceased_data_id)->weigth ?? '' }}" min="0">
+                                        <div class="input-group-prepend">
+                                            <span class="input-group-text bg-secondary">Kg</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <input class="form-control bg-secondary text-white" id="passport_number"
+                                        name="passport_number" type="text" placeholder="Útlevél szám" 
+                                        value="{{ \App\Models\Deceased_data::all()->find($orderdata->deceased_data_id)->passport_number ?? '' }}">
+                                </div>
+                                
+                                <div class="col-md-6">
+                                    <input class="form-control bg-secondary text-white" id="driver_licence_number"
+                                        name="driver_licence_number" type="text" placeholder="Elhunyt jogsítvány száma"
+                                        value="{{ \App\Models\Deceased_data::all()->find($orderdata->deceased_data_id)->driver_licence_number ?? '' }}">
+                                </div>
 
 
                             </div>
@@ -570,8 +593,8 @@
                                         <option value="" class="">Urnabetét formája
                                         </option>
                                         <option selected
-                                            value="{{ \App\Models\Urn_k_i_a_data::all()->find($orderdata->_urn_k_i_a_datas_id)->urn_inside_form ?? 'Urnabetét formája'}}">
-                                            {{ \App\Models\Urn_k_i_a_data::all()->find($orderdata->_urn_k_i_a_datas_id)->urn_inside_form ?? 'Urnabetét formája'}}
+                                            value="{{ \App\Models\Urn_k_i_a_data::all()->find($orderdata->_urn_k_i_a_datas_id)->urn_inside_form ?? 'Urnabetét formája' }}">
+                                            {{ \App\Models\Urn_k_i_a_data::all()->find($orderdata->_urn_k_i_a_datas_id)->urn_inside_form ?? 'Urnabetét formája' }}
                                         </option>
                                         @php
                                             $urns = App\Models\UrnInsert::all();
@@ -704,7 +727,7 @@
                             submitForm('customer_form', function() {
                                 submitForm('orderdata_form', function() {
                                     window.location.href =
-                                    "/orderdata";
+                                        "/orderdata";
                                 });
                             });
                         });

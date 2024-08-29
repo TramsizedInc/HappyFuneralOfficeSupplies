@@ -21,8 +21,6 @@ return new class extends Migration
             $table->string('choosen_chrematory')->nullable(); //Választott krematorium
             $table->string('urn_inside_form')->nullable(); //Urnabetét formája
             $table->string('choosen_cemetary')->nullable(); //Választott temető
-            $table->string('location')->nullable(); //elhelyezés:sírba,falba,szorva
-            $table->string('new_or_old')->nullable();
             $table->string('tombstone_number')->nullable(); //sírhely száma
             $table->DateTime('date_of_funeral')->nullable();
             $table->string('hour_and_minute_of_funeral')->nullable();

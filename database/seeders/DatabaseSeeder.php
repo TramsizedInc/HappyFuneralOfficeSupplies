@@ -54,6 +54,13 @@ class DatabaseSeeder extends Seeder
             'office_id' => 1
         ]);
         User::factory()->create([
+            'name' => 'Lilla',
+            'email' => 'lilla@temetkezes.hu',
+            'password' => Hash::make('AevumLilla'),
+            'role_id' => 1,
+            'office_id' => 1
+        ]);
+        User::factory()->create([
             'name' => 'Edmond',
             'email' => 'edmond@temetkezes.hu',
             'password' => Hash::make('Aevum213897'),

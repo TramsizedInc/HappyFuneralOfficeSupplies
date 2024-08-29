@@ -83,6 +83,7 @@ Route::middleware(['gzip'])->group(function () {
             });
             Route::get('/csrf-token', [DocumentModelController::class, 'getCsrfToken']);
             Route::view('/deceaseds/print', [\App\Http\Controllers\DeceasedDataController::class, 'print']);
+            Route::resource('/milage',\App\Http\Controllers\MilageDataController::class);
         });
 
         require __DIR__ . '/auth.php';
