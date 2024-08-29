@@ -38,6 +38,7 @@ return new class extends Migration
             $table->string('personal_id')->nullable();
             $table->string('id_card_number')->nullable();
             $table->string('address_id_number')->nullable();
+            $table->string('driver_licence_number')->nullable();
             $table->string('passport_number')->nullable();
             $table->integer('weight')->nullable();
             /* Softdeletes */
