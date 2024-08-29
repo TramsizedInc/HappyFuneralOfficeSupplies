@@ -570,8 +570,8 @@
                                         <option value="" class="">Urnabetét formája
                                         </option>
                                         <option selected
-                                            value="{{ \App\Models\Urn_k_i_a_data::all()->find($orderdata->_urn_k_i_a_datas_id)->urn_inside_form }}">
-                                            {{ \App\Models\Urn_k_i_a_data::all()->find($orderdata->_urn_k_i_a_datas_id)->urn_inside_form }}
+                                            value="{{ \App\Models\Urn_k_i_a_data::all()->find($orderdata->_urn_k_i_a_datas_id)->urn_inside_form ?? 'Urnabetét formája'}}">
+                                            {{ \App\Models\Urn_k_i_a_data::all()->find($orderdata->_urn_k_i_a_datas_id)->urn_inside_form ?? 'Urnabetét formája'}}
                                         </option>
                                         @php
                                             $urns = App\Models\UrnInsert::all();

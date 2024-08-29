@@ -67,7 +67,7 @@
                                             {{ \App\Models\Deceased_data::all()->find($orderdata->deceased_data_id)->house_number }} 
                                             . </span></p>
                                         <p class="mb-2 ps-1 pe-2 fw-bold">Elh. tárolási helye:<span class="fw-normal">
-                                            {{ \App\Models\HutosIdo::all()->find(\App\Models\Deceased_data::all()->find($orderdata->deceased_data_id)->hospital_code)->kh_name}} </span></p>
+                                            {{ \App\Models\HutosIdo::all()->find(\App\Models\Deceased_data::all()->find($orderdata->deceased_data_id)->hospital_code)->kh_name ?? ""}} </span></p>
 
                                     </div>
                                     <div class="col-md-6">
