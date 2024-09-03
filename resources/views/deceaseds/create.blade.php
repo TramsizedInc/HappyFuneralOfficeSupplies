@@ -2,8 +2,8 @@
 
 @section('content')
     <!--Section container -->
-    <div class="row mb-3 ">
-        <div class="col-md-11 flex-container justify-content-between">
+    <div class="row mb-1 justify-content-evenly">
+        <div class="col-md-11 pt-2 flex-container justify-content-evenly">
             <h1 class="title ms-5 text-white font-weight-bold">
                 Elhunyt felvétele
             </h1>
@@ -26,10 +26,10 @@
 
 
 
-        <section class="row  mt-1 p-5 pt-0 g-4">
+        <section class="row mt-0 p-5 pt-0 g-5">
             <!-- Customer Data Section -->
             <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-12 col-sm-12">
-                <div id='section1' class="card bg-dark text-white mb-4">
+                <div id='section1' class="card bg-dark text-white">
                     <div class="card-header">
                         <h2 class="card-title text-center font-weight-bold">Megrendelő adatai</h2>
                     </div>
@@ -63,9 +63,16 @@
                                         name="customer_first_name" type="text" placeholder="Kereszt neve">
                                 </div>
 
-                                <div class="col-md-6">
-                                    <input class="form-control bg-secondary text-white" id="born_name" name="born_name"
-                                        type="text" placeholder="Születési neve">
+                                <div class="col-md-6 ">
+                                    <div class="input-group border-end-secondary">
+                                        <input type="text" class="form-control bg-secondary text-white" id="born_name"
+                                            name="born_name" placeholder="Születési neve">
+                                        <div class="input-group-text bg-secondary border-start-0 ">
+                                            <input type="checkbox" class="form-check-input ms-1 align-items-center"
+                                                name="sameName" id="sameName">
+                                            <label class="form-check-label" for="sameName">Ua.</label>
+                                        </div>
+                                    </div>
                                 </div>
 
                                 <div class="col-md-6">
@@ -179,7 +186,7 @@
                                     </div>
                                 </div>
                                 <div class="text-center sticky-bottom mt-3">
-                                    <button class="btn btn-secondary" type="submit">Kész</button>
+                                    <button class="btn btn-secondary d-none" type="submit">Kész</button>
                                 </div>
                             </div>
 
@@ -215,21 +222,25 @@
 
                                     </select>
                                 </div>
-
                                 <div class="col-md-4">
                                     <input class="form-control bg-secondary text-white" id="deceased_last_name"
                                         name="deceased_last_name" type="text" placeholder="Vezeték neve">
                                 </div>
-
-
                                 <div class="col-md-4">
                                     <input class="form-control bg-secondary text-white" id="deceased_first_name"
                                         name="deceased_first_name" type="text" placeholder="Kereszt neve">
                                 </div>
 
                                 <div class="col-md-6">
-                                    <input class="form-control bg-secondary text-white" id="born_name" name="birth_name"
-                                        type="text" placeholder="Születési neve">
+                                    <div class="input-group border-end-secondary">
+                                        <input type="text" class="form-control bg-secondary text-white"
+                                            id="birth_name" name="birth_name" placeholder="Születési neve">
+                                        <div class="input-group-text bg-secondary border-start-0">
+                                            <input type="checkbox" class="form-check-input ms-1 align-items-center"
+                                                name="deceased_sameName" id="deceased_sameName">
+                                            <label class="form-check-label" for="deceased_sameName">Ua.</label>
+                                        </div>
+                                    </div>
                                 </div>
 
 
@@ -248,7 +259,7 @@
                                 </div>
 
 
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text bg-secondary">Születési ideje</span>
@@ -283,7 +294,7 @@
 
 
 
-                                <div class="col-md-6">
+                                <div class="col-md-12">
                                     <div class="input-group">
                                         <div class="input-group-prepend">
                                             <span class="input-group-text bg-secondary">Halálozás napja</span>
@@ -299,7 +310,7 @@
                                 </div>
 
 
-                                <div class="col-md-5">
+                                <div class="col-md-6">
                                     <div class="input-group">
                                         <input class="form-control bg-secondary text-end text-white" type="number"
                                             name="weight" id="weight" placeholder="Elhunyt súlya" min="0">
@@ -314,15 +325,23 @@
                                 </div>
                                 <div class="col-md-6">
                                     <input class="form-control bg-secondary text-white" id="driver_licence_number"
-                                        name="driver_licence_number" type="text" placeholder="Elhunyt jogsítvány száma">
+                                        name="driver_licence_number" type="text"
+                                        placeholder="Elhunyt jogsítvány száma">
                                 </div>
 
                             </div>
                             <div class="card-footer border-top border-primray mt-2">
                                 <div class="card-header">
-                                    <h5 class="card-title text-start">Elhunyt lakcím adatai</h5>
+                                    <h5 class="card-title text-start d-flex justify-content-between align-items-center">
+                                        Elhunyt lakcím adatai
+                                        <span class="ms-auto">
+                                            <input type="checkbox" class="form-check-input" name="toggle"
+                                                id="toggle-form">
+                                            <label class="form-check-label" for="deceased_sameName">Ua.</label>
+                                        </span>
+                                    </h5>
                                 </div>
-                                <div class="row g-3">
+                                <div class="row g-3 form-group">
                                     <div class="col-md-6">
                                         <input class="form-control bg-secondary text-white" id="address_id_number"
                                             name="address_id_number" type="text"
@@ -355,7 +374,7 @@
 
 
                                     <div class="text-center sticky-bottom mt-3">
-                                        <button class="btn btn-secondary" type="submit">Kész</button>
+                                        <button class="btn btn-secondary d-none" type="submit">Kész</button>
                                     </div>
                                 </div>
                             </div>
@@ -465,18 +484,18 @@
 
 
                             </div>
-                            <div class="card-footer">
+                            {{-- <div class="card-footer">
                                 <div class="text-center sticky-bottom mt-3">
-                                    <button class="btn btn-secondary" type="submit">Kész</button>
+                                    <button class="btn btn-secondary d-none" type="submit">Kész</button>
                                 </div>
-                            </div>
+                            </div> --}}
                         </form>
                     </div>
                 </div>
             </div>
 
             <!-- UrnKIA Data Section -->
-            <div class="col-xxl-3 col-xl-6 col-lg-6 col-md-12 col-sm-12">
+            <div class="col-xxl-2 col-xl-6 col-lg-6 col-md-12 col-sm-12">
                 <div id='section4' class="card bg-dark text-white mb-4">
                     <div class="card-header">
                         <h2 class="card-title text-center font-weight-bold">Hűtés és UrnKIA adatok</h2>
@@ -566,11 +585,11 @@
                                 </div>
 
                             </div>
-                            <div class="card-footer">
+                            {{-- <div class="card-footer">
                                 <div class="text-center sticky-bottom mt-3">
-                                    <button class="btn btn-secondary" type="submit">Kész</button>
+                                    <button class="btn btn-secondary d-none" type="submit">Kész</button>
                                 </div>
-                            </div>
+                            </div> --}}
                         </form>
                     </div>
                 </div>
@@ -583,7 +602,67 @@
 
     </div>
 
+    // \\TODO : megrendelő lakcím adatai-> elhunyt lakcím adati; módosítani az edit részen is//\\
+                        
     <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const toggleForm = document.getElementById('toggle-form');
+            const formGroup = document.querySelector('.form-group');
+
+
+            toggleForm.addEventListener('change', function(event) {
+                if (event.target.checked) {
+                    // Hide all inputs when checkbox is checked
+                    formGroup.style.display = 'none';
+
+                } else {
+                    // Show all inputs when checkbox is unchecked
+                    formGroup.style.display = '';
+                }
+            });
+        });
+
+
+        document.addEventListener('DOMContentLoaded', function() {
+            const customerLastName = document.getElementById('customer_last_name');
+            const customerFirstName = document.getElementById('customer_first_name');
+            const bornName = document.getElementById('born_name');
+            const sameNameCheckbox = document.getElementById('sameName');
+
+            sameNameCheckbox.addEventListener('change', function() {
+                if (this.checked) {
+                    const fullName = `${customerLastName.value.trim()} ${customerFirstName.value.trim()}`;
+                    bornName.value = fullName.toUpperCase();
+                    bornName.disabled = true;
+                } else {
+                    bornName.value = '';
+                    bornName.disabled = false;
+                }
+            });
+
+            // Initial state
+            sameNameCheckbox.checked = false;
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+            const deceasedLastName = document.getElementById('deceased_last_name');
+            const deceasedFirstName = document.getElementById('deceased_first_name');
+            const birthName = document.getElementById('birth_name');
+            const deceased_sameNameCheckbox = document.getElementById('deceased_sameName');
+
+            deceased_sameNameCheckbox.addEventListener('change', function() {
+                if (this.checked) {
+                    const fullName = `${deceasedLastName.value.trim()} ${deceasedFirstName.value.trim()}`;
+                    birthName.value = fullName.toUpperCase();
+                    birthName.disabled = true;
+                } else {
+                    birthName.value = '';
+                    birthName.disabled = false;
+                }
+            });
+
+            // Initial state
+            deceased_sameNameCheckbox = false;
+        });
         const sleep = (ms) => new Promise((r) => setTimeout(r, ms));
         document.addEventListener('DOMContentLoaded', function() {
             // Get the current date in YYYY-MM-DD format
@@ -663,7 +742,7 @@
                                             if (!response.ready_state) {
                                                 toastr.error("Adatok mentve, de hiányos",
                                                     "További adatok kitöltésére van szükség a számításhoz."
-                                                    );
+                                                );
                                                 // toastr.info("Adatok mentve")
                                                 setTimeout(() => {
                                                     window.location.href =

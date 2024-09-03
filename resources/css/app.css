@@ -41,8 +41,13 @@ body {
     background-color: #CFD8DC;
 }
 
+aside {
+    height: 100vh;
+}
+
 #sidebar-nav {
-    width: 200px;
+    width: 220px;
+    height: 100vh;
 }
 
 #screen-size-category {

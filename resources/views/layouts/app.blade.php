@@ -39,7 +39,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="{{ asset('js/app.js') }}"></script>
 
-    
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.css"
         integrity="sha512-3pIirOrwegjM6erE5gPSwkUzO+3cTjpnV9lexlNZqvupR64iZBnOOTiiLPb9M36zpMScbmUNIcHUqKD47M719g=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -53,13 +53,20 @@
 
 
     <div id="screen-size-category"></div>
-    <div class="container-fluid">
+
+    <div class="container">
+
+    </div>
+
+    <aside class="sidebar">
         <div class="row flex-nowrap">
             <div class="col-auto px-0">
-                <div id="sidebar" class="collapse collapse-horizontal  border-end">
+                <aside id="sidebar" class=" collapse-horizontal  border-end">
                     <div id="sidebar-nav"
                         class="list-group border-0 bg-dark text-white rounded-0 text-sm-start min-vh-100">
                         <ul class="nav flex-column sidebar-nav">
+                            <img src="{{ asset('storage/logo.png') }}" id="logo"
+                                    class="img-fluid" alt="logo">
                             <div class="sidebar-header">
                                 <div class="sidebar-brand  text-center">
                                     <a data-bs-parent="#sidebar"class="nav-link text-light fs-2 mt-3"
@@ -173,24 +180,21 @@
                             </div>
                         </ul>
                     </div>
-                </div>
+                </aside>
             </div>
-            <div class="main ps-md-2 pt-2">
-                <a href="#" data-bs-target="#sidebar" data-bs-toggle="collapse"
-                    class="text-danger rounded-3 p-1 fs-2 text-decoration-none">
-                    <i class="fas fa-bars"></i>
-                </a>
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="align-items-center justify-content-center">
-                           
-                            @yield('content')
-                        </div>
+
+
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="align-items-center justify-content-center">
+
+                        @yield('content')
                     </div>
                 </div>
             </div>
+
         </div>
-    </div>
+
 
 
 
